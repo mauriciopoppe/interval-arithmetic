@@ -5,6 +5,7 @@
 
 var assert = require('assert');
 
+var constants = require('../lib/constants');
 var Interval = require('../lib/interval');
 
 var EPS = 1e-7;
@@ -13,12 +14,16 @@ function assertEps(a, b) {
 }
 
 describe('interval', function () {
-  it('should represent empty/whole intervals', function () {
+  it('should represent empty/whole/one/pi intervals', function () {
     var x;
-    x = Interval.empty();
+    x = constants.EMPTY;
     assert(x.lo > x.hi);
-    x = Interval.whole();
+    x = constants.WHOLE;
     assert(x.lo < x.hi && x.lo === Number.NEGATIVE_INFINITY && x.hi === Number.POSITIVE_INFINITY);
+    x = constants.PI;
+    assert(x.lo < x.hi);
+    assertEps(x.lo, Math.PI);
+    assertEps(x.hi, Math.PI);
   });
 
   it('should check NaN on assignment', function () {

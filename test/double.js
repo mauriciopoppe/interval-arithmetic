@@ -4,7 +4,6 @@
 'use strict';
 
 var assert = require('assert');
-var bigInteger = require('big-integer');
 
 var double = require('../lib/double');
 
@@ -14,16 +13,45 @@ function assertEps(a, b) {
   assert( Math.abs(a - b) < EPS );
 }
 
+function hex2(a, b) {
+  return parseInt(a, 16) * 16 + parseInt(b, 16);
+}
+
+function octetAssert(a, str) {
+  // b is a hex string
+  var b = [];
+  var i;
+  for (i = 0; i < str.length; i += 2) {
+    b.push(hex2(str[i], str[i + 1]));
+  }
+
+  for (i = 0; i < 8; i += 1) {
+    assert(a[i] === b[i]);
+  }
+}
+
 describe('double', function () {
   it('should compute the binary representation of a double', function () {
-    assert(double.doubleToLongBits(1)
-      .equals(bigInteger('3ff0000000000000', 16)));
-    assert(double.doubleToLongBits(-1)
-      .equals(bigInteger('bff0000000000000', 16)));
-    assert(double.doubleToLongBits(1.1)
-      .equals(bigInteger('3ff199999999999a', 16)));
-    assert(double.doubleToLongBits(NaN)
-      .equals(bigInteger('7ff8000000000000', 16)));
+    octetAssert(
+      double.doubleToOctetArray(1),
+      '3ff0000000000000'
+    );
+    octetAssert(
+      double.doubleToOctetArray(-1),
+      'bff0000000000000'
+    );
+    octetAssert(
+      double.doubleToOctetArray(1.1),
+      '3ff199999999999a'
+    );
+    octetAssert(
+      double.doubleToOctetArray(NaN),
+      '7ff8000000000000'
+    );
+    octetAssert(
+      double.doubleToOctetArray(Infinity),
+      '7ff0000000000000'
+    );
   });
 
   it('should get the next ieee754 double precision number', function () {

@@ -9,4 +9,6 @@ require('./interval');
 describe('interval operations', function () {
   require('./operations/utils');
   require('./operations/arithmetic');
+  require('./operations/algebra');
+  require('./operations/trigonometric');
 });

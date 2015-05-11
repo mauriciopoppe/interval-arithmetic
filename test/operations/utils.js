@@ -5,13 +5,15 @@
 
 var assert = require('assert');
 
+var constants = require('../../lib/constants');
 var Interval = require('../../lib/interval');
 var utils = require('../../lib/operations/utils');
 
 describe('utils', function () {
   it('should verify empty intervals', function () {
-    var a = Interval.empty();
+    var a = constants.EMPTY;
     assert(utils.empty(a));
+    a = new Interval();
     a.assign(1, -1);
     assert(utils.empty(a));
   });

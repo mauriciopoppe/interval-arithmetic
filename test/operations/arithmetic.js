@@ -21,8 +21,7 @@ describe('arithmetic', function () {
       new Interval(-1, 1),
       new Interval(-1, 1)
     );
-    assertEps(a.lo, -2);
-    assertEps(a.hi, 2);
+    utils.almostEqual(a, [-2, 2]);
     a = arithmetic.add(
       new Interval(-1, Infinity),
       new Interval(0, 1)
