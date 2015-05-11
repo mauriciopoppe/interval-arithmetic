@@ -24,7 +24,6 @@ function octetAssert(a, str) {
   for (i = 0; i < str.length; i += 2) {
     b.push(hex2(str[i], str[i + 1]));
   }
-
   for (i = 0; i < 8; i += 1) {
     assert(a[i] === b[i]);
   }
@@ -52,6 +51,10 @@ describe('double', function () {
       double.doubleToOctetArray(Infinity),
       '7ff0000000000000'
     );
+    octetAssert(
+      double.doubleToOctetArray(3.9999999999999996),
+      '400fffffffffffff'
+    );
   });
 
   it('should get the next ieee754 double precision number', function () {
@@ -63,6 +66,8 @@ describe('double', function () {
     assert(inf === Number.POSITIVE_INFINITY);
     inf = double.ieee754NextDouble(Number.NEGATIVE_INFINITY);
     assert(inf === Number.NEGATIVE_INFINITY);
+    var n = double.ieee754NextDouble(3.9999999999999996);
+    assert(n === 4);
   });
 
   it('should get the previous ieee754 double precision number', function () {
@@ -74,6 +79,8 @@ describe('double', function () {
     assert(inf === Number.POSITIVE_INFINITY);
     inf = double.ieee754PrevDouble(Number.NEGATIVE_INFINITY);
     assert(inf === Number.NEGATIVE_INFINITY);
+    var n = double.ieee754PrevDouble(4.000000000000001);
+    assert(n === 4);
   });
 
   it('should work for zero', function () {
