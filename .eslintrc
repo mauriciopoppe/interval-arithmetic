@@ -32,6 +32,7 @@
     // 1 - turn the rule on as a warning (doesn't affect exit code)
     // 2 - turn the rule on as an error (exit code is 1 when triggered)
     "rules": {
+        "yoda": 0,                      // allow non-literals to be first in comparison expressions
         "no-console": 0,                // disallow use of console (off by default in the node environment)
         "no-trailing-spaces": 0,        // disable throwing errors for trailing spaces
         "no-unused-expressions": 0,     // disallow usage of expressions in statement position

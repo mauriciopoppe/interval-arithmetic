@@ -403,15 +403,15 @@ describe('arithmetic', function () {
         new Interval(1, 2),
         new Interval(3, 4)
       );
-      assertEps(x.lo, 1/4);
-      assertEps(x.hi, 2/3);
+      assertEps(x.lo, 1 / 4);
+      assertEps(x.hi, 2 / 3);
 
       x = arithmetic.div(
         new Interval(1, 2),
         new Interval(3, Infinity)
       );
       assertEps(x.lo, 0);
-      assertEps(x.hi, 2/3);
+      assertEps(x.hi, 2 / 3);
 
       x = arithmetic.div(
         new Interval(1, Infinity),
@@ -424,15 +424,15 @@ describe('arithmetic', function () {
         new Interval(-2, -1),
         new Interval(-4, -3)
       );
-      assertEps(x.lo, 1/4);
-      assertEps(x.hi, 2/3);
+      assertEps(x.lo, 1 / 4);
+      assertEps(x.hi, 2 / 3);
 
       x = arithmetic.div(
         new Interval(-2, -1),
         new Interval(-Infinity, -3)
       );
       assertEps(x.lo, 0);
-      assertEps(x.hi, 2/3);
+      assertEps(x.hi, 2 / 3);
 
       x = arithmetic.div(
         new Interval(-Infinity, -1),
