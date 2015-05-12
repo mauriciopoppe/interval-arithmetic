@@ -7,4 +7,28 @@
 
 'use strict';
 
-module.exports = require('./lib/arithmetic');
+function shallowExtend() {
+  var dest = arguments[0];
+  var p;
+  for (var i = 1; i < arguments.length; i += 1) {
+    for (p in arguments[i]) {
+      if (arguments[i].hasOwnProperty(p)) {
+        dest[p] = arguments[i][p];
+      }
+    }
+  }
+}
+
+module.exports = require('./lib/interval');
+module.exports.rmath = require('./lib/round-math');
+module.exports.double = require('./lib/double');
+
+shallowExtend(
+  module.exports,
+  require('./lib/constants'),
+  require('./lib/operations/arithmetic'),
+  require('./lib/operations/algebra'),
+  require('./lib/operations/trigonometric'),
+  require('./lib/operations/misc'),
+  require('./lib/operations/utils')
+);

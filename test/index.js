@@ -6,6 +6,7 @@
 require('./double');
 require('./round-math');
 require('./interval');
+require('./library-structure');
 
 describe('interval operations', function () {
   require('./operations/utils');

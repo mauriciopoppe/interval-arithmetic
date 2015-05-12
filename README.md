@@ -54,13 +54,14 @@
     - [`Interval.log10(x)`](#intervallog10x)
     - [`Interval.log2(x)`](#intervallog2x)
     - [`Interval.abs(x)`](#intervalabsx)
+- [Development](#development)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Description
 
-An `interval` is a pair of numbers which represents all the numbers between them, by `closed` we
-mean that the bounds are also included in the representation, `extended real` because the 
+An `interval` is a pair of numbers which represents all the numbers between them, `closed` 
+means that the bounds are also included in the representation, `extended real` because the 
 `real number system` is extended with two elements: `-∞` and `+∞` representing negative infinity
 and positive infinity respectively.
 
@@ -96,7 +97,7 @@ to get the lower point
 
 ### Notable modifications
 
-- Custom next/previous IEEE754 floating number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
+- next/previous IEEE754 floating number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
 - `division` when both intervals contain zero create a whole interval
 - `cosine` works with positive/negative values
 
@@ -465,6 +466,10 @@ Computes `|x|`
 * `x` {Interval}
 
 **returns** {Interval}
+
+## Development
+
+Tests can be run with `npm test`
 
 2015 © Mauricio Poppe
 
