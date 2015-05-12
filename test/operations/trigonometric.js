@@ -87,6 +87,8 @@ describe('trigonometric', function () {
     utils.almostEqual(n, [-1.57079633, 1.57079633]);
     n = trigonometric.asin(new Interval(-10, 10));
     utils.almostEqual(n, [-1.57079633, 1.57079633]);
+    n = trigonometric.asin(new Interval(-10, -10));
+    assert(utils.empty(n));
   });
 
   it('should compute the acos function', function () {
@@ -98,6 +100,8 @@ describe('trigonometric', function () {
     utils.almostEqual(n, [0, Math.PI]);
     n = trigonometric.acos(new Interval(-10, 10));
     utils.almostEqual(n, [0, Math.PI]);
+    n = trigonometric.acos(new Interval(-10, -10));
+    assert(utils.empty(n));
   });
 
   it('should compute the atan function', function () {
@@ -119,6 +123,10 @@ describe('trigonometric', function () {
     utils.almostEqual(n, [1, 1]);
     n = trigonometric.cosh(new Interval(-2, 2));
     utils.almostEqual(n, [1, 3.76219569108]);
+    n = trigonometric.cosh(new Interval(-2, -2));
+    utils.almostEqual(n, [3.76219569108, 3.76219569108]);
+    n = trigonometric.cosh(new Interval(2, 2));
+    utils.almostEqual(n, [3.76219569108, 3.76219569108]);
   });
 
   it('should compute the hyperbolic tan function', function () {
