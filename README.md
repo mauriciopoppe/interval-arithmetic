@@ -558,15 +558,6 @@ Checks if the interval `x` represents a single value (unbounded)
 
 **returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
 
-#### `Interval.singleton(x)`
-
-Checks if the interval `x` represents a single value (unbounded)
-
-**params**
-* `x` {Interval}
-
-**returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
-
 #### `Interval.equal(x, y)`
 
 Checks if the interval `x` equals `y` (exact matching of bounds)
