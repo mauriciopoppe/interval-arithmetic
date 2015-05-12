@@ -54,6 +54,23 @@
     - [`Interval.log10(x)`](#intervallog10x)
     - [`Interval.log2(x)`](#intervallog2x)
     - [`Interval.abs(x)`](#intervalabsx)
+  - [Utilities](#utilities)
+    - [`Interval.empty(x)`](#intervalemptyx)
+    - [`Interval.zeroIn(x)`](#intervalzeroinx)
+    - [`Interval.in(x, v)`](#intervalinx-v)
+    - [`Interval.subset(x, y)`](#intervalsubsetx-y)
+    - [`Interval.overlap(x, y)`](#intervaloverlapx-y)
+    - [`Interval.singleton(x)`](#intervalsingletonx)
+    - [`Interval.singleton(x)`](#intervalsingletonx-1)
+    - [`Interval.equal(x, y)`](#intervalequalx-y)
+    - [`Interval.width(x)`](#intervalwidthx)
+  - [Constants](#constants)
+    - [`Interval.ONE`](#intervalone)
+    - [`Interval.WHOLE`](#intervalwhole)
+    - [`Interval.EMPTY`](#intervalempty)
+    - [`Interval.PI`](#intervalpi)
+    - [`Interval.PI_HALF`](#intervalpi_half)
+    - [`Interval.PI_TWICE`](#intervalpi_twice)
 - [Development](#development)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -97,8 +114,8 @@ to get the lower point
 
 ### Notable modifications
 
-- next/previous IEEE754 floating number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
-- `division` when both intervals contain zero create a whole interval
+- next/previous IEEE754 floating point number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
+- `division` when both intervals contain zero creates a whole interval
 - `cosine` works with positive/negative values
 
 ## Installation
@@ -464,6 +481,131 @@ Computes `|x|`
 
 **params**
 * `x` {Interval}
+
+**returns** {Interval}
+
+### Utilities
+
+#### `Interval.empty(x)`
+
+Checks if the interval `x` represents an empty interval
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if it's empty, `false` otherwise
+
+#### `Interval.zeroIn(x)`
+
+Checks if the interval `x` contains 0
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if it contains zero, `false` otherwise
+
+#### `Interval.in(x, v)`
+
+Checks if the interval `x` contains the value `v`
+
+**params**
+* `x` {Interval}
+* `v` {number}
+
+**returns** {boolean} `true` if it contains the value `v`, `false` otherwise
+
+#### `Interval.subset(x, y)`
+
+Checks if the interval `x` is a subset of the interval `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` is a subset of `y`, `false` otherwise
+
+#### `Interval.overlap(x, y)`
+
+Checks if the interval `x` overlaps with interval `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` overlaps `y`, `false` otherwise
+
+#### `Interval.singleton(x)`
+
+Checks if the interval `x` represents a single value (unbounded)
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
+
+#### `Interval.singleton(x)`
+
+Checks if the interval `x` represents a single value (unbounded)
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
+
+#### `Interval.equal(x, y)`
+
+Checks if the interval `x` equals `y` (exact matching of bounds)
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` equals `y`, `false` otherwise
+
+#### `Interval.width(x)`
+
+Computes the distance between the lower and upper bounds of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `x.hi - x.lo` rounded to the next floating point number
+
+### Constants
+
+#### `Interval.ONE`
+
+Representation of the number one: `{ lo: 1, hi: 1 }`
+
+**returns** {Interval}
+
+#### `Interval.WHOLE`
+
+An interval representing all the numbers `{ lo: -Infinity, hi: Infinity }`
+
+**returns** {Interval}
+
+#### `Interval.EMPTY`
+
+An interval representing no numbers `{ lo: Infinity, hi: -Infinity } `
+
+**returns** {Interval}
+
+#### `Interval.PI`
+
+Interval representation of PI (bounded correctly), `{ lo: 3.141592653589793, hi: 3.1415926535897936 }`
+
+**returns** {Interval}
+
+#### `Interval.PI_HALF`
+
+Interval representation of PI / 2 (bounded correctly), `{ lo: 1.5707963267948966, hi: 1.5707963267948968 }`
+
+**returns** {Interval}
+
+#### `Interval.PI_TWICE`
+
+Interval representation of PI * 2 (bounded correctly), `{ lo: 6.283185307179586, hi: 6.283185307179587 }`
 
 **returns** {Interval}
 
