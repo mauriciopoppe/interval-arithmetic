@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "An implementation of an algebraically closed interval system of the extended real number set",
   "bugs": "https://github.com/maurizzzio/interval-arithmetic/issues",
-  "license": "Boost Software License",
+  "license": "BSL",
   "main": "index.js",
   "author": "Mauricio Poppe <mauricio.poppe@gmail.com>",
   "files": [
@@ -42,6 +42,6 @@
     "test": "mocha -R spec test/index.js",
     "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
     "start": "npm run test:watch",
-    "publish": "./node_modules/.bin/doctoc ."
+    "toc": "./node_modules/.bin/doctoc ."
   }
 }
