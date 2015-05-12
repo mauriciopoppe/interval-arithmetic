@@ -1,9 +1,9 @@
 {
   "name": "interval-arithmetic",
   "version": "0.0.0",
-  "description": "An implementation of real interval arithmetic",
+  "description": "An implementation of an algebraically closed interval system of the extended real number set",
   "bugs": "https://github.com/maurizzzio/interval-arithmetic/issues",
-  "license": "MIT",
+  "license": "Boost Software License",
   "main": "index.js",
   "author": "Mauricio Poppe <mauricio.poppe@gmail.com>",
   "files": [
@@ -25,15 +25,15 @@
     "interval",
     "arithmetic"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.11.2",
-    "mocha-lcov-reporter": "^0.0.2",
-    "istanbul": "^0.3.8",
-    "nodemon": "^1.3.7",
+    "doctoc": "^0.13.0",
     "eslint": "^0.20.0",
-    "mocha": "^2.2.1"
+    "istanbul": "^0.3.8",
+    "mocha": "^2.2.1",
+    "mocha-lcov-reporter": "^0.0.2",
+    "nodemon": "^1.3.7"
   },
   "scripts": {
     "istanbul": "istanbul cover _mocha --report lcovonly 2> /dev/null -- -R spec test/index.js",
