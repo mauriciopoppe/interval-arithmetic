@@ -638,5 +638,5 @@ Tests can be run with `npm test`
 [npm-url]: https://npmjs.org/package/interval-arithmetic
 [travis-image]: https://travis-ci.org/maurizzzio/interval-arithmetic.svg?branch=master
 [travis-url]: https://travis-ci.org/maurizzzio/interval-arithmetic
-[coveralls-image]: https://coveralls.io/repos/maurizzzio/interval-arithmetic/badge.svg
-[coveralls-url]: https://coveralls.io/r/maurizzzio/interval-arithmetic
+[coveralls-image]: https://coveralls.io/repos/maurizzzio/interval-arithmetic/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/r/maurizzzio/interval-arithmetic?branch=master
