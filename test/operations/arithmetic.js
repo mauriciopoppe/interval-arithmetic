@@ -6,6 +6,7 @@
 var assert = require('assert');
 
 var Interval = require('../../lib/interval');
+var constants = require('../../lib/constants');
 var utils = require('../../lib/operations/utils');
 var arithmetic = require('../../lib/operations/arithmetic');
 
@@ -393,6 +394,14 @@ describe('arithmetic', function () {
         );
         assert(x.lo === 0);
         assert(x.hi === 0);
+
+        // [zero] / [negative, zero]
+        x = arithmetic.div(constants.ZERO, new Interval(-1, 0));
+        utils.almostEqual(x, [0, 0]);
+
+        // [zero] / [zero, positive]
+        x = arithmetic.div(constants.ZERO, new Interval(0, 1));
+        utils.almostEqual(x, [0, 0]);
       });
     });
 
@@ -440,6 +449,44 @@ describe('arithmetic', function () {
       assertEps(x.lo, 0);           // 1 / infinity
       assert(x.lo === -Number.MIN_VALUE);
       assert(x.hi === Infinity);    // infinity / 3
+
+      x = arithmetic.div(
+        new Interval(-2, -1),
+        new Interval(3, 4)
+      );
+      assertEps(x.lo, -2 / 3);
+      assertEps(x.hi, -1 / 4);
+
+      x = arithmetic.div(
+        new Interval(-2, -1),
+        new Interval(3, 4)
+      );
+      assertEps(x.lo, -2 / 3);
+      assertEps(x.hi, -1 / 4);
+
+      // negative / non zero
+      x = arithmetic.div(
+        new Interval(-2, -1),
+        new Interval(3, 4)
+      );
+      assertEps(x.lo, -2 / 3);
+      assertEps(x.hi, -1 / 4);
+
+      // mixed / non zero
+      x = arithmetic.div(
+        new Interval(-2, 1),
+        new Interval(3, 4)
+      );
+      assertEps(x.lo, -2 / 3);
+      assertEps(x.hi, 1 / 3);
+
+      // positive / non zero
+      x = arithmetic.div(
+        new Interval(1, 2),
+        new Interval(3, 4)
+      );
+      assertEps(x.lo, 1 / 4);
+      assertEps(x.hi, 2 / 3);
     });
   });
 });
