@@ -72,6 +72,7 @@
     - [`Interval.PI_HALF`](#intervalpi_half)
     - [`Interval.PI_TWICE`](#intervalpi_twice)
 - [Development](#development)
+- [TODO list](#todo-list)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -129,6 +130,8 @@ $ npm install --save interval-arithmetic
 ```javascript
 var Interval = require('interval-arithmetic');
 ```
+
+Usage examples can be found on the files located in the `test` folder
 
 ### Constructor
 
@@ -612,6 +615,11 @@ Interval representation of PI * 2 (bounded correctly), `{ lo: 6.283185307179586,
 ## Development
 
 Tests can be run with `npm test`
+
+## TODO list
+
+- [ ] comparison operator
+- [ ] root finding port
 
 2015 © Mauricio Poppe
 
