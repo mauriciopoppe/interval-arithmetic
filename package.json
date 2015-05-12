@@ -37,7 +37,7 @@
     "nodemon": "^1.3.7"
   },
   "scripts": {
-    "istanbul": "istanbul cover _mocha --report lcovonly 2> /dev/null -- -R spec test/index.js",
+    "istanbul": "istanbul cover _mocha --report lcovonly 2> /dev/null -- -u exports -R spec test/index.js",
     "lint": "eslint index.js lib test",
     "test": "mocha -R spec test/index.js",
     "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
