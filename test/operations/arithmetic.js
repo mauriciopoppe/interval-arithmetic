@@ -15,6 +15,8 @@ function assertEps(a, b) {
   assert( Math.abs(a - b) < EPS );
 }
 
+var n;
+
 describe('arithmetic', function () {
   it('should compute interval addition', function () {
     var a;
@@ -289,6 +291,20 @@ describe('arithmetic', function () {
   });
 
   describe('division', function () {
+    it('should consider empty intervals', function () {
+      n = arithmetic.div(
+        constants.EMPTY,
+        new Interval(-1, 1)
+      );
+      assert(utils.empty(n));
+
+      n = arithmetic.div(
+        new Interval(-1, 1),
+        constants.ZERO
+      );
+      assert(utils.empty(n));
+    });
+
     describe('containing zero', function () {
       var x;
 
@@ -504,5 +520,19 @@ describe('arithmetic', function () {
       assertEps(x.lo, -2 / 3);
       assertEps(x.hi, -1 / 4);
     });
+  });
+
+  it('should compute the negative of an interval', function () {
+    n = arithmetic.negative(new Interval(2, 3));
+    utils.almostEqual(n, [-3, -2]);
+    n = arithmetic.negative(new Interval(-1, 2));
+    utils.almostEqual(n, [-2, 1]);
+    n = arithmetic.negative(new Interval(-3, -2));
+    utils.almostEqual(n, [2, 3]);
+  });
+
+  it('should compute the identity of an interval', function () {
+    n = arithmetic.positive(new Interval(2, 3));
+    utils.almostEqual(n, [2, 3]);
   });
 });
