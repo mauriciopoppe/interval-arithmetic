@@ -181,6 +181,16 @@ Sets the bounds of the interval without considering the next/previous floating p
 Sets the bounds of the interval considering the next/previous floating point number and also the
 validity of the params, namely that `lo <= hi` and that `lo` and `hi` are valid numbers
 
+#### `instance.singleton(v)`
+
+**params**
+* `v` {number} the number to be represented as an interval
+
+Sets the bounds of the interval with the values `[v, v]`, useful if it's known that a real number
+can be precisely determined using floating point notation
+
+e.g. `instance.singleton(1) = { lo: 1, hi: 1 }`
+
 #### `instance.bounded(lo, hi)`
 
 **params**
@@ -193,16 +203,17 @@ floating number
 
 e.g. `instance.bounded(1, 2) = { lo: 0.9999999999999999, hi: 2.0000000000000004 }`
 
-#### `instance.singleton(v)`
+#### `instance.boundedSingleton(v)`
 
 **params**
 * `v` {number} the number to be represented as an interval
 
 Sets the bounds of the interval with the values `[prev(v), next(v)]`, `prev` is a function which
 computes the previous double floating number, `next` is a function which computes the next double
-floating number
+floating number, useful when a real number can't be precisely determined using floating point
+notation
 
-e.g. `instance.singleton(1 / 3) = { lo: 0.33333333333333326, hi: 0.33333333333333337 }`
+e.g. `instance.boundedSingleton(1 / 3) = { lo: 0.33333333333333326, hi: 0.33333333333333337 }`
 
 #### `instance.setWhole()`
 

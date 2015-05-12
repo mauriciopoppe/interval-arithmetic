@@ -50,7 +50,9 @@ describe('interval', function () {
 
   it('should assign a singleton to an interval', function () {
     n = new Interval();
-    n.singleton(1 / 3);
+    n.singleton(1);
+    assert(n.lo === 1 && n.hi === 1);
+    n.boundedSingleton(1 / 3);
     assert(n.lo < 1 / 3 && n.hi > 1 / 3);
   });
 

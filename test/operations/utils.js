@@ -57,4 +57,11 @@ describe('utils', function () {
     assert(utils.equal(a, b));
     assert(!utils.equal(a, c));
   });
+
+  it('should verify if an interval is a singleton', function () {
+    var a = new Interval(1, 1);
+    assert(utils.singleton(a));
+    a.singleton(2);
+    assert(utils.singleton(a));
+  });
 });
