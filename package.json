@@ -40,6 +40,7 @@
     "lint": "eslint index.js lib test",
     "test": "mocha -R spec test/index.js",
     "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
-    "start": "npm run test:watch"
+    "start": "npm run test:watch",
+    "publish": "./node_modules/.bin/doctoc ."
   }
 }

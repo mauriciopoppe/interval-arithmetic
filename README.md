@@ -20,11 +20,40 @@
     - [`instance = new Interval(hi, lo)`](#instance--new-intervalhi-lo)
     - [`instance.set(lo, hi)`](#instancesetlo-hi)
     - [`instance.assign(lo, hi)`](#instanceassignlo-hi)
+    - [`instance.bounded(lo, hi)`](#instanceboundedlo-hi)
+    - [`instance.singleton(v)`](#instancesingletonv)
     - [`instance.setWhole()`](#instancesetwhole)
     - [`instance.setEmpty()`](#instancesetempty)
     - [`instance.toArray()`](#instancetoarray)
   - [Operations](#operations)
     - [`Interval.add(x, y)`](#intervaladdx-y)
+    - [`Interval.sub(x, y)`](#intervalsubx-y)
+    - [`Interval.mul(x, y)`](#intervalmulx-y)
+    - [`Interval.div(x, y)`](#intervaldivx-y)
+    - [`Interval.fmod(x, y)`](#intervalfmodx-y)
+    - [`Interval.min(x, y)`](#intervalminx-y)
+    - [`Interval.max(x, y)`](#intervalmaxx-y)
+    - [`Interval.hull(x, y)`](#intervalhullx-y)
+    - [`Interval.intersect(x, y)`](#intervalintersectx-y)
+    - [`Interval.negative(x)`](#intervalnegativex)
+    - [`Interval.positive(x)`](#intervalpositivex)
+    - [`Interval.multiplicativeInverse(x)`](#intervalmultiplicativeinversex)
+    - [`Interval.pow(x, y)`](#intervalpowx-y)
+    - [`Interval.sqrt(x)`](#intervalsqrtx)
+    - [`Interval.sin(x)`](#intervalsinx)
+    - [`Interval.cos(x)`](#intervalcosx)
+    - [`Interval.tan(x)`](#intervaltanx)
+    - [`Interval.asin(x)`](#intervalasinx)
+    - [`Interval.acos(x)`](#intervalacosx)
+    - [`Interval.atan(x)`](#intervalatanx)
+    - [`Interval.sinh(x)`](#intervalsinhx)
+    - [`Interval.cosh(x)`](#intervalcoshx)
+    - [`Interval.tanh(x)`](#intervaltanhx)
+    - [`Interval.exp(x)`](#intervalexpx)
+    - [`Interval.log(x)`](#intervallogx)
+    - [`Interval.log10(x)`](#intervallog10x)
+    - [`Interval.log2(x)`](#intervallog2x)
+    - [`Interval.abs(x)`](#intervalabsx)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -35,7 +64,7 @@ mean that the bounds are also included in the representation, `extended real` be
 `real number system` is extended with two elements: `-∞` and `+∞` representing negative infinity
 and positive infinity respectively.
 
-The implementation is a modified port of [C++ boost implementation of interval arithmetic](http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm),
+The implementation is a modified port of the [Boost's interval arithmetic library](http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm),
 the modifications are based on some guidelines from the following papers/presentations:
 
 - [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
@@ -61,15 +90,15 @@ decimals that will be lost due to the nature of floating point, instead we can r
 number with the interval `[0.2, 0.4]`, with this interval we're completely sure that `1 / 3` is within
 the interval (although the interval is also representing many more numbers), to improve the `scope`
 of the interval we have to understand that numbers in JavaScript are represented with 64 bits,
-therefore to get the next floating point number of a single precision number means that the last
-bit needs to be incremented for the upper bound, and the last bit also needs to be decremented
+therefore to get the next floating point number of a single precision number the last bit 
+needs to be incremented to get the upper bound, and the last bit also needs to be decremented
 to get the lower point
 
 ### Notable modifications
 
 - Custom next/previous IEEE754 floating number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
-- Division when both intervals contain zero create a whole interval
-- `cos` works with positive/negative values
+- `division` when both intervals contain zero create a whole interval
+- `cosine` works with positive/negative values
 
 ## Installation
 
@@ -131,6 +160,29 @@ Sets the bounds of the interval without considering the next/previous floating p
 Sets the bounds of the interval considering the next/previous floating point number and also the
 validity of the params, namely that `lo <= hi` and that `lo` and `hi` are valid numbers
 
+#### `instance.bounded(lo, hi)`
+
+**params**
+* `lo` {number} the lower bound of the interval
+* `hi` {number} the higher bound of the interval
+
+Sets the bounds of the interval with the values `[prev(lo), next(hi)]`, `prev` is a function which
+computes the previous double floating number, `next` is a function which computes the next double
+floating number
+
+e.g. `instance.bounded(1, 2) = { lo: 0.9999999999999999, hi: 2.0000000000000004 }`
+
+#### `instance.singleton(v)`
+
+**params**
+* `v` {number} the number to be represented as an interval
+
+Sets the bounds of the interval with the values `[prev(v), next(v)]`, `prev` is a function which
+computes the previous double floating number, `next` is a function which computes the next double
+floating number
+
+e.g. `instance.singleton(1 / 3) = { lo: 0.33333333333333326, hi: 0.33333333333333337 }`
+
 #### `instance.setWhole()`
 
 Sets the bounds of the interval with the values `[-Infinity, Infinity]`
@@ -152,13 +204,269 @@ All operations consider the parameters immutable and always return another inter
 
 #### `Interval.add(x, y)`
 
-Computes x + y
+Computes `x + y`
 
 **params**
 * `x` {Interval}
 * `y` {Interval}
 
 **returns** {Interval}
+
+#### `Interval.sub(x, y)`
+
+Computes `x - y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.mul(x, y)`
+
+Computes `x * y`, an explanation of all the possible cases can be found on
+[Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.div(x, y)`
+
+Computes `x / y`, an explanation of all the possible cases can be found on
+[Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.fmod(x, y)`
+
+Computes `x % y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.min(x, y)`
+
+Computes the min of `x` and `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.max(x, y)`
+
+Computes the max of `x` and `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.hull(x, y)`
+
+Computes the interval that contains both `x` and `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.intersect(x, y)`
+
+Computes the interval that intersects both `x` and `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.negative(x)`
+
+Computes `-x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.positive(x)`
+
+Computes `+x` (Identity)
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.multiplicativeInverse(x)`
+
+Computes `1 / x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.pow(x, y)`
+
+Computes `x ^ y`
+
+**params**
+* `x` {Interval}
+* `y` {number} **y needs to be an integer**
+
+**returns** {Interval}
+
+#### `Interval.sqrt(x)`
+
+Computes `sqrt(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.sin(x)`
+
+Computes `sin(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.cos(x)`
+
+Computes `cos(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.tan(x)`
+
+Computes `tan(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.asin(x)`
+
+Computes `asin(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.acos(x)`
+
+Computes `acos(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.atan(x)`
+
+Computes `atan(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.sinh(x)`
+
+Computes the hyperbolic sine of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.cosh(x)`
+
+Computes the hyperbolic cosine of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.tanh(x)`
+
+Computes the hyperbolic tangent of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.exp(x)`
+
+Computes `e^x` where `e` is the base of the natural logarithm
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.log(x)`
+
+Computes the natural logarithm (base `e`) of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.log10(x)`
+
+Computes the logarithm (base `10`) of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.log2(x)`
+
+Computes the logarithm (base `2`) of `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.abs(x)`
+
+Computes `|x|`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+2015 © Mauricio Poppe
 
 [npm-image]: https://nodei.co/npm/interval-arithmetic.png?downloads=true
 [npm-url]: https://npmjs.org/package/interval-arithmetic
