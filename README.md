@@ -64,7 +64,6 @@
     - [`Interval.subset(x, y)`](#intervalsubsetx-y)
     - [`Interval.overlap(x, y)`](#intervaloverlapx-y)
     - [`Interval.singleton(x)`](#intervalsingletonx)
-    - [`Interval.singleton(x)`](#intervalsingletonx-1)
     - [`Interval.equal(x, y)`](#intervalequalx-y)
     - [`Interval.width(x)`](#intervalwidthx)
   - [Constants](#constants)
