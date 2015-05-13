@@ -1,6 +1,7 @@
-# interval-arithmetic [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+# interval-arithmetic 
 
 [![NPM][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][david-image]][david-url]
 
 > An implementation of an algebraically closed interval system of the extended real number set
 
@@ -632,3 +633,5 @@ Tests can be run with `npm test`
 [travis-url]: https://travis-ci.org/maurizzzio/interval-arithmetic
 [coveralls-image]: https://coveralls.io/repos/maurizzzio/interval-arithmetic/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/maurizzzio/interval-arithmetic?branch=master
+[david-image]: https://david-dm.org/maurizzzio/interval-arithmetic.svg
+[david-url]: https://david-dm.org/maurizzzio/interval-arithmetic
