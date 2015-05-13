@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "An implementation of an algebraically closed interval system of the extended real number set",
   "bugs": "https://github.com/maurizzzio/interval-arithmetic/issues",
-  "license": "BSL",
+  "license": "BSL-1.0",
   "main": "index.js",
   "author": "Mauricio Poppe <mauricio.poppe@gmail.com>",
   "files": [
