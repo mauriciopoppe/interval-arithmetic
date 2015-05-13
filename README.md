@@ -67,6 +67,7 @@
     - [`Interval.equal(x, y)`](#intervalequalx-y)
     - [`Interval.width(x)`](#intervalwidthx)
   - [Constants](#constants)
+    - [`Interval.ZERO`](#intervalzero)
     - [`Interval.ONE`](#intervalone)
     - [`Interval.WHOLE`](#intervalwhole)
     - [`Interval.EMPTY`](#intervalempty)
@@ -579,6 +580,10 @@ Computes the distance between the lower and upper bounds of `x`
 **returns** {number} `x.hi - x.lo` rounded to the next floating point number
 
 ### Constants
+
+#### `Interval.ZERO`
+
+Representation of the number zero: `{ lo: 0, hi: 0 }`
 
 #### `Interval.ONE`
 
