@@ -123,7 +123,7 @@ to get the lower point
 
 - next/previous IEEE754 floating point number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
 - `division` when both intervals contain zero creates a whole interval
-- `cosine` works with positive/negative values
+- `cosine, tangent` works with positive/negative values out of the box
 
 ## Interval arithmetic evaluator
 

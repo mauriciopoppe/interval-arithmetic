@@ -78,6 +78,16 @@ describe('trigonometric', function () {
     n = trigonometric.tan(new Interval(0, Math.PI / 2));
     assert(n.lo === Number.NEGATIVE_INFINITY);
     assert(n.hi === Number.POSITIVE_INFINITY);
+
+    // bug in versions <= 0.2.2
+    utils.almostEqual(
+      trigonometric.tan(new Interval(-2.975460122699386, -2.955010224948875)),
+      [0.16767801556, 0.18877817478]
+    );
+    utils.almostEqual(
+      trigonometric.tan(new Interval(-Math.PI, -Math.PI)),
+      [0, 0]
+    );
   });
 
   it('should compute the asin function', function () {
