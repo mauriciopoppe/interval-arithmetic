@@ -107,6 +107,7 @@ describe('round math', function () {
       rmath.disable();
       assert(rmath.prev(2) === 2 && rmath.next(2) === 2);
       rmath.enable();
+      assert(rmath.prev(2) < 2 && rmath.next(2) > 2);
     });
   });
 });
