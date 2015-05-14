@@ -14,6 +14,7 @@
   - [floating point operations](#floating-point-operations)
   - [Interval arithmetic](#interval-arithmetic)
   - [Notable modifications](#notable-modifications)
+- [Interval arithmetic evaluator](#interval-arithmetic-evaluator)
 - [Installation](#installation)
 - [API](#api)
   - [Constructor](#constructor)
@@ -74,6 +75,7 @@
     - [`Interval.PI`](#intervalpi)
     - [`Interval.PI_HALF`](#intervalpi_half)
     - [`Interval.PI_TWICE`](#intervalpi_twice)
+  - [Floating point rounding](#floating-point-rounding)
 - [Development](#development)
 - [TODO list](#todo-list)
 
@@ -121,6 +123,40 @@ to get the lower point
 - next/previous IEEE754 floating point number implementation based on [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays)
 - `division` when both intervals contain zero creates a whole interval
 - `cosine` works with positive/negative values
+
+## Interval arithmetic evaluator
+
+Due to the expressive nature of the way the methods interact with intervals it's sad that even the simplest
+operation needs a lot of characters to be typed, let's consider evaluating the result of `1 + 2` expressed
+with intervals
+
+```javascript
+Interval.add(new Interval(1, 1), new Interval(2, 2))
+```
+
+This gets worse when the expression to be evaluated becomes complex like `sin(exp(x)) + tan(x) - 1/cos(PI) * x^2`:
+
+```javascript
+var x = new Interval(1, 2);
+Interval.add(
+  Interval.sin(Interval.exp(x))
+  Interval.sub(
+    Interval.tan(x),
+    Interval.mul(
+      Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
+      Interval.pow(x, 2)
+    );
+  );
+);
+```
+
+To avoid this 'expressiveness' mess there's an (interval arithmetic evaluator module)[https://github.com/maurizzzio/interval-arithmetic-eval]
+which I've created to deal with all the work of parsing/evaluating expressions like the one above
+
+```javascript
+var compile = require('interval-arithmetic-eval');
+compile('sin(exp(x)) + tan(x) - 1/cos(PI) * x^2').eval({ x: [1, 2] })
+```
 
 ## Installation
 
@@ -272,6 +308,10 @@ Computes `x * y`, an explanation of all the possible cases can be found on
 
 Computes `x / y`, an explanation of all the possible cases can be found on
 [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
+
+NOTE: an extreme case of division might results in multiple intervals, unfortunately this library doesn't
+support multi-interval arithmetic yet so a single interval will be returned instead with the hull of the 
+resulting intervals (this is the way Boost implements it too)
 
 **params**
 * `x` {Interval}
@@ -642,6 +682,7 @@ Tests can be run with `npm test`
 
 - [ ] comparison operator
 - [ ] root finding port
+- [ ] multi-interval arithmetic
 
 2015 © Mauricio Poppe
 
