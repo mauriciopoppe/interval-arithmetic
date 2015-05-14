@@ -7,6 +7,7 @@ var assert = require('assert');
 
 var constants = require('../lib/constants');
 var Interval = require('../lib/interval');
+var utils = require('../lib/operations/utils');
 var n;
 var EPS = 1e-7;
 function assertEps(a, b) {
@@ -14,6 +15,36 @@ function assertEps(a, b) {
 }
 
 describe('interval', function () {
+  it('should have a factory', function () {
+    n = Interval.factory();
+    assert(n.lo === 0 && n.hi === 0);
+    n = Interval.factory(1, 5);
+    assert(n.lo === 1 && n.hi === 5);
+    n = Interval.factory(1, -1);
+    assert(utils.empty(n));
+    n = Interval.factory(1);
+    assert(n.lo === 1 && n.hi === 1);
+
+    // nested
+    n = Interval.factory( Interval.factory(1) );
+    assert(n.lo === 1 && n.hi === 1);
+
+    n = Interval.factory( Interval.factory(1), Interval.factory(2) );
+    assert(n.lo === 1 && n.hi === 2);
+    assert.throws(function () {
+      Interval.factory(1, 2, 3);
+    });
+    assert.throws(function () {
+      Interval.factory(null, '');
+    });
+    assert.throws(function () {
+      Interval.factory( Interval.factory(1, 2) );
+    });
+    assert.throws(function () {
+      Interval.factory( Interval.factory(1), Interval.factory(1, 2) );
+    });
+  });
+
   it('should represent empty/whole/one/pi intervals', function () {
     var x;
     x = constants.EMPTY;

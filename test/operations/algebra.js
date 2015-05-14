@@ -88,6 +88,12 @@ describe('algebra', function () {
     utils.almostEqual(n, [1, 25]);
     n = algebra.pow(new Interval(2, 5), 2);
     utils.almostEqual(n, [4, 25]);
+
+    // with intervals
+    n = algebra.pow(new Interval(2, 5), new Interval(2, 2));
+    utils.almostEqual(n, [4, 25]);
+    n = algebra.pow(new Interval(2, 5), new Interval(1, -1));
+    assert(utils.empty(n));
   });
 
   it('should compute the square root of an interval', function () {
