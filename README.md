@@ -150,7 +150,7 @@ Interval.add(
 );
 ```
 
-To avoid this 'expressiveness' mess there's an (interval arithmetic evaluator module)[https://github.com/maurizzzio/interval-arithmetic-eval]
+To avoid this 'expressiveness' mess there's an [interval arithmetic evaluator module](https://github.com/maurizzzio/interval-arithmetic-eval)
 which I've created to deal with all the work of parsing/evaluating expressions like the one above
 
 ```javascript
