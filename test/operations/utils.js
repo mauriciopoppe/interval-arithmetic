@@ -18,6 +18,14 @@ describe('utils', function () {
     assert(utils.empty(a));
   });
 
+  it('should verify whole intervals', function () {
+    var a = constants.WHOLE;
+    assert(utils.whole(a));
+    a = new Interval();
+    a.assign(-Infinity, Infinity);
+    assert(utils.whole(a));
+  });
+
   it('should verify if zero is included in an interval', function () {
     var a = new Interval(-1, 1);
     var b = new Interval(1, 2);

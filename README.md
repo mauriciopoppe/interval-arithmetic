@@ -60,6 +60,7 @@
     - [`Interval.abs(x)`](#intervalabsx)
   - [Utilities](#utilities)
     - [`Interval.empty(x)`](#intervalemptyx)
+    - [`Interval.whole(x)`](#intervalwholex)
     - [`Interval.zeroIn(x)`](#intervalzeroinx)
     - [`Interval.in(x, v)`](#intervalinx-v)
     - [`Interval.subset(x, y)`](#intervalsubsetx-y)
@@ -551,6 +552,16 @@ Checks if the interval `x` represents an empty interval
 * `x` {Interval}
 
 **returns** {boolean} `true` if it's empty, `false` otherwise
+
+#### `Interval.whole(x)`
+
+Checks if the interval `x` represents an whole interval, that is it covers
+all the real numbers `[-Infinity, Infinity]`
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if represents a whole interval, `false` otherwise
 
 #### `Interval.zeroIn(x)`
 
