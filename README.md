@@ -17,10 +17,12 @@
 - [Interval arithmetic evaluator](#interval-arithmetic-evaluator)
 - [Installation](#installation)
 - [API](#api)
-  - [Constructor](#constructor)
+  - [Instance constructor](#instance-constructor)
     - [`instance = new Interval()`](#instance--new-interval)
     - [`instance = new Interval(v)`](#instance--new-intervalv)
     - [`instance = new Interval(hi, lo)`](#instance--new-intervalhi-lo)
+    - [`instance = Interval.factory(lo, hi)`](#instance--intervalfactorylo-hi)
+  - [Instance methods](#instance-methods)
     - [`instance.set(lo, hi)`](#instancesetlo-hi)
     - [`instance.assign(lo, hi)`](#instanceassignlo-hi)
     - [`instance.singleton(v)`](#instancesingletonv)
@@ -173,7 +175,7 @@ var Interval = require('interval-arithmetic');
 
 Usage examples can be found on the files located in the `test` folder
 
-### Constructor
+### Instance constructor
 
 #### `instance = new Interval()`
 
@@ -203,6 +205,17 @@ conservative way
 **by default** the interval is not bounded with the next/previous floating point number, e.g.
 `1/3, 2/3` is represented as `[0.3333333333333333, 0.6666666666666666]`, see `#bounded` to
 represent the interval in a conservative way
+
+#### `instance = Interval.factory(lo, hi)`
+
+**params**
+* `lo` {number|Interval} the lower bound of the interval
+* `hi` {number|Interval} the higher bound of the interval
+
+A Interval factory, besides check arguments.length and argument types `lo` and `hi` can be
+singleton intervals which
+
+### Instance methods
 
 #### `instance.set(lo, hi)`
 
