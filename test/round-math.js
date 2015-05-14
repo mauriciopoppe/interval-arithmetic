@@ -101,4 +101,12 @@ describe('round math', function () {
       assertEps(n, -8);
     });
   });
+
+  describe('options', function () {
+    it('should be disabled/enabled at will', function () {
+      rmath.disable();
+      assert(rmath.prev(2) === 2 && rmath.next(2) === 2);
+      rmath.enable();
+    });
+  });
 });
