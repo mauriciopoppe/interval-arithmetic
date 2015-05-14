@@ -5,6 +5,7 @@
 
 var assert = require('assert');
 
+var Interval = require('../');
 var rmath = require('../lib/round-math');
 
 var EPS = 1e-7;
@@ -106,6 +107,10 @@ describe('round math', function () {
     it('should be disabled/enabled at will', function () {
       rmath.disable();
       assert(rmath.prev(2) === 2 && rmath.next(2) === 2);
+      n = Interval.div(Interval.ONE, new Interval(3, 3));
+      assert(n.lo === 1 / 3);
+      assert(n.hi === 1 / 3);
+      assert(n.lo === n.hi);
       rmath.enable();
       assert(rmath.prev(2) < 2 && rmath.next(2) > 2);
     });
