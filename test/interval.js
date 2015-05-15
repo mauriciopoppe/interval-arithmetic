@@ -40,7 +40,10 @@ describe('interval', function () {
       Interval.factory(1, 2, 3);
     });
     assert.throws(function () {
-      Interval.factory(null, '');
+      Interval.factory('');
+    });
+    assert.throws(function () {
+      Interval.factory(null);
     });
     assert.throws(function () {
       Interval.factory( Interval.factory(1, 2) );

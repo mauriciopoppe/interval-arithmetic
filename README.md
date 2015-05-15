@@ -137,19 +137,19 @@ with intervals
 Interval.add(new Interval(1, 1), new Interval(2, 2))
 ```
 
-This gets worse when the expression to be evaluated becomes complex like `sin(exp(x)) + tan(x) - 1/cos(PI) * x^2`:
+This gets worse when the expression to be evaluated becomes complex like `sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2`:
 
 ```javascript
-var x = new Interval(1, 2);
+var x = new Interval(0, 1);
 Interval.add(
-  Interval.sin(Interval.exp(x))
+  Interval.sin(Interval.exp(x)),
   Interval.sub(
     Interval.tan(x),
     Interval.mul(
       Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
-      Interval.pow(x, 2)
-    );
-  );
+      Interval.pow(new Interval(1, 3), 2)
+    )
+  )
 );
 ```
 
@@ -158,7 +158,7 @@ which I've created to deal with all the work of parsing/evaluating expressions l
 
 ```javascript
 var compile = require('interval-arithmetic-eval');
-compile('sin(exp(x)) + tan(x) - 1/cos(PI) * x^2').eval({ x: [1, 2] })
+compile('sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2').eval({ x: [0, 1] })
 ```
 
 ## Installation

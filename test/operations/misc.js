@@ -4,7 +4,7 @@
 'use strict';
 var assert = require('assert');
 
-var Interval = require('../../lib/interval');
+var Interval = require('../../');
 var utils = require('../../lib/operations/utils');
 var misc = require('../../lib/operations/misc');
 var constants = require('../../lib/constants');
@@ -80,5 +80,20 @@ describe('misc', function () {
   it('should compute the min value of two intervals', function () {
     n = misc.min(new Interval(-1, 1), new Interval(5, 7));
     utils.almostEqual(n, [-1, 1]);
+  });
+
+  it('should compute complex operations', function () {
+    var x = new Interval(0, 1);
+    var res = Interval.add(
+      Interval.sin(Interval.exp(x)),
+      Interval.sub(
+        Interval.tan(x),
+        Interval.mul(
+          Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
+          Interval.pow(new Interval(1, 3), 2)
+        )
+      )
+    );
+    utils.almostEqual(res, [1.4107812905029047, 11.557407724654915]);
   });
 });
