@@ -26,6 +26,7 @@ module.exports.double = require('./lib/double');
 shallowExtend(
   module.exports,
   require('./lib/constants'),
+  require('./lib/operations/relational'),
   require('./lib/operations/arithmetic'),
   require('./lib/operations/algebra'),
   require('./lib/operations/trigonometric'),

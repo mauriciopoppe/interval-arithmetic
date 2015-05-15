@@ -5,9 +5,8 @@
 
 var assert = require('assert');
 
-var Interval = require('../../lib/interval');
+var Interval = require('../../');
 var constants = require('../../lib/constants');
-var utils = require('../../lib/operations/utils');
 var arithmetic = require('../../lib/operations/arithmetic');
 
 var EPS = 1e-7;
@@ -24,7 +23,7 @@ describe('arithmetic', function () {
       new Interval(-1, 1),
       new Interval(-1, 1)
     );
-    utils.almostEqual(a, [-2, 2]);
+    Interval.almostEqual(a, [-2, 2]);
     a = arithmetic.add(
       new Interval(-1, Infinity),
       new Interval(0, 1)
@@ -296,13 +295,13 @@ describe('arithmetic', function () {
         constants.EMPTY,
         new Interval(-1, 1)
       );
-      assert(utils.empty(n));
+      assert(Interval.empty(n));
 
       n = arithmetic.div(
         new Interval(-1, 1),
         constants.ZERO
       );
-      assert(utils.empty(n));
+      assert(Interval.empty(n));
     });
 
     describe('containing zero', function () {
@@ -413,11 +412,11 @@ describe('arithmetic', function () {
 
         // [zero] / [negative, zero]
         x = arithmetic.div(constants.ZERO, new Interval(-1, 0));
-        utils.almostEqual(x, [0, 0]);
+        Interval.almostEqual(x, [0, 0]);
 
         // [zero] / [zero, positive]
         x = arithmetic.div(constants.ZERO, new Interval(0, 1));
-        utils.almostEqual(x, [0, 0]);
+        Interval.almostEqual(x, [0, 0]);
       });
     });
 
@@ -524,15 +523,15 @@ describe('arithmetic', function () {
 
   it('should compute the negative of an interval', function () {
     n = arithmetic.negative(new Interval(2, 3));
-    utils.almostEqual(n, [-3, -2]);
+    Interval.almostEqual(n, [-3, -2]);
     n = arithmetic.negative(new Interval(-1, 2));
-    utils.almostEqual(n, [-2, 1]);
+    Interval.almostEqual(n, [-2, 1]);
     n = arithmetic.negative(new Interval(-3, -2));
-    utils.almostEqual(n, [2, 3]);
+    Interval.almostEqual(n, [2, 3]);
   });
 
   it('should compute the identity of an interval', function () {
     n = arithmetic.positive(new Interval(2, 3));
-    utils.almostEqual(n, [2, 3]);
+    Interval.almostEqual(n, [2, 3]);
   });
 });

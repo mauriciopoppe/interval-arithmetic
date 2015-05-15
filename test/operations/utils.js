@@ -58,14 +58,6 @@ describe('utils', function () {
     assert(!utils.overlap(b, c));
   });
 
-  it('should verify interval equality', function () {
-    var a = new Interval(-1, 1);
-    var b = new Interval(-1, 1);
-    var c = new Interval(-1, 1.1);
-    assert(utils.equal(a, b));
-    assert(!utils.equal(a, c));
-  });
-
   it('should verify if an interval is a singleton', function () {
     var a = new Interval(1, 1);
     assert(utils.singleton(a));
