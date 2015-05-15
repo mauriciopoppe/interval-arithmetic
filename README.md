@@ -60,6 +60,14 @@
     - [`Interval.log10(x)`](#intervallog10x)
     - [`Interval.log2(x)`](#intervallog2x)
     - [`Interval.abs(x)`](#intervalabsx)
+    - [`Interval.clone(x)`](#intervalclonex)
+  - [Relational](#relational)
+    - [`Interval.equal(x, y)`](#intervalequalx-y)
+    - [`Interval.notEqual(x, y)`](#intervalnotequalx-y)
+    - [`Interval.gt(x, y)`](#intervalgtx-y)
+    - [`Interval.lt(x, y)`](#intervalltx-y)
+    - [`Interval.geq(x, y)`](#intervalgeqx-y)
+    - [`Interval.leq(x, y)`](#intervalleqx-y)
   - [Utilities](#utilities)
     - [`Interval.empty(x)`](#intervalemptyx)
     - [`Interval.whole(x)`](#intervalwholex)
@@ -68,7 +76,6 @@
     - [`Interval.subset(x, y)`](#intervalsubsetx-y)
     - [`Interval.overlap(x, y)`](#intervaloverlapx-y)
     - [`Interval.singleton(x)`](#intervalsingletonx)
-    - [`Interval.equal(x, y)`](#intervalequalx-y)
     - [`Interval.width(x)`](#intervalwidthx)
   - [Constants](#constants)
     - [`Interval.ZERO`](#intervalzero)
@@ -555,6 +562,77 @@ Computes `|x|`
 
 **returns** {Interval}
 
+#### `Interval.clone(x)`
+
+Creates a clone of the interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
+### Relational
+
+#### `Interval.equal(x, y)`
+
+Checks if the interval `x` equals `y` (exact matching of bounds)
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` equals `y`, `false` otherwise
+
+#### `Interval.notEqual(x, y)`
+
+Checks if the interval `x` is not equal to `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` is not equal to `y`, `false` otherwise
+
+#### `Interval.gt(x, y)`
+
+Checks if the interval `x` is greater than `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` is greater than `y`, `false` otherwise
+
+#### `Interval.lt(x, y)`
+
+Checks if the interval `x` is less than `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` is less than `y`, `false` otherwise
+
+#### `Interval.geq(x, y)`
+
+Checks if the interval `x` is greater/equal than `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` is greater/equal than `y`, `false` otherwise
+
+#### `Interval.leq(x, y)`
+
+Checks if the interval `x` is less/equal than `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {boolean} `true` if it `x` is less/equal than `y`, `false` otherwise
+
 ### Utilities
 
 #### `Interval.empty(x)`
@@ -623,16 +701,6 @@ Checks if the interval `x` represents a single value (unbounded)
 * `x` {Interval}
 
 **returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
-
-#### `Interval.equal(x, y)`
-
-Checks if the interval `x` equals `y` (exact matching of bounds)
-
-**params**
-* `x` {Interval}
-* `y` {Interval}
-
-**returns** {boolean} `true` if it `x` equals `y`, `false` otherwise
 
 #### `Interval.width(x)`
 
