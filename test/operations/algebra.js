@@ -88,6 +88,9 @@ describe('algebra', function () {
     utils.almostEqual(n, [1, 25]);
     n = algebra.pow(new Interval(2, 5), 2);
     utils.almostEqual(n, [4, 25]);
+    // empty^0
+    n = algebra.pow(new Interval().setEmpty(), 4);
+    assert(utils.empty(n));
 
     // with intervals
     n = algebra.pow(new Interval(2, 5), new Interval(2, 2));
