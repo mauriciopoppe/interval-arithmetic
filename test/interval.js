@@ -31,6 +31,11 @@ describe('interval', function () {
 
     n = Interval.factory( Interval.factory(1), Interval.factory(2) );
     assert(n.lo === 1 && n.hi === 2);
+
+    n = Interval.factory( Interval.factory(0), Interval.factory(3.15) );
+    console.log(n);
+    assert(n.lo === 0 && n.hi === 3.15);
+
     assert.throws(function () {
       Interval.factory(1, 2, 3);
     });
