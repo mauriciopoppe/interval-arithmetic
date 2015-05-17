@@ -26,6 +26,9 @@ describe('interval', function () {
     assert(n.lo === 1 && n.hi === 1);
 
     // nested
+    n = Interval.factory([1, 2]);
+    assert(n.lo === 1 && n.hi === 2);
+
     n = Interval.factory( Interval.factory(1) );
     assert(n.lo === 1 && n.hi === 1);
 
