@@ -15,6 +15,40 @@ function assertEps(a, b) {
 }
 
 describe('interval', function () {
+  it('should control the parameters it receives on the constructor', function () {
+    n = new Interval(1, 2);
+    assert(n.lo === 1 && n.hi === 2);
+
+    n = new Interval(1);
+    assert(n.lo === 1 && n.hi === 1);
+
+    n = new Interval();
+    assert(n.lo === 0 && n.hi === 0);
+
+    n = new Interval(NaN);
+    assert(utils.empty(n));
+
+    n = new Interval(NaN, 1);
+    assert(utils.empty(n));
+
+    n = new Interval(2, 1);
+    assert(utils.empty(n));
+
+    // throw when they're not numbers
+    assert.throws(function () {
+      n = new Interval('');
+    });
+    assert.throws(function () {
+      n = new Interval(undefined);
+    });
+    assert.throws(function () {
+      n = new Interval(1, undefined);
+    });
+    assert.throws(function () {
+      n = new Interval(undefined, '');
+    });
+  });
+
   it('should have a factory', function () {
     n = Interval.factory();
     assert(n.lo === 0 && n.hi === 0);
@@ -46,6 +80,12 @@ describe('interval', function () {
     });
     assert.throws(function () {
       Interval.factory(null);
+    });
+    assert.throws(function () {
+      Interval.factory(undefined);
+    });
+    assert.throws(function () {
+      Interval.factory(undefined, undefined);
     });
     assert.throws(function () {
       Interval.factory( Interval.factory(1, 2) );
