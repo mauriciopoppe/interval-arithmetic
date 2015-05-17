@@ -216,11 +216,11 @@ represent the interval in a conservative way
 #### `instance = Interval.factory(lo, hi)`
 
 **params**
-* `lo` {number|Interval} the lower bound of the interval
+* `lo` {number|Array|Interval} the lower bound of the interval
 * `hi` {number|Interval} the higher bound of the interval
 
-A Interval factory, besides check arguments.length and argument types `lo` and `hi` can be
-singleton intervals which
+Interval factory, besides check arguments.length and argument types `lo` and `hi` can be
+singleton intervals, or `lo` can be an array or both can be numbers
 
 ### Instance methods
 
