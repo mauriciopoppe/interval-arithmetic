@@ -49,6 +49,11 @@ describe('arithmetic', function () {
   });
 
   describe('multiplication', function () {
+    it('empty * ?', function () {
+      var x = arithmetic.mul(Interval.EMPTY, Interval.ONE);
+      assert(Interval.empty(x));
+    });
+
     it('positive * positive', function () {
       var x;
       x = arithmetic.mul(

@@ -99,5 +99,10 @@ describe('misc', function () {
       )
     );
     Interval.almostEqual(res, [1.4107812905029047, 11.557407724654915]);
+
+    x = new Interval(-1, -1);
+    res = Interval.mul(Interval.sqrt(x), x);
+    assert(Interval.empty(Interval.sqrt(x)));
+    assert(Interval.empty(res));
   });
 });

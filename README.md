@@ -772,7 +772,7 @@ Tests can be run with `npm test`
 
 ## TODO list
 
-- [ ] comparison operator
+- [X] comparison operator
 - [ ] root finding port
 - [ ] multi-interval arithmetic
 
