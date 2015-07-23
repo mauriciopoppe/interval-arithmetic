@@ -37,6 +37,10 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [-1, 1])
     n = trigonometric.cos(new Interval(-Math.PI / 2, Math.PI))
     Interval.almostEqual(n, [-1, 1])
+    n = trigonometric.cos(new Interval(Math.PI / 2, Math.PI))
+    Interval.almostEqual(n, [-1, 0])
+    n = trigonometric.cos(new Interval(Math.PI / 2, Math.PI))
+    Interval.almostEqual(n, [-1, 0])
   })
 
   it('should compute the sine function', function () {
