@@ -1,8 +1,12 @@
 # interval-arithmetic 
 
 [![NPM][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url] 
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![Dependency Status][david-image]][david-url]
+[![Stability](https://img.shields.io/badge/stability-stable-green.svg)](https://nodejs.org/api/documentation.html#apicontent)
 
-[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][david-image]][david-url]
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 > An implementation of an algebraically closed interval system of the extended real number set
 
@@ -778,7 +782,7 @@ Tests can be run with `npm test`
 
 2015 © Mauricio Poppe
 
-[npm-image]: https://nodei.co/npm/interval-arithmetic.png?downloads=true
+[npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
 [travis-image]: https://travis-ci.org/maurizzzio/interval-arithmetic.svg?branch=master
 [travis-url]: https://travis-ci.org/maurizzzio/interval-arithmetic
