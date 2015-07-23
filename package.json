@@ -1,6 +1,6 @@
 {
   "name": "interval-arithmetic",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "An implementation of an algebraically closed interval system of the extended real number set",
   "bugs": "https://github.com/maurizzzio/interval-arithmetic/issues",
   "license": "BSL-1.0",
