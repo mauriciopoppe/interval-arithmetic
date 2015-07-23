@@ -427,7 +427,7 @@ Computes `x ^ y`
 
 **params**
 * `x` {Interval}
-* `y` {number} **y needs to be an integer**
+* `y` {number} **`y` not an Interval**
 
 **returns** {Interval}
 
