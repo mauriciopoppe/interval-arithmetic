@@ -43,3 +43,5 @@ sftp-config.json
 Session.vim
 .netrwhist
 *~
+
+.DS_Store
