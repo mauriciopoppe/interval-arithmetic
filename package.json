@@ -26,7 +26,6 @@
     "interval",
     "arithmetic"
   ],
-  "dependencies": {},
   "devDependencies": {
     "coveralls": "^2.11.2",
     "doctoc": "^0.13.0",
@@ -43,5 +42,15 @@
     "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
     "start": "npm run test:watch",
     "toc": "./node_modules/.bin/doctoc ."
+  },
+  "testling": {
+    "harness": "mocha",
+    "files": "test/index.js",
+    "browsers": [
+      "chrome/latest"
+    ]
+  },
+  "dependencies": {
+    "typedarray": "0.0.6"
   }
 }
