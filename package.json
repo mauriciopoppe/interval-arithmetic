@@ -51,6 +51,7 @@
     ]
   },
   "dependencies": {
+    "nextafter": "^1.0.0",
     "typedarray": "0.0.6"
   }
 }

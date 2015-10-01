@@ -10,6 +10,7 @@ var it = mocha.it
 var assert = require('assert')
 
 var double = require('../lib/double')
+var nextafter = require('nextafter')
 
 var EPS = 1e-7
 
@@ -92,5 +93,9 @@ describe('double', function () {
     assertEps(0, next)
     assert(next > 0)
     assert(next === Number.MIN_VALUE)
+  })
+
+  it('nextafter should work with infinity', function () {
+    assert(nextafter(Infinity, Infinity) === Infinity)
   })
 })

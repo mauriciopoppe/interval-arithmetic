@@ -22,7 +22,6 @@ function shallowExtend () {
 require('./lib/polyfill')
 module.exports = require('./lib/interval')
 module.exports.rmath = require('./lib/round-math')
-module.exports.double = require('./lib/double')
 
 shallowExtend(
   module.exports,

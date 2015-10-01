@@ -18,7 +18,6 @@ describe('library structure', function () {
 
   it('should expose utilities', function () {
     assert(Interval.rmath)
-    assert(Interval.double)
   })
 
   it('should expose interval constants', function () {
