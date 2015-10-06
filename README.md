@@ -43,7 +43,8 @@
     - [`Interval.min(x, y)`](#intervalminx-y)
     - [`Interval.max(x, y)`](#intervalmaxx-y)
     - [`Interval.hull(x, y)`](#intervalhullx-y)
-    - [`Interval.intersect(x, y)`](#intervalintersectx-y)
+    - [`Interval.intersection(x, y)`](#intervalintersectionx-y)
+    - [`Interval.union(x, y)`](#intervalunionx-y)
     - [`Interval.negative(x)`](#intervalnegativex)
     - [`Interval.positive(x)`](#intervalpositivex)
     - [`Interval.multiplicativeInverse(x)`](#intervalmultiplicativeinversex)
@@ -371,7 +372,7 @@ Computes the interval that contains both `x` and `y`
 
 **returns** {Interval}
 
-#### `Interval.intersect(x, y)`
+#### `Interval.intersection(x, y)`
 
 Computes the interval that intersects both `x` and `y`
 
@@ -380,6 +381,18 @@ Computes the interval that intersects both `x` and `y`
 * `y` {Interval}
 
 **returns** {Interval}
+
+#### `Interval.union(x, y)`
+
+Computes the interval that is the union of `x` and `y`
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+**throws** TypeError if `x` and `y` don't overlap
 
 #### `Interval.negative(x)`
 
