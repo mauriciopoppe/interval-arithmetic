@@ -32,7 +32,7 @@ describe('algebra', function () {
     )
     Interval.almostEqual(n, [-1, -1])
     n = algebra.fmod(new Interval(), constants.EMPTY)
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the multiplicative inverse', function () {
@@ -52,7 +52,7 @@ describe('algebra', function () {
     assert(Math.abs(n.lo - 1 / 2) < 1e-7)
     assert(n.hi === Number.POSITIVE_INFINITY)
     n = algebra.multiplicativeInverse(constants.ZERO)
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the integer power of an interval', function () {
@@ -63,7 +63,7 @@ describe('algebra', function () {
 
     // 0^0
     n = algebra.pow(new Interval(0, 0), 0)
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
     // ?^0
     n = algebra.pow(new Interval(-321, 123), 0)
     Interval.almostEqual(n, [1, 1])
@@ -98,13 +98,13 @@ describe('algebra', function () {
 
     // empty^0
     n = algebra.pow(new Interval().setEmpty(), 4)
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
 
     // with intervals
     n = algebra.pow(new Interval(2, 5), new Interval(2, 2))
     Interval.almostEqual(n, [4, 25])
     n = algebra.pow(new Interval(2, 5), new Interval(1, -1))
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the square root of an interval', function () {
@@ -113,6 +113,6 @@ describe('algebra', function () {
     n = algebra.sqrt(new Interval(-4, 9))
     Interval.almostEqual(n, [0, 3])
     n = algebra.sqrt(new Interval(-9, -4))
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 })

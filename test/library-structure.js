@@ -33,6 +33,6 @@ describe('library structure', function () {
   })
 
   it('should expose interval utilities', function () {
-    assert(Interval.empty)
+    assert(Interval.isEmpty)
   })
 })

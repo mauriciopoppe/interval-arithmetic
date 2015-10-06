@@ -6,24 +6,13 @@
  */
 
 'use strict'
-
-function shallowExtend () {
-  var dest = arguments[0]
-  var p
-  for (var i = 1; i < arguments.length; i += 1) {
-    for (p in arguments[i]) {
-      if (arguments[i].hasOwnProperty(p)) {
-        dest[p] = arguments[i][p]
-      }
-    }
-  }
-}
+var extend = require('xtend/mutable')
 
 require('./lib/polyfill')
 module.exports = require('./lib/interval')
 module.exports.rmath = require('./lib/round-math')
 
-shallowExtend(
+extend(
   module.exports,
   require('./lib/constants'),
   require('./lib/operations/relational'),

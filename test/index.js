@@ -5,7 +5,6 @@
 var mocha = require('mocha')
 var describe = mocha.describe
 
-require('./double')
 require('./round-math')
 require('./interval')
 require('./library-structure')

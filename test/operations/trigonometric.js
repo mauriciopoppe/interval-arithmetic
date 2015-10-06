@@ -105,7 +105,7 @@ describe('trigonometric', function () {
     n = trigonometric.asin(new Interval(-10, 10))
     Interval.almostEqual(n, [-1.57079633, 1.57079633])
     n = trigonometric.asin(new Interval(-10, -10))
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the acos function', function () {
@@ -118,7 +118,7 @@ describe('trigonometric', function () {
     n = trigonometric.acos(new Interval(-10, 10))
     Interval.almostEqual(n, [0, Math.PI])
     n = trigonometric.acos(new Interval(-10, -10))
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the atan function', function () {

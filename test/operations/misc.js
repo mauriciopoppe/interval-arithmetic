@@ -55,16 +55,31 @@ describe('misc', function () {
     n = misc.hull(constants.EMPTY, new Interval(-1, 1))
     Interval.almostEqual(n, [-1, 1])
     n = misc.hull(constants.EMPTY, constants.EMPTY)
-    assert(Interval.empty(n))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the intersection of two intervals', function () {
-    n = misc.intersect(new Interval(-1, 1), new Interval(5, 7))
-    assert(Interval.empty(n))
-    n = misc.intersect(new Interval(-1, 1), constants.EMPTY)
-    assert(Interval.empty(n))
-    n = misc.intersect(new Interval(-1, 1), new Interval(0, 7))
+    n = misc.intersection(new Interval(-1, 1), new Interval(5, 7))
+    assert(Interval.isEmpty(n))
+    n = misc.intersection(new Interval(-1, 1), constants.EMPTY)
+    assert(Interval.isEmpty(n))
+    n = misc.intersection(new Interval(-1, 1), new Interval(0, 7))
     Interval.almostEqual(n, [0, 1])
+  })
+
+  it('should compute the union of two intervals', function () {
+    n = misc.union(
+      Interval(1, 3),
+      Interval(2, 4)
+    )
+    Interval.almostEqual(n, [1, 4])
+
+    assert.throws(function () {
+      misc.union(
+        Interval(1, 2),
+        Interval(3, 4)
+      )
+    })
   })
 
   it('should compute the abs value of an interval', function () {
@@ -107,7 +122,7 @@ describe('misc', function () {
 
     x = new Interval(-1, -1)
     res = Interval.mul(Interval.sqrt(x), x)
-    assert(Interval.empty(Interval.sqrt(x)))
-    assert(Interval.empty(res))
+    assert(Interval.isEmpty(Interval.sqrt(x)))
+    assert(Interval.isEmpty(res))
   })
 })

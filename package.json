@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "nextafter": "^1.0.0",
-    "typedarray": "0.0.6"
+    "typedarray": "0.0.6",
+    "xtend": "^4.0.0"
   }
 }

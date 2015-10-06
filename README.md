@@ -22,10 +22,9 @@
 - [Installation](#installation)
 - [API](#api)
   - [Instance constructor](#instance-constructor)
-    - [`instance = new Interval()`](#instance--new-interval)
-    - [`instance = new Interval(v)`](#instance--new-intervalv)
-    - [`instance = new Interval(hi, lo)`](#instance--new-intervalhi-lo)
-    - [`instance = Interval.factory(lo, hi)`](#instance--intervalfactorylo-hi)
+    - [`instance = Interval()`](#instance--interval)
+    - [`instance = Interval(v)`](#instance--intervalv)
+    - [`instance = Interval(hi, lo)`](#instance--intervalhi-lo)
   - [Instance methods](#instance-methods)
     - [`instance.set(lo, hi)`](#instancesetlo-hi)
     - [`instance.assign(lo, hi)`](#instanceassignlo-hi)
@@ -73,13 +72,13 @@
     - [`Interval.geq(x, y)`](#intervalgeqx-y)
     - [`Interval.leq(x, y)`](#intervalleqx-y)
   - [Utilities](#utilities)
-    - [`Interval.empty(x)`](#intervalemptyx)
-    - [`Interval.whole(x)`](#intervalwholex)
+    - [`Interval.isEmpty(x)`](#intervalisemptyx)
+    - [`Interval.isWhole(x)`](#intervaliswholex)
     - [`Interval.zeroIn(x)`](#intervalzeroinx)
-    - [`Interval.in(x, v)`](#intervalinx-v)
-    - [`Interval.subset(x, y)`](#intervalsubsetx-y)
-    - [`Interval.overlap(x, y)`](#intervaloverlapx-y)
-    - [`Interval.singleton(x)`](#intervalsingletonx)
+    - [`Interval.hasValue(x, v)`](#intervalhasvaluex-v)
+    - [`Interval.hasInterval(x, y)`](#intervalhasintervalx-y)
+    - [`Interval.intervalsOverlap(x, y)`](#intervalintervalsoverlapx-y)
+    - [`Interval.isSingleton(x)`](#intervalissingletonx)
     - [`Interval.width(x)`](#intervalwidthx)
   - [Constants](#constants)
     - [`Interval.ZERO`](#intervalzero)
@@ -91,7 +90,6 @@
     - [`Interval.PI_TWICE`](#intervalpi_twice)
   - [Floating point rounding](#floating-point-rounding)
 - [Development](#development)
-- [TODO list](#todo-list)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -151,14 +149,14 @@ Interval.add(new Interval(1, 1), new Interval(2, 2))
 This gets worse when the expression to be evaluated becomes complex like `sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2`:
 
 ```javascript
-var x = new Interval(0, 1);
+var x = Interval(0, 1);
 Interval.add(
   Interval.sin(Interval.exp(x)),
   Interval.sub(
     Interval.tan(x),
     Interval.mul(
       Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
-      Interval.pow(new Interval(1, 3), 2)
+      Interval.pow(Interval(1, 3), 2)
     )
   )
 );
@@ -188,16 +186,12 @@ Usage examples can be found on the files located in the `test` folder
 
 ### Instance constructor
 
-#### `instance = new Interval()`
-
-**properties**
-* `lo` {number} the lower bound of the interval
-* `hi` {number} the higher bound of the interval
+#### `instance = Interval()`
 
 If the default constructor doesn't receive parameters then the interval represents the number zero
 e.g. `[0, 0]`
 
-#### `instance = new Interval(v)`
+#### `instance = Interval(v)`
 
 **params**
 * `v` {number} the number to be represented in the interval
@@ -207,7 +201,7 @@ is not bounded with the higher/lower floating point number, e.g. `1 / 3` is repr
 `[0.3333333333333333, 0.3333333333333333]`, see `#singleton, #bounded` to represent the interval in a
 conservative way
 
-#### `instance = new Interval(hi, lo)`
+#### `instance = Interval(hi, lo)`
 
 **params**
 * `lo` {number} the lower bound of the interval
@@ -217,14 +211,7 @@ conservative way
 `1/3, 2/3` is represented as `[0.3333333333333333, 0.6666666666666666]`, see `#bounded` to
 represent the interval in a conservative way
 
-#### `instance = Interval.factory(lo, hi)`
-
-**params**
-* `lo` {number|Array|Interval} the lower bound of the interval
-* `hi` {number|Interval} the higher bound of the interval
-
-Interval factory, besides check arguments.length and argument types `lo` and `hi` can be
-singleton intervals, or `lo` can be an array or both can be numbers
+**alias** `Instance.factory`
 
 ### Instance methods
 
@@ -639,7 +626,7 @@ Checks if the interval `x` is less/equal than `y`
 
 ### Utilities
 
-#### `Interval.empty(x)`
+#### `Interval.isEmpty(x)`
 
 Checks if the interval `x` represents an empty interval
 
@@ -648,7 +635,7 @@ Checks if the interval `x` represents an empty interval
 
 **returns** {boolean} `true` if it's empty, `false` otherwise
 
-#### `Interval.whole(x)`
+#### `Interval.isWhole(x)`
 
 Checks if the interval `x` represents an whole interval, that is it covers
 all the real numbers `[-Infinity, Infinity]`
@@ -667,7 +654,7 @@ Checks if the interval `x` contains 0
 
 **returns** {boolean} `true` if it contains zero, `false` otherwise
 
-#### `Interval.in(x, v)`
+#### `Interval.hasValue(x, v)`
 
 Checks if the interval `x` contains the value `v`
 
@@ -677,7 +664,7 @@ Checks if the interval `x` contains the value `v`
 
 **returns** {boolean} `true` if it contains the value `v`, `false` otherwise
 
-#### `Interval.subset(x, y)`
+#### `Interval.hasInterval(x, y)`
 
 Checks if the interval `x` is a subset of the interval `y`
 
@@ -687,7 +674,7 @@ Checks if the interval `x` is a subset of the interval `y`
 
 **returns** {boolean} `true` if it `x` is a subset of `y`, `false` otherwise
 
-#### `Interval.overlap(x, y)`
+#### `Interval.intervalsOverlap(x, y)`
 
 Checks if the interval `x` overlaps with interval `y`
 
@@ -697,7 +684,7 @@ Checks if the interval `x` overlaps with interval `y`
 
 **returns** {boolean} `true` if it `x` overlaps `y`, `false` otherwise
 
-#### `Interval.singleton(x)`
+#### `Interval.isSingleton(x)`
 
 Checks if the interval `x` represents a single value (unbounded)
 
@@ -772,13 +759,9 @@ Interval.round.enable();
 
 ## Development
 
-Tests can be run with `npm test`
-
-## TODO list
-
-- [X] comparison operator
-- [ ] root finding port
-- [ ] multi-interval arithmetic
+```sh
+npm start
+```
 
 2015 © Mauricio Poppe
 

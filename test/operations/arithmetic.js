@@ -55,7 +55,7 @@ describe('arithmetic', function () {
   describe('multiplication', function () {
     it('empty * ?', function () {
       var x = arithmetic.mul(Interval.EMPTY, Interval.ONE)
-      assert(Interval.empty(x))
+      assert(Interval.isEmpty(x))
     })
 
     it('positive * positive', function () {
@@ -304,13 +304,13 @@ describe('arithmetic', function () {
         constants.EMPTY,
         new Interval(-1, 1)
       )
-      assert(Interval.empty(n))
+      assert(Interval.isEmpty(n))
 
       n = arithmetic.div(
         new Interval(-1, 1),
         constants.ZERO
       )
-      assert(Interval.empty(n))
+      assert(Interval.isEmpty(n))
     })
 
     describe('containing zero', function () {

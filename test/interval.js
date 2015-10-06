@@ -28,29 +28,6 @@ describe('interval', function () {
 
     n = new Interval()
     assert(n.lo === 0 && n.hi === 0)
-
-    n = new Interval(NaN)
-    assert(utils.empty(n))
-
-    n = new Interval(NaN, 1)
-    assert(utils.empty(n))
-
-    n = new Interval(2, 1)
-    assert(utils.empty(n))
-
-    // throw when they're not numbers
-    assert.throws(function () {
-      n = new Interval('')
-    })
-    assert.throws(function () {
-      n = new Interval(undefined)
-    })
-    assert.throws(function () {
-      n = new Interval(1, undefined)
-    })
-    assert.throws(function () {
-      n = new Interval(undefined, '')
-    })
   })
 
   it('should have a factory', function () {
@@ -59,7 +36,7 @@ describe('interval', function () {
     n = Interval.factory(1, 5)
     assert(n.lo === 1 && n.hi === 5)
     n = Interval.factory(1, -1)
-    assert(utils.empty(n))
+    assert(utils.isEmpty(n))
     n = Interval.factory(1)
     assert(n.lo === 1 && n.hi === 1)
 
@@ -77,19 +54,7 @@ describe('interval', function () {
     assert(n.lo === 0 && n.hi === 3.15)
 
     assert.throws(function () {
-      Interval.factory(1, 2, 3)
-    })
-    assert.throws(function () {
       Interval.factory('')
-    })
-    assert.throws(function () {
-      Interval.factory(null)
-    })
-    assert.throws(function () {
-      Interval.factory(undefined)
-    })
-    assert.throws(function () {
-      Interval.factory(undefined, undefined)
     })
     assert.throws(function () {
       Interval.factory(Interval.factory(1, 2))
@@ -112,12 +77,13 @@ describe('interval', function () {
   })
 
   it('should check NaN on assignment', function () {
-    var x
-    x = new Interval(NaN)
-    assert(x.lo > x.hi)
-    x = new Interval(NaN, NaN)
-    assert(x.lo > x.hi)
-    x = new Interval()
+    var x = Interval()
+    assert.throws(function () {
+      Interval(NaN)
+    })
+    assert.throws(function () {
+      Interval(NaN, NaN)
+    })
     x.assign(NaN)
     assert(x.lo > x.hi)
     x.assign(1, 2)
