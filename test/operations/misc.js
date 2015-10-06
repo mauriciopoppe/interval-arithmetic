@@ -4,6 +4,7 @@
 'use strict'
 
 var mocha = require('mocha')
+var nextafter = require('nextafter')
 var describe = mocha.describe
 var it = mocha.it
 
@@ -98,6 +99,16 @@ describe('misc', function () {
       Interval(8, 9)
     )
     Interval.almostEqual(n, [4, 6])
+
+    var a = Interval(3, nextafter(5, -Infinity))
+    var b = Interval(4, 6)
+    n = Interval.difference(a, b)
+    assert(n.lo === 3)
+    assert(n.hi < 4)
+
+    n = Interval.difference(b, a)
+    assert(n.lo === 5)
+    assert(n.hi === 6)
 
     assert.throws(function () {
       misc.difference(
