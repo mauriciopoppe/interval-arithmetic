@@ -82,6 +82,31 @@ describe('misc', function () {
     })
   })
 
+  it('should compute the difference between two intervals', function () {
+    n = misc.difference(
+      Interval(3, 5),
+      Interval(4, 6)
+    )
+    Interval.almostEqual(n, [3, 4])
+    n = misc.difference(
+      Interval(4, 6),
+      Interval(3, 5)
+    )
+    Interval.almostEqual(n, [5, 6])
+    n = misc.difference(
+      Interval(4, 6),
+      Interval(8, 9)
+    )
+    Interval.almostEqual(n, [4, 6])
+
+    assert.throws(function () {
+      misc.difference(
+        Interval(1, 4),
+        Interval(2, 3)
+      )
+    })
+  })
+
   it('should compute the abs value of an interval', function () {
     n = misc.abs(new Interval(-1, 1))
     Interval.almostEqual(n, [0, 1])

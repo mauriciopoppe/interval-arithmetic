@@ -45,6 +45,7 @@
     - [`Interval.hull(x, y)`](#intervalhullx-y)
     - [`Interval.intersection(x, y)`](#intervalintersectionx-y)
     - [`Interval.union(x, y)`](#intervalunionx-y)
+    - [`Interval.difference(x, y)`](#intervaldifferencex-y)
     - [`Interval.negative(x)`](#intervalnegativex)
     - [`Interval.positive(x)`](#intervalpositivex)
     - [`Interval.multiplicativeInverse(x)`](#intervalmultiplicativeinversex)
@@ -393,6 +394,18 @@ Computes the interval that is the union of `x` and `y`
 **returns** {Interval}
 
 **throws** TypeError if `x` and `y` don't overlap
+
+#### `Interval.difference(x, y)`
+
+Computes the difference between two intervals
+
+**params**
+* `x` {Interval}
+* `y` {Interval}
+
+**returns** {Interval}
+
+**throws** TypeError if the difference creates multiple intervals
 
 #### `Interval.negative(x)`
 
