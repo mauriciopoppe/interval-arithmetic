@@ -51,8 +51,9 @@
     ]
   },
   "dependencies": {
+    "is-safe-integer": "^1.0.1",
     "nextafter": "^1.0.0",
     "typedarray": "0.0.6",
-    "xtend": "^4.0.0"
+    "xtend": "^4.0.1"
   }
 }

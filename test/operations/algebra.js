@@ -55,7 +55,7 @@ describe('algebra', function () {
     assert(Interval.isEmpty(n))
   })
 
-  it('should compute the integer power of an interval', function () {
+  it('should compute the power of an interval', function () {
     n = algebra.pow(new Interval(Math.exp(-1), Math.exp(1)), 1)
     Interval.almostEqual(n, [0.36787944117, 2.71828182846])
     n = algebra.pow(new Interval(Math.exp(-1), Math.exp(1)), 3)
@@ -92,10 +92,6 @@ describe('algebra', function () {
     n = algebra.pow(new Interval(2, 5), 2)
     Interval.almostEqual(n, [4, 25])
 
-    // decimal
-    n = algebra.pow(new Interval(4, 9), 0.5)
-    Interval.almostEqual(n, [2, 3])
-
     // empty^0
     n = algebra.pow(new Interval().setEmpty(), 4)
     assert(Interval.isEmpty(n))
@@ -114,5 +110,29 @@ describe('algebra', function () {
     Interval.almostEqual(n, [0, 3])
     n = algebra.sqrt(new Interval(-9, -4))
     assert(Interval.isEmpty(n))
+  })
+
+  it('should compute the nth root of an interval', function () {
+    n = algebra.nthRoot(Interval(-27, -8), -3)
+    assert(Interval.isEmpty(n))
+
+    // [negative, negative] ^ (1 / even power)
+    n = algebra.nthRoot(Interval(-27, -8), 2)
+    assert(Interval.isEmpty(n))
+    // [negative, negative] ^ (1 / odd power)
+    n = algebra.nthRoot(Interval(-27, -8), 3)
+    Interval.almostEqual(n, [-3, -2])
+    // [negative, positive] ^ (1 / even power)
+    n = algebra.nthRoot(new Interval(-4, 9), 2)
+    Interval.almostEqual(n, [0, 3])
+    // [negative, positive] ^ (1 / odd power)
+    n = algebra.nthRoot(new Interval(-27, 8), 3)
+    Interval.almostEqual(n, [0, 3])
+    // [positive, positive] ^ (1 / even power)
+    n = algebra.nthRoot(new Interval(4, 9), 2)
+    Interval.almostEqual(n, [2, 3])
+    // [positive, positive] ^ (1 / odd power)
+    n = algebra.nthRoot(new Interval(8, 27), 3)
+    Interval.almostEqual(n, [2, 3])
   })
 })
