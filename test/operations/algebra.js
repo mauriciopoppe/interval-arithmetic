@@ -123,6 +123,8 @@ describe('algebra', function () {
     // [negative, negative] ^ (1 / odd power)
     n = algebra.nthRoot(Interval(-27, -8), 3)
     Interval.almostEqual(n, [-3, -2])
+    n = algebra.nthRoot(Interval(-8, -8), 3)
+    Interval.almostEqual(n, [-2, -2])
     // [negative, positive] ^ (1 / even power)
     n = algebra.nthRoot(new Interval(-4, 9), 2)
     Interval.almostEqual(n, [0, 3])
@@ -135,6 +137,8 @@ describe('algebra', function () {
     // [positive, positive] ^ (1 / odd power)
     n = algebra.nthRoot(new Interval(8, 27), 3)
     Interval.almostEqual(n, [2, 3])
+    n = algebra.nthRoot(new Interval(8, 8), 3)
+    Interval.almostEqual(n, [2, 2])
 
     // n-th root is a interval
     n = algebra.nthRoot(new Interval(-27, -8), Interval(3, 3))
