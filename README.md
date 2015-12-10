@@ -4,9 +4,8 @@
 [![Build Status][travis-image]][travis-url] 
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependency Status][david-image]][david-url]
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![Stability](https://img.shields.io/badge/stability-stable-green.svg)](https://nodejs.org/api/documentation.html#apicontent)
-
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 > An implementation of an algebraically closed interval system of the extended real number set
 
@@ -51,6 +50,7 @@
     - [`Interval.multiplicativeInverse(x)`](#intervalmultiplicativeinversex)
     - [`Interval.pow(x, y)`](#intervalpowx-y)
     - [`Interval.sqrt(x)`](#intervalsqrtx)
+    - [`Interval.nthRoot(x, n)`](#intervalnthrootx-n)
     - [`Interval.sin(x)`](#intervalsinx)
     - [`Interval.cos(x)`](#intervalcosx)
     - [`Interval.tan(x)`](#intervaltanx)
@@ -440,7 +440,7 @@ Computes `x ^ y`
 
 **params**
 * `x` {Interval}
-* `y` {number} **`y` not an Interval**
+* `y` {number|Interval} `y` must be an integer or a singleton interval that encodes an integer, for rational power use [nth-root](#intervalnthrootx-n) instead
 
 **returns** {Interval}
 
@@ -450,6 +450,17 @@ Computes `sqrt(x)`
 
 **params**
 * `x` {Interval}
+
+**returns** {Interval}
+
+#### `Interval.nthRoot(x, n)`
+
+Computes the nth root of x i.e. `x ^ (1/n)`
+
+**params**
+
+* `x` {Interval}
+* `y` {number|Interval} `y` is a number or a singleton interval
 
 **returns** {Interval}
 
