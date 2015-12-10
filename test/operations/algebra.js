@@ -143,6 +143,8 @@ describe('algebra', function () {
     // n-th root is a interval
     n = algebra.nthRoot(new Interval(-27, -8), Interval(3, 3))
     Interval.almostEqual(n, [-3, -2])
+    n = algebra.nthRoot(new Interval(-27, -8), Interval(3, 4))
+    assert(Interval.isEmpty(n))
   })
 })
 
