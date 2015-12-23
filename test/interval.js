@@ -78,13 +78,7 @@ describe('interval', function () {
 
   it('should check NaN on assignment', function () {
     var x = Interval()
-    assert.throws(function () {
-      Interval(NaN)
-    })
-    assert.throws(function () {
-      Interval(NaN, NaN)
-    })
-    x.assign(NaN)
+    x.assign(NaN, NaN)
     assert(x.lo > x.hi)
     x.assign(1, 2)
     assert(x.lo < x.hi)
