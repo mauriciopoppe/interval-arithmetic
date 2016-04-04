@@ -103,12 +103,14 @@ means that the bounds are also included in the representation, `extended real` b
 and positive infinity respectively.
 
 The implementation is a modified port of the [Boost's interval arithmetic library](http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm),
-the modifications are based on some guidelines from the following papers/presentations:
+the modifications are based on some guidelines from the following papers/presentations/books:
 
 - [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
 - [Interval Arithmetic: Python Implementation and Applications - Stefano Taschini](http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf)
 - [The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion](https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf)
 - [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
+- [Global Optimization using Interval Analysis - Eldon Hansen](ISBN-13: 978-0824786960,ISBN-10: 0824786963)
+- [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, iU.Kulisch, D.Ratz](ISBN-13: 978-3642796531,ISBN-10: 3642796532)
 
 ### floating point operations
 
@@ -798,9 +800,16 @@ Interval.round.enable();
 
 ```sh
 npm start
+
 ```
 
+## Thanks
+
+We'd like to thank Mauricio Poppe for this wonderful library he's created which is great to build upon and also learn how
+to craft beautiful pieces of javascript code.
+
 2015 © Mauricio Poppe
+2016   MiLia, kthanos
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
