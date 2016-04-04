@@ -809,6 +809,7 @@ We'd like to thank Mauricio Poppe for this wonderful library he's created which 
 to craft beautiful pieces of javascript code.
 
 2015 © Mauricio Poppe
+
 2016   MiLia, kthanos
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
