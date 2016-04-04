@@ -109,8 +109,8 @@ the modifications are based on some guidelines from the following papers/present
 - [Interval Arithmetic: Python Implementation and Applications - Stefano Taschini](http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf)
 - [The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion](https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf)
 - [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
-- [Global Optimization using Interval Analysis - Eldon Hansen](ISBN-13: 978-0824786960,ISBN-10: 0824786963)
-- [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, iU.Kulisch, D.Ratz](ISBN-13: 978-3642796531,ISBN-10: 3642796532)
+- [Global Optimization using Interval Analysis - Eldon Hansen](http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&ie=UTF8&qid=1459795825&sr=1-1&keywords=interval+analysis+hansen)
+- [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, iU.Kulisch, D.Ratz](http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532)
 
 ### floating point operations
 
