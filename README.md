@@ -790,7 +790,7 @@ Computes the magnitude (or absolute value) of an interval `x`
 
 #### `Interval.mig(x)`
 
-Computes the mignitude of an interval `x`
+Computes the mignitude of an interval `x` (the smallest value of |a| for all a $\in$ x)
 
 **params**
 * `x` {Interval}
