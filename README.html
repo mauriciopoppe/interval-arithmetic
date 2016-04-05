@@ -1,0 +1,451 @@
+<h1 id="interval-arithmetic">interval-arithmetic</h1>
+<p><a href="https://npmjs.org/package/interval-arithmetic"><img src="https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat" alt="NPM" /></a> <a href="https://travis-ci.org/maurizzzio/interval-arithmetic"><img src="https://travis-ci.org/maurizzzio/interval-arithmetic.svg?branch=master" alt="Build Status" /></a> <a href="https://coveralls.io/r/maurizzzio/interval-arithmetic?branch=master"><img src="https://coveralls.io/repos/maurizzzio/interval-arithmetic/badge.svg?branch=master" alt="Coverage Status" /></a> <a href="https://david-dm.org/maurizzzio/interval-arithmetic"><img src="https://david-dm.org/maurizzzio/interval-arithmetic.svg" alt="Dependency Status" /></a> <a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style" /></a> <a href="https://nodejs.org/api/documentation.html#apicontent"><img src="https://img.shields.io/badge/stability-stable-green.svg" alt="Stability" /></a></p>
+<blockquote>
+<p>An implementation of an algebraically closed interval system of the extended real number set</p>
+</blockquote>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong> <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#floating-point-operations">floating point operations</a></li>
+<li><a href="#interval-arithmetic">Interval arithmetic</a></li>
+<li><a href="#notable-modifications">Notable modifications</a></li>
+<li><a href="#interval-arithmetic-evaluator">Interval arithmetic evaluator</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#api">API</a></li>
+<li><a href="#instance-constructor">Instance constructor</a>
+<ul>
+<li><a href="#instance--interval"><code>instance = Interval()</code></a></li>
+<li><a href="#instance--intervalv"><code>instance = Interval(v)</code></a></li>
+<li><a href="#instance--intervalhi-lo"><code>instance = Interval(hi, lo)</code></a></li>
+</ul></li>
+<li><a href="#instance-methods">Instance methods</a>
+<ul>
+<li><a href="#instancesetlo-hi"><code>instance.set(lo, hi)</code></a></li>
+<li><a href="#instanceassignlo-hi"><code>instance.assign(lo, hi)</code></a></li>
+<li><a href="#instancesingletonv"><code>instance.singleton(v)</code></a></li>
+<li><a href="#instanceboundedlo-hi"><code>instance.bounded(lo, hi)</code></a></li>
+<li><a href="#instanceboundedsingletonv"><code>instance.boundedSingleton(v)</code></a></li>
+<li><a href="#instancesetwhole"><code>instance.setWhole()</code></a></li>
+<li><a href="#instancesetempty"><code>instance.setEmpty()</code></a></li>
+<li><a href="#instancetoarray"><code>instance.toArray()</code></a></li>
+</ul></li>
+<li><a href="#operations">Operations</a>
+<ul>
+<li><a href="#intervaladdx-y"><code>Interval.add(x, y)</code></a></li>
+<li><a href="#intervalsubx-y"><code>Interval.sub(x, y)</code></a></li>
+<li><a href="#intervalmulx-y"><code>Interval.mul(x, y)</code></a></li>
+<li><a href="#intervaldivx-y"><code>Interval.div(x, y)</code></a></li>
+<li><a href="#intervalfmodx-y"><code>Interval.fmod(x, y)</code></a></li>
+<li><a href="#intervalminx-y"><code>Interval.min(x, y)</code></a></li>
+<li><a href="#intervalmaxx-y"><code>Interval.max(x, y)</code></a></li>
+<li><a href="#intervalhullx-y"><code>Interval.hull(x, y)</code></a></li>
+<li><a href="#intervalintersectionx-y"><code>Interval.intersection(x, y)</code></a></li>
+<li><a href="#intervalunionx-y"><code>Interval.union(x, y)</code></a></li>
+<li><a href="#intervaldifferencex-y"><code>Interval.difference(x, y)</code></a></li>
+<li><a href="#intervalnegativex"><code>Interval.negative(x)</code></a></li>
+<li><a href="#intervalpositivex"><code>Interval.positive(x)</code></a></li>
+<li><a href="#intervalmultiplicativeinversex"><code>Interval.multiplicativeInverse(x)</code></a></li>
+<li><a href="#intervalpowx-y"><code>Interval.pow(x, y)</code></a></li>
+<li><a href="#intervalsqrtx"><code>Interval.sqrt(x)</code></a></li>
+<li><a href="#intervalnthrootx-n"><code>Interval.nthRoot(x, n)</code></a></li>
+<li><a href="#intervalsinx"><code>Interval.sin(x)</code></a></li>
+<li><a href="#intervalcosx"><code>Interval.cos(x)</code></a></li>
+<li><a href="#intervaltanx"><code>Interval.tan(x)</code></a></li>
+<li><a href="#intervalcotx"><code>Interval.cot(x)</code></a></li>
+<li><a href="#intervalasinx"><code>Interval.asin(x)</code></a></li>
+<li><a href="#intervalacosx"><code>Interval.acos(x)</code></a></li>
+<li><a href="#intervalatanx"><code>Interval.atan(x)</code></a></li>
+<li><a href="#intervalsinhx"><code>Interval.sinh(x)</code></a></li>
+<li><a href="#intervalcoshx"><code>Interval.cosh(x)</code></a></li>
+<li><a href="#intervaltanhx"><code>Interval.tanh(x)</code></a></li>
+<li><a href="#intervalexpx"><code>Interval.exp(x)</code></a></li>
+<li><a href="#intervallogx"><code>Interval.log(x)</code></a></li>
+<li><a href="#intervallog10x"><code>Interval.log10(x)</code></a></li>
+<li><a href="#intervallog2x"><code>Interval.log2(x)</code></a></li>
+<li><a href="#intervalclonex"><code>Interval.clone(x)</code></a></li>
+</ul></li>
+<li><a href="#relational">Relational</a>
+<ul>
+<li><a href="#intervalequalx-y"><code>Interval.equal(x, y)</code></a></li>
+<li><a href="#intervalnotequalx-y"><code>Interval.notEqual(x, y)</code></a></li>
+<li><a href="#intervalgtx-y"><code>Interval.gt(x, y)</code></a></li>
+<li><a href="#intervalltx-y"><code>Interval.lt(x, y)</code></a></li>
+<li><a href="#intervalgeqx-y"><code>Interval.geq(x, y)</code></a></li>
+<li><a href="#intervalleqx-y"><code>Interval.leq(x, y)</code></a></li>
+</ul></li>
+<li><a href="#utilities">Utilities</a>
+<ul>
+<li><a href="#intervalisintervalx"><code>Interval.isInterval(x)</code></a></li>
+<li><a href="#intervalisemptyx"><code>Interval.isEmpty(x)</code></a></li>
+<li><a href="#intervaliszerox"><code>Interval.isZero(x)</code></a></li>
+<li><a href="#intervaliswholex"><code>Interval.isWhole(x)</code></a></li>
+<li><a href="#intervalzeroinx"><code>Interval.zeroIn(x)</code></a></li>
+<li><a href="#intervalhasvaluex-v"><code>Interval.hasValue(x, v)</code></a></li>
+<li><a href="#intervalhasintervalx-y"><code>Interval.hasInterval(x, y)</code></a></li>
+<li><a href="#intervalintervalsoverlapx-y"><code>Interval.intervalsOverlap(x, y)</code></a></li>
+<li><a href="#intervalissingletonx"><code>Interval.isSingleton(x)</code></a></li>
+</ul></li>
+<li><a href="#misc">Misc</a>
+<ul>
+<li><a href="#intervalwidthx"><code>Interval.width(x)</code></a></li>
+<li><a href="#intervalradx"><code>Interval.rad(x)</code></a></li>
+<li><a href="#intervalmidpointx"><code>Interval.midpoint(x)</code></a></li>
+<li><a href="#intervalmagx"><code>Interval.mag(x)</code></a></li>
+<li><a href="#intervalmigx"><code>Interval.mig(x)</code></a></li>
+<li><a href="#intervaldevx"><code>Interval.dev(x)</code></a></li>
+</ul></li>
+<li><a href="#constants">Constants</a>
+<ul>
+<li><a href="#intervalzero"><code>Interval.ZERO</code></a></li>
+<li><a href="#intervalone"><code>Interval.ONE</code></a></li>
+<li><a href="#intervalwhole"><code>Interval.WHOLE</code></a></li>
+<li><a href="#intervalempty"><code>Interval.EMPTY</code></a></li>
+<li><a href="#intervalpi"><code>Interval.PI</code></a></li>
+<li><a href="#intervalpi_half"><code>Interval.PI_HALF</code></a></li>
+<li><a href="#intervalpi_twice"><code>Interval.PI_TWICE</code></a></li>
+</ul></li>
+<li><a href="#floating-point-rounding">Floating point rounding</a></li>
+<li><a href="#development">Development</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h2 id="description">Description</h2>
+<p>An <code>interval</code> is a pair of numbers which represents all the numbers between them, <code>closed</code> means that the bounds are also included in the representation, <code>extended real</code> because the <code>real number system</code> is extended with two elements: -<img src="https://rawgit.com/mlliarm/interval-arithmetic/master/images/eq_no_01.png" alt="Equation Fail" height="7" > and +<img src="https://rawgit.com/mlliarm/interval-arithmetic/master/images/eq_no_01.png" alt="Equation Fail" height="7"> representing negative infinity and positive infinity respectively.</p>
+<p>The implementation is a modified port of the <a href="http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm">Boost's interval arithmetic library</a>, the modifications are based on some guidelines from the following papers/presentations/books:</p>
+<ul>
+<li><a href="http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf">Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden</a></li>
+<li><a href="http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf">Interval Arithmetic: Python Implementation and Applications - Stefano Taschini</a></li>
+<li><a href="https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf">The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion</a></li>
+<li><a href="http://www.dgp.toronto.edu/~mooncake/thesis.pdf">Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper</a></li>
+<li><a href="http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1459795825&amp;sr=1-1&amp;keywords=interval+analysis+hansen">Global Optimization using Interval Analysis - Eldon Hansen</a></li>
+<li><a href="http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532">C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, U.Kulisch, D.Ratz</a></li>
+<li><a href="http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf">С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016</a></li>
+</ul>
+<h3 id="floating-point-operations">floating point operations</h3>
+<p>Floating point is a way to represent a real number in an approximate way (due to the finite space existing on a computer), most calculations with real numbers will produce quantities that cannot be exactly represented with the space allocated and therefore this operation needs to be rounded in order to fit back into its finite representation, such errors are described in more detail <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#689">here</a></p>
+<h3 id="interval-arithmetic-1">Interval arithmetic</h3>
+<p>Instead of using a single floating point number as an approximation of a real number, interval arithmetic represents the approximated value as a set of possible values (considering the numbers that floating point cannot represent), let's say we want to represent the number <code>1 / 3</code>, as a single floating point number it's approximated as <code>0.333333333333...</code>, in the end there will be some <code>333...</code> decimals that will be lost due to the nature of floating point, instead we can represent this number with the interval <code>[0.2, 0.4]</code>, with this interval we're completely sure that <code>1 / 3</code> is within the interval (although the interval is also representing many more numbers), to improve the <code>scope</code> of the interval we have to understand that numbers in JavaScript are represented with 64 bits, therefore to get the next floating point number of a single precision number the last bit needs to be incremented to get the upper bound, and the last bit also needs to be decremented to get the lower point</p>
+<h3 id="notable-modifications">Notable modifications</h3>
+<ul>
+<li>next/previous IEEE754 floating point number implementation based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays">Typed Arrays</a></li>
+<li><code>division</code> when both intervals contain zero creates a whole interval</li>
+<li><code>cosine, tangent</code> works with positive/negative values out of the box</li>
+</ul>
+<h2 id="interval-arithmetic-evaluator">Interval arithmetic evaluator</h2>
+<p>Due to the expressive nature of the way the methods interact with intervals it's sad that even the simplest operation needs a lot of characters to be typed, let's consider evaluating the result of <code>1 + 2</code> expressed with intervals</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">Interval</span>.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Interval</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="kw">new</span> <span class="fu">Interval</span>(<span class="dv">2</span>, <span class="dv">2</span>))</code></pre>
+<p>This gets worse when the expression to be evaluated becomes complex like <code>sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2</code>:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> x = <span class="fu">Interval</span>(<span class="dv">0</span>, <span class="dv">1</span>);
+<span class="ot">Interval</span>.<span class="fu">add</span>(
+  <span class="ot">Interval</span>.<span class="fu">sin</span>(<span class="ot">Interval</span>.<span class="fu">exp</span>(x)),
+  <span class="ot">Interval</span>.<span class="fu">sub</span>(
+    <span class="ot">Interval</span>.<span class="fu">tan</span>(x),
+    <span class="ot">Interval</span>.<span class="fu">mul</span>(
+      <span class="ot">Interval</span>.<span class="fu">div</span>(<span class="ot">Interval</span>.<span class="fu">ONE</span>, <span class="ot">Interval</span>.<span class="fu">cos</span>(<span class="ot">Interval</span>.<span class="fu">PI</span>)),
+      <span class="ot">Interval</span>.<span class="fu">pow</span>(<span class="fu">Interval</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="dv">2</span>)
+    )
+  )
+);</code></pre>
+<p>To avoid this 'expressiveness' mess there's an <a href="https://github.com/maurizzzio/interval-arithmetic-eval">interval arithmetic evaluator module</a> which I've created to deal with all the work of parsing/evaluating expressions like the one above</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> compile = <span class="fu">require</span>(<span class="st">&#39;interval-arithmetic-eval&#39;</span>);
+<span class="fu">compile</span>(<span class="st">&#39;sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2&#39;</span>).<span class="fu">eval</span>({ <span class="dt">x</span>: [<span class="dv">0</span>, <span class="dv">1</span>] })</code></pre>
+<h2 id="installation">Installation</h2>
+<pre class="sh"><code>$ npm install --save interval-arithmetic</code></pre>
+<h2 id="api">API</h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> Interval = <span class="fu">require</span>(<span class="st">&#39;interval-arithmetic&#39;</span>);</code></pre>
+<p>Usage examples can be found on the files located in the <code>test</code> folder</p>
+<h3 id="instance-constructor">Instance constructor</h3>
+<h4 id="instance-interval"><code>instance = Interval()</code></h4>
+<p>If the default constructor doesn't receive parameters then the interval represents the number zero e.g. <code>[0, 0]</code></p>
+<h4 id="instance-intervalv"><code>instance = Interval(v)</code></h4>
+<p><strong>params</strong> * <code>v</code> {number} the number to be represented in the interval</p>
+<p><strong>by default</strong> the interval is not bounded with the higher/lower floating point number, e.g. <code>1 / 3</code> is represented as <code>[0.3333333333333333, 0.3333333333333333]</code>, see <code>#singleton, #bounded</code> to represent the interval in a conservative way</p>
+<h4 id="instance-intervalhi-lo"><code>instance = Interval(hi, lo)</code></h4>
+<p><strong>params</strong> * <code>lo</code> {number} the lower bound of the interval * <code>hi</code> {number} the higher bound of the interval</p>
+<p><strong>by default</strong> the interval is not bounded with the next/previous floating point number, e.g. <code>1/3, 2/3</code> is represented as <code>[0.3333333333333333, 0.6666666666666666]</code>, see <code>#bounded</code> to represent the interval in a conservative way</p>
+<p><strong>alias</strong> <code>Instance.factory</code></p>
+<h3 id="instance-methods">Instance methods</h3>
+<h4 id="instance.setlo-hi"><code>instance.set(lo, hi)</code></h4>
+<p><strong>params</strong> * <code>lo</code> {number} the lower bound of the interval * <code>hi</code> {number} the higher bound of the interval</p>
+<p>Sets the bounds of the interval without considering the next/previous floating point number</p>
+<h4 id="instance.assignlo-hi"><code>instance.assign(lo, hi)</code></h4>
+<p><strong>params</strong> * <code>lo</code> {number} the lower bound of the interval * <code>hi</code> {number} the higher bound of the interval</p>
+<p>Sets the bounds of the interval considering the next/previous floating point number and also the validity of the params, namely that <code>lo &lt;= hi</code> and that <code>lo</code> and <code>hi</code> are valid numbers</p>
+<h4 id="instance.singletonv"><code>instance.singleton(v)</code></h4>
+<p><strong>params</strong> * <code>v</code> {number} the number to be represented as an interval</p>
+<p>Sets the bounds of the interval with the values <code>[v, v]</code>, useful if it's known that a real number can be precisely determined using floating point notation</p>
+<p>e.g. <code>instance.singleton(1) = { lo: 1, hi: 1 }</code></p>
+<h4 id="instance.boundedlo-hi"><code>instance.bounded(lo, hi)</code></h4>
+<p><strong>params</strong> * <code>lo</code> {number} the lower bound of the interval * <code>hi</code> {number} the higher bound of the interval</p>
+<p>Sets the bounds of the interval with the values <code>[prev(lo), next(hi)]</code>, <code>prev</code> is a function which computes the previous double floating number, <code>next</code> is a function which computes the next double floating number</p>
+<p>e.g. <code>instance.bounded(1, 2) = { lo: 0.9999999999999999, hi: 2.0000000000000004 }</code></p>
+<h4 id="instance.boundedsingletonv"><code>instance.boundedSingleton(v)</code></h4>
+<p><strong>params</strong> * <code>v</code> {number} the number to be represented as an interval</p>
+<p>Sets the bounds of the interval with the values <code>[prev(v), next(v)]</code>, <code>prev</code> is a function which computes the previous double floating number, <code>next</code> is a function which computes the next double floating number, useful when a real number can't be precisely determined using floating point notation</p>
+<p>e.g. <code>instance.boundedSingleton(1 / 3) = { lo: 0.33333333333333326, hi: 0.33333333333333337 }</code></p>
+<h4 id="instance.setwhole"><code>instance.setWhole()</code></h4>
+<p>Sets the bounds of the interval with the values <code>[-Infinity, Infinity]</code></p>
+<h4 id="instance.setempty"><code>instance.setEmpty()</code></h4>
+<p>Sets the bounds of the interval with the values <code>[Infinity, -Infinity]</code>, an empty interval is one whose <code>lo</code> bound is higher than the <code>hi</code> bound</p>
+<h4 id="instance.toarray"><code>instance.toArray()</code></h4>
+<p><strong>returns</strong> {Array}</p>
+<p>Returns an array representing the interval e.g. <code>[lo, hi]</code></p>
+<h3 id="operations">Operations</h3>
+<p>All operations consider the parameters immutable and always return another interval</p>
+<h4 id="interval.addx-y"><code>Interval.add(x, y)</code></h4>
+<p>Computes <code>x + y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.subx-y"><code>Interval.sub(x, y)</code></h4>
+<p>Computes <code>x - y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.mulx-y"><code>Interval.mul(x, y)</code></h4>
+<p>Computes <code>x * y</code>, an explanation of all the possible cases can be found on <a href="http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf">Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden</a></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.divx-y"><code>Interval.div(x, y)</code></h4>
+<p>Computes <code>x / y</code>, an explanation of all the possible cases can be found on <a href="http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf">Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden</a></p>
+<p>NOTE: an extreme case of division might results in multiple intervals, unfortunately this library doesn't support multi-interval arithmetic yet so a single interval will be returned instead with the hull of the resulting intervals (this is the way Boost implements it too)</p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.fmodx-y"><code>Interval.fmod(x, y)</code></h4>
+<p>Computes <code>x % y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.minx-y"><code>Interval.min(x, y)</code></h4>
+<p>Computes the min of <code>x</code> and <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.maxx-y"><code>Interval.max(x, y)</code></h4>
+<p>Computes the max of <code>x</code> and <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.hullx-y"><code>Interval.hull(x, y)</code></h4>
+<p>Computes the interval that contains both <code>x</code> and <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.intersectionx-y"><code>Interval.intersection(x, y)</code></h4>
+<p>Computes the interval that intersects both <code>x</code> and <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.unionx-y"><code>Interval.union(x, y)</code></h4>
+<p>Computes the interval that is the union of <code>x</code> and <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<p><strong>throws</strong> TypeError if <code>x</code> and <code>y</code> don't overlap</p>
+<h4 id="interval.differencex-y"><code>Interval.difference(x, y)</code></h4>
+<p>Computes the difference between two intervals</p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<p><strong>throws</strong> TypeError if the difference creates multiple intervals</p>
+<h4 id="interval.negativex"><code>Interval.negative(x)</code></h4>
+<p>Computes <code>-x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.positivex"><code>Interval.positive(x)</code></h4>
+<p>Computes <code>+x</code> (Identity)</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.multiplicativeinversex"><code>Interval.multiplicativeInverse(x)</code></h4>
+<p>Computes <code>1 / x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.powx-y"><code>Interval.pow(x, y)</code></h4>
+<p>Computes <code>x ^ y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {number|Interval} <code>y</code> must be an integer or a singleton interval that encodes an integer, for rational power use <a href="#intervalnthrootx-n">nth-root</a> instead</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.sqrtx"><code>Interval.sqrt(x)</code></h4>
+<p>Computes <code>sqrt(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.nthrootx-n"><code>Interval.nthRoot(x, n)</code></h4>
+<p>Computes the nth root of x i.e. <code>x ^ (1/n)</code></p>
+<p><strong>params</strong></p>
+<ul>
+<li><code>x</code> {Interval}</li>
+<li><code>y</code> {number|Interval} <code>y</code> is a number or a singleton interval</li>
+</ul>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.sinx"><code>Interval.sin(x)</code></h4>
+<p>Computes <code>sin(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.cosx"><code>Interval.cos(x)</code></h4>
+<p>Computes <code>cos(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.tanx"><code>Interval.tan(x)</code></h4>
+<p>Computes <code>tan(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.cotx"><code>Interval.cot(x)</code></h4>
+<p>Computes <code>cot(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.asinx"><code>Interval.asin(x)</code></h4>
+<p>Computes <code>asin(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.acosx"><code>Interval.acos(x)</code></h4>
+<p>Computes <code>acos(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.atanx"><code>Interval.atan(x)</code></h4>
+<p>Computes <code>atan(x)</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.sinhx"><code>Interval.sinh(x)</code></h4>
+<p>Computes the hyperbolic sine of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.coshx"><code>Interval.cosh(x)</code></h4>
+<p>Computes the hyperbolic cosine of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.tanhx"><code>Interval.tanh(x)</code></h4>
+<p>Computes the hyperbolic tangent of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.expx"><code>Interval.exp(x)</code></h4>
+<p>Computes <code>e^x</code> where <code>e</code> is the base of the natural logarithm</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.logx"><code>Interval.log(x)</code></h4>
+<p>Computes the natural logarithm (base <code>e</code>) of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.log10x"><code>Interval.log10(x)</code></h4>
+<p>Computes the logarithm (base <code>10</code>) of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.log2x"><code>Interval.log2(x)</code></h4>
+<p>Computes the logarithm (base <code>2</code>) of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.clonex"><code>Interval.clone(x)</code></h4>
+<p>Creates a clone of the interval <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {Interval}</p>
+<h3 id="relational">Relational</h3>
+<h4 id="interval.equalx-y"><code>Interval.equal(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> equals <code>y</code> (exact matching of bounds)</p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> equals <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.notequalx-y"><code>Interval.notEqual(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> is not equal to <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is not equal to <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.gtx-y"><code>Interval.gt(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> is greater than <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is greater than <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.ltx-y"><code>Interval.lt(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> is less than <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is less than <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.geqx-y"><code>Interval.geq(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> is greater/equal than <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is greater/equal than <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.leqx-y"><code>Interval.leq(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> is less/equal than <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is less/equal than <code>y</code>, <code>false</code> otherwise</p>
+<h3 id="utilities">Utilities</h3>
+<h4 id="interval.isinterval"><code>Interval.isInterval()</code></h4>
+<p>Checks if the given parameter <code>x</code> is an interval</p>
+<p><strong>params</strong> * <code>x</code> {*}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if x is an interval, <code>false</code> otherwise</p>
+<h4 id="interval.isemptyx"><code>Interval.isEmpty(x)</code></h4>
+<p>Checks if the interval <code>x</code> represents an empty interval</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it's empty, <code>false</code> otherwise</p>
+<h4 id="interval.iswholex"><code>Interval.isWhole(x)</code></h4>
+<p>Checks if the interval <code>x</code> represents an whole interval, that is it covers all the real numbers <code>[-Infinity, Infinity]</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if represents a whole interval, <code>false</code> otherwise</p>
+<h4 id="interval.zeroinx"><code>Interval.zeroIn(x)</code></h4>
+<p>Checks if the interval <code>x</code> contains 0</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it contains zero, <code>false</code> otherwise</p>
+<h4 id="interval.hasvaluex-v"><code>Interval.hasValue(x, v)</code></h4>
+<p>Checks if the interval <code>x</code> contains the value <code>v</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>v</code> {number}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it contains the value <code>v</code>, <code>false</code> otherwise</p>
+<h4 id="interval.hasintervalx-y"><code>Interval.hasInterval(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> is a subset of the interval <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is a subset of <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.intervalsoverlapx-y"><code>Interval.intervalsOverlap(x, y)</code></h4>
+<p>Checks if the interval <code>x</code> overlaps with interval <code>y</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval} * <code>y</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> overlaps <code>y</code>, <code>false</code> otherwise</p>
+<h4 id="interval.issingletonx"><code>Interval.isSingleton(x)</code></h4>
+<p>Checks if the interval <code>x</code> represents a single value (unbounded)</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {boolean} <code>true</code> if it <code>x</code> is a singleton, <code>false</code> otherwise</p>
+<h3 id="misc">Misc</h3>
+<h4 id="interval.widthx"><code>Interval.width(x)</code></h4>
+<p>Computes the distance between the lower and upper bounds of <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {number} <code>x.hi - x.lo</code> rounded to the next floating point number</p>
+<h4 id="interval.radx"><code>Interval.rad(x)</code></h4>
+<p>Computes the radius of an interval <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {number} <code>0.5*width(x)</code></p>
+<h4 id="interval.midpointx"><code>Interval.midpoint(x)</code></h4>
+<p>Computes the point which lies in the center of the interval <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {number} <code>0.5*(x.lo + x.hi)</code> rounded to the next floating point number</p>
+<h4 id="interval.magx"><code>Interval.mag(x)</code></h4>
+<p>Computes the magnitude (or absolute value) of an interval <code>x</code></p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {number} <code>max{abs(x.lo),abs(x.hi)}</code></p>
+<h4 id="interval.migx"><code>Interval.mig(x)</code></h4>
+<p>Computes the mignitude of an interval <code>x</code> (the smallest value of |a| for all a <img src="https://rawgit.com/mlliarm/interval-arithmetic/master/images/eq_no_02.png" alt="Equation Fail"height="10"> x)</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {number} <code>min{abs(x.lo),abs(x.hi)}</code> , if 0 <img src="https://rawgit.com/mlliarm/interval-arithmetic/master/images/eq_no_03.png" alt="Equation Fail"height="15"> x</p>
+<p><strong>returns</strong> {number} 0 , if 0 <img src="https://rawgit.com/mlliarm/interval-arithmetic/master/images/eq_no_02.png" alt="Equation Fail"height="10"> x</p>
+<h4 id="interval.devx"><code>Interval.dev(x)</code></h4>
+<p>Computes the deviance from point zero</p>
+<p><strong>params</strong> * <code>x</code> {Interval}</p>
+<p><strong>returns</strong> {number} <code>x.lo</code> , if |x.lo| <img src="https://rawgit.com/mlliarm/interval-arithmetic/master/images/eq_no_04.png" alt="Equation Fail"height="10"> |x.hi|</p>
+<p><strong>returns</strong> {number} <code>x.hi</code>, else</p>
+<h3 id="constants">Constants</h3>
+<h4 id="interval.zero"><code>Interval.ZERO</code></h4>
+<p>Representation of the number zero: <code>{ lo: 0, hi: 0 }</code></p>
+<h4 id="interval.one"><code>Interval.ONE</code></h4>
+<p>Representation of the number one: <code>{ lo: 1, hi: 1 }</code></p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.whole"><code>Interval.WHOLE</code></h4>
+<p>An interval representing all the numbers <code>{ lo: -Infinity, hi: Infinity }</code></p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.empty"><code>Interval.EMPTY</code></h4>
+<p>An interval representing no numbers <code>{ lo: Infinity, hi: -Infinity }</code></p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.pi"><code>Interval.PI</code></h4>
+<p>Interval representation of PI (bounded correctly), <code>{ lo: 3.141592653589793, hi: 3.1415926535897936 }</code></p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.pi_half"><code>Interval.PI_HALF</code></h4>
+<p>Interval representation of PI / 2 (bounded correctly), <code>{ lo: 1.5707963267948966, hi: 1.5707963267948968 }</code></p>
+<p><strong>returns</strong> {Interval}</p>
+<h4 id="interval.pi_twice"><code>Interval.PI_TWICE</code></h4>
+<p>Interval representation of PI * 2 (bounded correctly), <code>{ lo: 6.283185307179586, hi: 6.283185307179587 }</code></p>
+<p><strong>returns</strong> {Interval}</p>
+<h3 id="floating-point-rounding">Floating point rounding</h3>
+<p>Rounding to the next/previous floating point number is enabled by default on all operations, to enable/disabled the rounding operation execute:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// disable rounding</span>
+<span class="ot">Interval</span>.<span class="ot">round</span>.<span class="fu">disable</span>();
+
+<span class="co">// enable rounding</span>
+<span class="ot">Interval</span>.<span class="ot">round</span>.<span class="fu">enable</span>();</code></pre>
+<h2 id="development">Development</h2>
+<pre class="sh"><code>npm start
+</code></pre>
+<h2 id="thanks">Thanks</h2>
+<p>We'd like to thank Mauricio Poppe for this wonderful library and documentation he's created which are great to build upon and also learn how to craft beautiful pieces of understandable code.</p>
+<p>2015 © Mauricio Poppe</p>
+<p>2016 © MiLia, kthanos</p>
