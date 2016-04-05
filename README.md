@@ -120,7 +120,9 @@ the modifications are based on some guidelines from the following papers/present
 - [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
 - [Global Optimization using Interval Analysis - Eldon Hansen](http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&ie=UTF8&qid=1459795825&sr=1-1&keywords=interval+analysis+hansen)
 - [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, U.Kulisch, D.Ratz](http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532)
+- [Validated Numerics: A Short Introduction to Rigorous Computations, W. Tucker, Princeton University Press (2010)](http://press.princeton.edu/titles/9488.html)
 - [С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016](http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf)
+
 
 ### floating point operations
 
