@@ -90,6 +90,7 @@
 	- [`Interval.mag(x)`](#intervalmagx)
 	- [`Interval.mig(x)`](#intervalmigx)
 	- [`Interval.dev(x)`](#intervaldevx)
+	- [`Interval.abs(x)`](#intervalabsx)
   - [Constants](#constants)
     - [`Interval.ZERO`](#intervalzero)
     - [`Interval.ONE`](#intervalone)
@@ -781,7 +782,7 @@ Computes the point which lies in the center of the interval `x`
 
 #### `Interval.mag(x)`
 
-Computes the magnitude (or absolute value) of an interval `x`
+Computes the magnitude of an interval `x` (the biggest distance to the origin attained by elements of x)
 
 **params**
 * `x` {Interval}
@@ -790,7 +791,7 @@ Computes the magnitude (or absolute value) of an interval `x`
 
 #### `Interval.mig(x)`
 
-Computes the mignitude of an interval `x` (the smallest value of |a| for all a $\in$ x)
+Computes the mignitude of an interval `x` (the smallest distance to the origin attained by elements of x)
 
 **params**
 * `x` {Interval}
@@ -809,6 +810,16 @@ Computes the deviance from point zero
 **returns** {number} `x.lo` , if |x.lo| $\geq$ |x.hi|
 
 **returns** {number} `x.hi`, else
+
+#### `Interval.abs(x)`
+
+Computes the absolute value of the interval `x`. Note that in contrast to the previous measures of size and distance,
+this returns an interval.
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval} `[mig(x), mag(x)]`
 
 ### Constants
 
