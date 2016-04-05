@@ -114,14 +114,14 @@ and positive infinity respectively.
 The implementation is a modified port of the [Boost's interval arithmetic library](http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm),
 the modifications are based on some guidelines from the following papers/presentations/books:
 
-- [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
-- [Interval Arithmetic: Python Implementation and Applications - Stefano Taschini](http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf)
-- [The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion](https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf)
-- [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
-- [Global Optimization using Interval Analysis - Eldon Hansen](http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&ie=UTF8&qid=1459795825&sr=1-1&keywords=interval+analysis+hansen)
-- [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, U.Kulisch, D.Ratz](http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532)
-- [Validated Numerics: A Short Introduction to Rigorous Computations, W. Tucker, Princeton University Press (2010)](http://press.princeton.edu/titles/9488.html)
-- [С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016](http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf)
+1. [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
+2. [Interval Arithmetic: Python Implementation and Applications - Stefano Taschini](http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf)
+3. [The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion](https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf)
+4. [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
+5. [Global Optimization using Interval Analysis - Eldon Hansen](http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&ie=UTF8&qid=1459795825&sr=1-1&keywords=interval+analysis+hansen)
+6. [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, U.Kulisch, D.Ratz](http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532)
+7. [Validated Numerics: A Short Introduction to Rigorous Computations, W. Tucker, Princeton University Press (2010)](http://press.princeton.edu/titles/9488.html)
+8. [С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016](http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf)
 
 
 ### floating point operations
