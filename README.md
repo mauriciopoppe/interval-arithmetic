@@ -65,7 +65,6 @@
     - [`Interval.log(x)`](#intervallogx)
     - [`Interval.log10(x)`](#intervallog10x)
     - [`Interval.log2(x)`](#intervallog2x)
-    - [`Interval.abs(x)`](#intervalabsx)
     - [`Interval.clone(x)`](#intervalclonex)
   - [Relational](#relational)
     - [`Interval.equal(x, y)`](#intervalequalx-y)
