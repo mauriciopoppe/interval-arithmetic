@@ -508,7 +508,7 @@ Computes `tan(x)`
 Computes `cot(x)`
 
 **params**
-*`x` {Interval}
+* `x` {Interval}
 
 **returns** {Interval}
 
@@ -689,7 +689,7 @@ Checks if the interval `x` is less/equal than `y`
 Checks if the given parameter `x` is an interval
 
 **params**
-*`x` {*} 
+* `x` {*} 
 
 **returns** {boolean} `true` if x is an interval, `false` otherwise
 
@@ -806,6 +806,7 @@ Computes the mignitude of an interval `x`
 * `x` {Interval}
 
 **returns** {number} `min{abs(x.lo),abs(x.hi)}` , if 0 \notin x
+
 **returns** {number} 0 , if 0 \in x
 
 #### `Interval.dev(x)`
@@ -816,6 +817,7 @@ Computes the deviance from point zero
 * `x` {Interval}
 
 **returns** {number} `x.lo` , if |x.lo| >= |x.hi|
+
 **returns** {number} `x.hi`, else
 
 ### Constants
