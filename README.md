@@ -107,11 +107,7 @@
 
 An `interval` is a pair of numbers which represents all the numbers between them, `closed` 
 means that the bounds are also included in the representation, `extended real` because the 
-`real number system` is extended with two elements: `-
-<img src="https://rawgit.com/mlliarm/interval-arithmetic/images/eq_no_01.png" alt="Equation Fail"height="20">
-` and `+
-<img src="https://rawgit.com/mlliarm/interval-arithmetic/images/eq_no_01.png" alt="Equation Fail"height="20">
-` representing negative infinity
+`real number system` is extended with two elements: `-$\infty$` and `+$\infty$` representing negative infinity
 and positive infinity respectively.
 
 The implementation is a modified port of the [Boost's interval arithmetic library](http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm),
@@ -794,20 +790,14 @@ Computes the magnitude (or absolute value) of an interval `x`
 
 #### `Interval.mig(x)`
 
-Computes the mignitude of an interval `x` (the smallest value of |a| for all a 
-<img src="https://rawgit.com/mlliarm/interval-arithmetic/images/eq_no_02.png" alt="Equation Fail"height="20">
- x)
+Computes the mignitude of an interval `x` (the smallest value of |a| for all a $\in$ x)
 
 **params**
 * `x` {Interval}
 
-**returns** {number} `min{abs(x.lo),abs(x.hi)}` , if 0 
-<img src="https://rawgit.com/mlliarm/interval-arithmetic/images/eq_no_03.png" alt="Equation Fail"height="20">
- x
+**returns** {number} `min{abs(x.lo),abs(x.hi)}` , if 0 $\notin$ x
 
-**returns** {number} 0 , if 0 
-<img src="https://rawgit.com/mlliarm/interval-arithmetic/images/eq_no_02.png" alt="Equation Fail"height="20">
- x
+**returns** {number} 0 , if 0 $\in$ x
 
 #### `Interval.dev(x)`
 
@@ -816,9 +806,7 @@ Computes the deviance from point zero
 **params**
 * `x` {Interval}
 
-**returns** {number} `x.lo` , if |x.lo| 
-<img src="https://rawgit.com/mlliarm/interval-arithmetic/images/eq_no_04.png" alt="Equation Fail"height="20">
- |x.hi|
+**returns** {number} `x.lo` , if |x.lo| $\geq$ |x.hi|
 
 **returns** {number} `x.hi`, else
 
