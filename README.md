@@ -54,6 +54,7 @@
     - [`Interval.sin(x)`](#intervalsinx)
     - [`Interval.cos(x)`](#intervalcosx)
     - [`Interval.tan(x)`](#intervaltanx)
+    - [`Interval.cot(x)`](#intervalcotx)
     - [`Interval.asin(x)`](#intervalasinx)
     - [`Interval.acos(x)`](#intervalacosx)
     - [`Interval.atan(x)`](#intervalatanx)
@@ -74,14 +75,22 @@
     - [`Interval.geq(x, y)`](#intervalgeqx-y)
     - [`Interval.leq(x, y)`](#intervalleqx-y)
   - [Utilities](#utilities)
+    - [`Interval.isInterval(x)`](#intervalisintervalx)
     - [`Interval.isEmpty(x)`](#intervalisemptyx)
+    - [`Interval.isZero(x)`](#intervaliszerox)
     - [`Interval.isWhole(x)`](#intervaliswholex)
     - [`Interval.zeroIn(x)`](#intervalzeroinx)
     - [`Interval.hasValue(x, v)`](#intervalhasvaluex-v)
     - [`Interval.hasInterval(x, y)`](#intervalhasintervalx-y)
     - [`Interval.intervalsOverlap(x, y)`](#intervalintervalsoverlapx-y)
     - [`Interval.isSingleton(x)`](#intervalissingletonx)
-    - [`Interval.width(x)`](#intervalwidthx)
+  - [Misc](#misc)
+	- [`Interval.width(x)`](#intervalwidthx)
+	- [`Interval.rad(x)`](#intervalradx)
+	- [`Interval.midpoint(x)`](#intervalmidpointx)
+	- [`Interval.mag(x)`](#intervalmagx)
+	- [`Interval.mig(x)`](#intervalmigx)
+	- [`Interval.dev(x)`](#intervaldevx)
   - [Constants](#constants)
     - [`Interval.ZERO`](#intervalzero)
     - [`Interval.ONE`](#intervalone)
@@ -111,6 +120,7 @@ the modifications are based on some guidelines from the following papers/present
 - [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
 - [Global Optimization using Interval Analysis - Eldon Hansen](http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&ie=UTF8&qid=1459795825&sr=1-1&keywords=interval+analysis+hansen)
 - [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, U.Kulisch, D.Ratz](http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532)
+- [С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016](http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf)
 
 ### floating point operations
 
@@ -493,6 +503,15 @@ Computes `tan(x)`
 
 **returns** {Interval}
 
+#### `Interval.cot(x)`
+
+Computes `cot(x)`
+
+**params**
+*`x` {Interval}
+
+**returns** {Interval}
+
 #### `Interval.asin(x)`
 
 Computes `asin(x)`
@@ -583,9 +602,9 @@ Computes the logarithm (base `2`) of `x`
 
 **returns** {Interval}
 
-#### `Interval.abs(x)`
+#### `Interval.mag(x)`
 
-Computes `|x|`
+Computes `|x|` (magnitude)
 
 **params**
 * `x` {Interval}
@@ -665,6 +684,15 @@ Checks if the interval `x` is less/equal than `y`
 
 ### Utilities
 
+#### `Interval.isInterval()`
+
+Checks if the given parameter `x` is an interval
+
+**params**
+*`x` {*} 
+
+**returns** {boolean} `true` if x is an interval, `false` otherwise
+
 #### `Interval.isEmpty(x)`
 
 Checks if the interval `x` represents an empty interval
@@ -732,6 +760,8 @@ Checks if the interval `x` represents a single value (unbounded)
 
 **returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
 
+### Misc
+
 #### `Interval.width(x)`
 
 Computes the distance between the lower and upper bounds of `x`
@@ -740,6 +770,53 @@ Computes the distance between the lower and upper bounds of `x`
 * `x` {Interval}
 
 **returns** {number} `x.hi - x.lo` rounded to the next floating point number
+
+#### `Interval.rad(x)`
+
+Computes the radius of an interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `0.5*width(x)` 
+
+#### `Interval.midpoint(x)`
+
+Computes the point which lies in the center of the interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `0.5*(x.lo + x.hi)` rounded to the next floating point number
+
+#### `Interval.mag(x)`
+
+Computes the magnitude (or absolute value) of an interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `max{abs(x.lo),abs(x.hi)}`
+
+#### `Interval.mig(x)`
+
+Computes the mignitude of an interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `min{abs(x.lo),abs(x.hi)}` , if 0 \notin x
+**returns** {number} 0 , if 0 \in x
+
+#### `Interval.dev(x)`
+
+Computes the deviance from point zero
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `x.lo` , if |x.lo| >= |x.hi|
+**returns** {number} `x.hi`, else
 
 ### Constants
 
@@ -805,8 +882,7 @@ npm start
 
 ## Thanks
 
-We'd like to thank Mauricio Poppe for this wonderful library he's created which is great to build upon and also learn how
-to craft beautiful pieces of javascript code.
+We'd like to thank Mauricio Poppe for this wonderful library and documentation he's created which are great to build upon and also learn how to craft beautiful pieces of understandable code.
 
 2015 © Mauricio Poppe
 
