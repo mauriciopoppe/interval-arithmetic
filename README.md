@@ -602,15 +602,6 @@ Computes the logarithm (base `2`) of `x`
 
 **returns** {Interval}
 
-#### `Interval.mag(x)`
-
-Computes `|x|` (magnitude)
-
-**params**
-* `x` {Interval}
-
-**returns** {Interval}
-
 #### `Interval.clone(x)`
 
 Creates a clone of the interval `x`
