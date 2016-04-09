@@ -783,7 +783,7 @@ Interval representation of PI * 2 (bounded correctly), `{ lo: 6.283185307179586,
 
 ### Floating point rounding
 
-Rounding to the next/previous floating point number is enabled by default on all operations, to enable/disabled the rounding operation execute:
+Rounding to the next/previous floating point number is enabled by default on all operations, to enable/disable the rounding operation execute:
 
 ```javascript
 // disable rounding

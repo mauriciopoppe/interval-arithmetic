@@ -38,6 +38,7 @@
   "scripts": {
     "istanbul": "istanbul cover _mocha -- -R spec test/index.js",
     "lint": "standard",
+    "codecov": "npm run istanbul && codecov < coverage/lcov.info",
     "test": "mocha -R spec test/index.js",
     "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
     "start": "npm run test:watch",
