@@ -100,6 +100,38 @@ describe('misc', function () {
     )
     Interval.almostEqual(n, [4, 6])
 
+    // issue #5
+    n = misc.difference(
+      Interval(0, 3),
+      Interval(0, 1)
+    )
+    assert(n.lo > 1)
+    assert(n.hi === 3)
+    n = misc.difference(
+      Interval(0, 3),
+      Interval(1, 3)
+    )
+    assert(n.lo === 0)
+    assert(n.hi < 1)
+    n = misc.difference(
+      Interval(0, 3),
+      Interval(0, 3)
+    )
+    assert(Interval.isEmpty(n))
+
+    n = misc.difference(
+      Interval(0, 1),
+      Interval().setEmpty()
+    )
+    assert(n.lo === 0)
+    assert(n.hi === 1)
+
+    n = misc.difference(
+      Interval(0, 1),
+      Interval().setWhole()
+    )
+    assert(Interval.isEmpty(n))
+
     var a = Interval(3, nextafter(5, -Infinity))
     var b = Interval(4, 6)
     n = Interval.difference(a, b)

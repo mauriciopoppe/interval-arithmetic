@@ -805,7 +805,7 @@ npm start
 [npm-url]: https://npmjs.org/package/interval-arithmetic
 [travis-image]: https://travis-ci.org/maurizzzio/interval-arithmetic.svg?branch=master
 [travis-url]: https://travis-ci.org/maurizzzio/interval-arithmetic
-[codecov-url]: https://codecov.io/github/maurizzzio/generator-mnm-example
-[codecov-image]: https://img.shields.io/codecov/c/github/maurizzzio/generator-mnm-example.svg?style=flat
+[codecov-url]: https://codecov.io/github/maurizzzio/interval-arithmetic
+[codecov-image]: https://img.shields.io/codecov/c/github/maurizzzio/interval-arithmetic.svg?style=flat
 [david-image]: https://david-dm.org/maurizzzio/interval-arithmetic.svg
 [david-url]: https://david-dm.org/maurizzzio/interval-arithmetic
