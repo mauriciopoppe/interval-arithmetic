@@ -2,7 +2,7 @@
 
 [![NPM][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url] 
-[![Coverage Status][coveralls-image]][coveralls-url]
+[![Codecov Status][codecov-image]][codecov-url]
 [![Dependency Status][david-image]][david-url]
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![Stability](https://img.shields.io/badge/stability-stable-green.svg)](https://nodejs.org/api/documentation.html#apicontent)
@@ -805,7 +805,7 @@ npm start
 [npm-url]: https://npmjs.org/package/interval-arithmetic
 [travis-image]: https://travis-ci.org/maurizzzio/interval-arithmetic.svg?branch=master
 [travis-url]: https://travis-ci.org/maurizzzio/interval-arithmetic
-[coveralls-image]: https://coveralls.io/repos/maurizzzio/interval-arithmetic/badge.svg?branch=master
-[coveralls-url]: https://coveralls.io/r/maurizzzio/interval-arithmetic?branch=master
+[codecov-url]: https://codecov.io/github/maurizzzio/generator-mnm-example
+[codecov-image]: https://img.shields.io/codecov/c/github/maurizzzio/generator-mnm-example.svg?style=flat
 [david-image]: https://david-dm.org/maurizzzio/interval-arithmetic.svg
 [david-url]: https://david-dm.org/maurizzzio/interval-arithmetic
