@@ -107,12 +107,14 @@ describe('misc', function () {
     )
     assert(n.lo > 1)
     assert(n.hi === 3)
+
     n = misc.difference(
       Interval(0, 3),
       Interval(1, 3)
     )
     assert(n.lo === 0)
     assert(n.hi < 1)
+
     n = misc.difference(
       Interval(0, 3),
       Interval(0, 3)
@@ -121,14 +123,36 @@ describe('misc', function () {
 
     n = misc.difference(
       Interval(0, 1),
-      Interval().setEmpty()
+      constants.EMPTY
     )
     assert(n.lo === 0)
     assert(n.hi === 1)
 
     n = misc.difference(
       Interval(0, 1),
-      Interval().setWhole()
+      constants.WHOLE
+    )
+    assert(Interval.isEmpty(n))
+
+    // # 9
+    n = misc.difference(
+      Interval(0, Infinity),
+      Interval(0, Infinity)
+    )
+    assert(Interval.isEmpty(n))
+    n = misc.difference(
+      Interval(-Infinity, 0),
+      Interval(-Infinity, 0)
+    )
+    assert(Interval.isEmpty(n))
+    n = misc.difference(
+      Interval(-Infinity, 0),
+      constants.WHOLE
+    )
+    assert(Interval.isEmpty(n))
+    n = misc.difference(
+      constants.WHOLE,
+      constants.WHOLE
     )
     assert(Interval.isEmpty(n))
 
@@ -137,7 +161,6 @@ describe('misc', function () {
     n = Interval.difference(a, b)
     assert(n.lo === 3)
     assert(n.hi < 4)
-
     n = Interval.difference(b, a)
     assert(n.lo === 5)
     assert(n.hi === 6)
