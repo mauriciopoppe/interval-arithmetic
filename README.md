@@ -891,7 +891,7 @@ We'd like to thank Mauricio Poppe for this wonderful library and documentation h
 
 2015 © Mauricio Poppe
 
-2016 © MiLia, kthanos
+2016 © MiLia
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
