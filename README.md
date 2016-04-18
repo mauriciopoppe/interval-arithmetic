@@ -492,7 +492,7 @@ Computes `sin(x)`
 
 #### `Interval.cos(x)`
 
-Computes `cos(x)`,works only for positive intervals (for now)
+Computes `cos(x)`
 
 **params**
 * `x` {Interval}
@@ -501,7 +501,7 @@ Computes `cos(x)`,works only for positive intervals (for now)
 
 #### `Interval.tan(x)`
 
-Computes `tan(x)` ,works only for positive intervals (for now)
+Computes `tan(x)`
 
 **params**
 * `x` {Interval}
@@ -510,7 +510,7 @@ Computes `tan(x)` ,works only for positive intervals (for now)
 
 #### `Interval.cot(x)`
 
-Computes `cot(x)` ,works only for positive intervals (for now)
+Computes `cot(x)`
 
 **params**
 * `x` {Interval}
