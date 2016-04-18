@@ -14,7 +14,7 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Description](#description)
-  - [floating point operations](#floating-point-operations)
+  - [Floating point operations](#floating-point-operations)
   - [Interval arithmetic](#interval-arithmetic)
   - [Notable modifications](#notable-modifications)
 - [Interval arithmetic evaluator](#interval-arithmetic-evaluator)
@@ -54,6 +54,7 @@
     - [`Interval.sin(x)`](#intervalsinx)
     - [`Interval.cos(x)`](#intervalcosx)
     - [`Interval.tan(x)`](#intervaltanx)
+    - [`Interval.cot(x)`](#intervalcotx)
     - [`Interval.asin(x)`](#intervalasinx)
     - [`Interval.acos(x)`](#intervalacosx)
     - [`Interval.atan(x)`](#intervalatanx)
@@ -64,7 +65,6 @@
     - [`Interval.log(x)`](#intervallogx)
     - [`Interval.log10(x)`](#intervallog10x)
     - [`Interval.log2(x)`](#intervallog2x)
-    - [`Interval.abs(x)`](#intervalabsx)
     - [`Interval.clone(x)`](#intervalclonex)
   - [Relational](#relational)
     - [`Interval.equal(x, y)`](#intervalequalx-y)
@@ -74,14 +74,25 @@
     - [`Interval.geq(x, y)`](#intervalgeqx-y)
     - [`Interval.leq(x, y)`](#intervalleqx-y)
   - [Utilities](#utilities)
+    - [`Interval.isInterval(x)`](#intervalisintervalx)
     - [`Interval.isEmpty(x)`](#intervalisemptyx)
+	- [`Interval.isPositive(x)`](#intervalispositivex)
+	- [`Interval.isNotNegative(x)`](#intervalisnotnegativex)
+    - [`Interval.isZero(x)`](#intervaliszerox)
     - [`Interval.isWhole(x)`](#intervaliswholex)
     - [`Interval.zeroIn(x)`](#intervalzeroinx)
     - [`Interval.hasValue(x, v)`](#intervalhasvaluex-v)
     - [`Interval.hasInterval(x, y)`](#intervalhasintervalx-y)
     - [`Interval.intervalsOverlap(x, y)`](#intervalintervalsoverlapx-y)
     - [`Interval.isSingleton(x)`](#intervalissingletonx)
-    - [`Interval.width(x)`](#intervalwidthx)
+  - [Misc](#misc)
+	- [`Interval.wid(x)`](#intervalwidx)
+	- [`Interval.rad(x)`](#intervalradx)
+	- [`Interval.mid(x)`](#intervalmidx)
+	- [`Interval.mag(x)`](#intervalmagx)
+	- [`Interval.mig(x)`](#intervalmigx)
+	- [`Interval.dev(x)`](#intervaldevx)
+	- [`Interval.abs(x)`](#intervalabsx)
   - [Constants](#constants)
     - [`Interval.ZERO`](#intervalzero)
     - [`Interval.ONE`](#intervalone)
@@ -99,18 +110,24 @@
 
 An `interval` is a pair of numbers which represents all the numbers between them, `closed` 
 means that the bounds are also included in the representation, `extended real` because the 
-`real number system` is extended with two elements: `-∞` and `+∞` representing negative infinity
+`real number system` is extended with two elements: `-$\infty$` and `+$\infty$` representing negative infinity
 and positive infinity respectively.
 
 The implementation is a modified port of the [Boost's interval arithmetic library](http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm),
-the modifications are based on some guidelines from the following papers/presentations:
+the modifications are based on some guidelines from the following papers/presentations/books:
 
-- [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
-- [Interval Arithmetic: Python Implementation and Applications - Stefano Taschini](http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf)
-- [The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion](https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf)
-- [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
+1. [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
+2. [Interval Arithmetic: Python Implementation and Applications - Stefano Taschini](http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf)
+3. [The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion](https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf)
+4. [Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper](http://www.dgp.toronto.edu/~mooncake/thesis.pdf)
+5. [Global Optimization using Interval Analysis - Eldon Hansen](http://www.amazon.com/Optimization-Interval-Analysis-Applied-Mathematics/dp/0824786963/ref=sr_1_1?s=books&ie=UTF8&qid=1459795825&sr=1-1&keywords=interval+analysis+hansen)
+6. [C++ Toolbox for Verified Computing I: Basic Numerical Problems - R.Hammer, M.Hocks, U.Kulisch, D.Ratz](http://www.amazon.com/Toolbox-Verified-Computing-Numerical-Algorithms/dp/3642796532)
+7. [Validated Numerics: A Short Introduction to Rigorous Computations, W. Tucker, Princeton University Press (2010)](http://press.princeton.edu/titles/9488.html)
+8. [С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016](http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf)
 
-### floating point operations
+The trigonometric functions implementation was heavily influenced by the code from [ValidatedNumerics.jl](https://github.com/mlliarm/ValidatedNumerics.jl) project.
+
+### Floating point operations
 
 Floating point is a way to represent a real number in an approximate way (due to the finite
 space existing on a computer), most calculations with real numbers will produce quantities that
@@ -491,6 +508,15 @@ Computes `tan(x)`
 
 **returns** {Interval}
 
+#### `Interval.cot(x)`
+
+Computes `cot(x)`
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval}
+
 #### `Interval.asin(x)`
 
 Computes `asin(x)`
@@ -581,15 +607,6 @@ Computes the logarithm (base `2`) of `x`
 
 **returns** {Interval}
 
-#### `Interval.abs(x)`
-
-Computes `|x|`
-
-**params**
-* `x` {Interval}
-
-**returns** {Interval}
-
 #### `Interval.clone(x)`
 
 Creates a clone of the interval `x`
@@ -663,6 +680,15 @@ Checks if the interval `x` is less/equal than `y`
 
 ### Utilities
 
+#### `Interval.isInterval()`
+
+Checks if the given parameter `x` is an interval
+
+**params**
+* `x` {*} 
+
+**returns** {boolean} `true` if x is an interval, `false` otherwise
+
 #### `Interval.isEmpty(x)`
 
 Checks if the interval `x` represents an empty interval
@@ -671,6 +697,33 @@ Checks if the interval `x` represents an empty interval
 * `x` {Interval}
 
 **returns** {boolean} `true` if it's empty, `false` otherwise
+
+#### `Interval.isPositive(x)`
+
+Checks if the interval `x` represents a positive interval (0, \infty)
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if x.lo > 0, `false` otherwise
+
+#### `Interval.isNotNegative(x)`
+
+Checks if the interval `x` represents a non negative interval [0, \infty)
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if x.lo >= 0, `false` otherwise
+
+#### `Interval.isZero(x)`
+
+Checks if the interval `x` represents the interval [0,0]
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if x.lo == 0 and x.hi == 0, `false` otherwise
 
 #### `Interval.isWhole(x)`
 
@@ -730,14 +783,75 @@ Checks if the interval `x` represents a single value (unbounded)
 
 **returns** {boolean} `true` if it `x` is a singleton, `false` otherwise
 
-#### `Interval.width(x)`
+### Misc
 
-Computes the distance between the lower and upper bounds of `x`
+#### `Interval.wid(x)`
+
+Computes the distance between the lower and upper bounds of `x`, the width of the interval
 
 **params**
 * `x` {Interval}
 
 **returns** {number} `x.hi - x.lo` rounded to the next floating point number
+
+#### `Interval.rad(x)`
+
+Computes the radius of an interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `0.5*wid(x)` 
+
+#### `Interval.mid(x)`
+
+Computes the point which lies in the middle of the interval `x`
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `0.5*(x.lo + x.hi)` rounded to the next floating point number
+
+#### `Interval.mag(x)`
+
+Computes the magnitude of an interval `x` (the biggest distance to the origin attained by elements of x)
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `max{abs(x.lo),abs(x.hi)}`
+
+#### `Interval.mig(x)`
+
+Computes the mignitude of an interval `x` (the smallest distance to the origin attained by elements of x)
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `min{abs(x.lo),abs(x.hi)}` , if 0 $\notin$ x
+
+**returns** {number} 0 , if 0 $\in$ x
+
+#### `Interval.dev(x)`
+
+Computes the deviance from point zero
+
+**params**
+* `x` {Interval}
+
+**returns** {number} `x.lo` , if |x.lo| $\geq$ |x.hi|
+
+**returns** {number} `x.hi`, else
+
+#### `Interval.abs(x)`
+
+Computes the absolute value of the interval `x`. Note that in contrast to the previous measures of size and distance,
+this returns an interval.
+
+**params**
+* `x` {Interval}
+
+**returns** {Interval} `[mig(x), mag(x)]`
 
 ### Constants
 
@@ -797,9 +911,16 @@ Interval.rmath.enable();
 
 ```sh
 npm start
+
 ```
 
+## Thanks
+
+I'd like to thank Mauricio Poppe for this wonderful library and documentation he's created which are great to build upon and also learn how to craft beautiful pieces of understandable code.
+
 2015 © Mauricio Poppe
+
+2016 © MiLia
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
