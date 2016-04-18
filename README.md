@@ -125,6 +125,7 @@ the modifications are based on some guidelines from the following papers/present
 7. [Validated Numerics: A Short Introduction to Rigorous Computations, W. Tucker, Princeton University Press (2010)](http://press.princeton.edu/titles/9488.html)
 8. [С.П. Шарый Конечномерный интервальный анализ. – Новосибирск: XYZ, 2016](http://www.nsc.ru/interval/Library/InteBooks/SharyBook.pdf)
 
+The trigonometric functions implementation was heavily influenced by the code from [ValidatedNumerics.jl](https://github.com/mlliarm/ValidatedNumerics.jl) project.
 
 ### floating point operations
 
@@ -916,7 +917,7 @@ npm start
 
 ## Thanks
 
-We'd like to thank Mauricio Poppe for this wonderful library and documentation he's created which are great to build upon and also learn how to craft beautiful pieces of understandable code.
+I'd like to thank Mauricio Poppe for this wonderful library and documentation he's created which are great to build upon and also learn how to craft beautiful pieces of understandable code.
 
 2015 © Mauricio Poppe
 
