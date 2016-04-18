@@ -14,7 +14,7 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Description](#description)
-  - [floating point operations](#floating-point-operations)
+  - [Floating point operations](#floating-point-operations)
   - [Interval arithmetic](#interval-arithmetic)
   - [Notable modifications](#notable-modifications)
 - [Interval arithmetic evaluator](#interval-arithmetic-evaluator)
@@ -127,7 +127,7 @@ the modifications are based on some guidelines from the following papers/present
 
 The trigonometric functions implementation was heavily influenced by the code from [ValidatedNumerics.jl](https://github.com/mlliarm/ValidatedNumerics.jl) project.
 
-### floating point operations
+### Floating point operations
 
 Floating point is a way to represent a real number in an approximate way (due to the finite
 space existing on a computer), most calculations with real numbers will produce quantities that
