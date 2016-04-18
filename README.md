@@ -76,6 +76,8 @@
   - [Utilities](#utilities)
     - [`Interval.isInterval(x)`](#intervalisintervalx)
     - [`Interval.isEmpty(x)`](#intervalisemptyx)
+	- [`Interval.isPositive(x)`](#intervalispositivex)
+	- [`Interval.isNotNegative(x)`](#intervalisnotnegativex)
     - [`Interval.isZero(x)`](#intervaliszerox)
     - [`Interval.isWhole(x)`](#intervaliswholex)
     - [`Interval.zeroIn(x)`](#intervalzeroinx)
@@ -694,6 +696,33 @@ Checks if the interval `x` represents an empty interval
 * `x` {Interval}
 
 **returns** {boolean} `true` if it's empty, `false` otherwise
+
+#### `Interval.isPositive(x)`
+
+Checks if the interval `x` represents a positive interval (0, \infty)
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if x.lo > 0, `false` otherwise
+
+#### `Interval.isNotNegative(x)`
+
+Checks if the interval `x` represents a non negative interval [0, \infty)
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if x.lo >= 0, `false` otherwise
+
+#### `Interval.isZero(x)`
+
+Checks if the interval `x` represents the interval [0,0]
+
+**params**
+* `x` {Interval}
+
+**returns** {boolean} `true` if x.lo == 0 and x.hi == 0, `false` otherwise
 
 #### `Interval.isWhole(x)`
 
