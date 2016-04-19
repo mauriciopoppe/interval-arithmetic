@@ -48,11 +48,12 @@
     "toc": "./node_modules/.bin/doctoc .",
     "docs": "jsdoc --configure jsdoc.json",
     "docs:watch": "nodemon --watch lib --watch index.js --exec 'npm run docs'",
-    "deploy": "gh-pages-deploy"
+    "deploy": "gh-pages-deploy",
+    "redirect": "node redirect"
   },
   "gh-pages-deploy": {
-    "staticpath": "docs",
-    "prep": ["lint", "test", "docs"]
+    "staticpath": "docs/interval-arithmetic",
+    "prep": ["lint", "test", "docs", "redirect"]
   },
   "testling": {
     "harness": "mocha",
