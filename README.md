@@ -109,7 +109,7 @@ $ npm install --save interval-arithmetic
 
 ## API
 
-See the [homepage](maurizzzio.github.io/interval-arithmetic/)
+See the [homepage](http://maurizzzio.github.io/interval-arithmetic/)
 
 ## Development
 
