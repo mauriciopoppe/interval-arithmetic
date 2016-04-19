@@ -28,8 +28,11 @@
   ],
   "devDependencies": {
     "coveralls": "2.11.4",
+    "docdash": "^0.1.0",
     "doctoc": "0.13.0",
+    "gh-pages-deploy": "^0.4.2",
     "istanbul": "0.3.21",
+    "jsdoc": "3.4.0",
     "mocha": "2.3.3",
     "mocha-lcov-reporter": "0.0.2",
     "nodemon": "1.7.1",
@@ -42,7 +45,14 @@
     "test": "mocha -R spec test/index.js",
     "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
     "start": "npm run test:watch",
-    "toc": "./node_modules/.bin/doctoc ."
+    "toc": "./node_modules/.bin/doctoc .",
+    "docs": "jsdoc --configure jsdoc.json",
+    "docs:watch": "nodemon --watch lib --watch index.js --exec 'npm run docs'",
+    "deploy": "gh-pages-deploy"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "docs",
+    "prep": ["lint", "test", "docs"]
   },
   "testling": {
     "harness": "mocha",

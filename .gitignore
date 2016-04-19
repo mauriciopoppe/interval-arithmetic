@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io
 
+/docs
+
 ### Node ###
 # Dependency directory
 node_modules
@@ -7,7 +9,6 @@ npm-debug.log
 
 # Coverage directory used by tools like istanbul
 coverage
-
 
 ### WebStorm ###
 ## Directory-based project format:

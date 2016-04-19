@@ -185,6 +185,10 @@ describe('misc', function () {
   it('should compute the max value of two intervals', function () {
     n = misc.max(new Interval(-1, 1), new Interval(5, 7))
     Interval.almostEqual(n, [5, 7])
+    n = misc.max(Interval.EMPTY, Interval(-1, 1))
+    Interval.almostEqual(n, [-1, 1])
+    n = misc.max(Interval(-1, 1), Interval.EMPTY)
+    Interval.almostEqual(n, [-1, 1])
   })
 
   it('should compute the min value of two intervals', function () {
@@ -195,6 +199,8 @@ describe('misc', function () {
   it('should clone an interval', function () {
     var x = new Interval(0, 1)
     Interval.equal(Interval.clone(x), x)
+    x = Interval.clone(Interval.EMPTY)
+    assert(Interval.isEmpty(x))
   })
 
   it('should compute complex operations', function () {

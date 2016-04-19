@@ -10,7 +10,22 @@ var extend = require('xtend/mutable')
 
 require('./lib/polyfill')
 module.exports = require('./lib/interval')
+
+/**
+ * Use {@link Interval.round} instead
+ * @memberof Interval
+ * @name Interval.rmath
+ * @deprecated as of 0.6.4
+ */
 module.exports.rmath = require('./lib/round-math')
+
+/**
+ * Link to {@link module:interval-arithmetic/round-math}
+ *
+ * @memberof Interval
+ * @name Interval.round
+ */
+module.exports.round = require('./lib/round-math')
 
 extend(
   module.exports,

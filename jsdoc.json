@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": ["lib", "index.js", "package.json", "README.md"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "opts": {
+    "destination": "./docs/",
+    "recurse": true,
+    "template": "./node_modules/docdash"
+  }
+}

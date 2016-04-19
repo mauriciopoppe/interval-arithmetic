@@ -10,7 +10,7 @@ var it = mocha.it
 var assert = require('assert')
 
 var Interval = require('../')
-var rmath = require('../lib/round-math')
+var rmath = Interval.round
 
 var EPS = 1e-7
 var n

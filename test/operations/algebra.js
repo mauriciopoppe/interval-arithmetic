@@ -22,6 +22,11 @@ describe('algebra', function () {
     )
     Interval.almostEqual(n, [1.3, 1.3])
     n = algebra.fmod(
+      new Interval(5, 7),
+      new Interval(2, 3)
+    )
+    Interval.almostEqual(n, [2, 5])
+    n = algebra.fmod(
       new Interval(18.5, 18.5),
       new Interval(4.2, 4.2)
     )
@@ -147,4 +152,3 @@ describe('algebra', function () {
     assert(Interval.isEmpty(n))
   })
 })
-

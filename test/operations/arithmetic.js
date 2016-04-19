@@ -372,8 +372,8 @@ describe('arithmetic', function () {
           new Interval(-2, 0),
           new Interval(0, 1)
         )
-        assert(x.lo === -Infinity)   // -2 / 0   O:
-        assert(x.hi === Infinity)    // -2 / -0  O:
+        assert(x.lo === -Infinity) // -2 / 0   O:
+        assert(x.hi === Infinity) // -2 / -0  O:
 
         // [negative, zero] / [negative, zero]
         x = arithmetic.div(
@@ -449,8 +449,8 @@ describe('arithmetic', function () {
         new Interval(1, Infinity),
         new Interval(3, Infinity)
       )
-      assertEps(x.lo, 0)           // 1 / infinity
-      assert(x.hi === Infinity)    // infinity / 3
+      assertEps(x.lo, 0) // 1 / infinity
+      assert(x.hi === Infinity) // infinity / 3
 
       x = arithmetic.div(
         new Interval(-2, -1),
@@ -470,9 +470,9 @@ describe('arithmetic', function () {
         new Interval(-Infinity, -1),
         new Interval(-Infinity, -3)
       )
-      assertEps(x.lo, 0)           // 1 / infinity
+      assertEps(x.lo, 0) // 1 / infinity
       assert(x.lo === -Number.MIN_VALUE)
-      assert(x.hi === Infinity)    // infinity / 3
+      assert(x.hi === Infinity) // infinity / 3
 
       x = arithmetic.div(
         new Interval(-2, -1),
@@ -537,6 +537,8 @@ describe('arithmetic', function () {
     Interval.almostEqual(n, [-2, 1])
     n = arithmetic.negative(new Interval(-3, -2))
     Interval.almostEqual(n, [2, 3])
+    n = arithmetic.negative(Interval.WHOLE)
+    assert(Interval.isWhole(n))
   })
 
   it('should compute the identity of an interval', function () {

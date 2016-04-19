@@ -20,7 +20,7 @@ describe('trigonometric', function () {
     n = trigonometric.cos(new Interval(0, Math.PI / 2))
     Interval.almostEqual(n, [0, 1])
     n = trigonometric.cos(new Interval(0, 3 * Math.PI / 2))
-    Interval.almostEqual(n, [-1, 1])  // -1 because it includes Math.PI
+    Interval.almostEqual(n, [-1, 1]) // -1 because it includes Math.PI
     n = trigonometric.cos(new Interval(Math.PI, 3 * Math.PI / 2))
     Interval.almostEqual(n, [-1, 0])
     n = trigonometric.cos(new Interval(-Math.PI, -Math.PI))
@@ -49,7 +49,7 @@ describe('trigonometric', function () {
     n = trigonometric.sin(new Interval(0, Math.PI / 2))
     Interval.almostEqual(n, [0, 1])
     n = trigonometric.sin(new Interval(0, 3 * Math.PI / 2))
-    Interval.almostEqual(n, [-1, 1])  // -1 because it includes Math.PI
+    Interval.almostEqual(n, [-1, 1]) // -1 because it includes Math.PI
     n = trigonometric.sin(new Interval(Math.PI, 3 * Math.PI / 2))
     Interval.almostEqual(n, [-1, 0])
     n = trigonometric.sin(new Interval(-Math.PI, -Math.PI))
@@ -154,5 +154,4 @@ describe('trigonometric', function () {
     n = trigonometric.tanh(new Interval(-Infinity, Infinity))
     Interval.almostEqual(n, [-1, 1])
   })
-
 })
