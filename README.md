@@ -19,6 +19,7 @@
   - [Notable modifications](#notable-modifications)
 - [Interval arithmetic evaluator](#interval-arithmetic-evaluator)
 - [Installation](#installation)
+- [API](#api)
 - [Development](#development)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -105,6 +106,10 @@ compile('sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2').eval({ x: [0, 1] })
 ```sh
 $ npm install --save interval-arithmetic
 ```
+
+## API
+
+See the [homepage](maurizzzio.github.io/interval-arithmetic/)
 
 ## Development
 
