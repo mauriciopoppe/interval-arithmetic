@@ -117,6 +117,14 @@ See the [homepage](http://maurizzzio.github.io/interval-arithmetic/)
 npm start
 ```
 
+Deploy steps
+
+```sh
+// after the working directory is clean
+(optional) npm version (major|minor|patch)
+npm run deploy
+```
+
 2015 © Mauricio Poppe
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
