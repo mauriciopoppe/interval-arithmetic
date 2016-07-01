@@ -58,6 +58,15 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [1, 1])
     n = trigonometric.sin(new Interval(-Math.PI / 2, -Math.PI / 2))
     Interval.almostEqual(n, [-1, -1])
+
+    // negative tests
+    n = trigonometric.sin(new Interval(-Math.PI, 0))
+    Interval.almostEqual(n, [-1, 0])
+    n = trigonometric.sin(new Interval(-2 * Math.PI, -3 * Math.PI / 2))
+    Interval.almostEqual(n, [0, 1])
+    var p = 2 * Math.PI;
+    n = trigonometric.sin(new Interval(-5*p -2 * Math.PI, -5*p -3 * Math.PI / 2))
+    Interval.almostEqual(n, [0, 1])
   })
 
   it('should compute the tangent function', function () {

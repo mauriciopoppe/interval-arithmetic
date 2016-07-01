@@ -123,6 +123,8 @@ Deploy steps
 // after the working directory is clean
 (optional) npm version (major|minor|patch)
 npm run deploy
+// if everything went well
+npm publish
 ```
 
 2015 © Mauricio Poppe
