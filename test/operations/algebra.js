@@ -135,7 +135,7 @@ describe('algebra', function () {
     Interval.almostEqual(n, [0, 3])
     // [negative, positive] ^ (1 / odd power)
     n = algebra.nthRoot(new Interval(-27, 8), 3)
-    Interval.almostEqual(n, [0, 3])
+    Interval.almostEqual(n, [-3, 2])
     // [positive, positive] ^ (1 / even power)
     n = algebra.nthRoot(new Interval(4, 9), 2)
     Interval.almostEqual(n, [2, 3])
