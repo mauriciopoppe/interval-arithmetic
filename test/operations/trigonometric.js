@@ -41,6 +41,14 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [-1, 0])
     n = trigonometric.cos(new Interval(Math.PI / 2, Math.PI))
     Interval.almostEqual(n, [-1, 0])
+
+    // PR 12 (cases involving Infinity)
+    n = trigonometric.cos(Interval(-Infinity, Infinity))
+    Interval.almostEqual(n, [-1, 1])
+    n = trigonometric.cos(Interval(-Infinity, -Infinity))
+    assert(Interval.isEmpty(n))
+    n = trigonometric.cos(Interval(Infinity, Infinity))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the sine function', function () {
@@ -67,6 +75,14 @@ describe('trigonometric', function () {
     var p = 2 * Math.PI
     n = trigonometric.sin(new Interval(-5 * p - 2 * Math.PI, -5 * p - 3 * Math.PI / 2))
     Interval.almostEqual(n, [0, 1])
+
+    // PR 12: Infinity cases
+    n = trigonometric.sin(Interval(-Infinity, Infinity))
+    Interval.almostEqual(n, [-1, 1])
+    n = trigonometric.sin(Interval(-Infinity, -Infinity))
+    assert(Interval.isEmpty(n))
+    n = trigonometric.sin(Interval(Infinity, Infinity))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the tangent function', function () {
@@ -104,6 +120,12 @@ describe('trigonometric', function () {
       trigonometric.tan(new Interval(-Math.PI, -Math.PI)),
       [0, 0]
     )
+
+    // PR 12: Infinity cases
+    n = trigonometric.tan(Interval(-Infinity, Infinity))
+    assert(Interval.isWhole(n))
+    n = trigonometric.tan(Interval(-Infinity, -Infinity))
+    assert(Interval.isEmpty(n))
   })
 
   it('should compute the asin function', function () {
