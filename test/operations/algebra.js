@@ -72,9 +72,7 @@ describe('algebra', function () {
     // ?^0
     n = algebra.pow(new Interval(-321, 123), 0)
     Interval.almostEqual(n, [1, 1])
-    // 2^-?
-    n = algebra.pow(new Interval(2, 2), -2)
-    Interval.almostEqual(n, [1 / 4, 1 / 4])
+
     // negative ^ even
     n = algebra.pow(new Interval(-2, -2), 2)
     Interval.almostEqual(n, [4, 4])
@@ -106,6 +104,46 @@ describe('algebra', function () {
     Interval.almostEqual(n, [4, 25])
     n = algebra.pow(new Interval(2, 5), new Interval(1, -1))
     assert(Interval.isEmpty(n))
+
+    // negative power
+    n = algebra.pow(new Interval(2, 2), -2)
+    Interval.almostEqual(n, [1 / 4, 1 / 4])
+    n = algebra.pow(new Interval(2, 3), -2)
+    Interval.almostEqual(n, [1 / 9, 1 / 4])
+    n = algebra.pow(new Interval(-3, -2), -2)
+    Interval.almostEqual(n, [1 / 9, 1 / 4])
+    n = algebra.pow(new Interval(2, 3), -3)
+    Interval.almostEqual(n, [1 / 27, 1 / 8])
+    n = algebra.pow(new Interval(-3, -2), -3)
+    Interval.almostEqual(n, [1 / -8, 1 / -27])
+    // negative power special cases
+    // [zero, positive]
+    n = algebra.pow(new Interval(0, 2), -2)
+    Interval.almostEqual(n, [1 / 4, Infinity])
+    n = algebra.pow(new Interval(0, 2), -3)
+    Interval.almostEqual(n, [1 / 8, Infinity])
+    // [negative, zero]
+    n = algebra.pow(new Interval(-2, 0), -2)
+    Interval.almostEqual(n, [1 / 4, Infinity]) // -2^2 = 4, -1^2 = 1
+    n = algebra.pow(new Interval(-2, 0), -3)
+    Interval.almostEqual(n, [-Infinity, -1 / 8])
+    // [negative, positive]
+    n = algebra.pow(new Interval(-2, 3), -2)
+    Interval.almostEqual(n, [0, Infinity]) // no negative values
+    n = algebra.pow(new Interval(-2, 3), -3)
+    Interval.almostEqual(n, [-Infinity, Infinity])
+
+    // issue/14
+    n = algebra.pow(new Interval(0, 1), -2)
+    assert(n.lo < 1)
+    assert(Math.abs(n.lo - 1) < 1e-7)
+    assert(n.hi === Infinity)
+    // issue/14
+    n = Interval().halfOpenLeft(0, 1)
+    n = algebra.pow(n, -2)
+    assert(n.lo < 1)
+    assert(Math.abs(n.lo - 1) < 1e-7)
+    assert(n.hi === Infinity)
   })
 
   it('should compute the square root of an interval', function () {
