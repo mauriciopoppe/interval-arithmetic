@@ -109,7 +109,7 @@ $ npm install --save interval-arithmetic
 
 ## API
 
-See the [homepage](http://maurizzzio.github.io/interval-arithmetic/)
+See the [homepage](http://mauriciopoppe.github.io/interval-arithmetic/)
 
 ## Development
 
@@ -131,9 +131,9 @@ npm publish
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
-[travis-image]: https://travis-ci.org/maurizzzio/interval-arithmetic.svg?branch=master
-[travis-url]: https://travis-ci.org/maurizzzio/interval-arithmetic
-[codecov-url]: https://codecov.io/github/maurizzzio/interval-arithmetic
-[codecov-image]: https://img.shields.io/codecov/c/github/maurizzzio/interval-arithmetic.svg?style=flat
-[david-image]: https://david-dm.org/maurizzzio/interval-arithmetic.svg
-[david-url]: https://david-dm.org/maurizzzio/interval-arithmetic
+[travis-image]: https://travis-ci.org/mauriciopoppe/interval-arithmetic.svg?branch=master
+[travis-url]: https://travis-ci.org/mauriciopoppe/interval-arithmetic
+[codecov-url]: https://codecov.io/github/mauriciopoppe/interval-arithmetic
+[codecov-image]: https://img.shields.io/codecov/c/github/mauriciopoppe/interval-arithmetic.svg?style=flat
+[david-image]: https://david-dm.org/mauriciopoppe/interval-arithmetic.svg
+[david-url]: https://david-dm.org/mauriciopoppe/interval-arithmetic
