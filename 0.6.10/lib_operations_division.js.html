@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/operations/division.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Interval.html">Interval</a><ul class='methods'><li data-type='method'><a href="Interval.html#abs">abs</a></li><li data-type='method'><a href="Interval.html#acos">acos</a></li><li data-type='method'><a href="Interval.html#add">add</a></li><li data-type='method'><a href="Interval.html#asin">asin</a></li><li data-type='method'><a href="Interval.html#assign">assign</a></li><li data-type='method'><a href="Interval.html#atan">atan</a></li><li data-type='method'><a href="Interval.html#bounded">bounded</a></li><li data-type='method'><a href="Interval.html#boundedSingleton">boundedSingleton</a></li><li data-type='method'><a href="Interval.html#clone">clone</a></li><li data-type='method'><a href="Interval.html#cos">cos</a></li><li data-type='method'><a href="Interval.html#cosh">cosh</a></li><li data-type='method'><a href="Interval.html#difference">difference</a></li><li data-type='method'><a href="Interval.html#div">div</a></li><li data-type='method'><a href="Interval.html#divide">divide</a></li><li data-type='method'><a href="Interval.html#equal">equal</a></li><li data-type='method'><a href="Interval.html#exp">exp</a></li><li data-type='method'><a href="Interval.html#fmod">fmod</a></li><li data-type='method'><a href="Interval.html#geq">geq</a></li><li data-type='method'><a href="Interval.html#greaterEqualThan">greaterEqualThan</a></li><li data-type='method'><a href="Interval.html#greaterThan">greaterThan</a></li><li data-type='method'><a href="Interval.html#gt">gt</a></li><li data-type='method'><a href="Interval.html#halfOpenLeft">halfOpenLeft</a></li><li data-type='method'><a href="Interval.html#halfOpenRight">halfOpenRight</a></li><li data-type='method'><a href="Interval.html#hasInterval">hasInterval</a></li><li data-type='method'><a href="Interval.html#hasValue">hasValue</a></li><li data-type='method'><a href="Interval.html#hull">hull</a></li><li data-type='method'><a href="Interval.html#intersection">intersection</a></li><li data-type='method'><a href="Interval.html#intervalsOverlap">intervalsOverlap</a></li><li data-type='method'><a href="Interval.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="Interval.html#isInterval">isInterval</a></li><li data-type='method'><a href="Interval.html#isSingleton">isSingleton</a></li><li data-type='method'><a href="Interval.html#isWhole">isWhole</a></li><li data-type='method'><a href="Interval.html#leq">leq</a></li><li data-type='method'><a href="Interval.html#lessEqualThan">lessEqualThan</a></li><li data-type='method'><a href="Interval.html#lessThan">lessThan</a></li><li data-type='method'><a href="Interval.html#ln">ln</a></li><li data-type='method'><a href="Interval.html#log">log</a></li><li data-type='method'><a href="Interval.html#log2">log2</a></li><li data-type='method'><a href="Interval.html#log10">log10</a></li><li data-type='method'><a href="Interval.html#lt">lt</a></li><li data-type='method'><a href="Interval.html#max">max</a></li><li data-type='method'><a href="Interval.html#min">min</a></li><li data-type='method'><a href="Interval.html#mul">mul</a></li><li data-type='method'><a href="Interval.html#multiplicativeInverse">multiplicativeInverse</a></li><li data-type='method'><a href="Interval.html#multiply">multiply</a></li><li data-type='method'><a href="Interval.html#negative">negative</a></li><li data-type='method'><a href="Interval.html#notEqual">notEqual</a></li><li data-type='method'><a href="Interval.html#nthRoot">nthRoot</a></li><li data-type='method'><a href="Interval.html#open">open</a></li><li data-type='method'><a href="Interval.html#positive">positive</a></li><li data-type='method'><a href="Interval.html#pow">pow</a></li><li data-type='method'><a href="Interval.html#set">set</a></li><li data-type='method'><a href="Interval.html#setEmpty">setEmpty</a></li><li data-type='method'><a href="Interval.html#setWhole">setWhole</a></li><li data-type='method'><a href="Interval.html#sin">sin</a></li><li data-type='method'><a href="Interval.html#singleton">singleton</a></li><li data-type='method'><a href="Interval.html#sinh">sinh</a></li><li data-type='method'><a href="Interval.html#sqrt">sqrt</a></li><li data-type='method'><a href="Interval.html#sub">sub</a></li><li data-type='method'><a href="Interval.html#subtract">subtract</a></li><li data-type='method'><a href="Interval.html#tan">tan</a></li><li data-type='method'><a href="Interval.html#tanh">tanh</a></li><li data-type='method'><a href="Interval.html#toArray">toArray</a></li><li data-type='method'><a href="Interval.html#union">union</a></li><li data-type='method'><a href="Interval.html#wid">wid</a></li><li data-type='method'><a href="Interval.html#width">width</a></li><li data-type='method'><a href="Interval.html#zeroIn">zeroIn</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-interval-arithmetic_round-math.html">interval-arithmetic/round-math</a><ul class='methods'><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.disable">disable</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.enable">enable</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.safeNext">safeNext</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.safePrev">safePrev</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="algebra.html">algebra</a><ul class='methods'><li data-type='method'><a href="algebra.html#.fmod">fmod</a></li><li data-type='method'><a href="algebra.html#.multiplicativeInverse">multiplicativeInverse</a></li><li data-type='method'><a href="algebra.html#.nthRoot">nthRoot</a></li><li data-type='method'><a href="algebra.html#.pow">pow</a></li><li data-type='method'><a href="algebra.html#.sqrt">sqrt</a></li></ul></li><li><a href="arithmetic.html">arithmetic</a><ul class='methods'><li data-type='method'><a href="arithmetic.html#.add">add</a></li><li data-type='method'><a href="arithmetic.html#.div">div</a></li><li data-type='method'><a href="arithmetic.html#.divide">divide</a></li><li data-type='method'><a href="arithmetic.html#.mul">mul</a></li><li data-type='method'><a href="arithmetic.html#.multiply">multiply</a></li><li data-type='method'><a href="arithmetic.html#.negative">negative</a></li><li data-type='method'><a href="arithmetic.html#.positive">positive</a></li><li data-type='method'><a href="arithmetic.html#.sub">sub</a></li><li data-type='method'><a href="arithmetic.html#.subtract">subtract</a></li></ul></li><li><a href="constants.html">constants</a></li><li><a href="misc.html">misc</a><ul class='methods'><li data-type='method'><a href="misc.html#.abs">abs</a></li><li data-type='method'><a href="misc.html#.clone">clone</a></li><li data-type='method'><a href="misc.html#.difference">difference</a></li><li data-type='method'><a href="misc.html#.exp">exp</a></li><li data-type='method'><a href="misc.html#.hull">hull</a></li><li data-type='method'><a href="misc.html#.intersection">intersection</a></li><li data-type='method'><a href="misc.html#.ln">ln</a></li><li data-type='method'><a href="misc.html#.log">log</a></li><li data-type='method'><a href="misc.html#.log2">log2</a></li><li data-type='method'><a href="misc.html#.log10">log10</a></li><li data-type='method'><a href="misc.html#.max">max</a></li><li data-type='method'><a href="misc.html#.min">min</a></li><li data-type='method'><a href="misc.html#.union">union</a></li><li data-type='method'><a href="misc.html#.wid">wid</a></li><li data-type='method'><a href="misc.html#.width">width</a></li></ul></li><li><a href="relational.html">relational</a><ul class='methods'><li data-type='method'><a href="relational.html#.equal">equal</a></li><li data-type='method'><a href="relational.html#.geq">geq</a></li><li data-type='method'><a href="relational.html#.greaterEqualThan">greaterEqualThan</a></li><li data-type='method'><a href="relational.html#.greaterThan">greaterThan</a></li><li data-type='method'><a href="relational.html#.gt">gt</a></li><li data-type='method'><a href="relational.html#.leq">leq</a></li><li data-type='method'><a href="relational.html#.lessEqualThan">lessEqualThan</a></li><li data-type='method'><a href="relational.html#.lessThan">lessThan</a></li><li data-type='method'><a href="relational.html#.lt">lt</a></li><li data-type='method'><a href="relational.html#.notEqual">notEqual</a></li></ul></li><li><a href="trigonometric.html">trigonometric</a><ul class='methods'><li data-type='method'><a href="trigonometric.html#.acos">acos</a></li><li data-type='method'><a href="trigonometric.html#.asin">asin</a></li><li data-type='method'><a href="trigonometric.html#.atan">atan</a></li><li data-type='method'><a href="trigonometric.html#.cos">cos</a></li><li data-type='method'><a href="trigonometric.html#.cosh">cosh</a></li><li data-type='method'><a href="trigonometric.html#.sin">sin</a></li><li data-type='method'><a href="trigonometric.html#.sinh">sinh</a></li><li data-type='method'><a href="trigonometric.html#.tan">tan</a></li><li data-type='method'><a href="trigonometric.html#.tanh">tanh</a></li></ul></li><li><a href="utils.html">utils</a><ul class='methods'><li data-type='method'><a href="utils.html#.hasInterval">hasInterval</a></li><li data-type='method'><a href="utils.html#.hasValue">hasValue</a></li><li data-type='method'><a href="utils.html#.intervalsOverlap">intervalsOverlap</a></li><li data-type='method'><a href="utils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="utils.html#.isInterval">isInterval</a></li><li data-type='method'><a href="utils.html#.isSingleton">isSingleton</a></li><li data-type='method'><a href="utils.html#.isWhole">isWhole</a></li><li data-type='method'><a href="utils.html#.zeroIn">zeroIn</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/operations/division.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Created by mauricio on 5/10/15.
+ */
+'use strict'
+var Interval = require('../interval')
+var rmath = require('../round-math')
+var utils = require('./utils')
+var constants = require('../constants')
+
+var division = {
+  /**
+   * Division between intervals when `y` doesn't contain zero
+   * @param {Interval} x
+   * @param {Interval} y
+   * @returns {Interval}
+   */
+  nonZero: function (x, y) {
+    var xl = x.lo
+    var xh = x.hi
+    var yl = y.lo
+    var yh = y.hi
+    var out = Interval()
+    if (xh &lt; 0) {
+      if (yh &lt; 0) {
+        out.lo = rmath.divLo(xh, yl)
+        out.hi = rmath.divHi(xl, yh)
+      } else {
+        out.lo = rmath.divLo(xl, yl)
+        out.hi = rmath.divHi(xh, yh)
+      }
+    } else if (xl &lt; 0) {
+      if (yh &lt; 0) {
+        out.lo = rmath.divLo(xh, yh)
+        out.hi = rmath.divHi(xl, yh)
+      } else {
+        out.lo = rmath.divLo(xl, yl)
+        out.hi = rmath.divHi(xh, yl)
+      }
+    } else {
+      if (yh &lt; 0) {
+        out.lo = rmath.divLo(xh, yh)
+        out.hi = rmath.divHi(xl, yl)
+      } else {
+        out.lo = rmath.divLo(xl, yh)
+        out.hi = rmath.divHi(xh, yl)
+      }
+    }
+    return out
+  },
+
+  /**
+   * Division between an interval and a positive constant
+   * @param {Interval} x
+   * @param {number} v
+   * @returns {Interval}
+   */
+  positive: function (x, v) {
+    if (x.lo === 0 &amp;&amp; x.hi === 0) {
+      return x
+    }
+
+    if (utils.zeroIn(x)) {
+      // mixed considering zero in both ends
+      return constants.WHOLE
+    }
+
+    if (x.hi &lt; 0) {
+      // negative / v
+      return Interval(
+        Number.NEGATIVE_INFINITY,
+        rmath.divHi(x.hi, v)
+      )
+    } else {
+      // positive / v
+      return Interval(
+        rmath.divLo(x.lo, v),
+        Number.POSITIVE_INFINITY
+      )
+    }
+  },
+
+  /**
+   * Division between an interval and a negative constant
+   * @param {Interval} x
+   * @param {number} v
+   * @returns {Interval}
+   */
+  negative: function (x, v) {
+    if (x.lo === 0 &amp;&amp; x.hi === 0) {
+      return x
+    }
+
+    if (utils.zeroIn(x)) {
+      // mixed considering zero in both ends
+      return constants.WHOLE
+    }
+
+    if (x.hi &lt; 0) {
+      // negative / v
+      return Interval(
+        rmath.divLo(x.hi, v),
+        Number.POSITIVE_INFINITY
+      )
+    } else {
+      // positive / v
+      return Interval(
+        Number.NEGATIVE_INFINITY,
+        rmath.divHi(x.lo, v)
+      )
+    }
+  },
+
+  /**
+   * Division between an interval and zero
+   * @param {Interval} x
+   * @returns {Interval}
+   */
+  zero: function (x) {
+    if (x.lo === 0 &amp;&amp; x.hi === 0) {
+      return x
+    }
+    return constants.WHOLE
+  }
+}
+
+module.exports = division
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Feb 15 2018 21:09:57 GMT-0800 (PST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

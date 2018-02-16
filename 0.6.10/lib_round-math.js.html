@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/round-math.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Interval.html">Interval</a><ul class='methods'><li data-type='method'><a href="Interval.html#abs">abs</a></li><li data-type='method'><a href="Interval.html#acos">acos</a></li><li data-type='method'><a href="Interval.html#add">add</a></li><li data-type='method'><a href="Interval.html#asin">asin</a></li><li data-type='method'><a href="Interval.html#assign">assign</a></li><li data-type='method'><a href="Interval.html#atan">atan</a></li><li data-type='method'><a href="Interval.html#bounded">bounded</a></li><li data-type='method'><a href="Interval.html#boundedSingleton">boundedSingleton</a></li><li data-type='method'><a href="Interval.html#clone">clone</a></li><li data-type='method'><a href="Interval.html#cos">cos</a></li><li data-type='method'><a href="Interval.html#cosh">cosh</a></li><li data-type='method'><a href="Interval.html#difference">difference</a></li><li data-type='method'><a href="Interval.html#div">div</a></li><li data-type='method'><a href="Interval.html#divide">divide</a></li><li data-type='method'><a href="Interval.html#equal">equal</a></li><li data-type='method'><a href="Interval.html#exp">exp</a></li><li data-type='method'><a href="Interval.html#fmod">fmod</a></li><li data-type='method'><a href="Interval.html#geq">geq</a></li><li data-type='method'><a href="Interval.html#greaterEqualThan">greaterEqualThan</a></li><li data-type='method'><a href="Interval.html#greaterThan">greaterThan</a></li><li data-type='method'><a href="Interval.html#gt">gt</a></li><li data-type='method'><a href="Interval.html#halfOpenLeft">halfOpenLeft</a></li><li data-type='method'><a href="Interval.html#halfOpenRight">halfOpenRight</a></li><li data-type='method'><a href="Interval.html#hasInterval">hasInterval</a></li><li data-type='method'><a href="Interval.html#hasValue">hasValue</a></li><li data-type='method'><a href="Interval.html#hull">hull</a></li><li data-type='method'><a href="Interval.html#intersection">intersection</a></li><li data-type='method'><a href="Interval.html#intervalsOverlap">intervalsOverlap</a></li><li data-type='method'><a href="Interval.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="Interval.html#isInterval">isInterval</a></li><li data-type='method'><a href="Interval.html#isSingleton">isSingleton</a></li><li data-type='method'><a href="Interval.html#isWhole">isWhole</a></li><li data-type='method'><a href="Interval.html#leq">leq</a></li><li data-type='method'><a href="Interval.html#lessEqualThan">lessEqualThan</a></li><li data-type='method'><a href="Interval.html#lessThan">lessThan</a></li><li data-type='method'><a href="Interval.html#ln">ln</a></li><li data-type='method'><a href="Interval.html#log">log</a></li><li data-type='method'><a href="Interval.html#log2">log2</a></li><li data-type='method'><a href="Interval.html#log10">log10</a></li><li data-type='method'><a href="Interval.html#lt">lt</a></li><li data-type='method'><a href="Interval.html#max">max</a></li><li data-type='method'><a href="Interval.html#min">min</a></li><li data-type='method'><a href="Interval.html#mul">mul</a></li><li data-type='method'><a href="Interval.html#multiplicativeInverse">multiplicativeInverse</a></li><li data-type='method'><a href="Interval.html#multiply">multiply</a></li><li data-type='method'><a href="Interval.html#negative">negative</a></li><li data-type='method'><a href="Interval.html#notEqual">notEqual</a></li><li data-type='method'><a href="Interval.html#nthRoot">nthRoot</a></li><li data-type='method'><a href="Interval.html#open">open</a></li><li data-type='method'><a href="Interval.html#positive">positive</a></li><li data-type='method'><a href="Interval.html#pow">pow</a></li><li data-type='method'><a href="Interval.html#set">set</a></li><li data-type='method'><a href="Interval.html#setEmpty">setEmpty</a></li><li data-type='method'><a href="Interval.html#setWhole">setWhole</a></li><li data-type='method'><a href="Interval.html#sin">sin</a></li><li data-type='method'><a href="Interval.html#singleton">singleton</a></li><li data-type='method'><a href="Interval.html#sinh">sinh</a></li><li data-type='method'><a href="Interval.html#sqrt">sqrt</a></li><li data-type='method'><a href="Interval.html#sub">sub</a></li><li data-type='method'><a href="Interval.html#subtract">subtract</a></li><li data-type='method'><a href="Interval.html#tan">tan</a></li><li data-type='method'><a href="Interval.html#tanh">tanh</a></li><li data-type='method'><a href="Interval.html#toArray">toArray</a></li><li data-type='method'><a href="Interval.html#union">union</a></li><li data-type='method'><a href="Interval.html#wid">wid</a></li><li data-type='method'><a href="Interval.html#width">width</a></li><li data-type='method'><a href="Interval.html#zeroIn">zeroIn</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-interval-arithmetic_round-math.html">interval-arithmetic/round-math</a><ul class='methods'><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.disable">disable</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.enable">enable</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.safeNext">safeNext</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.safePrev">safePrev</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="algebra.html">algebra</a><ul class='methods'><li data-type='method'><a href="algebra.html#.fmod">fmod</a></li><li data-type='method'><a href="algebra.html#.multiplicativeInverse">multiplicativeInverse</a></li><li data-type='method'><a href="algebra.html#.nthRoot">nthRoot</a></li><li data-type='method'><a href="algebra.html#.pow">pow</a></li><li data-type='method'><a href="algebra.html#.sqrt">sqrt</a></li></ul></li><li><a href="arithmetic.html">arithmetic</a><ul class='methods'><li data-type='method'><a href="arithmetic.html#.add">add</a></li><li data-type='method'><a href="arithmetic.html#.div">div</a></li><li data-type='method'><a href="arithmetic.html#.divide">divide</a></li><li data-type='method'><a href="arithmetic.html#.mul">mul</a></li><li data-type='method'><a href="arithmetic.html#.multiply">multiply</a></li><li data-type='method'><a href="arithmetic.html#.negative">negative</a></li><li data-type='method'><a href="arithmetic.html#.positive">positive</a></li><li data-type='method'><a href="arithmetic.html#.sub">sub</a></li><li data-type='method'><a href="arithmetic.html#.subtract">subtract</a></li></ul></li><li><a href="constants.html">constants</a></li><li><a href="misc.html">misc</a><ul class='methods'><li data-type='method'><a href="misc.html#.abs">abs</a></li><li data-type='method'><a href="misc.html#.clone">clone</a></li><li data-type='method'><a href="misc.html#.difference">difference</a></li><li data-type='method'><a href="misc.html#.exp">exp</a></li><li data-type='method'><a href="misc.html#.hull">hull</a></li><li data-type='method'><a href="misc.html#.intersection">intersection</a></li><li data-type='method'><a href="misc.html#.ln">ln</a></li><li data-type='method'><a href="misc.html#.log">log</a></li><li data-type='method'><a href="misc.html#.log2">log2</a></li><li data-type='method'><a href="misc.html#.log10">log10</a></li><li data-type='method'><a href="misc.html#.max">max</a></li><li data-type='method'><a href="misc.html#.min">min</a></li><li data-type='method'><a href="misc.html#.union">union</a></li><li data-type='method'><a href="misc.html#.wid">wid</a></li><li data-type='method'><a href="misc.html#.width">width</a></li></ul></li><li><a href="relational.html">relational</a><ul class='methods'><li data-type='method'><a href="relational.html#.equal">equal</a></li><li data-type='method'><a href="relational.html#.geq">geq</a></li><li data-type='method'><a href="relational.html#.greaterEqualThan">greaterEqualThan</a></li><li data-type='method'><a href="relational.html#.greaterThan">greaterThan</a></li><li data-type='method'><a href="relational.html#.gt">gt</a></li><li data-type='method'><a href="relational.html#.leq">leq</a></li><li data-type='method'><a href="relational.html#.lessEqualThan">lessEqualThan</a></li><li data-type='method'><a href="relational.html#.lessThan">lessThan</a></li><li data-type='method'><a href="relational.html#.lt">lt</a></li><li data-type='method'><a href="relational.html#.notEqual">notEqual</a></li></ul></li><li><a href="trigonometric.html">trigonometric</a><ul class='methods'><li data-type='method'><a href="trigonometric.html#.acos">acos</a></li><li data-type='method'><a href="trigonometric.html#.asin">asin</a></li><li data-type='method'><a href="trigonometric.html#.atan">atan</a></li><li data-type='method'><a href="trigonometric.html#.cos">cos</a></li><li data-type='method'><a href="trigonometric.html#.cosh">cosh</a></li><li data-type='method'><a href="trigonometric.html#.sin">sin</a></li><li data-type='method'><a href="trigonometric.html#.sinh">sinh</a></li><li data-type='method'><a href="trigonometric.html#.tan">tan</a></li><li data-type='method'><a href="trigonometric.html#.tanh">tanh</a></li></ul></li><li><a href="utils.html">utils</a><ul class='methods'><li data-type='method'><a href="utils.html#.hasInterval">hasInterval</a></li><li data-type='method'><a href="utils.html#.hasValue">hasValue</a></li><li data-type='method'><a href="utils.html#.intervalsOverlap">intervalsOverlap</a></li><li data-type='method'><a href="utils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="utils.html#.isInterval">isInterval</a></li><li data-type='method'><a href="utils.html#.isSingleton">isSingleton</a></li><li data-type='method'><a href="utils.html#.isWhole">isWhole</a></li><li data-type='method'><a href="utils.html#.zeroIn">zeroIn</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/round-math.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Created by mauricio on 4/27/15.
+
+'use strict'
+var nextafter = require('nextafter')
+
+/**
+ * @module interval-arithmetic/round-math
+ */
+
+function identity (v) { return v }
+function prev (v) {
+  if (v === Infinity) { return v }
+  return nextafter(v, -Infinity)
+}
+function next (v) {
+  if (v === -Infinity) { return v }
+  return nextafter(v, Infinity)
+}
+
+/**
+ * @alias module:interval-arithmetic/round-math
+ */
+var round = {
+  /**
+   * Computes the previous IEEE floating point representation of `v`
+   * @example
+   * Interval.round.safePrev(1)          // 0.9999999999999999
+   * Interval.round.safePrev(3)          // 2.9999999999999996
+   * Interval.round.safePrev(Infinity)   // Infinity
+   * @param {number} v
+   * @return {number}
+   * @function
+   */
+  safePrev: prev,
+  /**
+   * Computes the next IEEE floating point representation of `v`
+   * @example
+   * Interval.round.safeNext(1)          // 1.0000000000000002
+   * Interval.round.safeNext(3)          // 3.0000000000000004
+   * Interval.round.safeNext(-Infinity)  // -Infinity
+   * @param {number} v
+   * @return {number}
+   * @function
+   */
+  safeNext: next,
+  prev: prev,
+  next: next
+}
+
+round.addLo = function (x, y) { return this.prev(x + y) }
+round.addHi = function (x, y) { return this.next(x + y) }
+
+round.subLo = function (x, y) { return this.prev(x - y) }
+round.subHi = function (x, y) { return this.next(x - y) }
+
+round.mulLo = function (x, y) { return this.prev(x * y) }
+round.mulHi = function (x, y) { return this.next(x * y) }
+
+round.divLo = function (x, y) { return this.prev(x / y) }
+round.divHi = function (x, y) { return this.next(x / y) }
+
+function toInteger (x) {
+  return x &lt; 0 ? Math.ceil(x) : Math.floor(x)
+}
+
+round.intLo = function (x) { return toInteger(this.prev(x)) }
+round.intHi = function (x) { return toInteger(this.next(x)) }
+
+round.logLo = function (x) { return this.prev(Math.log(x)) }
+round.logHi = function (x) { return this.next(Math.log(x)) }
+
+round.expLo = function (x) { return this.prev(Math.exp(x)) }
+round.expHi = function (x) { return this.next(Math.exp(x)) }
+
+round.sinLo = function (x) { return this.prev(Math.sin(x)) }
+round.sinHi = function (x) { return this.next(Math.sin(x)) }
+
+round.cosLo = function (x) { return this.prev(Math.cos(x)) }
+round.cosHi = function (x) { return this.next(Math.cos(x)) }
+
+round.tanLo = function (x) { return this.prev(Math.tan(x)) }
+round.tanHi = function (x) { return this.next(Math.tan(x)) }
+
+round.asinLo = function (x) { return this.prev(Math.asin(x)) }
+round.asinHi = function (x) { return this.next(Math.asin(x)) }
+
+round.acosLo = function (x) { return this.prev(Math.acos(x)) }
+round.acosHi = function (x) { return this.next(Math.acos(x)) }
+
+round.atanLo = function (x) { return this.prev(Math.atan(x)) }
+round.atanHi = function (x) { return this.next(Math.atan(x)) }
+
+// polyfill required for hyperbolic functions
+round.sinhLo = function (x) { return this.prev(Math.sinh(x)) }
+round.sinhHi = function (x) { return this.next(Math.sinh(x)) }
+
+round.coshLo = function (x) { return this.prev(Math.cosh(x)) }
+round.coshHi = function (x) { return this.next(Math.cosh(x)) }
+
+round.tanhLo = function (x) { return this.prev(Math.tanh(x)) }
+round.tanhHi = function (x) { return this.next(Math.tanh(x)) }
+
+/*
+ * @ignore
+ * ln(power) exponentiation of x
+ * @param {number} x
+ * @param {number} power
+ * @returns {number}
+ */
+round.powLo = function (x, power) {
+  if (power % 1 !== 0) {
+    // power has decimals
+    return this.prev(Math.pow(x, power))
+  }
+
+  var y = (power &amp; 1) ? x : 1
+  power >>= 1
+  while (power > 0) {
+    x = round.mulLo(x, x)
+    if (power &amp; 1) {
+      y = round.mulLo(x, y)
+    }
+    power >>= 1
+  }
+  return y
+}
+
+/*
+ * @ignore
+ * ln(power) exponentiation of x
+ * @param {number} x
+ * @param {number} power
+ * @returns {number}
+ */
+round.powHi = function (x, power) {
+  if (power % 1 !== 0) {
+    // power has decimals
+    return this.next(Math.pow(x, power))
+  }
+
+  var y = (power &amp; 1) ? x : 1
+  power >>= 1
+  while (power > 0) {
+    x = round.mulHi(x, x)
+    if (power &amp; 1) {
+      y = round.mulHi(x, y)
+    }
+    power >>= 1
+  }
+  return y
+}
+
+round.sqrtLo = function (x) { return this.prev(Math.sqrt(x)) }
+round.sqrtHi = function (x) { return this.next(Math.sqrt(x)) }
+
+/**
+ * Most operations on intervals will cary the rounding error so that the
+ * resulting interval correctly represents all the possible values, this feature
+ * can be disabled by calling this method allowing a little boost in the
+ * performance while operating on intervals
+ *
+ * @see module:interval-arithmetic/round-math.enable
+ * @example
+ * var x = Interval.add(
+ *   Interval(1),
+ *   Interval(1)
+ * )
+ * x // equal to {lo: 1.9999999999999998, hi: 2.0000000000000004}
+ *
+ * Interval.round.disable()
+ * var y = Interval.add(
+ *   Interval(1),
+ *   Interval(1)
+ * )
+ * y // equal to {lo: 2, hi: 2}
+ * @function
+ */
+round.disable = function () {
+  this.next = this.prev = identity
+}
+
+/**
+ * Enables IEEE previous/next floating point wrapping of values (enabled by
+ * default)
+ * @see module:interval-arithmetic/round-math.disable
+ * @example
+ * var x = Interval.add(
+ *   Interval(1),
+ *   Interval(1)
+ * )
+ * x // equal to {lo: 1.9999999999999998, hi: 2.0000000000000004}
+ *
+ * Interval.round.disable()
+ * var y = Interval.add(
+ *   Interval(1),
+ *   Interval(1)
+ * )
+ * y // equal to {lo: 2, hi: 2}
+ *
+ * Interval.round.enable()
+ * var z = Interval.add(
+ *   Interval(1),
+ *   Interval(1)
+ * )
+ * z // equal to {lo: 1.9999999999999998, hi: 2.0000000000000004}
+ * @function
+ */
+round.enable = function () {
+  this.next = next
+  this.prev = prev
+}
+
+module.exports = round
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Feb 15 2018 21:09:57 GMT-0800 (PST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

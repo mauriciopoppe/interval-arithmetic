@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/operations/misc.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Interval.html">Interval</a><ul class='methods'><li data-type='method'><a href="Interval.html#abs">abs</a></li><li data-type='method'><a href="Interval.html#acos">acos</a></li><li data-type='method'><a href="Interval.html#add">add</a></li><li data-type='method'><a href="Interval.html#asin">asin</a></li><li data-type='method'><a href="Interval.html#assign">assign</a></li><li data-type='method'><a href="Interval.html#atan">atan</a></li><li data-type='method'><a href="Interval.html#bounded">bounded</a></li><li data-type='method'><a href="Interval.html#boundedSingleton">boundedSingleton</a></li><li data-type='method'><a href="Interval.html#clone">clone</a></li><li data-type='method'><a href="Interval.html#cos">cos</a></li><li data-type='method'><a href="Interval.html#cosh">cosh</a></li><li data-type='method'><a href="Interval.html#difference">difference</a></li><li data-type='method'><a href="Interval.html#div">div</a></li><li data-type='method'><a href="Interval.html#divide">divide</a></li><li data-type='method'><a href="Interval.html#equal">equal</a></li><li data-type='method'><a href="Interval.html#exp">exp</a></li><li data-type='method'><a href="Interval.html#fmod">fmod</a></li><li data-type='method'><a href="Interval.html#geq">geq</a></li><li data-type='method'><a href="Interval.html#greaterEqualThan">greaterEqualThan</a></li><li data-type='method'><a href="Interval.html#greaterThan">greaterThan</a></li><li data-type='method'><a href="Interval.html#gt">gt</a></li><li data-type='method'><a href="Interval.html#halfOpenLeft">halfOpenLeft</a></li><li data-type='method'><a href="Interval.html#halfOpenRight">halfOpenRight</a></li><li data-type='method'><a href="Interval.html#hasInterval">hasInterval</a></li><li data-type='method'><a href="Interval.html#hasValue">hasValue</a></li><li data-type='method'><a href="Interval.html#hull">hull</a></li><li data-type='method'><a href="Interval.html#intersection">intersection</a></li><li data-type='method'><a href="Interval.html#intervalsOverlap">intervalsOverlap</a></li><li data-type='method'><a href="Interval.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="Interval.html#isInterval">isInterval</a></li><li data-type='method'><a href="Interval.html#isSingleton">isSingleton</a></li><li data-type='method'><a href="Interval.html#isWhole">isWhole</a></li><li data-type='method'><a href="Interval.html#leq">leq</a></li><li data-type='method'><a href="Interval.html#lessEqualThan">lessEqualThan</a></li><li data-type='method'><a href="Interval.html#lessThan">lessThan</a></li><li data-type='method'><a href="Interval.html#ln">ln</a></li><li data-type='method'><a href="Interval.html#log">log</a></li><li data-type='method'><a href="Interval.html#log2">log2</a></li><li data-type='method'><a href="Interval.html#log10">log10</a></li><li data-type='method'><a href="Interval.html#lt">lt</a></li><li data-type='method'><a href="Interval.html#max">max</a></li><li data-type='method'><a href="Interval.html#min">min</a></li><li data-type='method'><a href="Interval.html#mul">mul</a></li><li data-type='method'><a href="Interval.html#multiplicativeInverse">multiplicativeInverse</a></li><li data-type='method'><a href="Interval.html#multiply">multiply</a></li><li data-type='method'><a href="Interval.html#negative">negative</a></li><li data-type='method'><a href="Interval.html#notEqual">notEqual</a></li><li data-type='method'><a href="Interval.html#nthRoot">nthRoot</a></li><li data-type='method'><a href="Interval.html#open">open</a></li><li data-type='method'><a href="Interval.html#positive">positive</a></li><li data-type='method'><a href="Interval.html#pow">pow</a></li><li data-type='method'><a href="Interval.html#set">set</a></li><li data-type='method'><a href="Interval.html#setEmpty">setEmpty</a></li><li data-type='method'><a href="Interval.html#setWhole">setWhole</a></li><li data-type='method'><a href="Interval.html#sin">sin</a></li><li data-type='method'><a href="Interval.html#singleton">singleton</a></li><li data-type='method'><a href="Interval.html#sinh">sinh</a></li><li data-type='method'><a href="Interval.html#sqrt">sqrt</a></li><li data-type='method'><a href="Interval.html#sub">sub</a></li><li data-type='method'><a href="Interval.html#subtract">subtract</a></li><li data-type='method'><a href="Interval.html#tan">tan</a></li><li data-type='method'><a href="Interval.html#tanh">tanh</a></li><li data-type='method'><a href="Interval.html#toArray">toArray</a></li><li data-type='method'><a href="Interval.html#union">union</a></li><li data-type='method'><a href="Interval.html#wid">wid</a></li><li data-type='method'><a href="Interval.html#width">width</a></li><li data-type='method'><a href="Interval.html#zeroIn">zeroIn</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-interval-arithmetic_round-math.html">interval-arithmetic/round-math</a><ul class='methods'><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.disable">disable</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.enable">enable</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.safeNext">safeNext</a></li><li data-type='method'><a href="module-interval-arithmetic_round-math.html#.safePrev">safePrev</a></li></ul></li></ul><h3>Mixins</h3><ul><li><a href="algebra.html">algebra</a><ul class='methods'><li data-type='method'><a href="algebra.html#.fmod">fmod</a></li><li data-type='method'><a href="algebra.html#.multiplicativeInverse">multiplicativeInverse</a></li><li data-type='method'><a href="algebra.html#.nthRoot">nthRoot</a></li><li data-type='method'><a href="algebra.html#.pow">pow</a></li><li data-type='method'><a href="algebra.html#.sqrt">sqrt</a></li></ul></li><li><a href="arithmetic.html">arithmetic</a><ul class='methods'><li data-type='method'><a href="arithmetic.html#.add">add</a></li><li data-type='method'><a href="arithmetic.html#.div">div</a></li><li data-type='method'><a href="arithmetic.html#.divide">divide</a></li><li data-type='method'><a href="arithmetic.html#.mul">mul</a></li><li data-type='method'><a href="arithmetic.html#.multiply">multiply</a></li><li data-type='method'><a href="arithmetic.html#.negative">negative</a></li><li data-type='method'><a href="arithmetic.html#.positive">positive</a></li><li data-type='method'><a href="arithmetic.html#.sub">sub</a></li><li data-type='method'><a href="arithmetic.html#.subtract">subtract</a></li></ul></li><li><a href="constants.html">constants</a></li><li><a href="misc.html">misc</a><ul class='methods'><li data-type='method'><a href="misc.html#.abs">abs</a></li><li data-type='method'><a href="misc.html#.clone">clone</a></li><li data-type='method'><a href="misc.html#.difference">difference</a></li><li data-type='method'><a href="misc.html#.exp">exp</a></li><li data-type='method'><a href="misc.html#.hull">hull</a></li><li data-type='method'><a href="misc.html#.intersection">intersection</a></li><li data-type='method'><a href="misc.html#.ln">ln</a></li><li data-type='method'><a href="misc.html#.log">log</a></li><li data-type='method'><a href="misc.html#.log2">log2</a></li><li data-type='method'><a href="misc.html#.log10">log10</a></li><li data-type='method'><a href="misc.html#.max">max</a></li><li data-type='method'><a href="misc.html#.min">min</a></li><li data-type='method'><a href="misc.html#.union">union</a></li><li data-type='method'><a href="misc.html#.wid">wid</a></li><li data-type='method'><a href="misc.html#.width">width</a></li></ul></li><li><a href="relational.html">relational</a><ul class='methods'><li data-type='method'><a href="relational.html#.equal">equal</a></li><li data-type='method'><a href="relational.html#.geq">geq</a></li><li data-type='method'><a href="relational.html#.greaterEqualThan">greaterEqualThan</a></li><li data-type='method'><a href="relational.html#.greaterThan">greaterThan</a></li><li data-type='method'><a href="relational.html#.gt">gt</a></li><li data-type='method'><a href="relational.html#.leq">leq</a></li><li data-type='method'><a href="relational.html#.lessEqualThan">lessEqualThan</a></li><li data-type='method'><a href="relational.html#.lessThan">lessThan</a></li><li data-type='method'><a href="relational.html#.lt">lt</a></li><li data-type='method'><a href="relational.html#.notEqual">notEqual</a></li></ul></li><li><a href="trigonometric.html">trigonometric</a><ul class='methods'><li data-type='method'><a href="trigonometric.html#.acos">acos</a></li><li data-type='method'><a href="trigonometric.html#.asin">asin</a></li><li data-type='method'><a href="trigonometric.html#.atan">atan</a></li><li data-type='method'><a href="trigonometric.html#.cos">cos</a></li><li data-type='method'><a href="trigonometric.html#.cosh">cosh</a></li><li data-type='method'><a href="trigonometric.html#.sin">sin</a></li><li data-type='method'><a href="trigonometric.html#.sinh">sinh</a></li><li data-type='method'><a href="trigonometric.html#.tan">tan</a></li><li data-type='method'><a href="trigonometric.html#.tanh">tanh</a></li></ul></li><li><a href="utils.html">utils</a><ul class='methods'><li data-type='method'><a href="utils.html#.hasInterval">hasInterval</a></li><li data-type='method'><a href="utils.html#.hasValue">hasValue</a></li><li data-type='method'><a href="utils.html#.intervalsOverlap">intervalsOverlap</a></li><li data-type='method'><a href="utils.html#.isEmpty">isEmpty</a></li><li data-type='method'><a href="utils.html#.isInterval">isInterval</a></li><li data-type='method'><a href="utils.html#.isSingleton">isSingleton</a></li><li data-type='method'><a href="utils.html#.isWhole">isWhole</a></li><li data-type='method'><a href="utils.html#.zeroIn">zeroIn</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/operations/misc.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Created by mauricio on 5/11/15.
+ */
+'use strict'
+var constants = require('../constants')
+var Interval = require('../interval')
+var rmath = require('../round-math')
+var utils = require('./utils')
+var arithmetic = require('./arithmetic')
+
+/**
+ * @mixin misc
+ */
+var misc = {}
+
+/**
+ * Computes e^x where e is the mathematical constant equal to the base of the
+ * natural logarithm
+ * @example
+ * Interval.exp(
+ *   Interval(-1, 1)
+ * )  // Interval(0.3679, 2.7183)
+ * @param {Interval} x
+ * @return {Interval}
+ */
+misc.exp = function (x) {
+  if (utils.isEmpty(x)) { return constants.EMPTY }
+  return Interval(
+    rmath.expLo(x.lo),
+    rmath.expHi(x.hi)
+  )
+}
+
+/**
+ * Computes the natural logarithm of x
+ * @example
+ * Interval.log(
+ *   Interval(1, Math.exp(3))
+ * )  // Interval(0, 3)
+ * @param {Interval} x
+ * @return {Interval}
+ */
+misc.log = function (x) {
+  if (utils.isEmpty(x)) { return constants.EMPTY }
+  var l = x.lo &lt;= 0 ? Number.NEGATIVE_INFINITY : rmath.logLo(x.lo)
+  return Interval(l, rmath.logHi(x.hi))
+}
+
+/**
+ * Alias for {@link misc.log}
+ * @function
+ */
+misc.ln = misc.log
+
+misc.LOG_EXP_10 = misc.log(Interval(10, 10))
+
+/**
+ * Computes the logarithm base 10 of x
+ * @example
+ * Interval.log10(
+ *   Interva(1, 1000)
+ * )  // Interval(0, 3)
+ * @param {Interval} x
+ * @return {Interval}
+ */
+misc.log10 = function (x) {
+  if (utils.isEmpty(x)) { return constants.EMPTY }
+  return arithmetic.div(misc.log(x), misc.LOG_EXP_10)
+}
+
+misc.LOG_EXP_2 = misc.log(Interval(2, 2))
+
+/**
+ * Computes the logarithm base 2 of x
+ * @example
+ * Interval.log10(
+ *   Interva(1, 8)
+ * )  // Interval(0, 3)
+ * @param {Interval} x
+ * @return {Interval}
+ */
+misc.log2 = function (x) {
+  if (utils.isEmpty(x)) { return constants.EMPTY }
+  return arithmetic.div(misc.log(x), misc.LOG_EXP_2)
+}
+
+/**
+ * Computes an interval that has all the values of x and y, note that it may be
+ * possible that values that don't belong to either x or y are included in the
+ * interval that represents the hull
+ *
+ * @example
+ * Interval.hull(
+ *   Interval(-1, 1),
+ *   Interval(5, 7)
+ * )  // Interval(-1, 7)
+ * @example
+ * Interval.hull(
+ *   Interval(-1, 1),
+ *   Interval.EMPTY
+ * )  // Interval(-1, 1)
+ * @param {Interval} x
+ * @param {Interval} y
+ * @return {Interval}
+ */
+misc.hull = function (x, y) {
+  var badX = utils.isEmpty(x)
+  var badY = utils.isEmpty(y)
+  if (badX &amp;&amp; badY) {
+    return constants.EMPTY
+  } else if (badX) {
+    return y.clone()
+  } else if (badY) {
+    return x.clone()
+  } else {
+    return Interval(
+      Math.min(x.lo, y.lo),
+      Math.max(x.hi, y.hi)
+    )
+  }
+}
+
+/**
+ * Computes an interval that has all the values that belong to both x and y
+ *
+ * @example
+ * Interval.intersection(
+ *   Interval(-1, 1),
+ *   Interval(0, 7)
+ * )  // Interval(0, 1)
+ * @param {Interval} x
+ * @param {Interval} y
+ * @return {Interval}
+ */
+misc.intersection = function (x, y) {
+  if (utils.isEmpty(x) || utils.isEmpty(y)) { return constants.EMPTY }
+  var lo = Math.max(x.lo, y.lo)
+  var hi = Math.min(x.hi, y.hi)
+  if (lo &lt;= hi) {
+    return Interval(lo, hi)
+  }
+  return constants.EMPTY
+}
+
+/**
+ * Computes an interval that has all the values that belong to both x and y,
+ * the difference with {@link misc.hull} is that x and y must overlap to
+ * compute the union
+ * @example
+ * Interval.union(
+ *   Interval(-1, 1),
+ *   Interval(5, 7)
+ * )  // throws error
+ * @example
+ * Interval.union(
+ *   Interval(-1, 1),
+ *   Interval(1, 7)
+ * )  // Interval(-1, 7)
+ * @throws {Error} When x and y don't overlap
+ * @param {Interval} x
+ * @param {Interval} y
+ * @return {Interval}
+ */
+misc.union = function (x, y) {
+  if (!utils.intervalsOverlap(x, y)) {
+    throw Error('Interval#union: intervals do not overlap')
+  }
+  return Interval(
+    Math.min(x.lo, y.lo),
+    Math.max(x.hi, y.hi)
+  )
+}
+
+/**
+ * Computes the difference between `x` and `y`, i.e. an interval with all the
+ * values of `x` that are not in `y`
+ * @example
+ * Interval.difference(
+ *   Interval(3, 5),
+ *   Interval(4, 6)
+ * )  // Interval(3, prev(4))
+ * @example
+ * Interval.difference(
+ *   Interval(0, 3),
+ *   Interval(0, 1)
+ * )  // Interval(next(1), 3)
+ * @example
+ * Interval.difference(
+ *   Interval(0, 1),
+ *   Interval.WHOLE
+ * )  // Interval.EMPTY
+ * @example
+ * Interval.difference(
+ *   Interval(-Infinity, 0),
+ *   Interval.WHOLE
+ * )  // Interval.EMPTY
+ * @throws {Error} When the difference creates multiple intervals
+ * @param {Interval} x
+ * @param {Interval} y
+ * @return {Interval}
+ */
+misc.difference = function (x, y) {
+  if (utils.isEmpty(x) || utils.isWhole(y)) {
+    return constants.EMPTY
+  }
+  if (utils.intervalsOverlap(x, y)) {
+    if (x.lo &lt; y.lo &amp;&amp; y.hi &lt; x.hi) {
+      // difference creates multiple subsets
+      throw Error('Interval.difference: difference creates multiple intervals')
+    }
+
+    // handle corner cases first
+    if ((y.lo &lt;= x.lo &amp;&amp; y.hi === Infinity) ||
+      (y.hi >= x.hi &amp;&amp; y.lo === -Infinity)) {
+      return constants.EMPTY
+    }
+
+    // NOTE: empty interval is handled automatically
+    // e.g.
+    //
+    //    n = difference([0,1], [0,1]) // n = Interval(next(1), 1) = EMPTY
+    //    isEmpty(n) === true
+    //
+    if (y.lo &lt;= x.lo) {
+      return Interval().halfOpenLeft(y.hi, x.hi)
+    }
+
+    // y.hi >= x.hi
+    return Interval().halfOpenRight(x.lo, y.lo)
+  }
+  return Interval.clone(x)
+}
+
+/**
+ * Computes the distance between the endpoints of the interval i.e.
+ * `x.hi - x.lo`
+ * @example
+ * Interval.width(
+ *   Interval(1, 2)
+ * )  // 1
+ * @example
+ * Interval.width(
+ *   Interval(-1, 1)
+ * )  // 2
+ * @example
+ * Interval.width(
+ *   Interval(1, 1)
+ * )  // next(0) ~5e-324
+ * @example
+ * Interval.width(
+ *   Interval.EMPTY
+ * )  // 0
+ * @param {Interval} x
+ * @returns {number}
+ */
+misc.width = function (x) {
+  if (utils.isEmpty(x)) { return 0 }
+  return rmath.subHi(x.hi, x.lo)
+}
+
+/**
+ * Alias for {@link misc.width}
+ * @function
+ */
+misc.wid = misc.width
+
+/**
+ * Computes the absolute value of `x`
+ * @example
+ * Interval.abs(
+ *   Interval(2, 3)
+ * )  // Interval(2, 3)
+ * @example
+ * Interval.abs(
+ *   Interval(-2, 3)
+ * )  // Interval(2, 3)
+ * @example
+ * Interval.abs(
+ *   Interval(-3, -2)
+ * )  // Interval(2, 3)
+ * @example
+ * Interval.abs(
+ *   Interval(-3, 2)
+ * )  // Interval(0, 3)
+ * @param {Interval} x
+ * @return {Interval}
+ */
+misc.abs = function (x) {
+  if (utils.isEmpty(x)) { return constants.EMPTY }
+  if (x.lo >= 0) { return Interval.clone(x) }
+  if (x.hi &lt;= 0) { return arithmetic.negative(x) }
+  return Interval(0, Math.max(-x.lo, x.hi))
+}
+
+/**
+ * Computes an interval with the maximum values for each endpoint based on `x`
+ * and `y`
+ * @example
+ * Interval.max(
+ *   Interval(0, 3),
+ *   Interval(1, 2)
+ * )  // Interval(1, 3)
+ * @param {Interval} x
+ * @param {Interval} y
+ * @return {Interval}
+ */
+misc.max = function (x, y) {
+  var badX = utils.isEmpty(x)
+  var badY = utils.isEmpty(y)
+  if (badX &amp;&amp; badY) {
+    return constants.EMPTY
+  } else if (badX) {
+    return y.clone()
+  } else if (badY) {
+    return x.clone()
+  } else {
+    return Interval(
+      Math.max(x.lo, y.lo),
+      Math.max(x.hi, y.hi)
+    )
+  }
+}
+
+/**
+ * Computes an interval with the minimum values for each endpoint based on `x`
+ * and `y`
+ * @example
+ * Interval.min(
+ *   Interval(0, 3),
+ *   Interval(1, 2)
+ * )  // Interval(0, 2)
+ * @param {Interval} x
+ * @param {Interval} y
+ * @return {Interval}
+ */
+misc.min = function (x, y) {
+  var badX = utils.isEmpty(x)
+  var badY = utils.isEmpty(y)
+  if (badX &amp;&amp; badY) {
+    return constants.EMPTY
+  } else if (badX) {
+    return y.clone()
+  } else if (badY) {
+    return x.clone()
+  } else {
+    return Interval(
+      Math.min(x.lo, y.lo),
+      Math.min(x.hi, y.hi)
+    )
+  }
+}
+
+/**
+ * Creates an interval equal to `x`, equivalent to `Interval().set(x.lo, x.hi)`
+ * @example
+ * Interval.clone(
+ *   Interval(1, 2)
+ * )  // Interval(1, 2)
+ * @example
+ * Interval.clone(
+ *   Interval.EMPTY
+ * )  // Interval.EMPTY
+ * @param {Interval} x
+ * @return {Interval}
+ */
+misc.clone = function (x) {
+  // no bound checking
+  return Interval().set(x.lo, x.hi)
+}
+
+module.exports = misc
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Feb 15 2018 21:09:57 GMT-0800 (PST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
