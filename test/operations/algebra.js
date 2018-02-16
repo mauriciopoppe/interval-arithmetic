@@ -40,6 +40,15 @@ describe('algebra', function () {
     assert(Interval.isEmpty(n))
   })
 
+  it('should compute the fmod (issue #15)', function () {
+    // issue #15
+    n = algebra.fmod(
+      new Interval(2, 2),
+      new Interval(2, 2)
+    )
+    Interval.almostEqual(n, [0, 0])
+  })
+
   it('should compute the multiplicative inverse', function () {
     n = algebra.multiplicativeInverse(new Interval(1, 1))
     Interval.almostEqual(n, [1, 1])

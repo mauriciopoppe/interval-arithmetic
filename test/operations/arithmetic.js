@@ -45,6 +45,11 @@ describe('arithmetic', function () {
     assertEps(a.lo, -2)
     assertEps(a.hi, 2)
     a = arithmetic.sub(
+      new Interval(5, 7),
+      new Interval(2, 3)
+    )
+    Interval.almostEqual(a, [2, 5])
+    a = arithmetic.sub(
       new Interval(-1, Infinity),
       new Interval(0, 1)
     )
