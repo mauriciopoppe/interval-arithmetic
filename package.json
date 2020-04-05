@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@types/assert": "^1.4.6",
-    "is-safe-integer": "^1.0.1",
+    "is-safe-integer": "^2.0.0",
     "nextafter": "^1.0.0",
     "typedarray": "0.0.6"
   },
