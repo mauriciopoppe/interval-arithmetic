@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>interval-arithmetic | interval-arithmetic</title>
+	<title>&quot;operations/trigonometric&quot; | interval-arithmetic</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2691,7 +2691,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">interval-arithmetic</a></strong>
+					<strong><a href="../index.html">interval-arithmetic</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2721,153 +2721,500 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#acos" class="tsd-kind-icon">acos</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#asin" class="tsd-kind-icon">asin</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#atan" class="tsd-kind-icon">atan</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#cos" class="tsd-kind-icon">cos</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#cosh" class="tsd-kind-icon">cosh</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+			<a href="_operations_trigonometric_.html#handlenegative" class="tsd-kind-icon">handle<wbr>Negative</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+			<a href="_operations_trigonometric_.html#onlyinfinity" class="tsd-kind-icon">only<wbr>Infinity</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#sin" class="tsd-kind-icon">sin</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#sinh" class="tsd-kind-icon">sinh</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#tan" class="tsd-kind-icon">tan</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module">
+			<a href="_operations_trigonometric_.html#tanh" class="tsd-kind-icon">tanh</a>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#interval-arithmetic" id="interval-arithmetic" style="color: inherit; text-decoration: none;">
-				<h1>interval-arithmetic</h1>
-			</a>
-			<p><a href="https://npmjs.org/package/interval-arithmetic"><img src="https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat" alt="NPM"></a>
-				<a href="https://travis-ci.org/mauriciopoppe/interval-arithmetic"><img src="https://travis-ci.org/mauriciopoppe/interval-arithmetic.svg?branch=master" alt="Build Status"></a>
-				<a href="https://codecov.io/github/mauriciopoppe/interval-arithmetic"><img src="https://img.shields.io/codecov/c/github/mauriciopoppe/interval-arithmetic.svg?style=flat" alt="Codecov Status"></a>
-				<a href="https://david-dm.org/mauriciopoppe/interval-arithmetic"><img src="https://david-dm.org/mauriciopoppe/interval-arithmetic.svg" alt="Dependency Status"></a>
-				<a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
-			<a href="https://nodejs.org/api/documentation.html#apicontent"><img src="https://img.shields.io/badge/stability-stable-green.svg" alt="Stability"></a></p>
-			<blockquote>
-				<p>An implementation of an algebraically closed interval system of the extended real number set</p>
-			</blockquote>
-			<ul>
-				<li><a href="#description">Description</a><ul>
-						<li><a href="#floating-point-operations">floating point operations</a></li>
-						<li><a href="#interval-arithmetic">Interval arithmetic</a></li>
-						<li><a href="#notable-modifications">Notable modifications</a></li>
-					</ul>
-				</li>
-				<li><a href="#interval-arithmetic-evaluator">Interval arithmetic evaluator</a></li>
-				<li><a href="#installation">Installation</a></li>
-				<li><a href="#api">API</a></li>
-				<li><a href="#development">Development</a></li>
-			</ul>
-			<a href="#description" id="description" style="color: inherit; text-decoration: none;">
-				<h2>Description</h2>
-			</a>
-			<p>An <code>interval</code> is a pair of numbers which represents all the numbers between them, <code>closed</code>
-				means that the bounds are also included in the representation, <code>extended real</code> because the
-				<code>real number system</code> is extended with two elements: <code>-∞</code> and <code>+∞</code> representing negative infinity
-			and positive infinity respectively.</p>
-			<p>The implementation is a modified port of the <a href="http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm">Boost&#39;s interval arithmetic library</a>,
-			the modifications are based on some guidelines from the following papers/presentations:</p>
-			<ul>
-				<li><a href="http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf">Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden</a></li>
-				<li><a href="http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf">Interval Arithmetic: Python Implementation and Applications - Stefano Taschini</a></li>
-				<li><a href="https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf">The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion</a></li>
-				<li><a href="http://www.dgp.toronto.edu/~mooncake/thesis.pdf">Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper</a></li>
-			</ul>
-			<a href="#floating-point-operations" id="floating-point-operations" style="color: inherit; text-decoration: none;">
-				<h3>floating point operations</h3>
-			</a>
-			<p>Floating point is a way to represent a real number in an approximate way (due to the finite
-				space existing on a computer), most calculations with real numbers will produce quantities that
-				cannot be exactly represented with the space allocated and therefore this operation needs
-				to be rounded in order to fit back into its finite representation, such errors are described in
-			more detail <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#689">here</a></p>
-			<a href="#interval-arithmetic-1" id="interval-arithmetic-1" style="color: inherit; text-decoration: none;">
-				<h3>Interval arithmetic</h3>
-			</a>
-			<p>Instead of using a single floating point number as an approximation of a real number, interval
-				arithmetic represents the approximated value as a set of possible values (considering the numbers
-				that floating point cannot represent), let&#39;s say we want to represent the number <code>1 / 3</code>, as a single
-				floating point number it&#39;s approximated as <code>0.333333333333...</code>, in the end there will be some <code>333...</code>
-				decimals that will be lost due to the nature of floating point, instead we can represent this
-				number with the interval <code>[0.2, 0.4]</code>, with this interval we&#39;re completely sure that <code>1 / 3</code> is within
-				the interval (although the interval is also representing many more numbers), to improve the <code>scope</code>
-				of the interval we have to understand that numbers in JavaScript are represented with 64 bits,
-				therefore to get the next floating point number of a single precision number the last bit
-				needs to be incremented to get the upper bound, and the last bit also needs to be decremented
-			to get the lower point</p>
-			<a href="#notable-modifications" id="notable-modifications" style="color: inherit; text-decoration: none;">
-				<h3>Notable modifications</h3>
-			</a>
-			<ul>
-				<li>next/previous IEEE754 floating point number implementation based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays">Typed Arrays</a></li>
-				<li><code>division</code> when both intervals contain zero creates a whole interval</li>
-				<li><code>cosine, tangent</code> works with positive/negative values out of the box</li>
-			</ul>
-			<a href="#interval-arithmetic-evaluator" id="interval-arithmetic-evaluator" style="color: inherit; text-decoration: none;">
-				<h2>Interval arithmetic evaluator</h2>
-			</a>
-			<p>Due to the expressive nature of the way the methods interact with intervals it&#39;s sad that even the simplest
-				operation needs a lot of characters to be typed, let&#39;s consider evaluating the result of <code>1 + 2</code> expressed
-			with intervals</p>
-			<pre><code class="language-javascript">Interval.add(<span class="hljs-keyword">new</span> Interval(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> Interval(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>))</code></pre>
-			<p>This gets worse when the expression to be evaluated becomes complex like <code>sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2</code>:</p>
-			<pre><code class="language-javascript"><span class="hljs-keyword">var</span> x = Interval(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
-Interval.add(
-  Interval.sin(Interval.exp(x)),
-  Interval.sub(
-    Interval.tan(x),
-    Interval.mul(
-      Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
-      Interval.pow(Interval(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), <span class="hljs-number">2</span>)
-    )
-  )
-);</code></pre>
-			<p>To avoid this &#39;expressiveness&#39; mess there&#39;s an <a href="https://github.com/maurizzzio/interval-arithmetic-eval">interval arithmetic evaluator module</a>
-			which I&#39;ve created to deal with all the work of parsing/evaluating expressions like the one above</p>
-			<pre><code class="language-javascript"><span class="hljs-keyword">var</span> compile = <span class="hljs-built_in">require</span>(<span class="hljs-string">'interval-arithmetic-eval'</span>);
-compile(<span class="hljs-string">'sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2'</span>).eval({ <span class="hljs-attr">x</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>] })</code></pre>
-			<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-				<h2>Installation</h2>
-			</a>
-			<pre><code class="language-sh">$ npm install --save interval-arithmetic</code></pre>
-			<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-				<h2>API</h2>
-			</a>
-			<p>See the <a href="http://mauriciopoppe.github.io/interval-arithmetic/">homepage</a></p>
-			<a href="#development" id="development" style="color: inherit; text-decoration: none;">
-				<h2>Development</h2>
-			</a>
-			<pre><code class="language-sh">npm <span class="hljs-built_in">test</span></code></pre>
-			<p>Deploy steps</p>
-			<pre><code class="language-sh">// after the working directory is clean
-(optional) npm version (major|minor|patch)
-npm run deploy
-// <span class="hljs-keyword">if</span> everything went well
-npm publish</code></pre>
-			<p>2015-2020 © Mauricio Poppe</p>
-		</div>
-		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>Modules</h3>
+						<h3>Functions</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-module"><a href="modules/_constants_.html" class="tsd-kind-icon">&quot;constants&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_index_.html" class="tsd-kind-icon">&quot;index&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_interval_.html" class="tsd-kind-icon">&quot;interval&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_interval_test_.html" class="tsd-kind-icon">&quot;interval.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_algebra_.html" class="tsd-kind-icon">&quot;operations/algebra&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_algebra_test_.html" class="tsd-kind-icon">&quot;operations/algebra.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_arithmetic_.html" class="tsd-kind-icon">&quot;operations/arithmetic&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_arithmetic_test_.html" class="tsd-kind-icon">&quot;operations/arithmetic.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_division_.html" class="tsd-kind-icon">&quot;operations/division&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_misc_.html" class="tsd-kind-icon">&quot;operations/misc&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_misc_test_.html" class="tsd-kind-icon">&quot;operations/misc.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_relational_.html" class="tsd-kind-icon">&quot;operations/relational&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_relational_test_.html" class="tsd-kind-icon">&quot;operations/relational.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_trigonometric_.html" class="tsd-kind-icon">&quot;operations/trigonometric&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_trigonometric_test_.html" class="tsd-kind-icon">&quot;operations/trigonometric.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_utils_.html" class="tsd-kind-icon">&quot;operations/utils&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_utils_test_.html" class="tsd-kind-icon">&quot;operations/utils.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_round_.html" class="tsd-kind-icon">&quot;round&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_round_test_.html" class="tsd-kind-icon">&quot;round.test&quot;</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#acos" class="tsd-kind-icon">acos</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#asin" class="tsd-kind-icon">asin</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#atan" class="tsd-kind-icon">atan</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#cos" class="tsd-kind-icon">cos</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#cosh" class="tsd-kind-icon">cosh</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_operations_trigonometric_.html#handlenegative" class="tsd-kind-icon">handle<wbr>Negative</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_operations_trigonometric_.html#onlyinfinity" class="tsd-kind-icon">only<wbr>Infinity</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#sin" class="tsd-kind-icon">sin</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#sinh" class="tsd-kind-icon">sinh</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#tan" class="tsd-kind-icon">tan</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module"><a href="_operations_trigonometric_.html#tanh" class="tsd-kind-icon">tanh</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Functions</h2>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="acos" class="tsd-anchor"></a>
+				<h3>acos</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">acos<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L212">operations/trigonometric.ts:212</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the arccosine of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.acos(
+										Interval(0, 1)
+									)  // Interval(0, Math.PI / 2)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="asin" class="tsd-anchor"></a>
+				<h3>asin</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">asin<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L194">operations/trigonometric.ts:194</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the arcsine of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.asin(
+										Interval(-1.57079633, 1.57079633)
+									)  // Interval(-10, 10)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="atan" class="tsd-anchor"></a>
+				<h3>atan</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">atan<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L230">operations/trigonometric.ts:230</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the arctangent of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.atan(
+										Interval(-1, 1)
+									)  // Interval(-0.785398163, 0.785398163)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="cos" class="tsd-anchor"></a>
+				<h3>cos</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">cos<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L73">operations/trigonometric.ts:73</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the cosine of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.cos(
+										Interval(0, 0)
+									) // Interval(1, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.cos(
+										Interval(0, Math.PI / 2)
+									) // Interval(0, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.cos(
+										Interval(3 * Math.PI / 2, 3 * Math.PI)
+									) // Interval(-1, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.cos(
+										Interval(-Infinity, x)
+										)
+										// Interval(-1, 1) if x &gt; -Infinity
+									// Interval.EMPTY otherwise</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.cos(
+										Interval(x, Infinity)
+										)
+										// Interval(-1, 1) if x &lt; Infinity
+									// Interval.EMPTY otherwise</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="cosh" class="tsd-anchor"></a>
+				<h3>cosh</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">cosh<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L262">operations/trigonometric.ts:262</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the hyperbolic cosine of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.cosh(
+										Interval(-2, 2)
+									)  // Interval(1, 3.76219569108)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+				<a name="handlenegative" class="tsd-anchor"></a>
+				<h3>handle<wbr>Negative</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">handle<wbr>Negative<span class="tsd-signature-symbol">(</span>interval<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L30">operations/trigonometric.ts:30</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>moves interval 2PI * k to the right until both bounds are positive</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>interval: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+								<div class="tsd-comment tsd-typography">
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+				<a name="onlyinfinity" class="tsd-anchor"></a>
+				<h3>only<wbr>Infinity</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">only<wbr>Infinity<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L22">operations/trigonometric.ts:22</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Checks if an interval is</p>
+								<ul>
+									<li>[-Infinity, -Infinity]</li>
+									<li>[Infinity, Infinity]</li>
+								</ul>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="sin" class="tsd-anchor"></a>
+				<h3>sin</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">sin<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L139">operations/trigonometric.ts:139</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the sine of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.sin(
+										Interval(0, 0)
+									) // Interval(0, 0)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.sin(
+										Interval(0, Math.PI / 2)
+									) // Interval(0, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.sin(
+										Interval(Math.PI / 2, Math.PI / 2)
+									) // Interval(1, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.sin(
+										Interval(Math.PI / 2, -Math.PI / 2)
+									) // Interval(-1, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.sin(
+										Interval(Math.PI, 3 * Math.PI / 2)
+									) // Interval(-1, 0)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="sinh" class="tsd-anchor"></a>
+				<h3>sinh</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">sinh<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L246">operations/trigonometric.ts:246</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the hyperbolic sine of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.sinh(
+										Interval(-2, 2)
+									)  // Interval(-3.6286040785, 3.6286040785)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="tan" class="tsd-anchor"></a>
+				<h3>tan</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">tan<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L165">operations/trigonometric.ts:165</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the tangent of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.tan(
+										Interval(-Math.PI / 4, Math.PI / 4)
+									) // Interval(-1, 1)</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.tan(
+										Interval(0, Math.PI / 2)
+									) // Interval.WHOLE</p>
+								</dd>
+								<dt>example</dt>
+								<dd><p>Interval.tan(
+										Interval(-Infinity, x)
+										)
+										// Interval.WHOLE if x &gt; -Infinity
+									// Interval.EMPTY otherwise</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+				<a name="tanh" class="tsd-anchor"></a>
+				<h3>tanh</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+					<li class="tsd-signature tsd-kind-icon">tanh<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/operations/trigonometric.ts#L284">operations/trigonometric.ts:284</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Computes the hyperbolic tangent of <code>x</code></p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>example</dt>
+								<dd><p>Interval.tanh(
+										Interval(-Infinity, Infinity)
+									)  // Interval(-1, 1)</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../classes/_interval_.interval.html" class="tsd-signature-type">Interval</a></h4>
+					</li>
+				</ul>
 			</section>
 		</section>
 		<footer class="with-border-bottom">

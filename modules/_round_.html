@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>interval-arithmetic | interval-arithmetic</title>
+	<title>&quot;round&quot; | interval-arithmetic</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2691,7 +2691,7 @@ img {
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">interval-arithmetic</a></strong>
+					<strong><a href="../index.html">interval-arithmetic</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -2721,153 +2721,1143 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
+		<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+			<a href="_round_.html#identity" class="tsd-kind-icon">identity</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+			<a href="_round_.html#next" class="tsd-kind-icon">next</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+			<a href="_round_.html#prev" class="tsd-kind-icon">prev</a>
+		</li>
+		<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+			<a href="_round_.html#tointeger" class="tsd-kind-icon">to<wbr>Integer</a>
+		</li>
+		<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+			<a href="_round_.html#round" class="tsd-kind-icon">round</a>
+		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<a href="#interval-arithmetic" id="interval-arithmetic" style="color: inherit; text-decoration: none;">
-				<h1>interval-arithmetic</h1>
-			</a>
-			<p><a href="https://npmjs.org/package/interval-arithmetic"><img src="https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat" alt="NPM"></a>
-				<a href="https://travis-ci.org/mauriciopoppe/interval-arithmetic"><img src="https://travis-ci.org/mauriciopoppe/interval-arithmetic.svg?branch=master" alt="Build Status"></a>
-				<a href="https://codecov.io/github/mauriciopoppe/interval-arithmetic"><img src="https://img.shields.io/codecov/c/github/mauriciopoppe/interval-arithmetic.svg?style=flat" alt="Codecov Status"></a>
-				<a href="https://david-dm.org/mauriciopoppe/interval-arithmetic"><img src="https://david-dm.org/mauriciopoppe/interval-arithmetic.svg" alt="Dependency Status"></a>
-				<a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
-			<a href="https://nodejs.org/api/documentation.html#apicontent"><img src="https://img.shields.io/badge/stability-stable-green.svg" alt="Stability"></a></p>
-			<blockquote>
-				<p>An implementation of an algebraically closed interval system of the extended real number set</p>
-			</blockquote>
-			<ul>
-				<li><a href="#description">Description</a><ul>
-						<li><a href="#floating-point-operations">floating point operations</a></li>
-						<li><a href="#interval-arithmetic">Interval arithmetic</a></li>
-						<li><a href="#notable-modifications">Notable modifications</a></li>
-					</ul>
-				</li>
-				<li><a href="#interval-arithmetic-evaluator">Interval arithmetic evaluator</a></li>
-				<li><a href="#installation">Installation</a></li>
-				<li><a href="#api">API</a></li>
-				<li><a href="#development">Development</a></li>
-			</ul>
-			<a href="#description" id="description" style="color: inherit; text-decoration: none;">
-				<h2>Description</h2>
-			</a>
-			<p>An <code>interval</code> is a pair of numbers which represents all the numbers between them, <code>closed</code>
-				means that the bounds are also included in the representation, <code>extended real</code> because the
-				<code>real number system</code> is extended with two elements: <code>-∞</code> and <code>+∞</code> representing negative infinity
-			and positive infinity respectively.</p>
-			<p>The implementation is a modified port of the <a href="http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm">Boost&#39;s interval arithmetic library</a>,
-			the modifications are based on some guidelines from the following papers/presentations:</p>
-			<ul>
-				<li><a href="http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf">Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden</a></li>
-				<li><a href="http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf">Interval Arithmetic: Python Implementation and Applications - Stefano Taschini</a></li>
-				<li><a href="https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf">The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion</a></li>
-				<li><a href="http://www.dgp.toronto.edu/~mooncake/thesis.pdf">Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper</a></li>
-			</ul>
-			<a href="#floating-point-operations" id="floating-point-operations" style="color: inherit; text-decoration: none;">
-				<h3>floating point operations</h3>
-			</a>
-			<p>Floating point is a way to represent a real number in an approximate way (due to the finite
-				space existing on a computer), most calculations with real numbers will produce quantities that
-				cannot be exactly represented with the space allocated and therefore this operation needs
-				to be rounded in order to fit back into its finite representation, such errors are described in
-			more detail <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#689">here</a></p>
-			<a href="#interval-arithmetic-1" id="interval-arithmetic-1" style="color: inherit; text-decoration: none;">
-				<h3>Interval arithmetic</h3>
-			</a>
-			<p>Instead of using a single floating point number as an approximation of a real number, interval
-				arithmetic represents the approximated value as a set of possible values (considering the numbers
-				that floating point cannot represent), let&#39;s say we want to represent the number <code>1 / 3</code>, as a single
-				floating point number it&#39;s approximated as <code>0.333333333333...</code>, in the end there will be some <code>333...</code>
-				decimals that will be lost due to the nature of floating point, instead we can represent this
-				number with the interval <code>[0.2, 0.4]</code>, with this interval we&#39;re completely sure that <code>1 / 3</code> is within
-				the interval (although the interval is also representing many more numbers), to improve the <code>scope</code>
-				of the interval we have to understand that numbers in JavaScript are represented with 64 bits,
-				therefore to get the next floating point number of a single precision number the last bit
-				needs to be incremented to get the upper bound, and the last bit also needs to be decremented
-			to get the lower point</p>
-			<a href="#notable-modifications" id="notable-modifications" style="color: inherit; text-decoration: none;">
-				<h3>Notable modifications</h3>
-			</a>
-			<ul>
-				<li>next/previous IEEE754 floating point number implementation based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays">Typed Arrays</a></li>
-				<li><code>division</code> when both intervals contain zero creates a whole interval</li>
-				<li><code>cosine, tangent</code> works with positive/negative values out of the box</li>
-			</ul>
-			<a href="#interval-arithmetic-evaluator" id="interval-arithmetic-evaluator" style="color: inherit; text-decoration: none;">
-				<h2>Interval arithmetic evaluator</h2>
-			</a>
-			<p>Due to the expressive nature of the way the methods interact with intervals it&#39;s sad that even the simplest
-				operation needs a lot of characters to be typed, let&#39;s consider evaluating the result of <code>1 + 2</code> expressed
-			with intervals</p>
-			<pre><code class="language-javascript">Interval.add(<span class="hljs-keyword">new</span> Interval(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> Interval(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>))</code></pre>
-			<p>This gets worse when the expression to be evaluated becomes complex like <code>sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2</code>:</p>
-			<pre><code class="language-javascript"><span class="hljs-keyword">var</span> x = Interval(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
-Interval.add(
-  Interval.sin(Interval.exp(x)),
-  Interval.sub(
-    Interval.tan(x),
-    Interval.mul(
-      Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
-      Interval.pow(Interval(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), <span class="hljs-number">2</span>)
-    )
-  )
-);</code></pre>
-			<p>To avoid this &#39;expressiveness&#39; mess there&#39;s an <a href="https://github.com/maurizzzio/interval-arithmetic-eval">interval arithmetic evaluator module</a>
-			which I&#39;ve created to deal with all the work of parsing/evaluating expressions like the one above</p>
-			<pre><code class="language-javascript"><span class="hljs-keyword">var</span> compile = <span class="hljs-built_in">require</span>(<span class="hljs-string">'interval-arithmetic-eval'</span>);
-compile(<span class="hljs-string">'sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2'</span>).eval({ <span class="hljs-attr">x</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>] })</code></pre>
-			<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-				<h2>Installation</h2>
-			</a>
-			<pre><code class="language-sh">$ npm install --save interval-arithmetic</code></pre>
-			<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-				<h2>API</h2>
-			</a>
-			<p>See the <a href="http://mauriciopoppe.github.io/interval-arithmetic/">homepage</a></p>
-			<a href="#development" id="development" style="color: inherit; text-decoration: none;">
-				<h2>Development</h2>
-			</a>
-			<pre><code class="language-sh">npm <span class="hljs-built_in">test</span></code></pre>
-			<p>Deploy steps</p>
-			<pre><code class="language-sh">// after the working directory is clean
-(optional) npm version (major|minor|patch)
-npm run deploy
-// <span class="hljs-keyword">if</span> everything went well
-npm publish</code></pre>
-			<p>2015-2020 © Mauricio Poppe</p>
-		</div>
-		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section ">
-						<h3>Modules</h3>
+					<section class="tsd-index-section tsd-is-not-exported">
+						<h3>Functions</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-module"><a href="modules/_constants_.html" class="tsd-kind-icon">&quot;constants&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_index_.html" class="tsd-kind-icon">&quot;index&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_interval_.html" class="tsd-kind-icon">&quot;interval&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_interval_test_.html" class="tsd-kind-icon">&quot;interval.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_algebra_.html" class="tsd-kind-icon">&quot;operations/algebra&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_algebra_test_.html" class="tsd-kind-icon">&quot;operations/algebra.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_arithmetic_.html" class="tsd-kind-icon">&quot;operations/arithmetic&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_arithmetic_test_.html" class="tsd-kind-icon">&quot;operations/arithmetic.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_division_.html" class="tsd-kind-icon">&quot;operations/division&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_misc_.html" class="tsd-kind-icon">&quot;operations/misc&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_misc_test_.html" class="tsd-kind-icon">&quot;operations/misc.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_relational_.html" class="tsd-kind-icon">&quot;operations/relational&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_relational_test_.html" class="tsd-kind-icon">&quot;operations/relational.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_trigonometric_.html" class="tsd-kind-icon">&quot;operations/trigonometric&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_trigonometric_test_.html" class="tsd-kind-icon">&quot;operations/trigonometric.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_utils_.html" class="tsd-kind-icon">&quot;operations/utils&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_operations_utils_test_.html" class="tsd-kind-icon">&quot;operations/utils.test&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_round_.html" class="tsd-kind-icon">&quot;round&quot;</a></li>
-							<li class="tsd-kind-module"><a href="modules/_round_test_.html" class="tsd-kind-icon">&quot;round.test&quot;</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_round_.html#identity" class="tsd-kind-icon">identity</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_round_.html#next" class="tsd-kind-icon">next</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_round_.html#prev" class="tsd-kind-icon">prev</a></li>
+							<li class="tsd-kind-function tsd-parent-kind-module tsd-is-not-exported"><a href="_round_.html#tointeger" class="tsd-kind-icon">to<wbr>Integer</a></li>
+						</ul>
+					</section>
+					<section class="tsd-index-section ">
+						<h3>Object literals</h3>
+						<ul class="tsd-index-list">
+							<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_round_.html#round" class="tsd-kind-icon">round</a></li>
 						</ul>
 					</section>
 				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<h2>Functions</h2>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+				<a name="identity" class="tsd-anchor"></a>
+				<h3>identity</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">identity<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L7">round.ts:7</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<dl class="tsd-comment-tags">
+								<dt>module</dt>
+								<dd><p>interval-arithmetic/round-math</p>
+								</dd>
+							</dl>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>v: <span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+				<a name="next" class="tsd-anchor"></a>
+				<h3>next</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L16">round.ts:16</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>v: <span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+				<a name="prev" class="tsd-anchor"></a>
+				<h3>prev</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">prev<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L10">round.ts:10</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>v: <span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+				<a name="tointeger" class="tsd-anchor"></a>
+				<h3>to<wbr>Integer</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
+					<li class="tsd-signature tsd-kind-icon">to<wbr>Integer<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L22">round.ts:22</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>x: <span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group ">
+			<h2>Object literals</h2>
+			<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+				<a name="round" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> round</h3>
+				<div class="tsd-signature tsd-kind-icon">round<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L29">round.ts:29</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>alias</dt>
+						<dd><p>module:interval-arithmetic/round-math</p>
+						</dd>
+					</dl>
+				</div>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+					<a name="round.next-1" class="tsd-anchor"></a>
+					<h3>next</h3>
+					<div class="tsd-signature tsd-kind-icon">next<span class="tsd-signature-symbol">:</span> <a href="_round_.html#next" class="tsd-signature-type">next</a><span class="tsd-signature-symbol"> = next</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L53">round.ts:53</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+					<a name="round.prev-1" class="tsd-anchor"></a>
+					<h3>prev</h3>
+					<div class="tsd-signature tsd-kind-icon">prev<span class="tsd-signature-symbol">:</span> <a href="_round_.html#prev" class="tsd-signature-type">prev</a><span class="tsd-signature-symbol"> = prev</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L52">round.ts:52</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+					<a name="round.safenext" class="tsd-anchor"></a>
+					<h3>safe<wbr>Next</h3>
+					<div class="tsd-signature tsd-kind-icon">safe<wbr>Next<span class="tsd-signature-symbol">:</span> <a href="_round_.html#next" class="tsd-signature-type">next</a><span class="tsd-signature-symbol"> = next</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L51">round.ts:51</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Computes the next IEEE floating point representation of <code>v</code></p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>Interval.round.safeNext(1)          // 1.0000000000000002
+									Interval.round.safeNext(3)          // 3.0000000000000004
+								Interval.round.safeNext(-Infinity)  // -Infinity</p>
+							</dd>
+							<dt>param</dt>
+							<dd></dd>
+							<dt>returns</dt>
+							<dd></dd>
+							<dt>function</dt>
+							<dd></dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+					<a name="round.safeprev" class="tsd-anchor"></a>
+					<h3>safe<wbr>Prev</h3>
+					<div class="tsd-signature tsd-kind-icon">safe<wbr>Prev<span class="tsd-signature-symbol">:</span> <a href="_round_.html#prev" class="tsd-signature-type">prev</a><span class="tsd-signature-symbol"> = prev</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L40">round.ts:40</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Computes the previous IEEE floating point representation of <code>v</code></p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>Interval.round.safePrev(1)          // 0.9999999999999999
+									Interval.round.safePrev(3)          // 2.9999999999999996
+								Interval.round.safePrev(Infinity)   // Infinity</p>
+							</dd>
+							<dt>param</dt>
+							<dd></dd>
+							<dt>returns</dt>
+							<dd></dd>
+							<dt>function</dt>
+							<dd></dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.acoshi" class="tsd-anchor"></a>
+					<h3>acos<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">acos<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L113">round.ts:113</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.acoslo" class="tsd-anchor"></a>
+					<h3>acos<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">acos<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L111">round.ts:111</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.addhi" class="tsd-anchor"></a>
+					<h3>add<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L58">round.ts:58</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.addlo" class="tsd-anchor"></a>
+					<h3>add<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L56">round.ts:56</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.asinhi" class="tsd-anchor"></a>
+					<h3>asin<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">asin<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L108">round.ts:108</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.asinlo" class="tsd-anchor"></a>
+					<h3>asin<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">asin<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L106">round.ts:106</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.atanhi" class="tsd-anchor"></a>
+					<h3>atan<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">atan<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L118">round.ts:118</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.atanlo" class="tsd-anchor"></a>
+					<h3>atan<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">atan<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L116">round.ts:116</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.coshi" class="tsd-anchor"></a>
+					<h3>cos<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">cos<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L98">round.ts:98</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.coslo" class="tsd-anchor"></a>
+					<h3>cos<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">cos<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L96">round.ts:96</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.coshhi" class="tsd-anchor"></a>
+					<h3>cosh<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">cosh<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L129">round.ts:129</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.coshlo" class="tsd-anchor"></a>
+					<h3>cosh<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">cosh<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L127">round.ts:127</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.disable" class="tsd-anchor"></a>
+					<h3>disable</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">disable<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L213">round.ts:213</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Most operations on intervals will cary the rounding error so that the
+										resulting interval correctly represents all the possible values, this feature
+										can be disabled by calling this method allowing a little boost in the
+									performance while operating on intervals</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>module:interval-arithmetic/round-math.enable</p>
+									</dd>
+									<dt>example</dt>
+									<dd><p>var x = Interval.add(
+											Interval(1),
+											Interval(1)
+											)
+										x // equal to {lo: 1.9999999999999998, hi: 2.0000000000000004}</p>
+										<p>Interval.round.disable()
+											var y = Interval.add(
+											Interval(1),
+											Interval(1)
+											)
+										y // equal to {lo: 2, hi: 2}</p>
+									</dd>
+									<dt>function</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.divhi" class="tsd-anchor"></a>
+					<h3>div<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">div<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L73">round.ts:73</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.divlo" class="tsd-anchor"></a>
+					<h3>div<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">div<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L71">round.ts:71</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.enable" class="tsd-anchor"></a>
+					<h3>enable</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">enable<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L243">round.ts:243</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Enables IEEE previous/next floating point wrapping of values (enabled by
+									default)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>module:interval-arithmetic/round-math.disable</p>
+									</dd>
+									<dt>example</dt>
+									<dd><p>var x = Interval.add(
+											Interval(1),
+											Interval(1)
+											)
+										x // equal to {lo: 1.9999999999999998, hi: 2.0000000000000004}</p>
+										<p>Interval.round.disable()
+											var y = Interval.add(
+											Interval(1),
+											Interval(1)
+											)
+										y // equal to {lo: 2, hi: 2}</p>
+										<p>Interval.round.enable()
+											var z = Interval.add(
+											Interval(1),
+											Interval(1)
+											)
+										z // equal to {lo: 1.9999999999999998, hi: 2.0000000000000004}</p>
+									</dd>
+									<dt>function</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.exphi" class="tsd-anchor"></a>
+					<h3>exp<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">exp<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L88">round.ts:88</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.explo" class="tsd-anchor"></a>
+					<h3>exp<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">exp<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L86">round.ts:86</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.inthi" class="tsd-anchor"></a>
+					<h3>int<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">int<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L78">round.ts:78</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.intlo" class="tsd-anchor"></a>
+					<h3>int<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">int<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L76">round.ts:76</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.loghi" class="tsd-anchor"></a>
+					<h3>log<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L83">round.ts:83</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.loglo" class="tsd-anchor"></a>
+					<h3>log<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L81">round.ts:81</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.mulhi" class="tsd-anchor"></a>
+					<h3>mul<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">mul<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L68">round.ts:68</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.mullo" class="tsd-anchor"></a>
+					<h3>mul<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">mul<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L66">round.ts:66</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sinhi" class="tsd-anchor"></a>
+					<h3>sin<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sin<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L93">round.ts:93</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sinlo" class="tsd-anchor"></a>
+					<h3>sin<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sin<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L91">round.ts:91</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sinhhi" class="tsd-anchor"></a>
+					<h3>sinh<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sinh<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L124">round.ts:124</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sinhlo" class="tsd-anchor"></a>
+					<h3>sinh<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sinh<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L122">round.ts:122</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sqrthi" class="tsd-anchor"></a>
+					<h3>sqrt<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sqrt<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L189">round.ts:189</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sqrtlo" class="tsd-anchor"></a>
+					<h3>sqrt<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sqrt<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L187">round.ts:187</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.subhi" class="tsd-anchor"></a>
+					<h3>sub<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sub<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L63">round.ts:63</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.sublo" class="tsd-anchor"></a>
+					<h3>sub<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">sub<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L61">round.ts:61</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.tanhi" class="tsd-anchor"></a>
+					<h3>tan<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">tan<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L103">round.ts:103</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.tanlo" class="tsd-anchor"></a>
+					<h3>tan<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">tan<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L101">round.ts:101</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.tanhhi" class="tsd-anchor"></a>
+					<h3>tanh<wbr>Hi</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">tanh<wbr>Hi<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L134">round.ts:134</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="round.tanhlo" class="tsd-anchor"></a>
+					<h3>tanh<wbr>Lo</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">tanh<wbr>Lo<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/22aa6c5/src/round.ts#L132">round.ts:132</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
