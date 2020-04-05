@@ -112,15 +112,16 @@ See the [homepage](http://mauriciopoppe.github.io/interval-arithmetic/)
 npm test
 ```
 
-Deploy steps
+Deployment steps
 
 ```sh
 // after the working directory is clean
-(optional) npm version (major|minor|patch)
-npm run deploy
+npm version (major|minor|patch)
 // if everything went well
 npm publish
 ```
+
+Travis is set up to do automatic deployments of the docs
 
 2015-2020 © Mauricio Poppe
 
