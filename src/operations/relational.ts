@@ -1,5 +1,5 @@
 import * as utils from './utils'
-import { Interval } from '../Interval'
+import { Interval } from '../interval'
 
 // boost/numeric/interval_lib/compare/certain package on boost
 

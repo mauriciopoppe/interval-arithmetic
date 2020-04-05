@@ -1,4 +1,4 @@
-import { Interval } from '../Interval'
+import { Interval } from '../interval'
 import rmath from '../round'
 import constants from '../constants'
 
