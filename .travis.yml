@@ -9,6 +9,9 @@ node_js:
   - node
   - 10
 
+install:
+  - travis_retry npm install
+
 script:
   - npm run test && npm run build
 after_success:
