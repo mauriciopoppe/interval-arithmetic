@@ -5,7 +5,7 @@
  * Licensed under the MIT license.
  */
 
-import { Interval } from './Interval'
+import { Interval } from './interval'
 import round from './round'
 import constants from './constants'
 
