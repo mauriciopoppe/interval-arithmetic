@@ -9,10 +9,6 @@
 
 > An implementation of an algebraically closed interval system of the extended real number set
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
 - [Description](#description)
   - [floating point operations](#floating-point-operations)
   - [Interval arithmetic](#interval-arithmetic)
@@ -22,7 +18,6 @@
 - [API](#api)
 - [Development](#development)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Description
 
@@ -127,7 +122,7 @@ npm run deploy
 npm publish
 ```
 
-2015 © Mauricio Poppe
+2015-2020 © Mauricio Poppe
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic

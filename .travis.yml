@@ -1,11 +1,19 @@
 language: node_js
-env: CI=true
-sudo: false
-
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+cache:
+  yarn: true
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-  - '10'
-before_install:
-  - npm install codecov.io
-after_script:
-  - npm run codecov
+  - node
+  - 10
 
+script:
+  - npm run test && npm run build
+after_success:
+  - npm run report-coverage
