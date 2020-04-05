@@ -1,17 +1,7 @@
-/**
- * Created by mauricio on 5/10/15.
- */
-'use strict'
+import Interval, { trigonometric, round, Interval as IntervalClass } from '../'
+import assert from 'assert'
 
-var mocha = require('mocha')
-var describe = mocha.describe
-var it = mocha.it
-
-var assert = require('assert')
-
-var Interval = require('../../')
-var trigonometric = require('../../lib/operations/trigonometric')
-var n
+let n: IntervalClass
 
 describe('trigonometric', function () {
   it('should compute the cosine function', function () {
@@ -19,9 +9,9 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [1, 1])
     n = trigonometric.cos(new Interval(0, Math.PI / 2))
     Interval.almostEqual(n, [0, 1])
-    n = trigonometric.cos(new Interval(0, 3 * Math.PI / 2))
+    n = trigonometric.cos(new Interval(0, (3 * Math.PI) / 2))
     Interval.almostEqual(n, [-1, 1]) // -1 because it includes Math.PI
-    n = trigonometric.cos(new Interval(Math.PI, 3 * Math.PI / 2))
+    n = trigonometric.cos(new Interval(Math.PI, (3 * Math.PI) / 2))
     Interval.almostEqual(n, [-1, 0])
     n = trigonometric.cos(new Interval(-Math.PI, -Math.PI))
     Interval.almostEqual(n, [-1, -1])
@@ -33,7 +23,7 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [0, 0])
     n = trigonometric.cos(new Interval(-2 * Math.PI, -Math.PI))
     Interval.almostEqual(n, [-1, 1])
-    n = trigonometric.cos(new Interval(3 * Math.PI / 2, 3 * Math.PI))
+    n = trigonometric.cos(new Interval((3 * Math.PI) / 2, 3 * Math.PI))
     Interval.almostEqual(n, [-1, 1])
     n = trigonometric.cos(new Interval(-Math.PI / 2, Math.PI))
     Interval.almostEqual(n, [-1, 1])
@@ -43,11 +33,11 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [-1, 0])
 
     // PR 12 (cases involving Infinity)
-    n = trigonometric.cos(Interval(-Infinity, Infinity))
+    n = trigonometric.cos(new Interval(-Infinity, Infinity))
     Interval.almostEqual(n, [-1, 1])
-    n = trigonometric.cos(Interval(-Infinity, -Infinity))
+    n = trigonometric.cos(new Interval(-Infinity, -Infinity))
     assert(Interval.isEmpty(n))
-    n = trigonometric.cos(Interval(Infinity, Infinity))
+    n = trigonometric.cos(new Interval(Infinity, Infinity))
     assert(Interval.isEmpty(n))
   })
 
@@ -56,9 +46,9 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [0, 0])
     n = trigonometric.sin(new Interval(0, Math.PI / 2))
     Interval.almostEqual(n, [0, 1])
-    n = trigonometric.sin(new Interval(0, 3 * Math.PI / 2))
+    n = trigonometric.sin(new Interval(0, (3 * Math.PI) / 2))
     Interval.almostEqual(n, [-1, 1]) // -1 because it includes Math.PI
-    n = trigonometric.sin(new Interval(Math.PI, 3 * Math.PI / 2))
+    n = trigonometric.sin(new Interval(Math.PI, (3 * Math.PI) / 2))
     Interval.almostEqual(n, [-1, 0])
     n = trigonometric.sin(new Interval(-Math.PI, -Math.PI))
     Interval.almostEqual(n, [0, 0])
@@ -70,18 +60,18 @@ describe('trigonometric', function () {
     // negative tests
     n = trigonometric.sin(new Interval(-Math.PI, 0))
     Interval.almostEqual(n, [-1, 0])
-    n = trigonometric.sin(new Interval(-2 * Math.PI, -3 * Math.PI / 2))
+    n = trigonometric.sin(new Interval(-2 * Math.PI, (-3 * Math.PI) / 2))
     Interval.almostEqual(n, [0, 1])
     var p = 2 * Math.PI
-    n = trigonometric.sin(new Interval(-5 * p - 2 * Math.PI, -5 * p - 3 * Math.PI / 2))
+    n = trigonometric.sin(new Interval(-5 * p - 2 * Math.PI, -5 * p - (3 * Math.PI) / 2))
     Interval.almostEqual(n, [0, 1])
 
     // PR 12: Infinity cases
-    n = trigonometric.sin(Interval(-Infinity, Infinity))
+    n = trigonometric.sin(new Interval(-Infinity, Infinity))
     Interval.almostEqual(n, [-1, 1])
-    n = trigonometric.sin(Interval(-Infinity, -Infinity))
+    n = trigonometric.sin(new Interval(-Infinity, -Infinity))
     assert(Interval.isEmpty(n))
-    n = trigonometric.sin(Interval(Infinity, Infinity))
+    n = trigonometric.sin(new Interval(Infinity, Infinity))
     assert(Interval.isEmpty(n))
   })
 
@@ -94,17 +84,17 @@ describe('trigonometric', function () {
     Interval.almostEqual(n, [0, 0])
     n = trigonometric.tan(new Interval(-Math.PI / 4, Math.PI / 4))
     Interval.almostEqual(n, [-1, 1])
-    n = trigonometric.tan(new Interval(-9 * Math.PI / 4, -7 * Math.PI / 4))
+    n = trigonometric.tan(new Interval((-9 * Math.PI) / 4, (-7 * Math.PI) / 4))
     Interval.almostEqual(n, [-1, 1])
-    n = trigonometric.tan(new Interval(7 * Math.PI / 4, 9 * Math.PI / 4))
+    n = trigonometric.tan(new Interval((7 * Math.PI) / 4, (9 * Math.PI) / 4))
     Interval.almostEqual(n, [-1, 1])
     n = trigonometric.tan(new Interval(Math.PI / 2, Math.PI / 2))
     assert(n.lo === Number.NEGATIVE_INFINITY)
     assert(n.hi === Number.POSITIVE_INFINITY)
-    n = trigonometric.tan(new Interval(5 * Math.PI / 2, 5 * Math.PI / 2))
+    n = trigonometric.tan(new Interval((5 * Math.PI) / 2, (5 * Math.PI) / 2))
     assert(n.lo === Number.NEGATIVE_INFINITY)
     assert(n.hi === Number.POSITIVE_INFINITY)
-    n = trigonometric.tan(new Interval(-5 * Math.PI / 2, -5 * Math.PI / 2))
+    n = trigonometric.tan(new Interval((-5 * Math.PI) / 2, (-5 * Math.PI) / 2))
     assert(n.lo === Number.NEGATIVE_INFINITY)
     assert(n.hi === Number.POSITIVE_INFINITY)
     n = trigonometric.tan(new Interval(0, Math.PI / 2))
@@ -112,20 +102,25 @@ describe('trigonometric', function () {
     assert(n.hi === Number.POSITIVE_INFINITY)
 
     // bug in versions <= 0.2.2
-    Interval.almostEqual(
-      trigonometric.tan(new Interval(-2.975460122699386, -2.955010224948875)),
-      [0.16767801556, 0.18877817478]
-    )
-    Interval.almostEqual(
-      trigonometric.tan(new Interval(-Math.PI, -Math.PI)),
-      [0, 0]
-    )
+    Interval.almostEqual(trigonometric.tan(new Interval(-2.975460122699386, -2.955010224948875)), [
+      0.16767801556,
+      0.18877817478
+    ])
+    Interval.almostEqual(trigonometric.tan(new Interval(-Math.PI, -Math.PI)), [0, 0])
 
     // PR 12: Infinity cases
-    n = trigonometric.tan(Interval(-Infinity, Infinity))
+    n = trigonometric.tan(new Interval(-Infinity, Infinity))
     assert(Interval.isWhole(n))
-    n = trigonometric.tan(Interval(-Infinity, -Infinity))
+    n = trigonometric.tan(new Interval(-Infinity, -Infinity))
     assert(Interval.isEmpty(n))
+  })
+
+  it('should compute the tan issue #16', function () {
+    round.disable()
+    n = trigonometric.tan(new Interval(Math.PI / 2, Math.PI / 2))
+    assert(n.lo === Number.NEGATIVE_INFINITY)
+    assert(n.hi === Number.POSITIVE_INFINITY)
+    round.enable()
   })
 
   it('should compute the asin function', function () {

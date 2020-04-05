@@ -2,20 +2,6 @@
   "name": "interval-arithmetic",
   "version": "0.6.10",
   "description": "An implementation of an algebraically closed interval system of the extended real number set",
-  "bugs": "https://github.com/maurizzzio/interval-arithmetic/issues",
-  "license": "BSL-1.0",
-  "main": "index.js",
-  "author": "Mauricio Poppe <mauricio.poppe@gmail.com>",
-  "files": [
-    "index.js",
-    "lib/**",
-    "README.md",
-    "LICENSE"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/maurizzzio/interval-arithmetic"
-  },
   "keywords": [
     "interval-arithmetic",
     "math",
@@ -26,51 +12,58 @@
     "interval",
     "arithmetic"
   ],
+  "bugs": "https://github.com/mauriciopoppe/interval-arithmetic/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mauriciopoppe/interval-arithmetic"
+  },
+  "license": "BSL-1.0",
+  "author": "Mauricio Poppe <mauricio.poppe@gmail.com>",
+  "main": "lib-esm/index.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:library && npm run build:toc",
+    "build:library": "tsc && tsc -m es6 --outDir lib-esm && webpack",
+    "build:toc": "doctoc .",
+    "clean": "rm -rf dist lib lib-esm",
+    "codecov": "npm run istanbul && codecov < coverage/lcov.info",
+    "docs": "jsdoc --configure jsdoc.json",
+    "istanbul": "istanbul cover _mocha -- -R spec test/index.js"
+  },
+  "dependencies": {
+    "@types/assert": "^1.4.6",
+    "is-safe-integer": "^1.0.1",
+    "nextafter": "^1.0.0",
+    "typedarray": "0.0.6"
+  },
   "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "awesome-typescript-loader": "^5.2.1",
     "coveralls": "2.11.4",
     "docdash": "^0.1.0",
     "doctoc": "0.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-with-typescript": "^15.0.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "gh-pages-deploy": "^0.4.2",
     "istanbul": "0.3.21",
+    "jest": "^25.2.7",
     "jsdoc": "3.4.0",
-    "mocha": "2.3.3",
-    "mocha-lcov-reporter": "0.0.2",
-    "nodemon": "1.7.1",
-    "standard": "4.5.4"
-  },
-  "scripts": {
-    "istanbul": "istanbul cover _mocha -- -R spec test/index.js",
-    "lint": "standard",
-    "codecov": "npm run istanbul && codecov < coverage/lcov.info",
-    "test": "mocha -R spec test/index.js",
-    "test:watch": "nodemon --watch lib --watch test --watch index.js --exec 'npm test'",
-    "start": "npm run test:watch",
-    "toc": "./node_modules/.bin/doctoc .",
-    "docs": "jsdoc --configure jsdoc.json",
-    "docs:watch": "nodemon --watch lib --watch index.js --exec 'npm run docs'",
-    "deploy": "gh-pages-deploy",
-    "redirect": "node redirect"
+    "prettier": "^2.0.2",
+    "source-map-loader": "^0.2.4",
+    "standard": "^14.3.3",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "gh-pages-deploy": {
     "staticpath": "docs/interval-arithmetic",
     "prep": [
-      "lint",
-      "test",
-      "docs",
-      "redirect"
+      "docs"
     ]
-  },
-  "testling": {
-    "harness": "mocha",
-    "files": "test/index.js",
-    "browsers": [
-      "chrome/latest"
-    ]
-  },
-  "dependencies": {
-    "is-safe-integer": "^1.0.1",
-    "nextafter": "^1.0.0",
-    "typedarray": "0.0.6",
-    "xtend": "^4.0.1"
   }
 }

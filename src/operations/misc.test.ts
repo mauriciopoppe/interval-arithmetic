@@ -1,21 +1,9 @@
-/**
- * Created by mauricio on 5/10/15.
- */
-'use strict'
-
-var mocha = require('mocha')
-var nextafter = require('nextafter')
-var describe = mocha.describe
-var it = mocha.it
-
-var assert = require('assert')
-
-var Interval = require('../../')
-var misc = require('../../lib/operations/misc')
-var constants = require('../../lib/constants')
+import Interval, { constants, misc } from '../'
+import assert from 'assert'
+import nextafter from 'nextafter'
 
 describe('misc', function () {
-  var n
+  let n
   it('should compute the exponent function', function () {
     n = misc.exp(new Interval(-1, 1))
     Interval.almostEqual(n, [0.36787944117, 2.71828182846])
@@ -69,95 +57,53 @@ describe('misc', function () {
   })
 
   it('should compute the union of two intervals', function () {
-    n = misc.union(
-      Interval(1, 3),
-      Interval(2, 4)
-    )
+    n = misc.union(new Interval(1, 3), new Interval(2, 4))
     Interval.almostEqual(n, [1, 4])
 
     assert.throws(function () {
-      misc.union(
-        Interval(1, 2),
-        Interval(3, 4)
-      )
+      misc.union(new Interval(1, 2), new Interval(3, 4))
     })
   })
 
   it('should compute the difference between two intervals', function () {
-    n = misc.difference(
-      Interval(3, 5),
-      Interval(4, 6)
-    )
+    n = misc.difference(new Interval(3, 5), new Interval(4, 6))
     Interval.almostEqual(n, [3, 4])
-    n = misc.difference(
-      Interval(4, 6),
-      Interval(3, 5)
-    )
+    n = misc.difference(new Interval(4, 6), new Interval(3, 5))
     Interval.almostEqual(n, [5, 6])
-    n = misc.difference(
-      Interval(4, 6),
-      Interval(8, 9)
-    )
+    n = misc.difference(new Interval(4, 6), new Interval(8, 9))
     Interval.almostEqual(n, [4, 6])
 
     // issue #5
-    n = misc.difference(
-      Interval(0, 3),
-      Interval(0, 1)
-    )
+    n = misc.difference(new Interval(0, 3), new Interval(0, 1))
     assert(n.lo > 1)
     assert(n.hi === 3)
 
-    n = misc.difference(
-      Interval(0, 3),
-      Interval(1, 3)
-    )
+    n = misc.difference(new Interval(0, 3), new Interval(1, 3))
     assert(n.lo === 0)
     assert(n.hi < 1)
 
-    n = misc.difference(
-      Interval(0, 3),
-      Interval(0, 3)
-    )
+    n = misc.difference(new Interval(0, 3), new Interval(0, 3))
     assert(Interval.isEmpty(n))
 
-    n = misc.difference(
-      Interval(0, 1),
-      constants.EMPTY
-    )
+    n = misc.difference(new Interval(0, 1), constants.EMPTY)
     assert(n.lo === 0)
     assert(n.hi === 1)
 
-    n = misc.difference(
-      Interval(0, 1),
-      constants.WHOLE
-    )
+    n = misc.difference(new Interval(0, 1), constants.WHOLE)
     assert(Interval.isEmpty(n))
 
     // # 9
-    n = misc.difference(
-      Interval(0, Infinity),
-      Interval(0, Infinity)
-    )
+    n = misc.difference(new Interval(0, Infinity), new Interval(0, Infinity))
     assert(Interval.isEmpty(n))
-    n = misc.difference(
-      Interval(-Infinity, 0),
-      Interval(-Infinity, 0)
-    )
+    n = misc.difference(new Interval(-Infinity, 0), new Interval(-Infinity, 0))
     assert(Interval.isEmpty(n))
-    n = misc.difference(
-      Interval(-Infinity, 0),
-      constants.WHOLE
-    )
+    n = misc.difference(new Interval(-Infinity, 0), constants.WHOLE)
     assert(Interval.isEmpty(n))
-    n = misc.difference(
-      constants.WHOLE,
-      constants.WHOLE
-    )
+    n = misc.difference(constants.WHOLE, constants.WHOLE)
     assert(Interval.isEmpty(n))
 
-    var a = Interval(3, nextafter(5, -Infinity))
-    var b = Interval(4, 6)
+    const a = new Interval(3, nextafter(5, -Infinity))
+    const b = new Interval(4, 6)
     n = Interval.difference(a, b)
     assert(n.lo === 3)
     assert(n.hi < 4)
@@ -166,10 +112,7 @@ describe('misc', function () {
     assert(n.hi === 6)
 
     assert.throws(function () {
-      misc.difference(
-        Interval(1, 4),
-        Interval(2, 3)
-      )
+      misc.difference(new Interval(1, 4), new Interval(2, 3))
     })
   })
 
@@ -185,9 +128,9 @@ describe('misc', function () {
   it('should compute the max value of two intervals', function () {
     n = misc.max(new Interval(-1, 1), new Interval(5, 7))
     Interval.almostEqual(n, [5, 7])
-    n = misc.max(Interval.EMPTY, Interval(-1, 1))
+    n = misc.max(Interval.EMPTY, new Interval(-1, 1))
     Interval.almostEqual(n, [-1, 1])
-    n = misc.max(Interval(-1, 1), Interval.EMPTY)
+    n = misc.max(new Interval(-1, 1), Interval.EMPTY)
     Interval.almostEqual(n, [-1, 1])
   })
 
@@ -197,22 +140,19 @@ describe('misc', function () {
   })
 
   it('should clone an interval', function () {
-    var x = new Interval(0, 1)
+    let x = new Interval(0, 1)
     Interval.equal(Interval.clone(x), x)
     x = Interval.clone(Interval.EMPTY)
     assert(Interval.isEmpty(x))
   })
 
   it('should compute complex operations', function () {
-    var x = new Interval(0, 1)
-    var res = Interval.add(
+    let x = new Interval(0, 1)
+    let res = Interval.add(
       Interval.sin(Interval.exp(x)),
       Interval.sub(
         Interval.tan(x),
-        Interval.mul(
-          Interval.div(Interval.ONE, Interval.cos(Interval.PI)),
-          Interval.pow(new Interval(1, 3), 2)
-        )
+        Interval.mul(Interval.div(Interval.ONE, Interval.cos(Interval.PI)), Interval.pow(new Interval(1, 3), 2))
       )
     )
     Interval.almostEqual(res, [1.4107812905029047, 11.557407724654915])

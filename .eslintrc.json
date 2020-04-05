@@ -1,0 +1,20 @@
+{
+  "extends": "standard-with-typescript",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "semi": "off",
+    "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/strict-boolean-expressions": ["warn", {
+      "allowNullable": true,
+      "ignoreRhs": true,
+      "allowSafe": true
+    }],
+    "@typescript-eslint/space-before-function-paren": ["warn", {
+      "anonymous": "ignore",
+      "named": "ignore",
+      "asyncArrow": "ignore"
+    }]
+  }
+}

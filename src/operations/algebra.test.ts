@@ -1,40 +1,17 @@
-/**
- * Created by mauricio on 5/10/15.
- */
-'use strict'
+import Interval, { algebra, constants, Interval as IntervalClass } from '../'
+import assert from 'assert'
 
-var mocha = require('mocha')
-var describe = mocha.describe
-var it = mocha.it
-
-var assert = require('assert')
-
-var Interval = require('../../')
-var algebra = require('../../lib/operations/algebra')
-var constants = require('../../lib/constants')
-var n
+let n: IntervalClass
 
 describe('algebra', function () {
   it('should compute the fmod', function () {
-    n = algebra.fmod(
-      new Interval(5.3, 5.3),
-      new Interval(2, 2)
-    )
+    n = algebra.fmod(new Interval(5.3, 5.3), new Interval(2, 2))
     Interval.almostEqual(n, [1.3, 1.3])
-    n = algebra.fmod(
-      new Interval(5, 7),
-      new Interval(2, 3)
-    )
+    n = algebra.fmod(new Interval(5, 7), new Interval(2, 3))
     Interval.almostEqual(n, [2, 5])
-    n = algebra.fmod(
-      new Interval(18.5, 18.5),
-      new Interval(4.2, 4.2)
-    )
+    n = algebra.fmod(new Interval(18.5, 18.5), new Interval(4.2, 4.2))
     Interval.almostEqual(n, [1.7, 1.7])
-    n = algebra.fmod(
-      new Interval(-10, -10),
-      new Interval(3, 3)
-    )
+    n = algebra.fmod(new Interval(-10, -10), new Interval(3, 3))
     Interval.almostEqual(n, [-1, -1])
     n = algebra.fmod(new Interval(), constants.EMPTY)
     assert(Interval.isEmpty(n))
@@ -42,10 +19,7 @@ describe('algebra', function () {
 
   it('should compute the fmod (issue #15)', function () {
     // issue #15
-    n = algebra.fmod(
-      new Interval(2, 2),
-      new Interval(2, 2)
-    )
+    n = algebra.fmod(new Interval(2, 2), new Interval(2, 2))
     Interval.almostEqual(n, [0, 0])
   })
 
@@ -61,7 +35,7 @@ describe('algebra', function () {
     assert(n.hi === Number.POSITIVE_INFINITY)
     n = algebra.multiplicativeInverse(new Interval(-6, 0))
     assert(n.lo === Number.NEGATIVE_INFINITY)
-    assert(Math.abs(n.hi + 1 / 6) < 1e-7)
+    assert(Math.abs((n.hi as number) + 1 / 6) < 1e-7)
     n = algebra.multiplicativeInverse(new Interval(0, 2))
     assert(Math.abs(n.lo - 1 / 2) < 1e-7)
     assert(n.hi === Number.POSITIVE_INFINITY)
@@ -148,7 +122,7 @@ describe('algebra', function () {
     assert(Math.abs(n.lo - 1) < 1e-7)
     assert(n.hi === Infinity)
     // issue/14
-    n = Interval().halfOpenLeft(0, 1)
+    n = new Interval().halfOpenLeft(0, 1)
     n = algebra.pow(n, -2)
     assert(n.lo < 1)
     assert(Math.abs(n.lo - 1) < 1e-7)
@@ -166,16 +140,16 @@ describe('algebra', function () {
 
   it('should compute the nth root of an interval', function () {
     // nth root can't be negative
-    n = algebra.nthRoot(Interval(-27, -8), -3)
+    n = algebra.nthRoot(new Interval(-27, -8), -3)
     assert(Interval.isEmpty(n))
 
     // [negative, negative] ^ (1 / even power)
-    n = algebra.nthRoot(Interval(-27, -8), 2)
+    n = algebra.nthRoot(new Interval(-27, -8), 2)
     assert(Interval.isEmpty(n))
     // [negative, negative] ^ (1 / odd power)
-    n = algebra.nthRoot(Interval(-27, -8), 3)
+    n = algebra.nthRoot(new Interval(-27, -8), 3)
     Interval.almostEqual(n, [-3, -2])
-    n = algebra.nthRoot(Interval(-8, -8), 3)
+    n = algebra.nthRoot(new Interval(-8, -8), 3)
     Interval.almostEqual(n, [-2, -2])
     // [negative, positive] ^ (1 / even power)
     n = algebra.nthRoot(new Interval(-4, 9), 2)
@@ -193,9 +167,9 @@ describe('algebra', function () {
     Interval.almostEqual(n, [2, 2])
 
     // n-th root is a interval
-    n = algebra.nthRoot(new Interval(-27, -8), Interval(3, 3))
+    n = algebra.nthRoot(new Interval(-27, -8), new Interval(3, 3))
     Interval.almostEqual(n, [-3, -2])
-    n = algebra.nthRoot(new Interval(-27, -8), Interval(3, 4))
+    n = algebra.nthRoot(new Interval(-27, -8), new Interval(3, 4))
     assert(Interval.isEmpty(n))
   })
 })

@@ -3,11 +3,9 @@ env: CI=true
 sudo: false
 
 node_js:
-  - '0.10'
+  - '10'
 before_install:
   - npm install codecov.io
-script:
-  - npm run lint
 after_script:
   - npm run codecov
 

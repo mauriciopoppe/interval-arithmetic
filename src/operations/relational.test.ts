@@ -1,22 +1,12 @@
-/**
- * Created by mauricio on 5/10/15.
- */
-'use strict'
-
-var mocha = require('mocha')
-var describe = mocha.describe
-var it = mocha.it
-
-var assert = require('assert')
-
-var Interval = require('../../')
+import Interval from '../'
+import assert from 'assert'
 
 describe('relational', function () {
-  var a = new Interval(-3, -1)
-  var b = new Interval(-2, 1)
-  var c = new Interval(0, 2)
-  var ac = new Interval(-1, 0)
-  var aCopy = Interval.clone(a)
+  const a = new Interval(-3, -1)
+  const b = new Interval(-2, 1)
+  const c = new Interval(0, 2)
+  const ac = new Interval(-1, 0)
+  const aCopy = Interval.clone(a)
 
   it('equal', function () {
     assert(Interval.equal(a, aCopy))

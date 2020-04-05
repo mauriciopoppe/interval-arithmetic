@@ -1,10 +1,8 @@
-//  Created by mauricio on 5/10/15.
-'use strict'
+import { Interval } from '../Interval'
 
 /**
  * @mixin utils
  */
-var utils = {}
 
 /**
  * Checks if `x` is an interval, `x` is an interval if it's an object which has
@@ -22,9 +20,9 @@ var utils = {}
  *   {lo: 1, hi: 2}
  * ) // true
  * @param  {*} x
- * @return {Boolean} true if `x` is an interval
+ * @return {boolean} true if `x` is an interval
  */
-utils.isInterval = function (x) {
+export function isInterval(x: any): boolean {
   return typeof x === 'object' && typeof x.lo === 'number' && typeof x.hi === 'number'
 }
 
@@ -43,11 +41,11 @@ utils.isInterval = function (x) {
  *   // bypass empty interval check
  *   Interval().set(1, -1)
  * ) // true
- * @param {Interval} x
+ * @param {Interval} i
  * @returns {boolean}
  */
-utils.isEmpty = function (x) {
-  return x.lo > x.hi
+export function isEmpty(i: Interval): boolean {
+  return i.lo > i.hi
 }
 
 /**
@@ -57,11 +55,11 @@ utils.isEmpty = function (x) {
  * Interval.isWhole(
  *   Interval.WHOLE
  * ) // true
- * @param {Interval} x
+ * @param {Interval} i
  * @returns {boolean}
  */
-utils.isWhole = function (x) {
-  return x.lo === -Infinity && x.hi === Infinity
+export function isWhole(i: Interval): boolean {
+  return i.lo === -Infinity && i.hi === Infinity
 }
 
 /**
@@ -75,11 +73,11 @@ utils.isWhole = function (x) {
  * Interval.isSingleton(
  *  Interval(2)
  * ) // true
- * @param {Interval} x
+ * @param {Interval} i
  * @returns {boolean}
  */
-utils.isSingleton = function (x) {
-  return x.lo === x.hi
+export function isSingleton(i: Interval): boolean {
+  return i.lo === i.hi
 }
 
 /**
@@ -88,11 +86,11 @@ utils.isSingleton = function (x) {
  * Interval.zeroIn(
  *   Interval(-1, 1)
  * ) // true
- * @param {Interval} x
+ * @param {Interval} i
  * @returns {boolean}
  */
-utils.zeroIn = function (x) {
-  return utils.hasValue(x, 0)
+export function zeroIn(i: Interval): boolean {
+  return hasValue(i, 0)
 }
 
 /**
@@ -107,13 +105,15 @@ utils.zeroIn = function (x) {
  *   Interval(-1, 1),
  *   10
  * ) // false
- * @param {Interval} x
+ * @param {Interval} i
  * @param {number} value
  * @returns {boolean}
  */
-utils.hasValue = function (a, value) {
-  if (utils.isEmpty(a)) { return false }
-  return a.lo <= value && value <= a.hi
+export function hasValue(i: Interval, value: number): boolean {
+  if (isEmpty(i)) {
+    return false
+  }
+  return i.lo <= value && value <= i.hi
 }
 
 /**
@@ -132,9 +132,11 @@ utils.hasValue = function (a, value) {
  * @param {Interval} y
  * @returns {boolean}
  */
-utils.hasInterval = function (x, y) {
-  if (utils.isEmpty(x)) { return true }
-  return !utils.isEmpty(y) && y.lo <= x.lo && x.hi <= y.hi
+export function hasInterval(x: Interval, y: Interval): boolean {
+  if (isEmpty(x)) {
+    return true
+  }
+  return !isEmpty(y) && y.lo <= x.lo && x.hi <= y.hi
 }
 
 /**
@@ -164,10 +166,9 @@ utils.hasInterval = function (x, y) {
  * @param {Interval} y
  * @returns {boolean}
  */
-utils.intervalsOverlap = function (x, y) {
-  if (utils.isEmpty(x) || utils.isEmpty(y)) { return false }
-  return (x.lo <= y.lo && y.lo <= x.hi) ||
-  (y.lo <= x.lo && x.lo <= y.hi)
+export function intervalsOverlap(x: Interval, y: Interval): boolean {
+  if (isEmpty(x) || isEmpty(y)) {
+    return false
+  }
+  return (x.lo <= y.lo && y.lo <= x.hi) || (y.lo <= x.lo && x.lo <= y.hi)
 }
-
-module.exports = utils

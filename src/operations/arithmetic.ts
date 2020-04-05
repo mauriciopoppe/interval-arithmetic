@@ -1,16 +1,12 @@
-// Created by mauricio on 5/10/15.
-
-'use strict'
-var Interval = require('../interval')
-var rmath = require('../round-math')
-var utils = require('./utils')
-var constants = require('../constants')
-var division = require('./division')
+import { Interval } from '../Interval'
+import rmath from '../round'
+import constants from '../constants'
+import * as utils from './utils'
+import * as division from './division'
 
 /**
  * @mixin arithmetic
  */
-var arithmetic = {}
 
 /**
  * Adds two intervals
@@ -23,11 +19,8 @@ var arithmetic = {}
  * @param {Interval} y
  * @return {Interval}
  */
-arithmetic.add = function (x, y) {
-  return Interval(
-    rmath.addLo(x.lo, y.lo),
-    rmath.addHi(x.hi, y.hi)
-  )
+export function add(x: Interval, y: Interval): Interval {
+  return new Interval(rmath.addLo(x.lo, y.lo), rmath.addHi(x.hi, y.hi))
 }
 
 /**
@@ -41,18 +34,15 @@ arithmetic.add = function (x, y) {
  * @param {Interval} y
  * @return {Interval}
  */
-arithmetic.subtract = function (x, y) {
-  return Interval(
-    rmath.subLo(x.lo, y.hi),
-    rmath.subHi(x.hi, y.lo)
-  )
+export function subtract(x: Interval, y: Interval): Interval {
+  return new Interval(rmath.subLo(x.lo, y.hi), rmath.subHi(x.hi, y.lo))
 }
 
 /**
- * Alias for {@link arithmetic.subtract}
+ * Alias for {@link subtract}
  * @function
  */
-arithmetic.sub = arithmetic.subtract
+export const sub = subtract
 
 /**
  * Multiplies two intervals, an explanation of all the possible cases ca
@@ -86,15 +76,15 @@ arithmetic.sub = arithmetic.subtract
  * @param {Interval} y
  * @return {Interval}
  */
-arithmetic.multiply = function (x, y) {
+export function multiply(x: Interval, y: Interval): Interval {
   if (utils.isEmpty(x) || utils.isEmpty(y)) {
     return constants.EMPTY
   }
-  var xl = x.lo
-  var xh = x.hi
-  var yl = y.lo
-  var yh = y.hi
-  var out = Interval()
+  const xl = x.lo
+  const xh = x.hi
+  const yl = y.lo
+  const yh = y.hi
+  const out = new Interval()
   if (xl < 0) {
     if (xh > 0) {
       if (yl < 0) {
@@ -174,10 +164,10 @@ arithmetic.multiply = function (x, y) {
 }
 
 /**
- * Alias for {@link arithmetic.multiply}
+ * Alias for {@link multiply}
  * @function
  */
-arithmetic.mul = arithmetic.multiply
+export const mul = multiply
 
 /**
  * Computes x/y, an explanation of all the possible cases ca
@@ -186,7 +176,7 @@ arithmetic.mul = arithmetic.multiply
  * NOTE: an extreme case of division might results in multiple
  * intervals, unfortunately this library doesn't support multi-interval
  * arithmetic yet so a single interval will be returned instead with
- * the {@link misc.hull} of the resulting intervals (this is the way
+ * the {@link hull} of the resulting intervals (this is the way
  * Boost implements it too)
  *
  * @example
@@ -208,7 +198,7 @@ arithmetic.mul = arithmetic.multiply
  * @param {Interval} y
  * @return {Interval}
  */
-arithmetic.divide = function (x, y) {
+export function divide(x: Interval, y: Interval): Interval {
   if (utils.isEmpty(x) || utils.isEmpty(y)) {
     return constants.EMPTY
   }
@@ -232,10 +222,10 @@ arithmetic.divide = function (x, y) {
 }
 
 /**
- * Alias for {@link arithmetic.divide}
+ * Alias for {@link divide}
  * @function
  */
-arithmetic.div = arithmetic.divide
+export const div = divide
 
 /**
  * Computes +x (identity function)
@@ -247,8 +237,8 @@ arithmetic.div = arithmetic.divide
  * @param {Interval} x
  * @return {Interval}
  */
-arithmetic.positive = function (x) {
-  return Interval(x.lo, x.hi)
+export function positive(x: Interval): Interval {
+  return new Interval(x.lo, x.hi)
 }
 
 /**
@@ -268,8 +258,6 @@ arithmetic.positive = function (x) {
  * @param {Interval} x
  * @return {Interval}
  */
-arithmetic.negative = function (x) {
-  return Interval(-x.hi, -x.lo)
+export function negative(x: Interval): Interval {
+  return new Interval(-x.hi, -x.lo)
 }
-
-module.exports = arithmetic

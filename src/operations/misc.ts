@@ -1,17 +1,12 @@
-/**
- * Created by mauricio on 5/11/15.
- */
-'use strict'
-var constants = require('../constants')
-var Interval = require('../interval')
-var rmath = require('../round-math')
-var utils = require('./utils')
-var arithmetic = require('./arithmetic')
+import { Interval } from '../Interval'
+import rmath from '../round'
+import constants from '../constants'
+import * as utils from './utils'
+import * as arithmetic from './arithmetic'
 
 /**
  * @mixin misc
  */
-var misc = {}
 
 /**
  * Computes e^x where e is the mathematical constant equal to the base of the
@@ -23,12 +18,11 @@ var misc = {}
  * @param {Interval} x
  * @return {Interval}
  */
-misc.exp = function (x) {
-  if (utils.isEmpty(x)) { return constants.EMPTY }
-  return Interval(
-    rmath.expLo(x.lo),
-    rmath.expHi(x.hi)
-  )
+export function exp(x: Interval): Interval {
+  if (utils.isEmpty(x)) {
+    return constants.EMPTY
+  }
+  return new Interval(rmath.expLo(x.lo), rmath.expHi(x.hi))
 }
 
 /**
@@ -40,19 +34,21 @@ misc.exp = function (x) {
  * @param {Interval} x
  * @return {Interval}
  */
-misc.log = function (x) {
-  if (utils.isEmpty(x)) { return constants.EMPTY }
-  var l = x.lo <= 0 ? Number.NEGATIVE_INFINITY : rmath.logLo(x.lo)
-  return Interval(l, rmath.logHi(x.hi))
+export function log(x: Interval): Interval {
+  if (utils.isEmpty(x)) {
+    return constants.EMPTY
+  }
+  const l = x.lo <= 0 ? Number.NEGATIVE_INFINITY : rmath.logLo(x.lo)
+  return new Interval(l, rmath.logHi(x.hi))
 }
 
 /**
- * Alias for {@link misc.log}
+ * Alias for {@link log}
  * @function
  */
-misc.ln = misc.log
+export const ln = log
 
-misc.LOG_EXP_10 = misc.log(Interval(10, 10))
+export const LOG_EXP_10 = log(new Interval(10, 10))
 
 /**
  * Computes the logarithm base 10 of x
@@ -63,12 +59,14 @@ misc.LOG_EXP_10 = misc.log(Interval(10, 10))
  * @param {Interval} x
  * @return {Interval}
  */
-misc.log10 = function (x) {
-  if (utils.isEmpty(x)) { return constants.EMPTY }
-  return arithmetic.div(misc.log(x), misc.LOG_EXP_10)
+export function log10(x: Interval): Interval {
+  if (utils.isEmpty(x)) {
+    return constants.EMPTY
+  }
+  return arithmetic.div(log(x), LOG_EXP_10)
 }
 
-misc.LOG_EXP_2 = misc.log(Interval(2, 2))
+export const LOG_EXP_2 = log(new Interval(2, 2))
 
 /**
  * Computes the logarithm base 2 of x
@@ -79,9 +77,11 @@ misc.LOG_EXP_2 = misc.log(Interval(2, 2))
  * @param {Interval} x
  * @return {Interval}
  */
-misc.log2 = function (x) {
-  if (utils.isEmpty(x)) { return constants.EMPTY }
-  return arithmetic.div(misc.log(x), misc.LOG_EXP_2)
+export function log2(x: Interval): Interval {
+  if (utils.isEmpty(x)) {
+    return constants.EMPTY
+  }
+  return arithmetic.div(log(x), LOG_EXP_2)
 }
 
 /**
@@ -103,9 +103,9 @@ misc.log2 = function (x) {
  * @param {Interval} y
  * @return {Interval}
  */
-misc.hull = function (x, y) {
-  var badX = utils.isEmpty(x)
-  var badY = utils.isEmpty(y)
+export function hull(x: Interval, y: Interval): Interval {
+  const badX = utils.isEmpty(x)
+  const badY = utils.isEmpty(y)
   if (badX && badY) {
     return constants.EMPTY
   } else if (badX) {
@@ -113,10 +113,7 @@ misc.hull = function (x, y) {
   } else if (badY) {
     return x.clone()
   } else {
-    return Interval(
-      Math.min(x.lo, y.lo),
-      Math.max(x.hi, y.hi)
-    )
+    return new Interval(Math.min(x.lo, y.lo), Math.max(x.hi, y.hi))
   }
 }
 
@@ -132,19 +129,21 @@ misc.hull = function (x, y) {
  * @param {Interval} y
  * @return {Interval}
  */
-misc.intersection = function (x, y) {
-  if (utils.isEmpty(x) || utils.isEmpty(y)) { return constants.EMPTY }
-  var lo = Math.max(x.lo, y.lo)
-  var hi = Math.min(x.hi, y.hi)
+export function intersection(x: Interval, y: Interval): Interval {
+  if (utils.isEmpty(x) || utils.isEmpty(y)) {
+    return constants.EMPTY
+  }
+  const lo = Math.max(x.lo, y.lo)
+  const hi = Math.min(x.hi, y.hi)
   if (lo <= hi) {
-    return Interval(lo, hi)
+    return new Interval(lo, hi)
   }
   return constants.EMPTY
 }
 
 /**
  * Computes an interval that has all the values that belong to both x and y,
- * the difference with {@link misc.hull} is that x and y must overlap to
+ * the difference with {@link hull} is that x and y must overlap to
  * compute the union
  * @example
  * Interval.union(
@@ -161,14 +160,11 @@ misc.intersection = function (x, y) {
  * @param {Interval} y
  * @return {Interval}
  */
-misc.union = function (x, y) {
+export function union(x: Interval, y: Interval): Interval {
   if (!utils.intervalsOverlap(x, y)) {
     throw Error('Interval#union: intervals do not overlap')
   }
-  return Interval(
-    Math.min(x.lo, y.lo),
-    Math.max(x.hi, y.hi)
-  )
+  return new Interval(Math.min(x.lo, y.lo), Math.max(x.hi, y.hi))
 }
 
 /**
@@ -199,7 +195,7 @@ misc.union = function (x, y) {
  * @param {Interval} y
  * @return {Interval}
  */
-misc.difference = function (x, y) {
+export function difference(x: Interval, y: Interval): Interval {
   if (utils.isEmpty(x) || utils.isWhole(y)) {
     return constants.EMPTY
   }
@@ -210,8 +206,7 @@ misc.difference = function (x, y) {
     }
 
     // handle corner cases first
-    if ((y.lo <= x.lo && y.hi === Infinity) ||
-      (y.hi >= x.hi && y.lo === -Infinity)) {
+    if ((y.lo <= x.lo && y.hi === Infinity) || (y.hi >= x.hi && y.lo === -Infinity)) {
       return constants.EMPTY
     }
 
@@ -222,13 +217,13 @@ misc.difference = function (x, y) {
     //    isEmpty(n) === true
     //
     if (y.lo <= x.lo) {
-      return Interval().halfOpenLeft(y.hi, x.hi)
+      return new Interval().halfOpenLeft(y.hi, x.hi)
     }
 
     // y.hi >= x.hi
-    return Interval().halfOpenRight(x.lo, y.lo)
+    return new Interval().halfOpenRight(x.lo, y.lo)
   }
-  return Interval.clone(x)
+  return x.clone()
 }
 
 /**
@@ -253,16 +248,18 @@ misc.difference = function (x, y) {
  * @param {Interval} x
  * @returns {number}
  */
-misc.width = function (x) {
-  if (utils.isEmpty(x)) { return 0 }
+export function width(x: Interval): number {
+  if (utils.isEmpty(x)) {
+    return 0
+  }
   return rmath.subHi(x.hi, x.lo)
 }
 
 /**
- * Alias for {@link misc.width}
+ * Alias for {@link  width}
  * @function
  */
-misc.wid = misc.width
+export const wid = width
 
 /**
  * Computes the absolute value of `x`
@@ -285,11 +282,17 @@ misc.wid = misc.width
  * @param {Interval} x
  * @return {Interval}
  */
-misc.abs = function (x) {
-  if (utils.isEmpty(x)) { return constants.EMPTY }
-  if (x.lo >= 0) { return Interval.clone(x) }
-  if (x.hi <= 0) { return arithmetic.negative(x) }
-  return Interval(0, Math.max(-x.lo, x.hi))
+export function abs(x: Interval): Interval {
+  if (utils.isEmpty(x)) {
+    return constants.EMPTY
+  }
+  if (x.lo >= 0) {
+    return x.clone()
+  }
+  if (x.hi <= 0) {
+    return arithmetic.negative(x)
+  }
+  return new Interval(0, Math.max(-x.lo, x.hi))
 }
 
 /**
@@ -304,7 +307,7 @@ misc.abs = function (x) {
  * @param {Interval} y
  * @return {Interval}
  */
-misc.max = function (x, y) {
+export function max(x: Interval, y: Interval): Interval {
   var badX = utils.isEmpty(x)
   var badY = utils.isEmpty(y)
   if (badX && badY) {
@@ -314,10 +317,7 @@ misc.max = function (x, y) {
   } else if (badY) {
     return x.clone()
   } else {
-    return Interval(
-      Math.max(x.lo, y.lo),
-      Math.max(x.hi, y.hi)
-    )
+    return new Interval(Math.max(x.lo, y.lo), Math.max(x.hi, y.hi))
   }
 }
 
@@ -333,9 +333,9 @@ misc.max = function (x, y) {
  * @param {Interval} y
  * @return {Interval}
  */
-misc.min = function (x, y) {
-  var badX = utils.isEmpty(x)
-  var badY = utils.isEmpty(y)
+export function min(x: Interval, y: Interval): Interval {
+  const badX = utils.isEmpty(x)
+  const badY = utils.isEmpty(y)
   if (badX && badY) {
     return constants.EMPTY
   } else if (badX) {
@@ -343,10 +343,7 @@ misc.min = function (x, y) {
   } else if (badY) {
     return x.clone()
   } else {
-    return Interval(
-      Math.min(x.lo, y.lo),
-      Math.min(x.hi, y.hi)
-    )
+    return new Interval(Math.min(x.lo, y.lo), Math.min(x.hi, y.hi))
   }
 }
 
@@ -363,9 +360,7 @@ misc.min = function (x, y) {
  * @param {Interval} x
  * @return {Interval}
  */
-misc.clone = function (x) {
+export function clone(x: Interval): Interval {
   // no bound checking
-  return Interval().set(x.lo, x.hi)
+  return new Interval().set(x.lo, x.hi)
 }
-
-module.exports = misc

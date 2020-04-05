@@ -1,58 +1,31 @@
-/**
- * Created by mauricio on 5/10/15.
- */
-'use strict'
+import Interval, { constants, arithmetic, Interval as IntervalClass } from '../'
+import assert from 'assert'
 
-var mocha = require('mocha')
-var describe = mocha.describe
-var it = mocha.it
-
-var assert = require('assert')
-
-var Interval = require('../../')
-var constants = require('../../lib/constants')
-var arithmetic = require('../../lib/operations/arithmetic')
-
-var EPS = 1e-7
-function assertEps (a, b) {
+const EPS = 1e-7
+function assertEps(a, b): void {
   assert(Math.abs(a - b) < EPS)
 }
 
-var n
+let n: IntervalClass
 
 describe('arithmetic', function () {
   it('should compute interval addition', function () {
-    var a
-    a = arithmetic.add(
-      new Interval(-1, 1),
-      new Interval(-1, 1)
-    )
+    let a
+    a = arithmetic.add(new Interval(-1, 1), new Interval(-1, 1))
     Interval.almostEqual(a, [-2, 2])
-    a = arithmetic.add(
-      new Interval(-1, Infinity),
-      new Interval(0, 1)
-    )
+    a = arithmetic.add(new Interval(-1, Infinity), new Interval(0, 1))
     assertEps(a.lo, -1)
     assert(a.hi === Infinity)
   })
 
   it('should compute interval subtraction', function () {
-    var a
-    a = arithmetic.sub(
-      new Interval(-1, 1),
-      new Interval(-1, 1)
-    )
+    let a
+    a = arithmetic.sub(new Interval(-1, 1), new Interval(-1, 1))
     assertEps(a.lo, -2)
     assertEps(a.hi, 2)
-    a = arithmetic.sub(
-      new Interval(5, 7),
-      new Interval(2, 3)
-    )
+    a = arithmetic.sub(new Interval(5, 7), new Interval(2, 3))
     Interval.almostEqual(a, [2, 5])
-    a = arithmetic.sub(
-      new Interval(-1, Infinity),
-      new Interval(0, 1)
-    )
+    a = arithmetic.sub(new Interval(-1, Infinity), new Interval(0, 1))
     assertEps(a.lo, -2)
     assert(a.hi === Infinity)
   })
@@ -64,363 +37,235 @@ describe('arithmetic', function () {
     })
 
     it('positive * positive', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(1, 2),
-        new Interval(2, 3)
-      )
+      let x
+      x = arithmetic.mul(new Interval(1, 2), new Interval(2, 3))
       assertEps(x.lo, 2)
       assertEps(x.hi, 6)
-      x = arithmetic.mul(
-        new Interval(1, Infinity),
-        new Interval(4, 6)
-      )
+      x = arithmetic.mul(new Interval(1, Infinity), new Interval(4, 6))
       assertEps(x.lo, 4)
       assert(x.hi === Infinity)
 
-      x = arithmetic.mul(
-        new Interval(1, Infinity),
-        new Interval(Infinity, Infinity)
-      )
+      x = arithmetic.mul(new Interval(1, Infinity), new Interval(Infinity, Infinity))
       assert(x.lo === Infinity)
       assert(x.hi === Infinity)
     })
 
     it('positive * negative', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(1, 2),
-        new Interval(-3, -2)
-      )
+      let x
+      x = arithmetic.mul(new Interval(1, 2), new Interval(-3, -2))
       assertEps(x.lo, -6)
       assertEps(x.hi, -2)
-      x = arithmetic.mul(
-        new Interval(1, Infinity),
-        new Interval(-3, -2)
-      )
+      x = arithmetic.mul(new Interval(1, Infinity), new Interval(-3, -2))
       assert(x.lo === -Infinity)
       assertEps(x.hi, -2)
     })
 
     it('positive * mixed', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(1, 2),
-        new Interval(-2, 3)
-      )
+      let x
+      x = arithmetic.mul(new Interval(1, 2), new Interval(-2, 3))
       assertEps(x.lo, -4)
       assertEps(x.hi, 6)
-      x = arithmetic.mul(
-        new Interval(1, Infinity),
-        new Interval(-2, 3)
-      )
+      x = arithmetic.mul(new Interval(1, Infinity), new Interval(-2, 3))
       assert(x.lo === -Infinity)
       assert(x.hi === Infinity)
     })
 
     it('positive * zero', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(1, 2),
-        new Interval(0, 0)
-      )
+      let x
+      x = arithmetic.mul(new Interval(1, 2), new Interval(0, 0))
       assertEps(x.lo, 0)
       assertEps(x.hi, 0)
-      x = arithmetic.mul(
-        new Interval(1, Infinity),
-        new Interval(0, 0)
-      )
+      x = arithmetic.mul(new Interval(1, Infinity), new Interval(0, 0))
       assertEps(x.lo, 0)
       assertEps(x.hi, 0)
     })
 
     it('negative * positive', function () {
       // same test as positive * negative
-      var x
-      x = arithmetic.mul(
-        new Interval(-3, -2),
-        new Interval(1, 2)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-3, -2), new Interval(1, 2))
       assertEps(x.lo, -6)
       assertEps(x.hi, -2)
-      x = arithmetic.mul(
-        new Interval(-3, -2),
-        new Interval(1, Infinity)
-      )
+      x = arithmetic.mul(new Interval(-3, -2), new Interval(1, Infinity))
       assert(x.lo === -Infinity)
       assertEps(x.hi, -2)
     })
 
     it('negative * negative', function () {
       // similar as positive * positive
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, -1),
-        new Interval(-3, -2)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, -1), new Interval(-3, -2))
       assertEps(x.lo, 2)
       assertEps(x.hi, 6)
-      x = arithmetic.mul(
-        new Interval(-Infinity, -1),
-        new Interval(-6, -4)
-      )
+      x = arithmetic.mul(new Interval(-Infinity, -1), new Interval(-6, -4))
       assertEps(x.lo, 4)
       assert(x.hi === Infinity)
 
-      x = arithmetic.mul(
-        new Interval(-Infinity, -1),
-        new Interval(-Infinity, -Infinity)
-      )
+      x = arithmetic.mul(new Interval(-Infinity, -1), new Interval(-Infinity, -Infinity))
       assert(x.lo === Infinity)
       assert(x.hi === Infinity)
     })
 
     it('negative * mixed', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, -1),
-        new Interval(-2, 3)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, -1), new Interval(-2, 3))
       assertEps(x.lo, -6)
       assertEps(x.hi, 4)
-      x = arithmetic.mul(
-        new Interval(-Infinity, -1),
-        new Interval(-2, 3)
-      )
+      x = arithmetic.mul(new Interval(-Infinity, -1), new Interval(-2, 3))
       assert(x.lo === -Infinity)
       assert(x.hi === Infinity)
     })
 
     it('negative * zero', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, -1),
-        new Interval(0, 0)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, -1), new Interval(0, 0))
       assertEps(x.lo, 0)
       assertEps(x.hi, 0)
-      x = arithmetic.mul(
-        new Interval(-Infinity, -1),
-        new Interval(0, 0)
-      )
+      x = arithmetic.mul(new Interval(-Infinity, -1), new Interval(0, 0))
       assertEps(x.lo, 0)
       assertEps(x.hi, 0)
     })
 
     it('mixed * positive', function () {
       // same as positive * mixed
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, 3),
-        new Interval(1, 2)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, 3), new Interval(1, 2))
       assertEps(x.lo, -4)
       assertEps(x.hi, 6)
-      x = arithmetic.mul(
-        new Interval(-2, 3),
-        new Interval(1, Infinity)
-      )
+      x = arithmetic.mul(new Interval(-2, 3), new Interval(1, Infinity))
       assert(x.lo === -Infinity)
       assert(x.hi === Infinity)
     })
 
     it('mixed * negative', function () {
       // same as negative * mixed
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, 3),
-        new Interval(-2, -1)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, 3), new Interval(-2, -1))
       assertEps(x.lo, -6)
       assertEps(x.hi, 4)
-      x = arithmetic.mul(
-        new Interval(-2, 3),
-        new Interval(-Infinity, -1)
-      )
+      x = arithmetic.mul(new Interval(-2, 3), new Interval(-Infinity, -1))
       assert(x.lo === -Infinity)
       assert(x.hi === Infinity)
     })
 
     it('mixed * mixed', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, 3),
-        new Interval(-1, 4)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, 3), new Interval(-1, 4))
       assertEps(x.lo, -8)
       assertEps(x.hi, 12)
 
-      x = arithmetic.mul(
-        new Interval(-Infinity, 3),
-        new Interval(-1, Infinity)
-      )
+      x = arithmetic.mul(new Interval(-Infinity, 3), new Interval(-1, Infinity))
       assert(x.lo === -Infinity)
       assert(x.hi === Infinity)
     })
 
     it('mixed * zero', function () {
-      var x
-      x = arithmetic.mul(
-        new Interval(-2, 1),
-        new Interval(0, 0)
-      )
+      let x
+      x = arithmetic.mul(new Interval(-2, 1), new Interval(0, 0))
       assertEps(x.lo, 0)
       assertEps(x.hi, 0)
-      x = arithmetic.mul(
-        new Interval(-Infinity, 1),
-        new Interval(0, 0)
-      )
+      x = arithmetic.mul(new Interval(-Infinity, 1), new Interval(0, 0))
       assertEps(x.lo, 0)
       assertEps(x.hi, 0)
     })
 
     it('zero * ?', function () {
-      var x
+      let x
       // mixed
-      x = arithmetic.mul(
-        new Interval(0, 0),
-        new Interval(-2, 1)
-      )
-      assertEps(x.lo, 0); assertEps(x.hi, 0)
+      x = arithmetic.mul(new Interval(0, 0), new Interval(-2, 1))
+      assertEps(x.lo, 0)
+      assertEps(x.hi, 0)
       // negative
-      x = arithmetic.mul(
-        new Interval(0, 0),
-        new Interval(-2, -1)
-      )
-      assertEps(x.lo, 0); assertEps(x.hi, 0)
+      x = arithmetic.mul(new Interval(0, 0), new Interval(-2, -1))
+      assertEps(x.lo, 0)
+      assertEps(x.hi, 0)
       // positive
-      x = arithmetic.mul(
-        new Interval(0, 0),
-        new Interval(1, 2)
-      )
-      assertEps(x.lo, 0); assertEps(x.hi, 0)
+      x = arithmetic.mul(new Interval(0, 0), new Interval(1, 2))
+      assertEps(x.lo, 0)
+      assertEps(x.hi, 0)
       // zero
-      x = arithmetic.mul(
-        new Interval(0, 0),
-        new Interval(0, 0)
-      )
-      assertEps(x.lo, 0); assertEps(x.hi, 0)
+      x = arithmetic.mul(new Interval(0, 0), new Interval(0, 0))
+      assertEps(x.lo, 0)
+      assertEps(x.hi, 0)
     })
   })
 
   describe('division', function () {
     it('should consider empty intervals', function () {
-      n = arithmetic.div(
-        constants.EMPTY,
-        new Interval(-1, 1)
-      )
+      n = arithmetic.div(constants.EMPTY, new Interval(-1, 1))
       assert(Interval.isEmpty(n))
 
-      n = arithmetic.div(
-        new Interval(-1, 1),
-        constants.ZERO
-      )
+      n = arithmetic.div(new Interval(-1, 1), constants.ZERO)
       assert(Interval.isEmpty(n))
     })
 
     describe('containing zero', function () {
-      var x
+      let x
 
       it('positive / zero', function () {
         // positive / zero
-        x = arithmetic.div(
-          new Interval(1, 2),
-          new Interval(-1, 1)
-        )
+        x = arithmetic.div(new Interval(1, 2), new Interval(-1, 1))
         assert(x.lo === -Infinity)
         assert(x.hi === Infinity)
 
         // [0, positive] / [zero, positive]
-        x = arithmetic.div(
-          new Interval(0, 2),
-          new Interval(0, 1)
-        )
+        x = arithmetic.div(new Interval(0, 2), new Interval(0, 1))
         assert(x.lo === -Infinity)
         assert(x.hi === Infinity)
 
         // [0, positive] / [negative, zero]
-        x = arithmetic.div(
-          new Interval(0, 2),
-          new Interval(-1, 0)
-        )
+        x = arithmetic.div(new Interval(0, 2), new Interval(-1, 0))
         assert(x.lo === -Infinity)
         assert(x.hi === Infinity)
 
         // [positive, positive] / [zero, positive]
-        x = arithmetic.div(
-          new Interval(1, 2),
-          new Interval(0, 1)
-        )
+        x = arithmetic.div(new Interval(1, 2), new Interval(0, 1))
         assertEps(x.lo, 1)
         assert(x.hi === Infinity)
 
         // [positive, positive] / [negative, zero]
-        x = arithmetic.div(
-          new Interval(1, 2),
-          new Interval(-1, 0)
-        )
+        x = arithmetic.div(new Interval(1, 2), new Interval(-1, 0))
         assert(x.lo === -Infinity)
         assertEps(x.hi, -1)
       })
 
       it('negative / zero', function () {
         // negative / zero
-        x = arithmetic.div(
-          new Interval(-2, -1),
-          new Interval(-1, 1)
-        )
+        x = arithmetic.div(new Interval(-2, -1), new Interval(-1, 1))
         assert(x.lo === -Infinity)
         assert(x.hi === Infinity)
 
         // [negative, zero] / [zero, positive]
-        x = arithmetic.div(
-          new Interval(-2, 0),
-          new Interval(0, 1)
-        )
+        x = arithmetic.div(new Interval(-2, 0), new Interval(0, 1))
         assert(x.lo === -Infinity) // -2 / 0   O:
         assert(x.hi === Infinity) // -2 / -0  O:
 
         // [negative, zero] / [negative, zero]
-        x = arithmetic.div(
-          new Interval(-2, 0),
-          new Interval(-1, 0)
-        )
+        x = arithmetic.div(new Interval(-2, 0), new Interval(-1, 0))
         assert(x.lo === -Infinity)
         assert(x.hi === Infinity)
 
         // [negative, negative] / [zero, positive]
-        x = arithmetic.div(
-          new Interval(-2, -1),
-          new Interval(0, 1)
-        )
+        x = arithmetic.div(new Interval(-2, -1), new Interval(0, 1))
         assert(x.lo === -Infinity)
         assertEps(x.hi, -1)
 
         // [negative, negative] / [negative, zero]
-        x = arithmetic.div(
-          new Interval(-2, -1),
-          new Interval(-1, 0)
-        )
+        x = arithmetic.div(new Interval(-2, -1), new Interval(-1, 0))
         assertEps(x.lo, 1)
         assert(x.hi === Infinity)
       })
 
       it('mixed / zero', function () {
         // mixed / zero
-        x = arithmetic.div(
-          new Interval(-2, 3),
-          new Interval(-1, 1)
-        )
+        x = arithmetic.div(new Interval(-2, 3), new Interval(-1, 1))
         // TODO: this should return two intervals
         assert(x.lo === -Infinity)
         assert(x.hi === Infinity)
       })
 
       it('zero / zero', function () {
-        x = arithmetic.div(
-          new Interval(0, 0),
-          new Interval(-1, 1)
-        )
+        x = arithmetic.div(new Interval(0, 0), new Interval(-1, 1))
         assert(x.lo === 0)
         assert(x.hi === 0)
 
@@ -435,101 +280,62 @@ describe('arithmetic', function () {
     })
 
     it('without zero', function () {
-      var x
-      x = arithmetic.div(
-        new Interval(1, 2),
-        new Interval(3, 4)
-      )
+      let x
+      x = arithmetic.div(new Interval(1, 2), new Interval(3, 4))
       assertEps(x.lo, 1 / 4)
       assertEps(x.hi, 2 / 3)
 
-      x = arithmetic.div(
-        new Interval(1, 2),
-        new Interval(3, Infinity)
-      )
+      x = arithmetic.div(new Interval(1, 2), new Interval(3, Infinity))
       assertEps(x.lo, 0)
       assertEps(x.hi, 2 / 3)
 
-      x = arithmetic.div(
-        new Interval(1, Infinity),
-        new Interval(3, Infinity)
-      )
+      x = arithmetic.div(new Interval(1, Infinity), new Interval(3, Infinity))
       assertEps(x.lo, 0) // 1 / infinity
       assert(x.hi === Infinity) // infinity / 3
 
-      x = arithmetic.div(
-        new Interval(-2, -1),
-        new Interval(-4, -3)
-      )
+      x = arithmetic.div(new Interval(-2, -1), new Interval(-4, -3))
       assertEps(x.lo, 1 / 4)
       assertEps(x.hi, 2 / 3)
 
-      x = arithmetic.div(
-        new Interval(-2, -1),
-        new Interval(-Infinity, -3)
-      )
+      x = arithmetic.div(new Interval(-2, -1), new Interval(-Infinity, -3))
       assertEps(x.lo, 0)
       assertEps(x.hi, 2 / 3)
 
-      x = arithmetic.div(
-        new Interval(-Infinity, -1),
-        new Interval(-Infinity, -3)
-      )
+      x = arithmetic.div(new Interval(-Infinity, -1), new Interval(-Infinity, -3))
       assertEps(x.lo, 0) // 1 / infinity
       assert(x.lo === -Number.MIN_VALUE)
       assert(x.hi === Infinity) // infinity / 3
 
-      x = arithmetic.div(
-        new Interval(-2, -1),
-        new Interval(3, 4)
-      )
+      x = arithmetic.div(new Interval(-2, -1), new Interval(3, 4))
       assertEps(x.lo, -2 / 3)
       assertEps(x.hi, -1 / 4)
 
-      x = arithmetic.div(
-        new Interval(-2, -1),
-        new Interval(3, 4)
-      )
+      x = arithmetic.div(new Interval(-2, -1), new Interval(3, 4))
       assertEps(x.lo, -2 / 3)
       assertEps(x.hi, -1 / 4)
 
       // negative / non zero
-      x = arithmetic.div(
-        new Interval(-2, -1),
-        new Interval(3, 4)
-      )
+      x = arithmetic.div(new Interval(-2, -1), new Interval(3, 4))
       assertEps(x.lo, -2 / 3)
       assertEps(x.hi, -1 / 4)
 
       // mixed / non zero positive
-      x = arithmetic.div(
-        new Interval(-2, 1),
-        new Interval(3, 4)
-      )
+      x = arithmetic.div(new Interval(-2, 1), new Interval(3, 4))
       assertEps(x.lo, -2 / 3)
       assertEps(x.hi, 1 / 3)
 
       // mixed / non zero negative
-      x = arithmetic.div(
-        new Interval(-2, 1),
-        new Interval(-4, -3)
-      )
+      x = arithmetic.div(new Interval(-2, 1), new Interval(-4, -3))
       assertEps(x.lo, -1 / 3)
       assertEps(x.hi, 2 / 3)
 
       // positive / non zero positive
-      x = arithmetic.div(
-        new Interval(1, 2),
-        new Interval(3, 4)
-      )
+      x = arithmetic.div(new Interval(1, 2), new Interval(3, 4))
       assertEps(x.lo, 1 / 4)
       assertEps(x.hi, 2 / 3)
 
       // positive / non zero negative
-      x = arithmetic.div(
-        new Interval(1, 2),
-        new Interval(-4, -3)
-      )
+      x = arithmetic.div(new Interval(1, 2), new Interval(-4, -3))
       assertEps(x.lo, -2 / 3)
       assertEps(x.hi, -1 / 4)
     })

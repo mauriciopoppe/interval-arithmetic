@@ -1,20 +1,10 @@
-/**
- * Created by mauricio on 5/10/15.
- */
-'use strict'
+import Interval, { utils, constants, Interval as IntervalClass } from './'
+import assert from 'assert'
 
-var mocha = require('mocha')
-var describe = mocha.describe
-var it = mocha.it
+let n: IntervalClass
+const EPS = 1e-7
 
-var assert = require('assert')
-
-var constants = require('../lib/constants')
-var Interval = require('../lib/interval')
-var utils = require('../lib/operations/utils')
-var n
-var EPS = 1e-7
-function assertEps (a, b) {
+function assertEps(a, b): void {
   assert(Math.abs(a - b) < EPS)
 }
 
@@ -31,35 +21,46 @@ describe('interval', function () {
   })
 
   it('should have a factory', function () {
+    // @ts-ignore
     n = Interval.factory()
     assert(n.lo === 0 && n.hi === 0)
+    // @ts-ignore
     n = Interval.factory(1, 5)
     assert(n.lo === 1 && n.hi === 5)
+    // @ts-ignore
     n = Interval.factory(1, -1)
     assert(utils.isEmpty(n))
+    // @ts-ignore
     n = Interval.factory(1)
     assert(n.lo === 1 && n.hi === 1)
 
     // nested
+    // @ts-ignore
     n = Interval.factory([1, 2])
     assert(n.lo === 1 && n.hi === 2)
 
+    // @ts-ignore
     n = Interval.factory(Interval.factory(1))
     assert(n.lo === 1 && n.hi === 1)
 
+    // @ts-ignore
     n = Interval.factory(Interval.factory(1), Interval.factory(2))
     assert(n.lo === 1 && n.hi === 2)
 
+    // @ts-ignore
     n = Interval.factory(Interval.factory(0), Interval.factory(3.15))
     assert(n.lo === 0 && n.hi === 3.15)
 
     assert.throws(function () {
+      // @ts-ignore
       Interval.factory('')
     })
     assert.throws(function () {
+      // @ts-ignore
       Interval.factory(Interval.factory(1, 2))
     })
     assert.throws(function () {
+      // @ts-ignore
       Interval.factory(Interval.factory(1), Interval.factory(1, 2))
     })
   })
@@ -77,7 +78,7 @@ describe('interval', function () {
   })
 
   it('should check NaN on assignment', function () {
-    var x = Interval()
+    let x = new Interval()
     x.assign(NaN, NaN)
     assert(x.lo > x.hi)
     x.assign(1, 2)
