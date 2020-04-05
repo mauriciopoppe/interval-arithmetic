@@ -25,6 +25,7 @@
     "build": "npm run clean && npm run build:library",
     "build:library": "tsc && tsc -m es6 --outDir lib-esm && webpack",
     "clean": "rm -rf dist lib lib-esm",
+    "deploy": "npm run docs",
     "docs": "npm run docs:generate && npm run docs:deploy",
     "docs:generate": "typedoc --out dist/docs --target es6 --theme minimal src",
     "docs:deploy": "touch dist/docs/.nojekyll && gh-pages --dotfiles -d dist/docs",
