@@ -109,7 +109,7 @@ See the [homepage](http://mauriciopoppe.github.io/interval-arithmetic/)
 ## Development
 
 ```sh
-npm start
+npm test
 ```
 
 Deploy steps
