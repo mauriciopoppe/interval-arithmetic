@@ -2,7 +2,7 @@
 
 [![NPM][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url] 
-[![Codecov Status][codecov-image]][codecov-url]
+[![codecov](https://codecov.io/gh/mauriciopoppe/interval-arithmetic/branch/master/graph/badge.svg)](https://codecov.io/gh/mauriciopoppe/interval-arithmetic)
 [![Dependency Status][david-image]][david-url]
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![Stability](https://img.shields.io/badge/stability-stable-green.svg)](https://nodejs.org/api/documentation.html#apicontent)
@@ -128,7 +128,5 @@ npm publish
 [npm-url]: https://npmjs.org/package/interval-arithmetic
 [travis-image]: https://travis-ci.org/mauriciopoppe/interval-arithmetic.svg?branch=master
 [travis-url]: https://travis-ci.org/mauriciopoppe/interval-arithmetic
-[codecov-url]: https://codecov.io/github/mauriciopoppe/interval-arithmetic
-[codecov-image]: https://img.shields.io/codecov/c/github/mauriciopoppe/interval-arithmetic.svg?style=flat
 [david-image]: https://david-dm.org/mauriciopoppe/interval-arithmetic.svg
 [david-url]: https://david-dm.org/mauriciopoppe/interval-arithmetic
