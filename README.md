@@ -117,11 +117,14 @@ Deployment steps
 ```sh
 // after the working directory is clean
 npm version (major|minor|patch)
+git push origin master
+
+// travis is set up to do automatic deployments of the docs when a tag is detected
+
 // if everything went well
 npm publish
 ```
 
-Travis is set up to do automatic deployments of the docs
 
 2015-2020 © Mauricio Poppe
 
