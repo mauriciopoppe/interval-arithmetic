@@ -2807,56 +2807,40 @@ img {
 					<dt>mixes</dt>
 					<dd><p>constants</p>
 					</dd>
-					<dt>see</dt>
+					<dt>link</dt>
 					<dd><p>#bounded</p>
 					</dd>
-					<dt>see</dt>
+					<dt>link</dt>
 					<dd><p>#boundedSingleton</p>
 					</dd>
 					<dt>example</dt>
-					<dd><p>new Interval(1, 2)  // {lo: 1, hi: 2}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// function invocation without new is also supported
-						Interval(1, 2)   // {lo: 1, hi: 2}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// with numbers
-							Interval(1, 2)   // {lo: 1, hi: 2}
-						Interval(1)      // {lo: 1, hi: 1}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// with an array
-						Interval([1, 2]) // {lo: 1, hi: 2}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// singleton intervals
-							var x = Interval(1)
-							var y = Interval(2)
-						Interval(x, y)   // {lo: 1, hi: 2}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// when <code>lo &gt; hi</code> it returns an empty interval
-						Interval(2, 1)   // {lo: Infinity, hi: -Infinity}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// bounded interval
-						Interval().bounded(1, 2)  // { lo: 0.9999999999999999, hi: 2.0000000000000004 }</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// singleton bounded interval
-						Interval().boundedSingleton(2)  // {lo: 1.9999999999999998, hi: 2.0000000000000004}</p>
-					</dd>
-					<dt>example</dt>
-					<dd><p>// half open and open intervals
-							// [2, 3]
-							Interval(2, 3)                     // {lo: 2, hi: 3}
-							// (2, 3]
-							Interval().halfOpenLeft(2, 3)      // {lo: 2.0000000000000004, hi: 3}
-							// [2, 3)
-							Interval().halfOpenRight(2, 3)     // {lo: 2, hi: 2.9999999999999996}
-							// (2, 3)
-						Interval().open(2, 3)              // {lo: 2.0000000000000004, hi: 2.9999999999999996}</p>
+					<dd><pre><code class="language-typescript"><span class="hljs-keyword">new</span> Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">// {lo: 1, hi: 2}</span>
+<span class="hljs-comment">// function invocation without new is also supported</span>
+Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)   <span class="hljs-comment">// {lo: 1, hi: 2}</span>
+<span class="hljs-comment">// with numbers</span>
+Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)   <span class="hljs-comment">// {lo: 1, hi: 2}</span>
+Interval(<span class="hljs-number">1</span>)      <span class="hljs-comment">// {lo: 1, hi: 1}</span>
+<span class="hljs-comment">// with an array</span>
+Interval([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) <span class="hljs-comment">// {lo: 1, hi: 2}</span>
+<span class="hljs-comment">// singleton intervals</span>
+<span class="hljs-keyword">var</span> x = Interval(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">var</span> y = Interval(<span class="hljs-number">2</span>)
+Interval(x, y)   <span class="hljs-comment">// {lo: 1, hi: 2}</span>
+<span class="hljs-comment">// when `lo &gt; hi` it returns an empty interval</span>
+Interval(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>)   <span class="hljs-comment">// {lo: Infinity, hi: -Infinity}</span>
+<span class="hljs-comment">// bounded interval</span>
+Interval().bounded(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">// { lo: 0.9999999999999999, hi: 2.0000000000000004 }</span>
+<span class="hljs-comment">// singleton bounded interval</span>
+Interval().boundedSingleton(<span class="hljs-number">2</span>)  <span class="hljs-comment">// {lo: 1.9999999999999998, hi: 2.0000000000000004}</span>
+<span class="hljs-comment">// half open and open intervals</span>
+<span class="hljs-comment">// [2, 3]</span>
+Interval(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)                     <span class="hljs-comment">// {lo: 2, hi: 3}</span>
+<span class="hljs-comment">// (2, 3]</span>
+Interval().halfOpenLeft(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)      <span class="hljs-comment">// {lo: 2.0000000000000004, hi: 3}</span>
+<span class="hljs-comment">// [2, 3)</span>
+Interval().halfOpenRight(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)     <span class="hljs-comment">// {lo: 2, hi: 2.9999999999999996}</span>
+<span class="hljs-comment">// (2, 3)</span>
+Interval().open(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)              <span class="hljs-comment">// {lo: 2.0000000000000004, hi: 2.9999999999999996}</span></code></pre>
 					</dd>
 					<dt>param</dt>
 					<dd><p>The left endpoint of the interval if it&#39;s a
@@ -2929,7 +2913,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L79">interval.ts:79</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L73">interval.ts:73</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2954,7 +2938,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">hi<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L79">interval.ts:79</a></li>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L73">interval.ts:73</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2969,7 +2953,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">lo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L73">interval.ts:73</a></li>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L67">interval.ts:67</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2984,7 +2968,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">factory<span class="tsd-signature-symbol">:</span> <a href="_interval_.interval.html" class="tsd-signature-type">Interval</a><span class="tsd-signature-symbol"> = Interval</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L67">interval.ts:67</a></li>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L61">interval.ts:61</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3001,7 +2985,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L188">interval.ts:188</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L189">interval.ts:189</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3041,7 +3025,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L152">interval.ts:152</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L153">interval.ts:153</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3053,20 +3037,20 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>var x = Interval().bounded(1, 2)
-										x.lo &lt; 1 // true, x.lo === 0.9999999999999999
-									x.hi &gt; 2 // true, x.hi === 2.0000000000000004</p>
+								<dd><pre><code class="language-typescript"><span class="hljs-keyword">const</span> x = Interval().bounded(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+x.lo &lt; <span class="hljs-number">1</span> <span class="hljs-comment">// true, x.lo === 0.9999999999999999</span>
+x.hi &gt; <span class="hljs-number">2</span> <span class="hljs-comment">// true, x.hi === 2.0000000000000004</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>// the correct representation of 1/3
-										var x = Interval().bounded(1/3, 1/3)
-										x.lo &lt; 1/3 // true
-										x.hi &gt; 1/3 // true
-										// however the floating point representation of 1/3 is less than the real 1/3
-										// therefore the left endpoint could be 1/3 instead of the previous value of
-										var next = Interval.round.safeNext
-										var x = Interval().set(1/3, next(1/3))
-									// x now represents 1/3 correctly</p>
+								<dd><pre><code class="language-typescript"><span class="hljs-comment">// the correct representation of 1/3</span>
+<span class="hljs-keyword">var</span> x = Interval().bounded(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>, <span class="hljs-number">1</span>/<span class="hljs-number">3</span>)
+x.lo &lt; <span class="hljs-number">1</span>/<span class="hljs-number">3</span> <span class="hljs-comment">// true</span>
+x.hi &gt; <span class="hljs-number">1</span>/<span class="hljs-number">3</span> <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// however the floating point representation of 1/3 is less than the real 1/3</span>
+<span class="hljs-comment">// therefore the left endpoint could be 1/3 instead of the previous value of</span>
+<span class="hljs-keyword">var</span> next = Interval.round.safeNext
+<span class="hljs-keyword">var</span> x = Interval().set(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>, next(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>))
+<span class="hljs-comment">// x now represents 1/3 correctly</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3094,7 +3078,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L161">interval.ts:161</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L162">interval.ts:162</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3123,7 +3107,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L281">interval.ts:281</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L293">interval.ts:293</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3138,8 +3122,8 @@ img {
 								<dd><p>Interval.prototype</p>
 								</dd>
 								<dt>example</dt>
-								<dd><p>var x = Interval(2, 3)
-									x.clone()    // Interval(2, 3)</p>
+								<dd><pre><code class="language-typescript"><span class="hljs-keyword">var</span> x = Interval(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+x.clone()    <span class="hljs-comment">// Interval(2, 3)</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3157,7 +3141,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L244">interval.ts:244</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L251">interval.ts:251</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3167,8 +3151,8 @@ img {
 							<p>NOTE: <code>Interval.round.disable</code> has no effect on this method</p>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>// (2, 3]
-									Interval().halfOpenLeft(2, 3)  // {lo: 2.0000000000000004, hi: 3}</p>
+								<dd><pre><code class="language-typescript"><span class="hljs-comment">// (2, 3]</span>
+Interval().halfOpenLeft(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)  <span class="hljs-comment">// {lo: 2.0000000000000004, hi: 3}</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3196,7 +3180,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L260">interval.ts:260</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L270">interval.ts:270</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3206,8 +3190,8 @@ img {
 							<p>NOTE: <code>Interval.round.disable</code> has no effect on this method</p>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>// [2, 3)
-									Interval.halfOpenRight(2, 3)     // {lo: 2, hi: 2.9999999999999996}</p>
+								<dd><pre><code class="language-typescript"><span class="hljs-comment">// [2, 3)</span>
+Interval.halfOpenRight(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)     <span class="hljs-comment">// {lo: 2, hi: 2.9999999999999996}</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3235,7 +3219,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L228">interval.ts:228</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L232">interval.ts:232</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3245,8 +3229,8 @@ img {
 							<p>NOTE: <code>Interval.round.disable</code> has no effect on this method</p>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>// (2, 3)
-									Interval().open(2, 3)  // {lo: 2.0000000000000004, hi: 2.9999999999999996}</p>
+								<dd><pre><code class="language-typescript"><span class="hljs-comment">// (2, 3)</span>
+Interval().open(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)  <span class="hljs-comment">// {lo: 2.0000000000000004, hi: 2.9999999999999996}</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3274,7 +3258,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L173">interval.ts:173</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L174">interval.ts:174</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3313,7 +3297,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L203">interval.ts:203</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L204">interval.ts:204</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3337,7 +3321,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L212">interval.ts:212</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L213">interval.ts:213</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3361,7 +3345,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L125">interval.ts:125</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L119">interval.ts:119</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3390,7 +3374,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/interval.ts#L268">interval.ts:268</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/interval.ts#L278">interval.ts:278</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

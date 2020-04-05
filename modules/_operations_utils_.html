@@ -2781,7 +2781,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L135">operations/utils.ts:135</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L156">operations/utils.ts:156</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2790,16 +2790,14 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.hasInteravl(
-										Interval(0, 3),
-										Interval(1, 2)
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.hasInteravl(
-										Interval(0, 3),
-										Interval(1, 4)
-									) // false</p>
+								<dd><pre><code class="language-typescript">Interval.hasInteravl(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>),
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+) <span class="hljs-comment">// true</span>
+Interval.hasInteravl(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>),
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">4</span>)
+) <span class="hljs-comment">// false</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -2826,7 +2824,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L112">operations/utils.ts:112</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L130">operations/utils.ts:130</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2835,16 +2833,14 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.hasValue(
-										Interval(-1, 1),
-										0
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.hasValue(
-										Interval(-1, 1),
-										10
-									) // false</p>
+								<dd><pre><code class="language-typescript">Interval.hasValue(
+  Interval(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>),
+  <span class="hljs-number">0</span>
+) <span class="hljs-comment">// true</span>
+Interval.hasValue(
+  Interval(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>),
+  <span class="hljs-number">10</span>
+) <span class="hljs-comment">// false</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -2871,38 +2867,31 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L169">operations/utils.ts:169</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L190">operations/utils.ts:190</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>Checks if the intervals <code>x</code>, <code>y</code> overlap i.e. if they share at least one
-								value</p>
+								<p>Checks if the intervals <code>x</code>, <code>y</code> overlap i.e. if they share at least one value</p>
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.intervalsOverlap(
-										Interval(0, 3),
-										Interval(1, 2)
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.intervalsOverlap(
-										Interval(0, 2),
-										Interval(1, 3)
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.intervalsOverlap(
-										Interval(0, 2),
-										Interval(2, 3)
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.intervalsOverlap(
-										Interval(0, 1),
-										Interval(2, 3)
-									) // false</p>
+								<dd><pre><code class="language-typescript">Interval.intervalsOverlap(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>),
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+) <span class="hljs-comment">// true</span>
+Interval.intervalsOverlap(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>),
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>)
+) <span class="hljs-comment">// true</span>
+Interval.intervalsOverlap(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>),
+  Interval(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+) <span class="hljs-comment">// true</span>
+Interval.intervalsOverlap(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>),
+  Interval(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+) <span class="hljs-comment">// false</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -2929,7 +2918,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L47">operations/utils.ts:47</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L51">operations/utils.ts:51</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2938,20 +2927,16 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.isEmpty(
-										Interval.EMPTY
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.isEmpty(
-										Interval.WHOLE
-									) // false</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.isEmpty(
-										// bypass empty interval check
-										Interval().set(1, -1)
-									) // true</p>
+								<dd><pre><code class="language-typescript">Interval.isEmpty(
+  Interval.EMPTY
+) <span class="hljs-comment">// true</span>
+Interval.isEmpty(
+  Interval.WHOLE
+) <span class="hljs-comment">// false</span>
+Interval.isEmpty(
+  <span class="hljs-comment">// bypass empty interval check</span>
+  Interval().set(<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>)
+) <span class="hljs-comment">// true</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -2975,7 +2960,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L25">operations/utils.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L27">operations/utils.ts:27</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2985,19 +2970,15 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.isInterval(
-										Interval()
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.isInterval(
-										undefined
-									) // false</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.isInterval(
-										{lo: 1, hi: 2}
-									) // true</p>
+								<dd><pre><code class="language-typescript">Interval.isInterval(
+  Interval()
+) <span class="hljs-comment">// true</span>
+Interval.isInterval(
+  <span class="hljs-literal">undefined</span>
+) <span class="hljs-comment">// false</span>
+Interval.isInterval(
+  {lo: <span class="hljs-number">1</span>, hi: <span class="hljs-number">2</span>}
+) <span class="hljs-comment">// true</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3022,7 +3003,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L79">operations/utils.ts:79</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L90">operations/utils.ts:90</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3032,14 +3013,12 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.isSingleton(
-										Interval(2, 2)
-									) // true</p>
-								</dd>
-								<dt>example</dt>
-								<dd><p>Interval.isSingleton(
-										Interval(2)
-									) // true</p>
+								<dd><pre><code class="language-typescript">Interval.isSingleton(
+ Interval(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)
+) <span class="hljs-comment">// true</span>
+Interval.isSingleton(
+ Interval(<span class="hljs-number">2</span>)
+) <span class="hljs-comment">// true</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3063,7 +3042,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L61">operations/utils.ts:61</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L69">operations/utils.ts:69</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3073,9 +3052,9 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.isWhole(
-										Interval.WHOLE
-									) // true</p>
+								<dd><pre><code class="language-typescript">Interval.isWhole(
+  Interval.WHOLE
+) <span class="hljs-comment">// true</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3099,7 +3078,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/utils.ts#L92">operations/utils.ts:92</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/utils.ts#L107">operations/utils.ts:107</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3108,9 +3087,9 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.zeroIn(
-										Interval(-1, 1)
-									) // true</p>
+								<dd><pre><code class="language-typescript">Interval.zeroIn(
+  Interval(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>)
+) <span class="hljs-comment">// true</span></code></pre>
 								</dd>
 							</dl>
 						</div>

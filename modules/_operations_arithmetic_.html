@@ -2786,7 +2786,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">div<span class="tsd-signature-symbol">:</span> <a href="_operations_arithmetic_.html#divide" class="tsd-signature-type">divide</a><span class="tsd-signature-symbol"> = divide</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L228">operations/arithmetic.ts:228</a></li>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L261">operations/arithmetic.ts:261</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2805,7 +2805,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">mul<span class="tsd-signature-symbol">:</span> <a href="_operations_arithmetic_.html#multiply" class="tsd-signature-type">multiply</a><span class="tsd-signature-symbol"> = multiply</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L170">operations/arithmetic.ts:170</a></li>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L194">operations/arithmetic.ts:194</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2824,7 +2824,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">sub<span class="tsd-signature-symbol">:</span> <a href="_operations_arithmetic_.html#subtract" class="tsd-signature-type">subtract</a><span class="tsd-signature-symbol"> = subtract</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L45">operations/arithmetic.ts:45</a></li>
+						<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L53">operations/arithmetic.ts:53</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2850,7 +2850,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L22">operations/arithmetic.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L26">operations/arithmetic.ts:26</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2859,10 +2859,10 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.add(
-										Interval(0, 1),
-										Interval(1, 2),
-									)   // Interval(prev(1), next(3))</p>
+								<dd><pre><code class="language-typescript">Interval.add(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>),
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+)   <span class="hljs-comment">// Interval(prev(1), next(3))</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -2889,7 +2889,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L201">operations/arithmetic.ts:201</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L234">operations/arithmetic.ts:234</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2904,22 +2904,22 @@ img {
 							Boost implements it too)</p>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.divide(
-										Interval(1, 2),
-										Interval(3, 4)
-									) // Interval(prev(1/4), next(2/3))</p>
+								<dd><pre><code class="language-typescript">Interval.divide(
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+  Interval(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+) <span class="hljs-comment">// Interval(prev(1/4), next(2/3))</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.divide(
-										Interval(-2, 1),
-										Interval(-4, -3)
-									) // Interval(prev(-1/3), next(2/3))</p>
+								<dd><pre><code class="language-typescript">Interval.divide(
+  Interval(<span class="hljs-number">-2</span>, <span class="hljs-number">1</span>),
+  Interval(<span class="hljs-number">-4</span>, <span class="hljs-number">-3</span>)
+) <span class="hljs-comment">// Interval(prev(-1/3), next(2/3))</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.divide(
-										Interval(1, 2),
-										Interval(-1, 1)
-									) // Interval(-Infinity, Infinity)</p>
+								<dd><pre><code class="language-typescript">Interval.divide(
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+  Interval(<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>)
+) <span class="hljs-comment">// Interval(-Infinity, Infinity)</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -2946,7 +2946,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L79">operations/arithmetic.ts:79</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L103">operations/arithmetic.ts:103</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -2956,34 +2956,34 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.multiply(
-										Interval(1, 2),
-										Interval(2, 3)
-									) // Interval(prev(2), next(6))</p>
+								<dd><pre><code class="language-typescript">Interval.multiply(
+ Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+ Interval(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+) <span class="hljs-comment">// Interval(prev(2), next(6))</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.multiply(
-										Interval(1, Infinity),
-										Interval(4, 6)
-									) // Interval(prev(4), Infinity)</p>
+								<dd><pre><code class="language-typescript">Interval.multiply(
+ Interval(<span class="hljs-number">1</span>, <span class="hljs-literal">Infinity</span>),
+ Interval(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>)
+) <span class="hljs-comment">// Interval(prev(4), Infinity)</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.multiply(
-										Interval(1, 2),
-										Interval(-3, -2)
-									) // Interval(prev(-6), next(-2))</p>
+								<dd><pre><code class="language-typescript">Interval.multiply(
+ Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+ Interval(<span class="hljs-number">-3</span>, <span class="hljs-number">-2</span>)
+) <span class="hljs-comment">// Interval(prev(-6), next(-2))</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.multiply(
-										Interval(1, 2),
-										Interval(-2, 3)
-									) // Interval(prev(-4), next(6))</p>
+								<dd><pre><code class="language-typescript">Interval.multiply(
+ Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+ Interval(<span class="hljs-number">-2</span>, <span class="hljs-number">3</span>)
+) <span class="hljs-comment">// Interval(prev(-4), next(6))</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.multiply(
-										Interval(-2, -1),
-										Interval(-3, -2)
-									) // Interval(prev(2), next(6))</p>
+								<dd><pre><code class="language-typescript">Interval.multiply(
+ Interval(<span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>),
+ Interval(<span class="hljs-number">-3</span>, <span class="hljs-number">-2</span>)
+) <span class="hljs-comment">// Interval(prev(2), next(6))</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3010,7 +3010,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L261">operations/arithmetic.ts:261</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L308">operations/arithmetic.ts:308</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3019,19 +3019,19 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.negative(
-										Interval(1, 2)
-									)  // Interval(-2, -1)</p>
+								<dd><pre><code class="language-typescript">Interval.negative(
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+)  <span class="hljs-comment">// Interval(-2, -1)</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.negative(
-										Interval(-Infinity, Infinity)
-									)  // Interval(-Infinity, Infinity)</p>
+								<dd><pre><code class="language-typescript">Interval.negative(
+  Interval(-<span class="hljs-literal">Infinity</span>, <span class="hljs-literal">Infinity</span>)
+)  <span class="hljs-comment">// Interval(-Infinity, Infinity)</span></code></pre>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.negative(
-										Interval.WHOLE
-									)  // Interval.WHOLE</p>
+								<dd><pre><code class="language-typescript">Interval.negative(
+  Interval.WHOLE
+)  <span class="hljs-comment">// Interval.WHOLE</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3055,7 +3055,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L240">operations/arithmetic.ts:240</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L277">operations/arithmetic.ts:277</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3063,13 +3063,13 @@ img {
 								<p>Computes +x (identity function)</p>
 							</div>
 							<dl class="tsd-comment-tags">
-								<dt>see</dt>
-								<dd><p>misc.clone</p>
+								<dt>link</dt>
+								<dd><p>clone</p>
 								</dd>
 								<dt>example</dt>
-								<dd><p>Interval.positive(
-										Interval(1, 2)
-									)  // Interval(1, 2)</p>
+								<dd><pre><code class="language-typescript">Interval.positive(
+ Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+)  <span class="hljs-comment">// Interval(1, 2)</span></code></pre>
 								</dd>
 							</dl>
 						</div>
@@ -3093,7 +3093,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/8232787/src/operations/arithmetic.ts#L37">operations/arithmetic.ts:37</a></li>
+								<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/56204e5/src/operations/arithmetic.ts#L45">operations/arithmetic.ts:45</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3102,10 +3102,10 @@ img {
 							</div>
 							<dl class="tsd-comment-tags">
 								<dt>example</dt>
-								<dd><p>Interval.subtract(
-										Interval(0, 1),
-										Interval(1, 2),
-									)   // Interval(prev(-2), next(0))</p>
+								<dd><pre><code class="language-typescript">Interval.subtract(
+  Interval(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>),
+  Interval(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>),
+)   <span class="hljs-comment">// Interval(prev(-2), next(0))</span></code></pre>
 								</dd>
 							</dl>
 						</div>
