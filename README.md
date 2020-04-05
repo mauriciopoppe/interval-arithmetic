@@ -119,10 +119,9 @@ Deployment steps
 npm version (major|minor|patch)
 git push origin master
 
-// travis is set up to do automatic deployments of the docs when a tag is detected
-
 // if everything went well
 npm publish
+npm run deploy
 ```
 
 

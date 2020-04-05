@@ -12,9 +12,3 @@ script:
   - npm run test && npm run build
 after_success:
   - npm run report-coverage
-
-deploy:
-  provider: script
-  script: npm run deploy
-  on:
-    tags: true
