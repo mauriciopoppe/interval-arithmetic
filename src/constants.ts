@@ -42,12 +42,14 @@ const constants = {
   },
 
   /**
-   * An interval that represents PI / 2, NOTE: calls to Interval.PI_HALF always
-   * return a new interval representing PI / 2
+   * An interval that represents `PI / 2`, NOTE: calls to `Interval.PI_HALF` always
+   * return a new interval representing `PI / 2`
    * @memberof constants
    * @static
    * @example
+   * ```typescript
    * Interval(Interval.PI_LOW / 2, Interval.PI_HIGH / 2)
+   * ```
    * @name PI_HALF
    * @type {Interval}
    */
@@ -56,12 +58,14 @@ const constants = {
   },
 
   /**
-   * An interval that represents PI * 2, NOTE: calls to Interval.PI_TWICE always
-   * return a new interval representing PI * 2
+   * An interval that represents `PI * 2` NOTE: calls to `Interval.PI_TWICE` always
+   * return a new interval representing `PI * 2`
    * @memberof constants
    * @static
    * @example
+   * ```typescript
    * Interval(Interval.PI_LOW * 2, Interval.PI_HIGH * 2)
+   * ```
    * @name PI_TWICE
    * @type {Interval}
    */
@@ -70,13 +74,14 @@ const constants = {
   },
 
   /**
-   * An interval that represents 0, NOTE: calls to Interval.ZERO always
-   * return a new interval representing 0
+   * An interval that represents 0, NOTE: calls to `Interval.ZERO` always return a new interval representing 0
    * @memberof constants
    * @static
    * @example
+   * ```typescript
    * // Interval.ZERO is equivalent to
    * Interval(0)
+   * ```
    * @name ZERO
    * @type {Interval}
    */
@@ -101,13 +106,14 @@ const constants = {
 
   /**
    * An interval that represents all the real values
-   * NOTE: calls to Interval.WHOLE always return a new interval representing all
-   * the real values
+   * NOTE: calls to Interval.WHOLE always return a new interval representing all the real values
    * @memberof constants
    * @static
    * @example
+   * ```typescript
    * // Interval.WHOLE is equivalent to
    * Interval().setWhole()
+   * ```
    * @name WHOLE
    * @type {Interval}
    */
@@ -117,13 +123,14 @@ const constants = {
 
   /**
    * An interval that represents no values
-   * NOTE: calls to Interval.EMPTY always return a new interval representing no
-   * values
+   * NOTE: calls to Interval.EMPTY always return a new interval representing no values
    * @memberof constants
    * @static
    * @example
+   * ```typescript
    * // Interval.EMPTY is equivalent to
    * Interval().setEmpty()
+   * ```
    * @name EMPTY
    * @type {Interval}
    */
