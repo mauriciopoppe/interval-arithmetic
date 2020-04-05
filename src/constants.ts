@@ -31,7 +31,9 @@ const constants = {
    * @memberof constants
    * @static
    * @example
+   * ```typescript
    * Interval(Interval.PI_LOW, Interval.PI_HIGH)
+   * ```
    * @name PI
    * @type {Interval}
    */

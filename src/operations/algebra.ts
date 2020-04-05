@@ -12,19 +12,20 @@ import isSafeInteger from 'is-safe-integer'
  */
 
 /**
- * Computes x mod y (x - k * y)
+ * Computes `x mod y (x - k * y)`
+ *
  * @example
+ * ```typescript
  * Interval.fmod(
  *   Interval(5.3, 5.3),
  *   Interval(2, 2)
  * ) // Interval(1.3, 1.3)
- *
- * @example
  * Interval.fmod(
  *   Interval(5, 7),
  *   Interval(2, 3)
  * ) // Interval(2, 5)
  * // explanation: [5, 7] - [2, 3] * 1 = [2, 5]
+ * ```
  *
  * @param {Interval} x
  * @param {Interval} y
@@ -43,16 +44,18 @@ export function fmod(x: Interval, y: Interval): Interval {
 }
 
 /**
- * Computes 1 / x
+ * Computes `1 / x`
  *
  * @example
+ * ```typescript
  * Interval.multiplicativeInverse(
  *   Interval(2, 6)
  * )  // Interval(1/6, 1/2)
- * @example
  * Interval.multiplicativeInverse(
  *   Interval(-6, -2)
  * )  // Interval(-1/2, -1/6)
+ * ```
+ *
  * @param {Interval} x
  * @returns {Interval}
  */
@@ -85,37 +88,37 @@ export function multiplicativeInverse(x: Interval): Interval {
 }
 
 /**
- * Computes x^power given that `power` is an integer
+ * Computes `x^power` given that `power` is an integer
  *
- * If `power` is an Interval it must be a singletonInterval i.e. x^x is not
+ * If `power` is an Interval it must be a singletonInterval i.e. `x^x` is not
  * supported yet
  *
  * If `power` is a rational number use {@link nthRoot} instead
  *
  * @example
+ * ```typescript
  * // 2^{-2}
  * Interval.pow(
  *   Interval(2, 2),
  *   -2
  * )  // Interval(1/4, 1/4)
- * @example
  * // [2,3]^2
  * Interval.pow(
  *   Interval(2, 3),
  *   2
  * )  // Interval(4, 9)
- * @example
  * // [2,3]^0
  * Interval.pow(
  *   Interval(2, 3),
  *   0
  * )  // Interval(1, 1)
- * @example
  * // with a singleton interval
  * Interval.pow(
  *   Interval(2, 3),
  *   Interval(2)
  * )  // Interval(4, 9)
+ * ```
+ *
  * @param {Interval} x
  * @param {number|Interval} power A number of a singleton interval
  * @returns {Interval}
@@ -180,11 +183,15 @@ export function pow(x: Interval, power: Interval | number): Interval {
 }
 
 /**
- * Computes sqrt(x), alias for `nthRoot(x, 2)`
+ * Computes `sqrt(x)`, alias for `nthRoot(x, 2)`
+ *
  * @example
+ * ```typescript
  * Interval.sqrt(
  *   Interval(4, 9)
  * ) // Interval(prev(2), next(3))
+ * ```
+ *
  * @param {Interval} x
  * @returns {Interval}
  */
@@ -193,13 +200,16 @@ export function sqrt(x: Interval): Interval {
 }
 
 /**
- * Computes x^(1/n)
+ * Computes `x^(1/n)`
  *
  * @example
+ * ```typescript
  * Interval.nthRoot(
  *   Interval(-27, -8),
  *   3
  * ) // Interval(-3, -2)
+ * ```
+ *
  * @param {Interval} x
  * @param {number|Interval} n A number or a singleton interval
  * @return {Interval}

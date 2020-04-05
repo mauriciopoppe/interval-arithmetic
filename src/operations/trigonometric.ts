@@ -43,30 +43,46 @@ function handleNegative(interval: Interval): Interval {
 
 /**
  * Computes the cosine of `x`
+ *
  * @example
+ * ```typescript
  * Interval.cos(
  *   Interval(0, 0)
  * ) // Interval(1, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.cos(
  *   Interval(0, Math.PI / 2)
  * ) // Interval(0, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.cos(
  *   Interval(3 * Math.PI / 2, 3 * Math.PI)
  * ) // Interval(-1, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.cos(
  *   Interval(-Infinity, x)
  * )
  * // Interval(-1, 1) if x > -Infinity
  * // Interval.EMPTY otherwise
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.cos(
  *   Interval(x, Infinity)
  * )
  * // Interval(-1, 1) if x < Infinity
  * // Interval.EMPTY otherwise
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -113,26 +129,42 @@ export function cos(x: Interval): Interval {
 
 /**
  * Computes the sine of `x`
+ *
  * @example
+ * ```typescript
  * Interval.sin(
  *   Interval(0, 0)
  * ) // Interval(0, 0)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.sin(
  *   Interval(0, Math.PI / 2)
  * ) // Interval(0, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.sin(
  *   Interval(Math.PI / 2, Math.PI / 2)
  * ) // Interval(1, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.sin(
  *   Interval(Math.PI / 2, -Math.PI / 2)
  * ) // Interval(-1, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.sin(
  *   Interval(Math.PI, 3 * Math.PI / 2)
  * ) // Interval(-1, 0)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -145,20 +177,30 @@ export function sin(x: Interval): Interval {
 
 /**
  * Computes the tangent of `x`
+ *
  * @example
+ * ```typescript
  * Interval.tan(
  *   Interval(-Math.PI / 4, Math.PI / 4)
  * ) // Interval(-1, 1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.tan(
  *   Interval(0, Math.PI / 2)
  * ) // Interval.WHOLE
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.tan(
  *   Interval(-Infinity, x)
  * )
  * // Interval.WHOLE if x > -Infinity
  * // Interval.EMPTY otherwise
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -184,10 +226,14 @@ export function tan(x: Interval): Interval {
 
 /**
  * Computes the arcsine of `x`
+ *
  * @example
+ * ```typescript
  * Interval.asin(
  *   Interval(-1.57079633, 1.57079633)
  * )  // Interval(-10, 10)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -202,10 +248,14 @@ export function asin(x: Interval): Interval {
 
 /**
  * Computes the arccosine of `x`
+ *
  * @example
+ * ```typescript
  * Interval.acos(
  *   Interval(0, 1)
  * )  // Interval(0, Math.PI / 2)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -220,10 +270,14 @@ export function acos(x: Interval): Interval {
 
 /**
  * Computes the arctangent of `x`
+ *
  * @example
+ * ```typescript
  * Interval.atan(
  *   Interval(-1, 1)
  * )  // Interval(-0.785398163, 0.785398163)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -236,10 +290,14 @@ export function atan(x: Interval): Interval {
 
 /**
  * Computes the hyperbolic sine of `x`
+ *
  * @example
+ * ```typescript
  * Interval.sinh(
  *   Interval(-2, 2)
  * )  // Interval(-3.6286040785, 3.6286040785)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -252,10 +310,14 @@ export function sinh(x: Interval): Interval {
 
 /**
  * Computes the hyperbolic cosine of `x`
+ *
  * @example
+ * ```typescript
  * Interval.cosh(
  *   Interval(-2, 2)
  * )  // Interval(1, 3.76219569108)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -274,10 +336,14 @@ export function cosh(x: Interval): Interval {
 
 /**
  * Computes the hyperbolic tangent of `x`
+ *
  * @example
+ * ```typescript
  * Interval.tanh(
  *   Interval(-Infinity, Infinity)
  * )  // Interval(-1, 1)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */

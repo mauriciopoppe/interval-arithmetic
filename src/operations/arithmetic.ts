@@ -10,11 +10,15 @@ import * as division from './division'
 
 /**
  * Adds two intervals
+ *
  * @example
+ * ```typescript
  * Interval.add(
  *   Interval(0, 1),
  *   Interval(1, 2),
  * )   // Interval(prev(1), next(3))
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -25,11 +29,15 @@ export function add(x: Interval, y: Interval): Interval {
 
 /**
  * Subtracts two intervals
+ *
  * @example
+ * ```typescript
  * Interval.subtract(
  *   Interval(0, 1),
  *   Interval(1, 2),
  * )   // Interval(prev(-2), next(0))
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -47,31 +55,47 @@ export const sub = subtract
 /**
  * Multiplies two intervals, an explanation of all the possible cases ca
  * be found on [Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden](http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf)
+ *
  * @example
+ * ```typescript
  * Interval.multiply(
  *  Interval(1, 2),
  *  Interval(2, 3)
  * ) // Interval(prev(2), next(6))
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.multiply(
  *  Interval(1, Infinity),
  *  Interval(4, 6)
  * ) // Interval(prev(4), Infinity)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.multiply(
  *  Interval(1, 2),
  *  Interval(-3, -2)
  * ) // Interval(prev(-6), next(-2))
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.multiply(
  *  Interval(1, 2),
  *  Interval(-2, 3)
  * ) // Interval(prev(-4), next(6))
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.multiply(
  *  Interval(-2, -1),
  *  Interval(-3, -2)
  * ) // Interval(prev(2), next(6))
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -180,20 +204,29 @@ export const mul = multiply
  * Boost implements it too)
  *
  * @example
+ * ```typescript
  * Interval.divide(
  *   Interval(1, 2),
  *   Interval(3, 4)
  * ) // Interval(prev(1/4), next(2/3))
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.divide(
  *   Interval(-2, 1),
  *   Interval(-4, -3)
  * ) // Interval(prev(-1/3), next(2/3))
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.divide(
  *   Interval(1, 2),
  *   Interval(-1, 1)
  * ) // Interval(-Infinity, Infinity)
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -229,11 +262,15 @@ export const div = divide
 
 /**
  * Computes +x (identity function)
- * @see misc.clone
+ * @link clone
+ *
  * @example
+ * ```typescript
  * Interval.positive(
  *  Interval(1, 2)
  * )  // Interval(1, 2)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -243,18 +280,28 @@ export function positive(x: Interval): Interval {
 
 /**
  * Computes -x
+ *
  * @example
+ * ```typescript
  * Interval.negative(
  *   Interval(1, 2)
  * )  // Interval(-2, -1)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.negative(
  *   Interval(-Infinity, Infinity)
  * )  // Interval(-Infinity, Infinity)
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.negative(
  *   Interval.WHOLE
  * )  // Interval.WHOLE
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */

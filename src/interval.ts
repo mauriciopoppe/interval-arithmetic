@@ -16,36 +16,29 @@ import round from './round'
  * @mixes utils
  * @mixes constants
  *
- * @see #bounded
- * @see #boundedSingleton
+ * @link #bounded
+ * @link #boundedSingleton
  *
  * @example
+ * ```typescript
  * new Interval(1, 2)  // {lo: 1, hi: 2}
- * @example
  * // function invocation without new is also supported
  * Interval(1, 2)   // {lo: 1, hi: 2}
- * @example
  * // with numbers
  * Interval(1, 2)   // {lo: 1, hi: 2}
  * Interval(1)      // {lo: 1, hi: 1}
- * @example
  * // with an array
  * Interval([1, 2]) // {lo: 1, hi: 2}
- * @example
  * // singleton intervals
  * var x = Interval(1)
  * var y = Interval(2)
  * Interval(x, y)   // {lo: 1, hi: 2}
- * @example
  * // when `lo > hi` it returns an empty interval
  * Interval(2, 1)   // {lo: Infinity, hi: -Infinity}
- * @example
  * // bounded interval
  * Interval().bounded(1, 2)  // { lo: 0.9999999999999999, hi: 2.0000000000000004 }
- * @example
  * // singleton bounded interval
  * Interval().boundedSingleton(2)  // {lo: 1.9999999999999998, hi: 2.0000000000000004}
- * @example
  * // half open and open intervals
  * // [2, 3]
  * Interval(2, 3)                     // {lo: 2, hi: 3}
@@ -55,6 +48,7 @@ import round from './round'
  * Interval().halfOpenRight(2, 3)     // {lo: 2, hi: 2.9999999999999996}
  * // (2, 3)
  * Interval().open(2, 3)              // {lo: 2.0000000000000004, hi: 2.9999999999999996}
+ * ```
  *
  * @param {number|array|Interval} lo The left endpoint of the interval if it's a
  * number or a singleton interval, if it's an array then an interval will be
@@ -131,11 +125,16 @@ export class Interval {
    * previous IEEE floating point value of `lo` and the right endpoint
    * is equal to the next IEEE floating point
    * value of `hi`, it's assumed that `lo <= hi`
+   *
    * @example
-   * var x = Interval().bounded(1, 2)
+   * ```typescript
+   * const x = Interval().bounded(1, 2)
    * x.lo < 1 // true, x.lo === 0.9999999999999999
    * x.hi > 2 // true, x.hi === 2.0000000000000004
+   * ```
+   *
    * @example
+   * ```typescript
    * // the correct representation of 1/3
    * var x = Interval().bounded(1/3, 1/3)
    * x.lo < 1/3 // true
@@ -145,6 +144,8 @@ export class Interval {
    * var next = Interval.round.safeNext
    * var x = Interval().set(1/3, next(1/3))
    * // x now represents 1/3 correctly
+   * ```
+   *
    * @param {number} lo
    * @param {number} hi
    * @return {Interval} The calling interval i.e. `this`
@@ -219,8 +220,11 @@ export class Interval {
    * NOTE: `Interval.round.disable` has no effect on this method
    *
    * @example
+   * ```typescript
    * // (2, 3)
    * Interval().open(2, 3)  // {lo: 2.0000000000000004, hi: 2.9999999999999996}
+   * ```
+   *
    * @param {number} lo
    * @param {number} hi
    * @return {Interval} The calling interval
@@ -235,8 +239,11 @@ export class Interval {
    * NOTE: `Interval.round.disable` has no effect on this method
    *
    * @example
+   * ```typescript
    * // (2, 3]
    * Interval().halfOpenLeft(2, 3)  // {lo: 2.0000000000000004, hi: 3}
+   * ```
+   *
    * @param {number} lo
    * @param {number} hi
    * @return {Interval} The calling interval
@@ -251,8 +258,11 @@ export class Interval {
    * NOTE: `Interval.round.disable` has no effect on this method
    *
    * @example
+   * ```typescript
    * // [2, 3)
    * Interval.halfOpenRight(2, 3)     // {lo: 2, hi: 2.9999999999999996}
+   * ```
+   *
    * @param {number} lo
    * @param {number} hi
    * @return {Interval} The calling interval
@@ -274,8 +284,10 @@ export class Interval {
    * @see Interval.clone
    * @name Interval.prototype
    * @example
+   * ```typescript
    * var x = Interval(2, 3)
    * x.clone()    // Interval(2, 3)
+   * ```
    * @return {Interval}
    */
   clone(): Interval {

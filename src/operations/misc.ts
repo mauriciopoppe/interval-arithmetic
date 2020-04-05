@@ -11,10 +11,14 @@ import * as arithmetic from './arithmetic'
 /**
  * Computes e^x where e is the mathematical constant equal to the base of the
  * natural logarithm
+ *
  * @example
+ * ```typescript
  * Interval.exp(
  *   Interval(-1, 1)
  * )  // Interval(0.3679, 2.7183)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -27,10 +31,14 @@ export function exp(x: Interval): Interval {
 
 /**
  * Computes the natural logarithm of x
+ *
  * @example
+ * ```typescript
  * Interval.log(
  *   Interval(1, Math.exp(3))
  * )  // Interval(0, 3)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -52,10 +60,14 @@ export const LOG_EXP_10 = log(new Interval(10, 10))
 
 /**
  * Computes the logarithm base 10 of x
+ *
  * @example
+ * ```typescript
  * Interval.log10(
  *   Interva(1, 1000)
  * )  // Interval(0, 3)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -70,10 +82,14 @@ export const LOG_EXP_2 = log(new Interval(2, 2))
 
 /**
  * Computes the logarithm base 2 of x
+ *
  * @example
+ * ```typescript
  * Interval.log10(
  *   Interva(1, 8)
  * )  // Interval(0, 3)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -90,15 +106,17 @@ export function log2(x: Interval): Interval {
  * interval that represents the hull
  *
  * @example
+ * ```typescript
  * Interval.hull(
  *   Interval(-1, 1),
  *   Interval(5, 7)
  * )  // Interval(-1, 7)
- * @example
  * Interval.hull(
  *   Interval(-1, 1),
  *   Interval.EMPTY
  * )  // Interval(-1, 1)
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -121,10 +139,13 @@ export function hull(x: Interval, y: Interval): Interval {
  * Computes an interval that has all the values that belong to both x and y
  *
  * @example
+ * ```typescript
  * Interval.intersection(
  *   Interval(-1, 1),
  *   Interval(0, 7)
  * )  // Interval(0, 1)
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -145,16 +166,19 @@ export function intersection(x: Interval, y: Interval): Interval {
  * Computes an interval that has all the values that belong to both x and y,
  * the difference with {@link hull} is that x and y must overlap to
  * compute the union
+ *
  * @example
+ * ```typescript
  * Interval.union(
  *   Interval(-1, 1),
  *   Interval(5, 7)
  * )  // throws error
- * @example
  * Interval.union(
  *   Interval(-1, 1),
  *   Interval(1, 7)
  * )  // Interval(-1, 7)
+ * ```
+ *
  * @throws {Error} When x and y don't overlap
  * @param {Interval} x
  * @param {Interval} y
@@ -170,26 +194,27 @@ export function union(x: Interval, y: Interval): Interval {
 /**
  * Computes the difference between `x` and `y`, i.e. an interval with all the
  * values of `x` that are not in `y`
+ *
  * @example
+ * ```typescript
  * Interval.difference(
  *   Interval(3, 5),
  *   Interval(4, 6)
  * )  // Interval(3, prev(4))
- * @example
  * Interval.difference(
  *   Interval(0, 3),
  *   Interval(0, 1)
  * )  // Interval(next(1), 3)
- * @example
  * Interval.difference(
  *   Interval(0, 1),
  *   Interval.WHOLE
  * )  // Interval.EMPTY
- * @example
  * Interval.difference(
  *   Interval(-Infinity, 0),
  *   Interval.WHOLE
  * )  // Interval.EMPTY
+ * ```
+ *
  * @throws {Error} When the difference creates multiple intervals
  * @param {Interval} x
  * @param {Interval} y
@@ -227,24 +252,24 @@ export function difference(x: Interval, y: Interval): Interval {
 }
 
 /**
- * Computes the distance between the endpoints of the interval i.e.
- * `x.hi - x.lo`
+ * Computes the distance between the endpoints of the interval i.e. `x.hi - x.lo`
+ *
  * @example
+ * ```typescript
  * Interval.width(
  *   Interval(1, 2)
  * )  // 1
- * @example
  * Interval.width(
  *   Interval(-1, 1)
  * )  // 2
- * @example
  * Interval.width(
  *   Interval(1, 1)
  * )  // next(0) ~5e-324
- * @example
  * Interval.width(
  *   Interval.EMPTY
  * )  // 0
+ * ```
+ *
  * @param {Interval} x
  * @returns {number}
  */
@@ -263,22 +288,23 @@ export const wid = width
 
 /**
  * Computes the absolute value of `x`
+ *
  * @example
+ * ```typescript
  * Interval.abs(
  *   Interval(2, 3)
  * )  // Interval(2, 3)
- * @example
  * Interval.abs(
  *   Interval(-2, 3)
  * )  // Interval(2, 3)
- * @example
  * Interval.abs(
  *   Interval(-3, -2)
  * )  // Interval(2, 3)
- * @example
  * Interval.abs(
  *   Interval(-3, 2)
  * )  // Interval(0, 3)
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */
@@ -298,18 +324,22 @@ export function abs(x: Interval): Interval {
 /**
  * Computes an interval with the maximum values for each endpoint based on `x`
  * and `y`
+ *
  * @example
+ * ```typescript
  * Interval.max(
  *   Interval(0, 3),
  *   Interval(1, 2)
  * )  // Interval(1, 3)
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
  */
 export function max(x: Interval, y: Interval): Interval {
-  var badX = utils.isEmpty(x)
-  var badY = utils.isEmpty(y)
+  const badX = utils.isEmpty(x)
+  const badY = utils.isEmpty(y)
   if (badX && badY) {
     return constants.EMPTY
   } else if (badX) {
@@ -322,13 +352,16 @@ export function max(x: Interval, y: Interval): Interval {
 }
 
 /**
- * Computes an interval with the minimum values for each endpoint based on `x`
- * and `y`
+ * Computes an interval with the minimum values for each endpoint based on `x` and `y`
+ *
  * @example
+ * ```typescript
  * Interval.min(
  *   Interval(0, 3),
  *   Interval(1, 2)
  * )  // Interval(0, 2)
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {Interval}
@@ -349,14 +382,17 @@ export function min(x: Interval, y: Interval): Interval {
 
 /**
  * Creates an interval equal to `x`, equivalent to `Interval().set(x.lo, x.hi)`
+ *
  * @example
+ * ```typescript
  * Interval.clone(
  *   Interval(1, 2)
  * )  // Interval(1, 2)
- * @example
  * Interval.clone(
  *   Interval.EMPTY
  * )  // Interval.EMPTY
+ * ```
+ *
  * @param {Interval} x
  * @return {Interval}
  */

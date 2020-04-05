@@ -11,16 +11,23 @@ import { Interval } from '../interval'
  * Checks if the intervals `x`, `y` are equal, they're equal when
  * `x.lo === y.lo` and `x.hi === y.hi`, a corner case handled is when `x` and
  * `y` are both empty intervals
+ *
  * @example
+ * ```typescript
  * Interval.equal(
  *   Interval(2, 3),
  *   Interval(2, 3)
  * ) // true
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.equal(
  *   Interval.EMPTY,
  *   Interval.EMPTY
  * ) // true
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @returns {boolean}
@@ -72,21 +79,31 @@ export function assertIncludes(x: number[] | Interval, y: number[] | Interval): 
 /**
  * Checks if the intervals `x`, `y` are not equal i.e. when the intervals don't
  * share any value
+ *
  * @example
+ * ```typescript
  * Interval.notEqual(
  *   Interval(2, 3),
  *   Interval(4, 5)
  * ) // true
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.notEqual(
  *   Interval(2, 3),
  *   Interval(3, 5)
  * ) // false
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.notEqual(
  *   Interval(2, 4),
  *   Interval(3, 5)
  * ) // false
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @returns {boolean}
@@ -101,16 +118,23 @@ export function notEqual(x: Interval, y: Interval): boolean {
 /**
  * Checks if the interval `x` is less than `y` i.e. if all the values of `x`
  * are lower than the left endpoint of `y`
+ *
  * @example
+ * ```typescript
  * Interval.lessThan(
  *   Interval(2, 3),
  *   Interval(4, 5)
  * ) // true
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.lessThan(
  *   Interval(4, 5),
  *   Interval(2, 3)
  * ) // false
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {boolean}
@@ -131,16 +155,23 @@ export const lt = lessThan
 /**
  * Checks if the interval `x` is greater than `y` i.e. if all the values of `x`
  * are greater than the right endpoint of `y`
+ *
  * @example
+ * ```typescript
  * Interval.greaterThan(
  *   Interval(2, 3),
  *   Interval(4, 5)
  * ) // false
+ * ```
+ *
  * @example
+ * ```typescript
  * Interval.greaterThan(
  *   Interval(4, 5),
  *   Interval(2, 3)
  * ) // true
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {boolean}
@@ -161,11 +192,15 @@ export const gt = greaterThan
 /**
  * Checks if the interval `x` is less or equal than `y` i.e.
  * if all the values of `x` are lower or equal to the left endpoint of `y`
+ *
  * @example
+ * ```typescript
  * Interval.lessEqualThan(
  *   Interval(2, 3),
  *   Interval(3, 5)
  * ) // true
+ * ```
+ *
  * @param {Interval} x
  * @param {Interval} y
  * @return {boolean}
