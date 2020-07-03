@@ -1,7 +1,7 @@
-# interval-arithmetic 
+# interval-arithmetic
 
 [![NPM][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url] 
+[![Build Status][travis-image]][travis-url]
 [![codecov](https://codecov.io/gh/mauriciopoppe/interval-arithmetic/branch/master/graph/badge.svg)](https://codecov.io/gh/mauriciopoppe/interval-arithmetic)
 [![Dependency Status][david-image]][david-url]
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
@@ -21,8 +21,8 @@
 
 ## Description
 
-An `interval` is a pair of numbers which represents all the numbers between them, `closed` 
-means that the bounds are also included in the representation, `extended real` because the 
+An `interval` is a pair of numbers which represents all the numbers between them, `closed`
+means that the bounds are also included in the representation, `extended real` because the
 `real number system` is extended with two elements: `-∞` and `+∞` representing negative infinity
 and positive infinity respectively.
 
@@ -52,7 +52,7 @@ decimals that will be lost due to the nature of floating point, instead we can r
 number with the interval `[0.2, 0.4]`, with this interval we're completely sure that `1 / 3` is within
 the interval (although the interval is also representing many more numbers), to improve the `scope`
 of the interval we have to understand that numbers in JavaScript are represented with 64 bits,
-therefore to get the next floating point number of a single precision number the last bit 
+therefore to get the next floating point number of a single precision number the last bit
 needs to be incremented to get the upper bound, and the last bit also needs to be decremented
 to get the lower point
 
@@ -75,7 +75,7 @@ Interval.add(new Interval(1, 1), new Interval(2, 2))
 This gets worse when the expression to be evaluated becomes complex like `sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2`:
 
 ```javascript
-var x = Interval(0, 1);
+const x = Interval(0, 1);
 Interval.add(
   Interval.sin(Interval.exp(x)),
   Interval.sub(
@@ -92,14 +92,18 @@ To avoid this 'expressiveness' mess there's an [interval arithmetic evaluator mo
 which I've created to deal with all the work of parsing/evaluating expressions like the one above
 
 ```javascript
-var compile = require('interval-arithmetic-eval');
+const compile = require('interval-arithmetic-eval');
 compile('sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2').eval({ x: [0, 1] })
 ```
 
-## Installation
+## Installation & Usage
 
 ```sh
 $ npm install --save interval-arithmetic
+```
+
+```js
+const { Interval } = require('interval-arithmetic')
 ```
 
 ## API
