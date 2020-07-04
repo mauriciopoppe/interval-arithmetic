@@ -103,7 +103,8 @@ $ npm install --save interval-arithmetic
 ```
 
 ```js
-import Interval from 'interval-arithmetic'
+import IOps, { Interval } from 'interval-arithmetic'
+IOps.add(Interval(1), Interval(2))
 ```
 
 ## API
