@@ -1,6 +1,6 @@
 {
   "name": "interval-arithmetic",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An implementation of an algebraically closed interval system of the extended real number set",
   "keywords": [
     "interval-arithmetic",
