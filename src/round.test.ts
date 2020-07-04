@@ -1,4 +1,4 @@
-import Interval, { IntervalClass } from './'
+import Interval, { Interval as _Interval } from './'
 import assert from 'assert'
 
 let n: number

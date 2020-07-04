@@ -120,6 +120,8 @@ Deployment steps
 
 ```sh
 // after the working directory is clean
+npm test
+npm run build
 npm version (major|minor|patch)
 git push origin master
 

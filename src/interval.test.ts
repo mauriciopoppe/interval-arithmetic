@@ -1,7 +1,7 @@
-import Interval, { IntervalClass } from './'
+import Interval, { Interval as _Interval } from './'
 import assert from 'assert'
 
-let n: IntervalClass
+let n
 const EPS = 1e-7
 
 function assertEps(a, b): void {

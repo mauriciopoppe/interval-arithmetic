@@ -1,7 +1,7 @@
-import Interval, { IntervalClass } from '../'
+import Interval, { Interval as _Interval } from '../'
 import assert from 'assert'
 
-let n: IntervalClass
+let n
 
 describe('Interval', function () {
   it('should compute the cosine function', function () {

@@ -1,4 +1,4 @@
-import Interval, { IntervalClass } from '../'
+import Interval, { Interval as _Interval } from '../'
 import assert from 'assert'
 
 const EPS = 1e-7
@@ -6,7 +6,7 @@ function assertEps(a, b): void {
   assert(Math.abs(a - b) < EPS)
 }
 
-let n: IntervalClass
+let n
 
 describe('Interval', function () {
   it('should compute interval addition', function () {
