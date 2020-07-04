@@ -57,8 +57,8 @@ import round from './round'
  * number or a singleton interval, if omitted then a singleton interval will be
  * built out of `lo`
  */
-export class Interval {
-  static factory = Interval
+export class _Interval {
+  static factory = _Interval
 
   /**
    * The left endpoint of the interval
@@ -294,3 +294,10 @@ export class Interval {
     return new Interval().set(this.lo, this.hi)
   }
 }
+
+// class callable without new
+// https://stackoverflow.com/questions/32807163/call-constructor-on-typescript-class-without-new
+type Interval = _Interval;
+const Interval = _Interval as typeof _Interval & ((lo?: Interval | number, hi?: Interval | number) => Interval)
+
+export { Interval };

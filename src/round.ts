@@ -23,6 +23,11 @@ function toInteger(x: number): number {
   return x < 0 ? Math.ceil(x) : Math.floor(x)
 }
 
+const cache = {
+  prev: prev,
+  next: next
+}
+
 /**
  * @alias module:interval-arithmetic/round-math
  */
@@ -49,89 +54,89 @@ const round = {
    * @function
    */
   safeNext: next,
-  prev: prev,
-  next: next,
+  prev (x: number): number { return cache.prev(x); },
+  next (x: number): number { return cache.next(x); },
 
   // prettier-ignore
-  addLo (x: number, y: number): number { return this.prev(x + y) },
+  addLo (x: number, y: number): number { return round.prev(x + y) },
   // prettier-ignore
-  addHi (x: number, y: number): number { return this.next(x + y) },
+  addHi (x: number, y: number): number { return round.next(x + y) },
 
   // prettier-ignore
-  subLo (x: number, y: number): number { return this.prev(x - y) },
+  subLo (x: number, y: number): number { return round.prev(x - y) },
   // prettier-ignore
-  subHi (x: number, y: number): number { return this.next(x - y) },
+  subHi (x: number, y: number): number { return round.next(x - y) },
 
   // prettier-ignore
-  mulLo (x: number, y: number): number { return this.prev(x * y) },
+  mulLo (x: number, y: number): number { return round.prev(x * y) },
   // prettier-ignore
-  mulHi (x: number, y: number): number { return this.next(x * y) },
+  mulHi (x: number, y: number): number { return round.next(x * y) },
 
   // prettier-ignore
-  divLo (x: number, y: number): number { return this.prev(x / y) },
+  divLo (x: number, y: number): number { return round.prev(x / y) },
   // prettier-ignore
-  divHi (x: number, y: number): number { return this.next(x / y) },
+  divHi (x: number, y: number): number { return round.next(x / y) },
 
   // prettier-ignore
-  intLo (x: number): number { return toInteger(this.prev(x)) },
+  intLo (x: number): number { return toInteger(round.prev(x)) },
   // prettier-ignore
-  intHi (x: number): number { return toInteger(this.next(x)) },
+  intHi (x: number): number { return toInteger(round.next(x)) },
 
   // prettier-ignore
-  logLo (x: number): number { return this.prev(Math.log(x)) },
+  logLo (x: number): number { return round.prev(Math.log(x)) },
   // prettier-ignore
-  logHi (x: number): number { return this.next(Math.log(x)) },
+  logHi (x: number): number { return round.next(Math.log(x)) },
 
   // prettier-ignore
-  expLo (x: number): number { return this.prev(Math.exp(x)) },
+  expLo (x: number): number { return round.prev(Math.exp(x)) },
   // prettier-ignore
-  expHi (x: number): number { return this.next(Math.exp(x)) },
+  expHi (x: number): number { return round.next(Math.exp(x)) },
 
   // prettier-ignore
-  sinLo (x: number): number { return this.prev(Math.sin(x)) },
+  sinLo (x: number): number { return round.prev(Math.sin(x)) },
   // prettier-ignore
-  sinHi (x: number): number { return this.next(Math.sin(x)) },
+  sinHi (x: number): number { return round.next(Math.sin(x)) },
 
   // prettier-ignore
-  cosLo (x: number): number { return this.prev(Math.cos(x)) },
+  cosLo (x: number): number { return round.prev(Math.cos(x)) },
   // prettier-ignore
-  cosHi (x: number): number { return this.next(Math.cos(x)) },
+  cosHi (x: number): number { return round.next(Math.cos(x)) },
 
   // prettier-ignore
-  tanLo (x: number): number { return this.prev(Math.tan(x)) },
+  tanLo (x: number): number { return round.prev(Math.tan(x)) },
   // prettier-ignore
-  tanHi (x: number): number { return this.next(Math.tan(x)) },
+  tanHi (x: number): number { return round.next(Math.tan(x)) },
 
   // prettier-ignore
-  asinLo (x: number): number { return this.prev(Math.asin(x)) },
+  asinLo (x: number): number { return round.prev(Math.asin(x)) },
   // prettier-ignore
-  asinHi (x: number): number { return this.next(Math.asin(x)) },
+  asinHi (x: number): number { return round.next(Math.asin(x)) },
 
   // prettier-ignore
-  acosLo (x: number): number { return this.prev(Math.acos(x)) },
+  acosLo (x: number): number { return round.prev(Math.acos(x)) },
   // prettier-ignore
-  acosHi (x: number): number { return this.next(Math.acos(x)) },
+  acosHi (x: number): number { return round.next(Math.acos(x)) },
 
   // prettier-ignore
-  atanLo (x: number): number { return this.prev(Math.atan(x)) },
+  atanLo (x: number): number { return round.prev(Math.atan(x)) },
   // prettier-ignore
-  atanHi (x: number): number { return this.next(Math.atan(x)) },
+  atanHi (x: number): number { return round.next(Math.atan(x)) },
 
   // polyfill required for hyperbolic functions
   // prettier-ignore
-  sinhLo (x: number): number { return this.prev((Math as any).sinh(x)) },
+  sinhLo (x: number): number { return round.prev((Math as any).sinh(x)) },
   // prettier-ignore
-  sinhHi (x: number): number { return this.next((Math as any).sinh(x)) },
+  sinhHi (x: number): number { return round.next((Math as any).sinh(x)) },
 
   // prettier-ignore
-  coshLo (x: number): number { return this.prev((Math as any).cosh(x)) },
+  coshLo (x: number): number { return round.prev((Math as any).cosh(x)) },
   // prettier-ignore
-  coshHi (x: number): number { return this.next((Math as any).cosh(x)) },
+  coshHi (x: number): number { return round.next((Math as any).cosh(x)) },
 
   // prettier-ignore
-  tanhLo (x: number): number { return this.prev((Math as any).tanh(x)) },
+  tanhLo (x: number): number { return round.prev((Math as any).tanh(x)) },
   // prettier-ignore
-  tanhHi (x: number): number { return this.next((Math as any).tanh(x)) },
+  tanhHi (x: number): number { return round.next((Math as any).tanh(x)) },
 
   /**
    * @ignore
@@ -143,7 +148,7 @@ const round = {
   powLo(x: number, power: number): number {
     if (power % 1 !== 0) {
       // power has decimals
-      return this.prev(Math.pow(x, power))
+      return round.prev(Math.pow(x, power))
     }
 
     let y = (power & 1) === 1 ? x : 1
@@ -168,7 +173,7 @@ const round = {
   powHi(x: number, power: number): number {
     if (power % 1 !== 0) {
       // power has decimals
-      return this.next(Math.pow(x, power))
+      return round.next(Math.pow(x, power))
     }
 
     let y = (power & 1) === 1 ? x : 1
@@ -184,9 +189,9 @@ const round = {
   },
 
   // prettier-ignore
-  sqrtLo(x: number) { return this.prev(Math.sqrt(x)) },
+  sqrtLo(x: number) { return round.prev(Math.sqrt(x)) },
   // prettier-ignore
-  sqrtHi(x: number) { return this.next(Math.sqrt(x)) },
+  sqrtHi(x: number) { return round.next(Math.sqrt(x)) },
 
   /**
    * Most operations on intervals will cary the rounding error so that the
@@ -211,7 +216,7 @@ const round = {
    * @function
    */
   disable() {
-    this.next = this.prev = identity
+    cache.next = cache.prev = identity
   },
 
   /**
@@ -241,8 +246,8 @@ const round = {
    * @function
    */
   enable() {
-    this.next = next
-    this.prev = prev
+    cache.next = next
+    cache.prev = prev
   }
 }
 

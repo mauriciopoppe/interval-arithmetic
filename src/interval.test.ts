@@ -1,4 +1,4 @@
-import Interval, { utils, constants, Interval as IntervalClass } from './'
+import Interval, { IntervalClass } from './'
 import assert from 'assert'
 
 let n: IntervalClass
@@ -18,6 +18,9 @@ describe('interval', function () {
 
     n = new Interval()
     assert(n.lo === 0 && n.hi === 0)
+
+    n = Interval()
+    assert(n.lo === 0 && n.hi === 0)
   })
 
   it('should have a factory', function () {
@@ -29,7 +32,7 @@ describe('interval', function () {
     assert(n.lo === 1 && n.hi === 5)
     // @ts-ignore
     n = Interval.factory(1, -1)
-    assert(utils.isEmpty(n))
+    assert(Interval.isEmpty(n))
     // @ts-ignore
     n = Interval.factory(1)
     assert(n.lo === 1 && n.hi === 1)
@@ -67,11 +70,11 @@ describe('interval', function () {
 
   it('should represent empty/whole/one/pi intervals', function () {
     var x
-    x = constants.EMPTY
+    x = Interval.EMPTY
     assert(x.lo > x.hi)
-    x = constants.WHOLE
+    x = Interval.WHOLE
     assert(x.lo < x.hi && x.lo === Number.NEGATIVE_INFINITY && x.hi === Number.POSITIVE_INFINITY)
-    x = constants.PI
+    x = Interval.PI
     assert(x.lo < x.hi)
     assertEps(x.lo, Math.PI)
     assertEps(x.hi, Math.PI)

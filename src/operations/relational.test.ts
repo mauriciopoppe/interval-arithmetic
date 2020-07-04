@@ -1,4 +1,4 @@
-import Interval from '../'
+import Interval, { IntervalClass } from '../'
 import assert from 'assert'
 
 describe('relational', function () {

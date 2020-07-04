@@ -103,7 +103,7 @@ $ npm install --save interval-arithmetic
 ```
 
 ```js
-const { Interval } = require('interval-arithmetic')
+import Interval from 'interval-arithmetic'
 ```
 
 ## API

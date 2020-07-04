@@ -19,7 +19,14 @@ import * as utils from './operations/utils'
 // Object assign only supports 4 union levels
 let out1 = Object.assign(constants, round, misc, utils)
 let out2 = Object.assign(relational, arithmetic, algebra, trigonometric)
-let out = Object.assign(Interval, out1, out2)
+let out = Object.assign(Interval, out1, out2, { round })
 
-export default out
-export { Interval, constants, round, algebra, arithmetic, trigonometric, misc, utils }
+export default out;
+export { Interval as IntervalClass };
+export * from './operations/relational'
+export * from './operations/arithmetic'
+export * from './operations/algebra'
+export * from './operations/trigonometric'
+export * from './operations/misc'
+export * from './operations/utils'
+export * from './round'
