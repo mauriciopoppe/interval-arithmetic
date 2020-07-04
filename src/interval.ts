@@ -297,7 +297,7 @@ export class _Interval {
 
 // class callable without new
 // https://stackoverflow.com/questions/32807163/call-constructor-on-typescript-class-without-new
-type Interval = _Interval;
+type Interval = _Interval
 const Interval = _Interval as typeof _Interval & ((lo?: Interval | number, hi?: Interval | number) => Interval)
 
-export { Interval };
+export { Interval }

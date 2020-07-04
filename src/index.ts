@@ -17,12 +17,12 @@ import * as misc from './operations/misc'
 import * as utils from './operations/utils'
 
 // Object assign only supports 4 union levels
-let out1 = Object.assign(constants, round, misc, utils)
-let out2 = Object.assign(relational, arithmetic, algebra, trigonometric)
-let out = Object.assign(_Interval, out1, out2, { round })
+const out1 = Object.assign(constants, round, misc, utils)
+const out2 = Object.assign(relational, arithmetic, algebra, trigonometric)
+const out = Object.assign(_Interval, out1, out2, { round })
 
-export default out;
-export { out as Interval };
+export default out
+export { _Interval as Interval }
 export * from './operations/relational'
 export * from './operations/arithmetic'
 export * from './operations/algebra'

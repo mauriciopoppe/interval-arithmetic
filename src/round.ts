@@ -54,8 +54,12 @@ const round = {
    * @function
    */
   safeNext: next,
-  prev (x: number): number { return cache.prev(x); },
-  next (x: number): number { return cache.next(x); },
+  prev(x: number): number {
+    return cache.prev(x)
+  },
+  next(x: number): number {
+    return cache.next(x)
+  },
 
   // prettier-ignore
   addLo (x: number, y: number): number { return round.prev(x + y) },
