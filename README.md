@@ -6,6 +6,7 @@
 [![Dependency Status][david-image]][david-url]
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![Stability](https://img.shields.io/badge/stability-stable-green.svg)](https://nodejs.org/api/documentation.html#apicontent)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic?ref=badge_shield)
 
 > An implementation of an algebraically closed interval system of the extended real number set
 
@@ -140,3 +141,7 @@ npm run deploy
 [travis-url]: https://travis-ci.org/mauriciopoppe/interval-arithmetic
 [david-image]: https://david-dm.org/mauriciopoppe/interval-arithmetic.svg
 [david-url]: https://david-dm.org/mauriciopoppe/interval-arithmetic
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic?ref=badge_large)
