@@ -309,7 +309,7 @@ export const wid = width
  * @return {Interval}
  */
 export function abs(x: Interval): Interval {
-  if (utils.isEmpty(x)) {
+  if (utils.isEmpty(x) || utils.isWhole(x)) {
     return constants.EMPTY
   }
   if (x.lo >= 0) {

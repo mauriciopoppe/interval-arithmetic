@@ -123,6 +123,8 @@ describe('Interval', function () {
     Interval.almostEqual(n, [2, 3])
     n = Interval.abs(new Interval(2, 3))
     Interval.almostEqual(n, [2, 3])
+    n = Interval.abs(Interval.WHOLE)
+    Interval.almostEqual(n, Interval.EMPTY)
   })
 
   it('should compute the max value of two intervals', function () {
