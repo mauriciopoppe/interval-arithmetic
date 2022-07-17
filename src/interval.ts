@@ -58,23 +58,23 @@ import round from './round'
  * built out of `lo`
  */
 export class _Interval {
-  static factory = _Interval
-
   /**
    * The left endpoint of the interval
    * @type {number}
    */
-  lo: number
+  lo: number = 0
 
   /**
    * The right endpoint of the interval
    * @type {number}
    */
-  hi: number
+  hi: number = 0
 
   constructor(lo?: Interval | number, hi?: Interval | number) {
-    if (!(this instanceof Interval)) {
-      return new Interval(lo, hi)
+    if (!(this instanceof _Interval)) {
+      console.log('calling with new')
+      console.log(lo, hi)
+      return new _Interval(lo, hi)
     }
 
     if (typeof lo !== 'undefined' && typeof hi !== 'undefined') {
@@ -295,9 +295,31 @@ export class _Interval {
   }
 }
 
+function bindNew<C extends { new(): T }, T>(Class: C & {new (): T}): C & (() => T);
+// @ts-ignore
+function bindNew(Class) {
+  function _Class() {
+    for (
+      var len = arguments.length, rest = Array(len), key = 0;
+      key < len;
+      key++
+    ) {
+      rest[key] = arguments[key];
+    }
+
+    // @ts-ignore
+    return new (Function.prototype.bind.apply(Class, [null].concat(rest)))();
+  }
+  _Class.prototype = Class.prototype;
+  return _Class;
+}
+
 // class callable without new
 // https://stackoverflow.com/questions/32807163/call-constructor-on-typescript-class-without-new
 type Interval = _Interval
-const Interval = _Interval as typeof _Interval & ((lo?: Interval | number, hi?: Interval | number) => Interval)
+const Interval = bindNew(_Interval)
+
+// @ts-ignore
+Interval.factory = Interval
 
 export { Interval }

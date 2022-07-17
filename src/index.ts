@@ -5,7 +5,7 @@
  * Licensed under the MIT license.
  */
 
-import { Interval as _Interval } from './interval'
+import { Interval as IntervalInternal } from './interval'
 import round from './round'
 import constants from './constants'
 
@@ -16,13 +16,10 @@ import * as trigonometric from './operations/trigonometric'
 import * as misc from './operations/misc'
 import * as utils from './operations/utils'
 
-// Object assign only supports 4 union levels
-const out1 = Object.assign(constants, round, misc, utils)
-const out2 = Object.assign(relational, arithmetic, algebra, trigonometric)
-const out = Object.assign(_Interval, out1, out2, { round })
+const Interval = Object.assign(IntervalInternal, constants, round, misc, utils, relational, arithmetic, algebra, trigonometric, { round })
 
-export default out
-export { _Interval as Interval }
+export default Interval
+export { Interval }
 export * from './operations/relational'
 export * from './operations/arithmetic'
 export * from './operations/algebra'

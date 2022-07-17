@@ -1,2 +1,2 @@
-declare module 'is-safe-integer'
-declare module 'nextafter'
+declare module 'is-safe-integer';
+declare module 'nextafter';

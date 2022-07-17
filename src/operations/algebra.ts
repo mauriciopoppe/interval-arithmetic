@@ -5,8 +5,6 @@ import constants from '../constants'
 import * as utils from './utils'
 import * as arithmetic from './arithmetic'
 
-import isSafeInteger from 'is-safe-integer'
-
 /**
  * @mixin algebra
  */
@@ -148,7 +146,7 @@ export function pow(x: Interval, power: Interval | number): Interval {
   }
 
   // power > 0
-  if (isSafeInteger(power) as boolean) {
+  if (Number.isSafeInteger(power) as boolean) {
     // power is integer
     if (x.hi < 0) {
       // [negative, negative]
@@ -231,7 +229,7 @@ export function nthRoot(x: Interval, n: Interval | number): Interval {
   const power = 1 / n
   if (x.hi < 0) {
     // [negative, negative]
-    if ((isSafeInteger(n) as boolean) && (n & 1) === 1) {
+    if ((Number.isSafeInteger(n) as boolean) && (n & 1) === 1) {
       // when n is odd we can always take the nth root
       const yl = rmath.powHi(-x.lo, power)
       const yh = rmath.powLo(-x.hi, power)
@@ -242,7 +240,7 @@ export function nthRoot(x: Interval, n: Interval | number): Interval {
   } else if (x.lo < 0) {
     // [negative, positive]
     const yp = rmath.powHi(x.hi, power)
-    if ((isSafeInteger(n) as boolean) && (n & 1) === 1) {
+    if ((Number.isSafeInteger(n) as boolean) && (n & 1) === 1) {
       // nth root of x.lo is possible (n is odd)
       const yn = -rmath.powHi(-x.lo, power)
       return new Interval(yn, yp)
