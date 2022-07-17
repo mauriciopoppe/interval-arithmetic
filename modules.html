@@ -10,126 +10,81 @@
 <div class="col-8 col-content">
 <div class="tsd-page-title">
 <h2>interval-arithmetic</h2></div>
-<div class="tsd-panel tsd-typography">
-<a href="#interval-arithmetic" id="interval-arithmetic" style="color: inherit; text-decoration: none;">
-  <h1>interval-arithmetic</h1>
-</a>
-<p><a href="https://npmjs.org/package/interval-arithmetic"><img src="https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat" alt="NPM"></a>
-<a href="https://travis-ci.org/mauriciopoppe/interval-arithmetic"><img src="https://travis-ci.org/mauriciopoppe/interval-arithmetic.svg?branch=master" alt="Build Status"></a>
-<a href="https://codecov.io/gh/mauriciopoppe/interval-arithmetic"><img src="https://codecov.io/gh/mauriciopoppe/interval-arithmetic/branch/master/graph/badge.svg" alt="codecov"></a>
-<a href="https://david-dm.org/mauriciopoppe/interval-arithmetic"><img src="https://david-dm.org/mauriciopoppe/interval-arithmetic.svg" alt="Dependency Status"></a>
-<a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="js-standard-style"></a>
-<a href="https://nodejs.org/api/documentation.html#apicontent"><img src="https://img.shields.io/badge/stability-stable-green.svg" alt="Stability"></a>
-<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic?ref=badge_shield"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic.svg?type=shield" alt="FOSSA Status"></a></p>
-<blockquote>
-<p>An implementation of an algebraically closed interval system of the extended real number set</p>
-</blockquote>
-<ul>
-<li><a href="#description">Description</a><ul>
-<li><a href="#floating-point-operations">floating point operations</a></li>
-<li><a href="#interval-arithmetic">Interval arithmetic</a></li>
-<li><a href="#notable-modifications">Notable modifications</a></li>
-</ul>
-</li>
-<li><a href="#interval-arithmetic-evaluator">Interval arithmetic evaluator</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#api">API</a></li>
-<li><a href="#development">Development</a></li>
-</ul>
-
-<a href="#description" id="description" style="color: inherit; text-decoration: none;">
-  <h2>Description</h2>
-</a>
-<p>An <code>interval</code> is a pair of numbers which represents all the numbers between them, <code>closed</code>
-means that the bounds are also included in the representation, <code>extended real</code> because the
-<code>real number system</code> is extended with two elements: <code>-∞</code> and <code>+∞</code> representing negative infinity
-and positive infinity respectively.</p>
-<p>The implementation is a modified port of the <a href="http://www.boost.org/doc/libs/1_58_0/libs/numeric/interval/doc/interval.htm">Boost&#39;s interval arithmetic library</a>,
-the modifications are based on some guidelines from the following papers/presentations:</p>
-<ul>
-<li><a href="http://fab.cba.mit.edu/classes/S62.12/docs/Hickey_interval.pdf">Interval Arithmetic: from Principles to Implementation - T. Hickey, Q. Ju, M.H. van Emden</a></li>
-<li><a href="http://conference.scipy.org/proceedings/scipy2008/paper_3/full_text.pdf">Interval Arithmetic: Python Implementation and Applications - Stefano Taschini</a></li>
-<li><a href="https://www.lri.fr/~melquion/doc/03-rnc5-expose.pdf">The Boost interval arithmetic library - Hervé Brönnimann, Guillaume Melquiond, Sylvain Pion</a></li>
-<li><a href="http://www.dgp.toronto.edu/~mooncake/thesis.pdf">Graphing equations with generalized interval arithmetic - Jeffrey Allen Tupper</a></li>
-</ul>
-
-<a href="#floating-point-operations" id="floating-point-operations" style="color: inherit; text-decoration: none;">
-  <h3>floating point operations</h3>
-</a>
-<p>Floating point is a way to represent a real number in an approximate way (due to the finite
-space existing on a computer), most calculations with real numbers will produce quantities that
-cannot be exactly represented with the space allocated and therefore this operation needs
-to be rounded in order to fit back into its finite representation, such errors are described in
-more detail <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html#689">here</a></p>
-
-<a href="#interval-arithmetic-1" id="interval-arithmetic-1" style="color: inherit; text-decoration: none;">
-  <h3>Interval arithmetic</h3>
-</a>
-<p>Instead of using a single floating point number as an approximation of a real number, interval
-arithmetic represents the approximated value as a set of possible values (considering the numbers
-that floating point cannot represent), let&#39;s say we want to represent the number <code>1 / 3</code>, as a single
-floating point number it&#39;s approximated as <code>0.333333333333...</code>, in the end there will be some <code>333...</code>
-decimals that will be lost due to the nature of floating point, instead we can represent this
-number with the interval <code>[0.2, 0.4]</code>, with this interval we&#39;re completely sure that <code>1 / 3</code> is within
-the interval (although the interval is also representing many more numbers), to improve the <code>scope</code>
-of the interval we have to understand that numbers in JavaScript are represented with 64 bits,
-therefore to get the next floating point number of a single precision number the last bit
-needs to be incremented to get the upper bound, and the last bit also needs to be decremented
-to get the lower point</p>
-
-<a href="#notable-modifications" id="notable-modifications" style="color: inherit; text-decoration: none;">
-  <h3>Notable modifications</h3>
-</a>
-<ul>
-<li>next/previous IEEE754 floating point number implementation based on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays">Typed Arrays</a></li>
-<li><code>division</code> when both intervals contain zero creates a whole interval</li>
-<li><code>cosine, tangent</code> works with positive/negative values out of the box</li>
-</ul>
-
-<a href="#interval-arithmetic-evaluator" id="interval-arithmetic-evaluator" style="color: inherit; text-decoration: none;">
-  <h2>Interval arithmetic evaluator</h2>
-</a>
-<p>Due to the expressive nature of the way the methods interact with intervals it&#39;s sad that even the simplest
-operation needs a lot of characters to be typed, let&#39;s consider evaluating the result of <code>1 + 2</code> expressed
-with intervals</p>
-<pre><code class="language-javascript"><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">add</span><span class="hl-1">(</span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">1</span><span class="hl-1">), </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">))</span>
-</code></pre>
-<p>This gets worse when the expression to be evaluated becomes complex like <code>sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2</code>:</p>
-<pre><code class="language-javascript"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-5">x</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">0</span><span class="hl-1">, </span><span class="hl-4">1</span><span class="hl-1">);</span><br/><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">add</span><span class="hl-1">(</span><br/><span class="hl-1">  </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">sin</span><span class="hl-1">(</span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">exp</span><span class="hl-1">(</span><span class="hl-0">x</span><span class="hl-1">)),</span><br/><span class="hl-1">  </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">sub</span><span class="hl-1">(</span><br/><span class="hl-1">    </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">tan</span><span class="hl-1">(</span><span class="hl-0">x</span><span class="hl-1">),</span><br/><span class="hl-1">    </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">mul</span><span class="hl-1">(</span><br/><span class="hl-1">      </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">div</span><span class="hl-1">(</span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-5">ONE</span><span class="hl-1">, </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">cos</span><span class="hl-1">(</span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-5">PI</span><span class="hl-1">)),</span><br/><span class="hl-1">      </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">pow</span><span class="hl-1">(</span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">), </span><span class="hl-4">2</span><span class="hl-1">)</span><br/><span class="hl-1">    )</span><br/><span class="hl-1">  )</span><br/><span class="hl-1">);</span>
-</code></pre>
-<p>To avoid this &#39;expressiveness&#39; mess there&#39;s an <a href="https://github.com/maurizzzio/interval-arithmetic-eval">interval arithmetic evaluator module</a>
-which I&#39;ve created to deal with all the work of parsing/evaluating expressions like the one above</p>
-<pre><code class="language-javascript"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-5">compile</span><span class="hl-1"> = </span><span class="hl-2">require</span><span class="hl-1">(</span><span class="hl-6">&#39;interval-arithmetic-eval&#39;</span><span class="hl-1">);</span><br/><span class="hl-2">compile</span><span class="hl-1">(</span><span class="hl-6">&#39;sin(exp(x)) + tan(x) - 1/cos(PI) * [1, 3]^2&#39;</span><span class="hl-1">).</span><span class="hl-2">eval</span><span class="hl-1">({ </span><span class="hl-0">x:</span><span class="hl-1"> [</span><span class="hl-4">0</span><span class="hl-1">, </span><span class="hl-4">1</span><span class="hl-1">] })</span>
-</code></pre>
-
-<a href="#installation-amp-usage" id="installation-amp-usage" style="color: inherit; text-decoration: none;">
-  <h2>Installation &amp; Usage</h2>
-</a>
-<pre><code class="language-sh"><span class="hl-1">$ npm install --save interval-arithmetic</span>
-</code></pre>
-<pre><code class="language-js"><span class="hl-7">import</span><span class="hl-1"> </span><span class="hl-0">IOps</span><span class="hl-1">, { </span><span class="hl-0">Interval</span><span class="hl-1"> } </span><span class="hl-7">from</span><span class="hl-1"> </span><span class="hl-6">&#39;interval-arithmetic&#39;</span><br/><span class="hl-0">IOps</span><span class="hl-1">.</span><span class="hl-2">add</span><span class="hl-1">(</span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">), </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">))</span>
-</code></pre>
-
-<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-  <h2>API</h2>
-</a>
-<p>See the <a href="http://mauriciopoppe.github.io/interval-arithmetic/">homepage</a></p>
-
-<a href="#development" id="development" style="color: inherit; text-decoration: none;">
-  <h2>Development</h2>
-</a>
-<pre><code class="language-sh"><span class="hl-1">npm </span><span class="hl-2">test</span>
-</code></pre>
-<p>Deployment steps</p>
-<pre><code class="language-sh"><span class="hl-1">// after the working directory is clean</span><br/><span class="hl-1">npm </span><span class="hl-2">test</span><br/><span class="hl-1">npm run build</span><br/><span class="hl-1">npm version (major|minor|patch)</span><br/><span class="hl-1">git push origin master</span><br/><br/><span class="hl-1">// </span><span class="hl-7">if</span><span class="hl-1"> everything went well</span><br/><span class="hl-1">npm publish</span><br/><span class="hl-1">npm run deploy</span>
-</code></pre>
-<p>2015-2020 © Mauricio Poppe</p>
-
-<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-  <h2>License</h2>
-</a>
-<p><a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic?ref=badge_large"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmauriciopoppe%2Finterval-arithmetic.svg?type=large" alt="FOSSA Status"></a></p>
-</div></div>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<h3 class="tsd-index-heading uppercase">Index</h3>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Type Aliases</h3>
+<div class="tsd-index-list"><a href="types/Interval.html" class="tsd-index-link tsd-kind-type-alias"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg><span>Interval</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Variables</h3>
+<div class="tsd-index-list"><a href="variables/LOG_EXP_10.html" class="tsd-index-link tsd-kind-variable"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-32-path"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)" id="icon-32-text"></path></svg><span>LOG_<wbr/>EXP_<wbr/>10</span></a>
+<a href="variables/LOG_EXP_2.html" class="tsd-index-link tsd-kind-variable"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg><span>LOG_<wbr/>EXP_<wbr/>2</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Functions</h3>
+<div class="tsd-index-list"><a href="functions/Interval-1.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg><span>Interval</span></a>
+<a href="functions/abs.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>abs</span></a>
+<a href="functions/acos.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>acos</span></a>
+<a href="functions/add.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>add</span></a>
+<a href="functions/almostEqual.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>almost<wbr/>Equal</span></a>
+<a href="functions/asin.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>asin</span></a>
+<a href="functions/assertIncludes.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>assert<wbr/>Includes</span></a>
+<a href="functions/atan.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>atan</span></a>
+<a href="functions/clone.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>clone</span></a>
+<a href="functions/cos.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>cos</span></a>
+<a href="functions/cosh.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>cosh</span></a>
+<a href="functions/default.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>default</span></a>
+<a href="functions/difference.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>difference</span></a>
+<a href="functions/div.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>div</span></a>
+<a href="functions/divide.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>divide</span></a>
+<a href="functions/equal.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>equal</span></a>
+<a href="functions/exp.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>exp</span></a>
+<a href="functions/fmod.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>fmod</span></a>
+<a href="functions/geq.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>geq</span></a>
+<a href="functions/greaterEqualThan.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>greater<wbr/>Equal<wbr/>Than</span></a>
+<a href="functions/greaterThan.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>greater<wbr/>Than</span></a>
+<a href="functions/gt.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>gt</span></a>
+<a href="functions/hasInterval.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>has<wbr/>Interval</span></a>
+<a href="functions/hasValue.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>has<wbr/>Value</span></a>
+<a href="functions/hull.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>hull</span></a>
+<a href="functions/intersection.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>intersection</span></a>
+<a href="functions/intervalsOverlap.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>intervals<wbr/>Overlap</span></a>
+<a href="functions/isEmpty.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>is<wbr/>Empty</span></a>
+<a href="functions/isInterval.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>is<wbr/>Interval</span></a>
+<a href="functions/isSingleton.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>is<wbr/>Singleton</span></a>
+<a href="functions/isWhole.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>is<wbr/>Whole</span></a>
+<a href="functions/leq.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>leq</span></a>
+<a href="functions/lessEqualThan.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>less<wbr/>Equal<wbr/>Than</span></a>
+<a href="functions/lessThan.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>less<wbr/>Than</span></a>
+<a href="functions/ln.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>ln</span></a>
+<a href="functions/log.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>log</span></a>
+<a href="functions/log10.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>log10</span></a>
+<a href="functions/log2.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>log2</span></a>
+<a href="functions/lt.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>lt</span></a>
+<a href="functions/max.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>max</span></a>
+<a href="functions/min.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>min</span></a>
+<a href="functions/mul.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>mul</span></a>
+<a href="functions/multiplicativeInverse.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>multiplicative<wbr/>Inverse</span></a>
+<a href="functions/multiply.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>multiply</span></a>
+<a href="functions/negative.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>negative</span></a>
+<a href="functions/notEqual.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>not<wbr/>Equal</span></a>
+<a href="functions/nthRoot.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>nth<wbr/>Root</span></a>
+<a href="functions/positive.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>positive</span></a>
+<a href="functions/pow.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>pow</span></a>
+<a href="functions/sin.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>sin</span></a>
+<a href="functions/sinh.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>sinh</span></a>
+<a href="functions/sqrt.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>sqrt</span></a>
+<a href="functions/sub.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>sub</span></a>
+<a href="functions/subtract.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>subtract</span></a>
+<a href="functions/tan.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>tan</span></a>
+<a href="functions/tanh.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>tanh</span></a>
+<a href="functions/union.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>union</span></a>
+<a href="functions/wid.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>wid</span></a>
+<a href="functions/width.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>width</span></a>
+<a href="functions/zeroIn.html" class="tsd-index-link tsd-kind-function"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg><span>zero<wbr/>In</span></a>
+</div></section></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -153,10 +108,10 @@ which I&#39;ve created to deal with all the work of parsing/evaluating expressio
 <ul></ul></li></ul></div></details></nav>
 <nav class="tsd-navigation secondary menu-sticky">
 <ul>
-<li class="tsd-kind-type-alias"><a href="types/Interval.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-4194304-path"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)" id="icon-4194304-text"></path></svg>Interval</a></li>
-<li class="tsd-kind-variable"><a href="variables/LOG_EXP_10.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-32-path"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)" id="icon-32-text"></path></svg>LOG_<wbr/>EXP_<wbr/>10</a></li>
+<li class="tsd-kind-type-alias"><a href="types/Interval.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-4194304-path"></use><use href="#icon-4194304-text"></use></svg>Interval</a></li>
+<li class="tsd-kind-variable"><a href="variables/LOG_EXP_10.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg>LOG_<wbr/>EXP_<wbr/>10</a></li>
 <li class="tsd-kind-variable"><a href="variables/LOG_EXP_2.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-32-path"></use><use href="#icon-32-text"></use></svg>LOG_<wbr/>EXP_<wbr/>2</a></li>
-<li class="tsd-kind-function"><a href="functions/Interval-1.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-64-path"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)" id="icon-64-text"></path></svg>Interval</a></li>
+<li class="tsd-kind-function"><a href="functions/Interval-1.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>Interval</a></li>
 <li class="tsd-kind-function"><a href="functions/abs.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>abs</a></li>
 <li class="tsd-kind-function"><a href="functions/acos.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>acos</a></li>
 <li class="tsd-kind-function"><a href="functions/add.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-64-path"></use><use href="#icon-64-text"></use></svg>add</a></li>
