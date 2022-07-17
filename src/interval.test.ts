@@ -1,15 +1,16 @@
-import Interval, { Interval as _Interval } from './'
+import { Interval } from './'
 import assert from 'assert'
 
 let n
 const EPS = 1e-7
 
-function assertEps(a, b): void {
+function assertEps(a: number, b: number): void {
   assert(Math.abs(a - b) < EPS)
 }
 
 describe('interval', function () {
   it('should control the parameters it receives on the constructor', function () {
+
     n = new Interval(1, 2)
     assert(n.lo === 1 && n.hi === 2)
 

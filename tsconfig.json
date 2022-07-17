@@ -1,19 +1,22 @@
 {
   "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "outDir": "./lib",
-    "allowJs": true,
-    "target": "es5",
     "lib": ["esnext", "dom"],
+    "allowJs": true,
     "sourceMap": true,
     "declaration": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./@types"]
   },
-
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "@types"
   ],
   "exclude": [
     "node_modules",

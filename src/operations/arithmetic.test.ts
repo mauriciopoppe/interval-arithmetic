@@ -2,7 +2,7 @@ import Interval, { Interval as _Interval } from '../'
 import assert from 'assert'
 
 const EPS = 1e-7
-function assertEps(a, b): void {
+function assertEps(a: number, b: number): void {
   assert(Math.abs(a - b) < EPS)
 }
 

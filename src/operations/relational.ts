@@ -59,7 +59,7 @@ function assertEps(a: any, b: any): void {
   assert(Math.abs(a - b) < EPS, `expected ${a} to be close to ${b}`)
 }
 
-export function almostEqual(x, y): void {
+export function almostEqual(x: number[] | Interval, y: number[] | Interval): void {
   x = Array.isArray(x) ? x : x.toArray()
   y = Array.isArray(y) ? y : y.toArray()
   assertEps(x[0], y[0])
