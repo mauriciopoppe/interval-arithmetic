@@ -1,7 +1,6 @@
 # interval-arithmetic
 
 [![NPM][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
 [![codecov](https://codecov.io/gh/mauriciopoppe/interval-arithmetic/branch/master/graph/badge.svg)](https://codecov.io/gh/mauriciopoppe/interval-arithmetic)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
@@ -134,10 +133,6 @@ npm run deploy
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
-[travis-image]: https://travis-ci.org/mauriciopoppe/interval-arithmetic.svg?branch=master
-[travis-url]: https://travis-ci.org/mauriciopoppe/interval-arithmetic
-[david-image]: https://david-dm.org/mauriciopoppe/interval-arithmetic.svg
-[david-url]: https://david-dm.org/mauriciopoppe/interval-arithmetic
 
 
 ## License
