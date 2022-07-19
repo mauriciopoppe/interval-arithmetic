@@ -101,8 +101,8 @@ $ npm install --save interval-arithmetic
 ```
 
 ```js
-import IOps, { Interval } from 'interval-arithmetic'
-IOps.add(Interval(1), Interval(2))
+import Interval from 'interval-arithmetic'
+Interval.add(Interval(1), Interval(2))
 ```
 
 ## API
@@ -130,7 +130,7 @@ npm run deploy
 ```
 
 
-2015-2020 © Mauricio Poppe
+2015-2022 © Mauricio Poppe
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic
