@@ -1,0 +1,403 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Interval | interval-arithmetic</title><meta name="description" content="Documentation for interval-arithmetic"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base="..">
+<div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">interval-arithmetic</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb">
+<li><a href="../modules.html">interval-arithmetic</a></li>
+<li><a href="Interval.html">Interval</a></li></ul>
+<h1>Class Interval</h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>Constructor for closed intervals representing all the values inside (and
+including) <code>lo</code> and <code>hi</code> e.g. <code>[lo, hi]</code></p>
+<p>NOTE: If <code>lo &gt; hi</code> then the constructor will return an empty interval</p>
+
+<h3>Mixes</h3><p>arithmetic</p>
+
+<h3>Mixes</h3><p>algebra</p>
+
+<h3>Mixes</h3><p>misc</p>
+
+<h3>Mixes</h3><p>relational</p>
+
+<h3>Mixes</h3><p>trigonometric</p>
+
+<h3>Mixes</h3><p>utils</p>
+
+<h3>Mixes</h3><p>constants</p>
+
+<h3>Link</h3><p>#bounded</p>
+
+<h3>Link</h3><p>#boundedSingleton</p>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">)  </span><span class="hl-8">// {lo: 1, hi: 2}</span><br/><span class="hl-8">// function invocation without new is also supported</span><br/><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">)   </span><span class="hl-8">// {lo: 1, hi: 2}</span><br/><span class="hl-8">// with numbers</span><br/><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">)   </span><span class="hl-8">// {lo: 1, hi: 2}</span><br/><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">)      </span><span class="hl-8">// {lo: 1, hi: 1}</span><br/><span class="hl-8">// with an array</span><br/><span class="hl-2">Interval</span><span class="hl-1">([</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">]) </span><span class="hl-8">// {lo: 1, hi: 2}</span><br/><span class="hl-8">// singleton intervals</span><br/><span class="hl-3">var</span><span class="hl-1"> </span><span class="hl-0">x</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">)</span><br/><span class="hl-3">var</span><span class="hl-1"> </span><span class="hl-0">y</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">)</span><br/><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-0">x</span><span class="hl-1">, </span><span class="hl-0">y</span><span class="hl-1">)   </span><span class="hl-8">// {lo: 1, hi: 2}</span><br/><span class="hl-8">// when `lo &gt; hi` it returns an empty interval</span><br/><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">1</span><span class="hl-1">)   </span><span class="hl-8">// {lo: Infinity, hi: -Infinity}</span><br/><span class="hl-8">// bounded interval</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">bounded</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">)  </span><span class="hl-8">// { lo: 0.9999999999999999, hi: 2.0000000000000004 }</span><br/><span class="hl-8">// singleton bounded interval</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">boundedSingleton</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">)  </span><span class="hl-8">// {lo: 1.9999999999999998, hi: 2.0000000000000004}</span><br/><span class="hl-8">// half open and open intervals</span><br/><span class="hl-8">// [2, 3]</span><br/><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)                     </span><span class="hl-8">// {lo: 2, hi: 3}</span><br/><span class="hl-8">// (2, 3]</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">halfOpenLeft</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)      </span><span class="hl-8">// {lo: 2.0000000000000004, hi: 3}</span><br/><span class="hl-8">// [2, 3)</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">halfOpenRight</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)     </span><span class="hl-8">// {lo: 2, hi: 2.9999999999999996}</span><br/><span class="hl-8">// (2, 3)</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">open</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)              </span><span class="hl-8">// {lo: 2.0000000000000004, hi: 2.9999999999999996}</span>
+</code></pre>
+
+<h3>Param</h3><p>The left endpoint of the interval if it&#39;s a
+number or a singleton interval, if it&#39;s an array then an interval will be
+built out of the elements of the array</p>
+
+<h3>Param</h3><p>The right endpoint of the interval if it&#39;s a
+number or a singleton interval, if omitted then a singleton interval will be
+built out of <code>lo</code></p>
+</div></section>
+<section class="tsd-panel tsd-hierarchy">
+<h4>Hierarchy</h4>
+<ul class="tsd-hierarchy">
+<li><span class="target">Interval</span></li></ul></section>
+<section class="tsd-panel">
+<h4>Implements</h4>
+<ul class="tsd-hierarchy">
+<li><span class="tsd-signature-type">IInterval</span></li></ul></section><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L60">interval.ts:60</a></li></ul></aside>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
+<h5 class="tsd-index-heading uppercase" role="button" aria-expanded="false" tabIndex=0><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 5.50969L8 11.6609L14.5 5.50969L12.5466 3.66086L8 7.96494L3.45341 3.66086L1.5 5.50969Z" fill="var(--color-text)"></path></svg> Index</h5></summary>
+<div class="tsd-accordion-details">
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Constructors</h3>
+<div class="tsd-index-list"><a href="Interval.html#constructor" class="tsd-index-link tsd-kind-constructor tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#4D7FFF" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-512-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-512-text"></path></svg><span>constructor</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Properties</h3>
+<div class="tsd-index-list"><a href="Interval.html#hi" class="tsd-index-link tsd-kind-property tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-1024-path"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)" id="icon-1024-text"></path></svg><span>hi</span></a>
+<a href="Interval.html#lo" class="tsd-index-link tsd-kind-property tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>lo</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Methods</h3>
+<div class="tsd-index-list"><a href="Interval.html#assign" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-2048-path"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)" id="icon-2048-text"></path></svg><span>assign</span></a>
+<a href="Interval.html#bounded" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>bounded</span></a>
+<a href="Interval.html#boundedSingleton" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>bounded<wbr/>Singleton</span></a>
+<a href="Interval.html#clone" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>clone</span></a>
+<a href="Interval.html#halfOpenLeft" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>half<wbr/>Open<wbr/>Left</span></a>
+<a href="Interval.html#halfOpenRight" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>half<wbr/>Open<wbr/>Right</span></a>
+<a href="Interval.html#open" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>open</span></a>
+<a href="Interval.html#set" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>set</span></a>
+<a href="Interval.html#setEmpty" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>set<wbr/>Empty</span></a>
+<a href="Interval.html#setWhole" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>set<wbr/>Whole</span></a>
+<a href="Interval.html#singleton" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>singleton</span></a>
+<a href="Interval.html#toArray" class="tsd-index-link tsd-kind-method tsd-parent-kind-class"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>to<wbr/>Array</span></a>
+</div></section></div></details></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Constructors</h2>
+<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class"><a id="constructor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="constructor.new_Interval">new <wbr/>Interval<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a>, hi<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#constructor.new_Interval" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> lo: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h5></li>
+<li>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> hi: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L73">interval.ts:73</a></li></ul></aside></li></ul></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Properties</h2>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="hi" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>hi</span><a href="#hi" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<div class="tsd-signature">hi<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+<div class="tsd-comment tsd-typography"><p>The right endpoint of the interval</p>
+</div><aside class="tsd-sources">
+<p>Implementation of IInterval.hi</p>
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L71">interval.ts:71</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="lo" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>lo</span><a href="#lo" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<div class="tsd-signature">lo<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+<div class="tsd-comment tsd-typography"><p>The left endpoint of the interval</p>
+</div><aside class="tsd-sources">
+<p>Implementation of IInterval.lo</p>
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L65">interval.ts:65</a></li></ul></aside></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Methods</h2>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="assign" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>assign</span><a href="#assign" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="assign.assign-1">assign<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, hi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#assign.assign-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets new endpoints for this interval checking that both arguments exist
+and that are valid numbers, additionally if <code>lo &gt; hi</code> the interval is set to
+an empty interval</p>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>lo: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>The left endpoint of the interval</p>
+</div></li>
+<li>
+<h5>hi: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>The right endpoint of the interval</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L189">interval.ts:189</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="bounded" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>bounded</span><a href="#bounded" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="bounded.bounded-1">bounded<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, hi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#bounded.bounded-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets new endpoints to this interval, the left endpoint is equal to the
+previous IEEE floating point value of <code>lo</code> and the right endpoint
+is equal to the next IEEE floating point
+value of <code>hi</code>, it&#39;s assumed that <code>lo &lt;= hi</code></p>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-5">x</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">bounded</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">, </span><span class="hl-4">2</span><span class="hl-1">)</span><br/><span class="hl-0">x</span><span class="hl-1">.</span><span class="hl-0">lo</span><span class="hl-1"> &lt; </span><span class="hl-4">1</span><span class="hl-1"> </span><span class="hl-8">// true, x.lo === 0.9999999999999999</span><br/><span class="hl-0">x</span><span class="hl-1">.</span><span class="hl-0">hi</span><span class="hl-1"> &gt; </span><span class="hl-4">2</span><span class="hl-1"> </span><span class="hl-8">// true, x.hi === 2.0000000000000004</span>
+</code></pre>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-8">// the correct representation of 1/3</span><br/><span class="hl-3">var</span><span class="hl-1"> </span><span class="hl-0">x</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">bounded</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">/</span><span class="hl-4">3</span><span class="hl-1">, </span><span class="hl-4">1</span><span class="hl-1">/</span><span class="hl-4">3</span><span class="hl-1">)</span><br/><span class="hl-0">x</span><span class="hl-1">.</span><span class="hl-0">lo</span><span class="hl-1"> &lt; </span><span class="hl-4">1</span><span class="hl-1">/</span><span class="hl-4">3</span><span class="hl-1"> </span><span class="hl-8">// true</span><br/><span class="hl-0">x</span><span class="hl-1">.</span><span class="hl-0">hi</span><span class="hl-1"> &gt; </span><span class="hl-4">1</span><span class="hl-1">/</span><span class="hl-4">3</span><span class="hl-1"> </span><span class="hl-8">// true</span><br/><span class="hl-8">// however the floating point representation of 1/3 is less than the real 1/3</span><br/><span class="hl-8">// therefore the left endpoint could be 1/3 instead of the previous value of</span><br/><span class="hl-3">var</span><span class="hl-1"> </span><span class="hl-0">next</span><span class="hl-1"> = </span><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-0">round</span><span class="hl-1">.</span><span class="hl-0">safeNext</span><br/><span class="hl-3">var</span><span class="hl-1"> </span><span class="hl-0">x</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">set</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">/</span><span class="hl-4">3</span><span class="hl-1">, </span><span class="hl-2">next</span><span class="hl-1">(</span><span class="hl-4">1</span><span class="hl-1">/</span><span class="hl-4">3</span><span class="hl-1">))</span><br/><span class="hl-8">// x now represents 1/3 correctly</span>
+</code></pre>
+
+<h3>Returns</h3><p>The calling interval i.e. <code>this</code></p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>lo: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5>hi: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L153">interval.ts:153</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="boundedSingleton" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>bounded<wbr/>Singleton</span><a href="#boundedSingleton" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="boundedSingleton.boundedSingleton-1">bounded<wbr/>Singleton<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#boundedSingleton.boundedSingleton-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Equivalent to <code>Interval().bounded(v, v)</code></p>
+
+<h3>Returns</h3><p>The calling interval i.e. <code>this</code></p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>v: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L162">interval.ts:162</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="clone" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>clone</span><a href="#clone" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="clone.clone-1">clone<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#clone.clone-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Creates an interval equal to the calling one</p>
+
+<h3>See</h3><p>Interval.clone</p>
+
+<h3>Name</h3><p>Interval.prototype</p>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-3">var</span><span class="hl-1"> </span><span class="hl-0">x</span><span class="hl-1"> = </span><span class="hl-2">Interval</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)</span><br/><span class="hl-0">x</span><span class="hl-1">.</span><span class="hl-2">clone</span><span class="hl-1">()    </span><span class="hl-8">// Interval(2, 3)</span>
+</code></pre>
+
+<h3>Returns</h3></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L293">interval.ts:293</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="halfOpenLeft" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>half<wbr/>Open<wbr/>Left</span><a href="#halfOpenLeft" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="halfOpenLeft.halfOpenLeft-1">half<wbr/>Open<wbr/>Left<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, hi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#halfOpenLeft.halfOpenLeft-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the endpoints of this interval to the half open interval <code>(lo, hi]</code></p>
+<p>NOTE: <code>Interval.round.disable</code> has no effect on this method</p>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-8">// (2, 3]</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">halfOpenLeft</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)  </span><span class="hl-8">// {lo: 2.0000000000000004, hi: 3}</span>
+</code></pre>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>lo: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5>hi: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L251">interval.ts:251</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="halfOpenRight" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>half<wbr/>Open<wbr/>Right</span><a href="#halfOpenRight" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="halfOpenRight.halfOpenRight-1">half<wbr/>Open<wbr/>Right<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, hi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#halfOpenRight.halfOpenRight-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the endpoints of this interval to the half open interval <code>[lo, hi)</code></p>
+<p>NOTE: <code>Interval.round.disable</code> has no effect on this method</p>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-8">// [2, 3)</span><br/><span class="hl-0">Interval</span><span class="hl-1">.</span><span class="hl-2">halfOpenRight</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)     </span><span class="hl-8">// {lo: 2, hi: 2.9999999999999996}</span>
+</code></pre>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>lo: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5>hi: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L270">interval.ts:270</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="open" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>open</span><a href="#open" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="open.open-1">open<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, hi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#open.open-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the endpoints of this interval to the open interval <code>(lo, hi)</code></p>
+<p>NOTE: <code>Interval.round.disable</code> has no effect on this method</p>
+
+<h3>Example</h3><pre><code class="language-typescript"><span class="hl-8">// (2, 3)</span><br/><span class="hl-2">Interval</span><span class="hl-1">().</span><span class="hl-2">open</span><span class="hl-1">(</span><span class="hl-4">2</span><span class="hl-1">, </span><span class="hl-4">3</span><span class="hl-1">)  </span><span class="hl-8">// {lo: 2.0000000000000004, hi: 2.9999999999999996}</span>
+</code></pre>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>lo: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5>hi: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L232">interval.ts:232</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="set" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set</span><a href="#set" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="set.set-1">set<span class="tsd-signature-symbol">(</span>lo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, hi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#set.set-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets new endpoints for this interval, this method bypasses any
+checks on the type of arguments</p>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>lo: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>The left endpoint of the interval</p>
+</div></li>
+<li>
+<h5>hi: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>The right endpoint of the interval</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L174">interval.ts:174</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="setEmpty" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Empty</span><a href="#setEmpty" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="setEmpty.setEmpty-1">set<wbr/>Empty<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#setEmpty.setEmpty-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the endpoints of this interval to <code>[∞, -∞]</code> effectively representing
+no values</p>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L204">interval.ts:204</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="setWhole" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Whole</span><a href="#setWhole" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="setWhole.setWhole-1">set<wbr/>Whole<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#setWhole.setWhole-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the endpoints of this interval to <code>[-∞, ∞]</code> effectively representing all
+the possible real values</p>
+
+<h3>Returns</h3><p>The calling interval</p>
+</div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L213">interval.ts:213</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="singleton" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>singleton</span><a href="#singleton" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="singleton.singleton-1">singleton<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a><a href="#singleton.singleton-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets <code>this.lo</code> and <code>this.hi</code> to a single value <code>v</code></p>
+
+<h3>Returns</h3><p>The calling interval i.e. <code>this</code></p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>v: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="Interval.html" class="tsd-signature-type" data-tsd-kind="Class">Interval</a></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L119">interval.ts:119</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="toArray" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>to<wbr/>Array</span><a href="#toArray" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+<li class="tsd-signature tsd-anchor-link" id="toArray.toArray-1">to<wbr/>Array<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#toArray.toArray-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Array representation of this interval</p>
+
+<h3>Returns</h3></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/mauriciopoppe/interval-arithmetic/blob/af62ec9/src/interval.ts#L278">interval.ts:278</a></li></ul></aside></li></ul></section></section></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li><a href="../modules.html">interval-<wbr/>arithmetic</a>
+<ul></ul></li></ul></div></details></nav>
+<nav class="tsd-navigation secondary menu-sticky">
+<ul>
+<li class="current tsd-kind-class"><a href="Interval.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-128-path"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)" id="icon-128-text"></path></svg><span>Interval</span></a>
+<ul>
+<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Interval.html#constructor" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-512-path"></use><use href="#icon-512-text"></use></svg>constructor</a></li>
+<li class="tsd-kind-property tsd-parent-kind-class"><a href="Interval.html#hi" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>hi</a></li>
+<li class="tsd-kind-property tsd-parent-kind-class"><a href="Interval.html#lo" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>lo</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#assign" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>assign</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#bounded" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>bounded</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#boundedSingleton" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>bounded<wbr/>Singleton</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#clone" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>clone</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#halfOpenLeft" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>half<wbr/>Open<wbr/>Left</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#halfOpenRight" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>half<wbr/>Open<wbr/>Right</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#open" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>open</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#set" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>set</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#setEmpty" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>set<wbr/>Empty</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#setWhole" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>set<wbr/>Whole</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#singleton" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>singleton</a></li>
+<li class="tsd-kind-method tsd-parent-kind-class"><a href="Interval.html#toArray" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>to<wbr/>Array</a></li></ul></li></ul></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="../assets/main.js"></script></body></html>
