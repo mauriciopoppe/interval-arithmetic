@@ -1,4 +1,4 @@
-import { Interval } from '../interval'
+import { IInterval as Interval } from '../IInterval'
 
 /**
  * @mixin utils

@@ -1,4 +1,4 @@
-import Interval, { Interval as _Interval } from '../'
+import Interval from '../'
 import assert from 'assert'
 import nextafter from 'nextafter'
 
