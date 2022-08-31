@@ -5,7 +5,7 @@
  * Licensed under the MIT license.
  */
 
-import { Interval as IntervalInternal } from './interval'
+import { Interval as BindNewInterval, _Interval as Interval } from './interval'
 import round from './round'
 import constants from './constants'
 
@@ -16,9 +16,9 @@ import * as trigonometric from './operations/trigonometric'
 import * as misc from './operations/misc'
 import * as utils from './operations/utils'
 
-const Interval = Object.assign(IntervalInternal, constants, round, misc, utils, relational, arithmetic, algebra, trigonometric, { round })
+const MixedInterval = Object.assign(BindNewInterval, constants, round, misc, utils, relational, arithmetic, algebra, trigonometric, { round })
 
-export default Interval
+export default MixedInterval
 export { Interval }
 export * from './operations/relational'
 export * from './operations/arithmetic'

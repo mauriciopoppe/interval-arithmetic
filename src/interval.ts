@@ -1,3 +1,4 @@
+import { IInterval } from "./IInterval"
 import * as utils from './operations/utils'
 import round from './round'
 
@@ -7,7 +8,6 @@ import round from './round'
  *
  * NOTE: If `lo > hi` then the constructor will return an empty interval
  *
- * @class
  * @mixes arithmetic
  * @mixes algebra
  * @mixes misc
@@ -57,7 +57,7 @@ import round from './round'
  * number or a singleton interval, if omitted then a singleton interval will be
  * built out of `lo`
  */
-export class _Interval {
+export class _Interval implements IInterval {
   /**
    * The left endpoint of the interval
    * @type {number}
