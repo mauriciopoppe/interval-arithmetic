@@ -1,4 +1,5 @@
 import { Interval } from './interval'
+import round from './round'
 
 const piLow = (3373259426.0 + 273688.0 / (1 << 21)) / (1 << 30)
 const piHigh = (3373259426.0 + 273689.0 / (1 << 21)) / (1 << 30)
@@ -27,6 +28,25 @@ const constants = {
 
   /**
    * An interval that represents PI, NOTE: calls to Interval.PI always return
+   * a new interval representing PI
+   * @memberof constants
+   * @static
+   * @example
+   * ```typescript
+   * Interval.E
+   * ```
+   * @name E
+   * @type {Interval}
+   */
+  get E(): Interval {
+    return new Interval(
+      round.prev(Math.E),
+      round.next(Math.E)
+    )
+  },
+
+  /**
+   * An interval that represents Euler's constant e, NOTE: calls to Interval.E always return
    * a new interval representing PI
    * @memberof constants
    * @static

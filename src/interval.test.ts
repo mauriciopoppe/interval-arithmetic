@@ -79,6 +79,10 @@ describe('interval', function () {
     assert(x.lo < x.hi)
     assertEps(x.lo, Math.PI)
     assertEps(x.hi, Math.PI)
+    x = Interval.E
+    assert(x.lo < x.hi)
+    assertEps(x.lo, Math.E)
+    assertEps(x.hi, Math.E)
   })
 
   it('should check NaN on assignment', function () {
