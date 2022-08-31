@@ -20,10 +20,10 @@ const MixedInterval = Object.assign(BindNewInterval, constants, round, misc, uti
 
 export default MixedInterval
 export { Interval }
+export { round, constants }
 export * from './operations/relational'
 export * from './operations/arithmetic'
 export * from './operations/algebra'
 export * from './operations/trigonometric'
 export * from './operations/misc'
 export * from './operations/utils'
-export * from './round'
