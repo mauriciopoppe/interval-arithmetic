@@ -129,7 +129,7 @@ npm run deploy
 ```
 
 
-2015-2022 © Mauricio Poppe
+2015-2025 © Mauricio Poppe
 
 [npm-image]: https://img.shields.io/npm/v/interval-arithmetic.svg?style=flat
 [npm-url]: https://npmjs.org/package/interval-arithmetic

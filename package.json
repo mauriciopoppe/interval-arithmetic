@@ -18,7 +18,7 @@
     "url": "https://github.com/mauriciopoppe/interval-arithmetic"
   },
   "license": "BSL-1.0",
-  "author": "Mauricio Poppe",
+  "author": "Mauricio Poppe (https://mauriciopoppe.com)",
   "main": "lib/index.js",
   "module": "lib-esm/index.js",
   "scripts": {
